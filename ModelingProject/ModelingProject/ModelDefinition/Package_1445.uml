@@ -466,7 +466,20 @@
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f9558edf-2d11-42fa-8947-b752f9693595"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="f1b7a05d-bb54-4476-9c54-654f1f17a58f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -579,6 +592,7 @@
           <property
             Id="42bc0ddf-353c-4219-827d-9614e28b66ec"
             name="currentNumberOfTeddiesAndSeats"
+            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -597,6 +611,7 @@
           <property
             Id="00ca4c2e-26e5-451b-937b-c7279014c7e4"
             name="combinationsArray"
+            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -615,6 +630,7 @@
           <property
             Id="9a0f2082-1ad8-4aa1-85b7-98d22566fba1"
             name="sofasArray"
+            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -633,6 +649,7 @@
           <property
             Id="678dd34b-e87c-4c02-a889-a16bbbd40245"
             name="teddiesArray"
+            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

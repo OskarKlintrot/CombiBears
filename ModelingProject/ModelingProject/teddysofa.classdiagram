@@ -35,20 +35,6 @@ här behöver jag en applikation där
 Känn dig fri att ändra eller göra nya klassdiagram vid behov!</body>
     </comment>
   </ownedCommentsInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="245e438f-3f3b-478a-b935-df08969ae5d8">
-      <profileInstance Id="7b3ae99b-eda4-4fc7-b0fd-8f6f2bf10467" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="e163ac9a-4a95-4cb4-89e6-a7b278a65a7f">
-      <profileInstance Id="bfc7db37-a971-42a7-9378-9529b9847e9a" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
       <referencedType Id="64b57fd0-6c0d-4a16-bdbf-7e2588fcb143" name="Array" isAbstract="false" isLeaf="false" cachedFullName="Array">
@@ -647,6 +633,16 @@ Krävs ett unikt sofa objekt för varje kombination</body>
                     </associationHasOwnedEnds>
                     <associationHasOwnedEnds>
                       <memberEnd Id="a3aaf6ad-3f39-469d-8e62-bd8534d39c76" name="Combination" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <lowerValueInternal>
+                          <literalString Id="89778ab7-25a9-4793-89d2-f57a097f1fd3" name="Lower" value="*">
+                            <elementDefinition Id="f9558edf-2d11-42fa-8947-b752f9693595" />
+                          </literalString>
+                        </lowerValueInternal>
+                        <upperValueInternal>
+                          <literalString Id="8a86d388-5bed-4dab-83b5-835347f8510b" name="Upper" value="*">
+                            <elementDefinition Id="f1b7a05d-bb54-4476-9c54-654f1f17a58f" />
+                          </literalString>
+                        </upperValueInternal>
                         <elementDefinition Id="c3afc4e3-3a3e-4b3a-854a-20f75a8f187c" />
                       </memberEnd>
                     </associationHasOwnedEnds>
@@ -707,25 +703,25 @@ Krävs ett unikt sofa objekt för varje kombination</body>
                 </association>
               </targetEnds>
               <ownedAttributesInternal>
-                <property Id="d13d4d96-c756-4bb6-ae01-dbd8bdee6d23" name="currentNumberOfTeddiesAndSeats" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="d13d4d96-c756-4bb6-ae01-dbd8bdee6d23" name="currentNumberOfTeddiesAndSeats" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="42bc0ddf-353c-4219-827d-9614e28b66ec" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="53c9c1ea-f265-4adb-9de9-1c10d0c2fdb0" LastKnownName="Integer" />
                   </type_NamedElement>
                 </property>
-                <property Id="a33b2c76-cb6c-4cdc-ab18-80195fb1f3d7" name="combinationsArray" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="a33b2c76-cb6c-4cdc-ab18-80195fb1f3d7" name="combinationsArray" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="00ca4c2e-26e5-451b-937b-c7279014c7e4" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="64b57fd0-6c0d-4a16-bdbf-7e2588fcb143" LastKnownName="Array" />
                   </type_NamedElement>
                 </property>
-                <property Id="83d5f71d-1038-43d9-b79a-cf188f1e1f6b" name="sofasArray" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="83d5f71d-1038-43d9-b79a-cf188f1e1f6b" name="sofasArray" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="9a0f2082-1ad8-4aa1-85b7-98d22566fba1" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="64b57fd0-6c0d-4a16-bdbf-7e2588fcb143" LastKnownName="Array" />
                   </type_NamedElement>
                 </property>
-                <property Id="4ce676e5-0911-4fe8-acd0-76714ce7e299" name="teddiesArray" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="4ce676e5-0911-4fe8-acd0-76714ce7e299" name="teddiesArray" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="678dd34b-e87c-4c02-a889-a16bbbd40245" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="64b57fd0-6c0d-4a16-bdbf-7e2588fcb143" LastKnownName="Array" />
@@ -814,5 +810,19 @@ Krävs ett unikt sofa objekt för varje kombination</body>
   </packagedElements>
   <package Id="3c8e66e3-b196-4444-8429-9df080403818" name="ModelingProject">
     <elementDefinition Id="4c87039a-6737-45d9-8b28-b2b81b0b0b92" />
+    <profileInstances>
+      <packageHasProfileInstances Id="245e438f-3f3b-478a-b935-df08969ae5d8">
+        <profileInstance Id="7b3ae99b-eda4-4fc7-b0fd-8f6f2bf10467" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="e163ac9a-4a95-4cb4-89e6-a7b278a65a7f">
+        <profileInstance Id="bfc7db37-a971-42a7-9378-9529b9847e9a" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
