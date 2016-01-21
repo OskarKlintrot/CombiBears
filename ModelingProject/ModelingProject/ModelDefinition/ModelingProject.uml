@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="4c87039a-6737-45d9-8b28-b2b81b0b0b92"
+  name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="1b03f9cc-2101-4213-87b5-a0c7772e3154">
+      <body>## Beskrivning 1 från kund
+
+En applikation där elever (6 år) ska kunna experimentera och leta efter olika kombinationer att sätta ett bestämd antal björnar på en soffa med ett bestämd antal platser.
+
+[ ] Antal björnar/platser kan variera och väljs  av användaren.
+
+[ ] När en kombination är färdig bör det finnas möjlighet att spara den på något sätt, samtidigt som den fortsätter vara synligt för eleven.
+
+[X] För att kunna skilja mellan de olika björnarna ska de ha olika färger...
+
+[ ]...även här skulle en variation vara önskvärd.
+
+</body>
+    </comment>
+    <comment
+      Id="d8535214-7592-4963-ad84-c6c9a2460e93">
+      <body>## Beskrivning 2 från kund
+
+här behöver jag en applikation där
+
+[ ] en bestämd antal föremål (2-4 björnar) ska sitta på en soffa (varierande antal platser):
+
+[ ] elever behöver kunna placera ut föremålen genom att flytta runt dessa på en läsplatta.
+
+[ ] Kombinationerna behöver 'sparas' och elever måste hitta så många kombinationer som möjligt</body>
+    </comment>
+    <comment
+      Id="c8dfbb82-7e53-481c-9d0f-d95066372b17">
+      <body>Johnny @ 2016-01-21
+
+Krävs ett unikt sofa objekt för varje kombination</body>
+    </comment>
+    <comment
+      Id="f522a133-7e2d-4c0d-ad3b-9ec809c11f7e">
+      <body>Johnny @ 2016-01-21
+Känn dig fri att ändra eller göra nya klassdiagram vid behov!</body>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="c80f4561-3cf2-42ff-960e-e65974b423af"
+        name="array" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0871c0c0-f748-442d-9cf7-b961e67dc3bc"
+        name="Array" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e84354c4-8bb1-441e-8666-c02a5f80da4d"
+        name="CombinationService"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="180eb7bc-8bb2-477c-a100-836c6ff6fa1d"
+            name="saveCombination"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="d464b417-c06e-4b7b-9301-cf6925f65e03"
+            name="getCombinations"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="447d1f7d-d0da-47d2-bcc8-d5811a92da74"
+        name="Combinations"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="0bf0349b-85ab-4223-88e9-e16a9295ea3a"
+            name="teddy"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c216ae1b-7b4d-4369-9789-cec5e2280d07"
+            name="combinationId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="4f5a38a2-aa9e-4459-813f-4ee20be279d1"
+        LastKnownName="Alternativ 2 (Sämre)"
+        LastKnownLocation="Package_1356.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="292d5055-88a0-413e-88fa-a58e1018560d"
+        LastKnownName="Alternativ 1 (Bättre)"
+        LastKnownLocation="Package_1445.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
