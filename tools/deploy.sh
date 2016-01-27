@@ -28,7 +28,7 @@ git checkout -b gh-pages
 git config --global user.email "oskar.klintrot@gmail.com"
 git config --global user.name "Travis"
 
-git remote add deploy "https://$GITHUB_AUTH@github.com/OskarKlintrot/1dv411-project.git"
+git remote add deploy "https://$GH_USERNAME:$GH_TOKEN@github.com/OskarKlintrot/1dv411-project.git"
 
 git add -A
 
