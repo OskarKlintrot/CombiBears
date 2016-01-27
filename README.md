@@ -1,7 +1,7 @@
-# Offline First React And Redux Boilerplate
-This is a boilerplate in order to quickly get going with new projects in React and Redux.
+# TeddySofa
+An iOS app based on web technology.
 
-## What's Included
+## Technology used in this project
 
  - [React](http://facebook.github.io/react/)
  - [React-Router](https://www.npmjs.com/package/react-router)
@@ -9,10 +9,10 @@ This is a boilerplate in order to quickly get going with new projects in React a
  - [Redux Thunk](https://www.npmjs.com/package/redux-thunk)
  - [Redux DevTools](https://www.npmjs.com/package/redux-devtools)
  - [Webpack](http://webpack.github.io/)
- - [ESLint config file](http://eslint.org/)
+ - [ESLint](http://eslint.org/)
 
 ## Production vs Development
-Redux Devtools is Included in the development build but not in the production build.
+Redux Devtools is included in the development build but not in the production build.
 
 ## Directory Tree
 Note that all source code is located under `src/`.
@@ -36,7 +36,7 @@ After cloning the repository, install the dependencies:
 cd <repo folder>
 npm install
 # If not all where installed, run the following:
-npm install --only:dev
+npm install --dev # A warning that --dev might show, ignore it
 ```
 
 Now you can run your local server with live preview:
@@ -49,3 +49,4 @@ To build a static version of the project run:
 ```
 npm run build
 ```
+Note that the build is ignored in the `.gitignore` this because Travis CI will build and deploy to gh-pages from the master repo.
