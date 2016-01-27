@@ -3,21 +3,21 @@
 # Script from https://rasmus.eneman.eu/continuous-integration-and-deployment-to-gh-pages/
 
 # Only deploy when merged to master
-# if [ "$TRAVIS_BRANCH" != "master" ]
-# then
-#   exit 0
-#
-# elif [ "$TRAVIS_PULL_REQUEST" != "false" ]
-# then
-#   exit 0
-# fi
+ if [ "$TRAVIS_BRANCH" != "master" ]
+ then
+   exit 0
+
+ elif [ "$TRAVIS_PULL_REQUEST" != "false" ]
+ then
+   exit 0
+ fi
 
 # Fail fast
 set -e
 
 # Build
 npm run build
-# node ./node_modules/babel-cli/bin/babel-node.js --presets es2015,react tools/bootstrap.js > dist/index.html
+#node ./node_modules/babel-cli/bin/babel-node.js --presets es2015,react tools/bootstrap.js > build/index.html
 
 # Deploy
 cd build
