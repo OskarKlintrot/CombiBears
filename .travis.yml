@@ -3,6 +3,7 @@ node_js:
   - "4"
 
 before_install:
+  - chmod +x ./tools/deploy.sh
   - export TSD_GITHUB_TOKEN=33c4b08cf82468dafcd3036cec141515aecfb374
 
 after_success: ./tools/deploy.sh
