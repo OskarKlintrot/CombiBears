@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress --colors --production"
+    "build": "webpack --progress --colors --production",
+    "test": "true"
   },
   "private": true,
   "devDependencies": {
