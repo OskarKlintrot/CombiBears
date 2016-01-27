@@ -3,14 +3,14 @@
 # Script from https://rasmus.eneman.eu/continuous-integration-and-deployment-to-gh-pages/
 
 # Only deploy when merged to master
-if [ "$TRAVIS_BRANCH" != "master" ]
-then
-  exit 0
-
-elif [ "$TRAVIS_PULL_REQUEST" != "false" ]
-then
-  exit 0
-fi
+# if [ "$TRAVIS_BRANCH" != "master" ]
+# then
+#   exit 0
+# 
+# elif [ "$TRAVIS_PULL_REQUEST" != "false" ]
+# then
+#   exit 0
+# fi
 
 # Fail fast
 set -e
