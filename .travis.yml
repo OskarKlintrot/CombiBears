@@ -2,12 +2,7 @@ language: node_js
 
 node_js:
   - 5.0.0
-
-env:
-  global:
-  - GH_REF: github.com/OskarKlintrot/1dv411-project.git
-  - secure: hQyQTbVRgYI8kwg5EbiPpMah4L7EvwU5jzAsgdnN7xM+z4ZBo2EBvr7wUAYE+xOFy1qpdXRkDFi4E5Od50ZYSPl3AYMNMoW1sLNORho69E6hl0RtAYQ3DZjtdJTCdLR5B219CbgeQRxzY6Yvrnlm888vlUtzDTbUP9Hauw/8hpM7aBPpAfV/Zgc3GDCF8z8Lj8x3SrPYvBQDEGDUBhIPd4iaaQSyXGAVWxMs9of0IS7yDqE2RhuKb0mfFs7IAXB0K54r1QZ71wQIXTUicteOWEsarXqk5EfPjKKjYZAWzM5H+bfaj1J6RZKXWb3VrSYvHryMiUZP3kGTYNTNrLEz2F0mgtrZRaH15hIGic2WJg6fm3fKULwNtu8EARK4T7K/ACqCSDVAIfHxVukgbCafPITj770gqQAFWcc5/p9vKKfAK/xTOF9C+TyndNSedyf2ZtpmnTyQKDjsdwW3UisFjyHsswKde55BTNBqJE4t/OdaK958mnT7oj7nIftE7UdwqLTuHoNMpQ5TmGa4cilH03g5R75SiJ6gopwlXcEc3TEACqEmZnM5cWP6s6y/xmcWYAqRTm1uFwlL+e93NCjt2FTkkNHOVnh6JwRY8eL6RYIVHJbnN1ZB31Tnq7u1RvnVPO0alA7vWO6F7kx3NygiP0B7Acq7MmoKw9UnmVtql+M=
-
+  
 before_install:
 - chmod +x ./tools/deploy.sh
 
