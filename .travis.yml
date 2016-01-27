@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "4.1"
+  - "4.0"
+
+before_install:
+  - export TSD_GITHUB_TOKEN=33c4b08cf82468dafcd3036cec141515aecfb374
+
+after_success: ./tools/deploy.sh
+
+branches:
+  only:
+    - master
