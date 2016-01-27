@@ -26,8 +26,10 @@ ls
 git init
 git checkout -b gh-pages
 git config --global user.email "oskar.klintrot@gmail.com"
-git config --global user.name "OskarKlintrot"
-git config --global user.password "33c4b08cf82468dafcd3036cec141515aecfb374"
+git config --global user.name "Travis"
+git config --global github.user "OskarKlintrot"
+git config --global github.token "33c4b08cf82468dafcd3036cec141515aecfb374"
+
 git remote add deploy "https://$GITHUB_AUTH@github.com/OskarKlintrot/1dv411-project.git"
 
 git add -A
