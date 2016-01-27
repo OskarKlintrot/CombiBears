@@ -6,7 +6,7 @@
 # if [ "$TRAVIS_BRANCH" != "master" ]
 # then
 #   exit 0
-# 
+#
 # elif [ "$TRAVIS_PULL_REQUEST" != "false" ]
 # then
 #   exit 0
@@ -21,6 +21,7 @@ npm run build
 
 # Deploy
 cd build
+ls
 
 git init
 git checkout -b gh-pages
@@ -32,3 +33,5 @@ git add -A
 
 git commit -am "Deploy of build #$TRAVIS_BUILD_NUMBER of commit $TRAVIS_COMMIT"
 git push deploy gh-pages --force > /dev/null 2>&1
+
+echo "End of deploy"
