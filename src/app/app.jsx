@@ -11,8 +11,15 @@ import createHistory from 'history/lib/createHashHistory'
 import { useQueries } from 'history'
 import InitialState from './redux/store/initialState'
 
+// PIXI.js
+import PIXI from 'pixi.js/bin/pixi' // PIXI, added by Johnny Pesola 2016-02-04
+import ReactPIXI from 'react-pixi' // React PIXI, added by Johnny Pesola 2016-02-04
+
 const history = useQueries(createHistory)()
 const Store = configureStore(InitialState(), history)
+
+
+
 
 //Needed for React Developer Tools
 window.React = React

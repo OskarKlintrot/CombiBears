@@ -243,3 +243,6 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# Jetbrains WebStorm IDE specific
+.idea
