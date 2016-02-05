@@ -35,7 +35,7 @@ class Main extends React.Component {
 Main.propTypes = {
   user: PropTypes.string.isRequired,
   reset: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     reset: () => { dispatch(Actions.resetApp()) },
-    setUser: (user) => { dispatch(Actions.setUser(user)) },
+    setUser: (user) => { dispatch(Actions.setUser(user)) }
   }
 }
 

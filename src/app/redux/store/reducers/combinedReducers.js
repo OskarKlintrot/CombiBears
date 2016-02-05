@@ -6,7 +6,7 @@ import SettingsReducer from './settingsReducer'
 const CombinedReducers = combineReducers({
     // ...and combine them here
     app: AppReducer,
-    settings: SettingsReducer,
+    settings: SettingsReducer
 })
 
 export default CombinedReducers

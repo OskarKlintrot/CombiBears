@@ -2,7 +2,7 @@ import ActionTypes from "./actionTypes"
 
 const {
 	RESET,
-	SET_USER,
+	SET_USER
 	// Write down the actions you want to use here
 } = ActionTypes
 
@@ -11,8 +11,8 @@ const AppActions = {
 		return (dispatch, getState) => {
 			setTimeout(function(){
 				dispatch({
-	        type: RESET,
-	      })
+					type: RESET
+				})
 			}, 1000)
 		}
 	},
@@ -20,10 +20,10 @@ const AppActions = {
 		return (dispatch, getState) => {
 			dispatch({
 				type: SET_USER,
-				user: user,
+				user: user
 			})
 		}
-	},
+	}
 }
 
 export default AppActions

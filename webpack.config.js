@@ -9,7 +9,7 @@ const production = process.argv.find((element) => element === '--production') ? 
 
 const jsBaseEntry = [
   'babel-polyfill',
-  './src/app/app.jsx',
+  './src/app/app.jsx'
 ]
 
 const jsEntry = production ? jsBaseEntry.concat([
@@ -19,28 +19,28 @@ const jsEntry = production ? jsBaseEntry.concat([
 var config = {
   entry: {
     js: jsEntry,
-    html: './src/www/index.html',
+    html: './src/www/index.html'
   },
   devServer:{
     contentBase: 'src/www',
     devtool: 'source-map',
     hot: true,
     inline: true,
-    port: 3000,
+    port: 3000
   },
   output: {
     path: buildPath,
-    filename: 'scripts/boundle.min.js',
+    filename: 'scripts/boundle.min.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new TransferWebpackPlugin([
-      {from: 'www'},
+      {from: 'www'}
     ], sourcePath),
     new webpack.DefinePlugin({
-        PRODUCTION: production,
-    }),
+        PRODUCTION: production
+    })
   ],
   module: {
     preLoaders: [
@@ -48,8 +48,8 @@ var config = {
         test: /\.(js|jsx)$/,
         loader: 'eslint-loader',
         include: [path.resolve(__dirname, "src/app")],
-        exclude: [nodeModulesPath],
-      },
+        exclude: [nodeModulesPath]
+      }
     ],
     loaders: [
       {
@@ -58,24 +58,24 @@ var config = {
         loaders: [
             'react-hot',
             'babel?' + JSON.stringify({
-                presets: ["react", "es2015", "stage-1"],
-            }),
-        ],
+                presets: ["react", "es2015", "stage-1"]
+            })
+        ]
       },
       {
         test: /\.html$/,
-        loader: "file?name=[name].[ext]",
-      },
-    ],
+        loader: "file?name=[name].[ext]"
+      }
+    ]
   },
   resolve: {
     extensions: ['', '.ts', '.js', '.jsx'],
-    root: __dirname,
+    root: __dirname
   },
   devtool: 'source-map',
   eslint: {
-    configFile: '.eslintrc',
-  },
+    configFile: '.eslintrc'
+  }
 }
 
 if (production) {
@@ -84,9 +84,9 @@ if (production) {
   config.plugins = [
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false,
-      },
-    }),
+        warnings: false
+      }
+    })
   ].concat(config.plugins)
 }
 

@@ -1,11 +1,11 @@
 export const ActionTypesApp = {
   RESET: 'RESET',
-  SET_USER: 'SET_USER',
+  SET_USER: 'SET_USER'
   // You can have several objects here...
 }
 
 export const ActionTypesSettings = {
-  RESET: 'RESET',
+  RESET: 'RESET'
   // ...just to increase code readability
 }
 
