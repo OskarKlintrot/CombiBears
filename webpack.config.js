@@ -74,7 +74,6 @@ var config = {
         loader: 'json-loader',
       },
     ],
-    noParse: [ /.*(pixi\.js).*/ ], // For pixi.js compability. Added by Johnny Pesola 2016-02-04
   },
   resolve: {
     extensions: ['', '.ts', '.js', '.jsx'],
