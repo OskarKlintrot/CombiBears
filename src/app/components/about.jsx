@@ -1,5 +1,5 @@
-import React from 'react'
-import {Link} from 'react-router'
+import React from 'react';
+import {Link} from 'react-router';
 
 const About = () => {
   return (
@@ -24,7 +24,7 @@ const About = () => {
       </ul>
       <Link to={'/'}>Go back...</Link>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

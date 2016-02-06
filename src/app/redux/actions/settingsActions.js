@@ -1,18 +1,18 @@
-import ActionTypes from "./actionTypes"
+import ActionTypes from "./actionTypes";
 
 const {
 	RESET
 	// Write down the actions you want to use here
-} = ActionTypes
+} = ActionTypes;
 
 const SettingsActions = {
 	resetSettings: () => {
 		return (dispatch, getState) => {
-      dispatch({
-        type: RESET
-      })
-		}
+			dispatch({
+				type: RESET
+			});
+		};
 	}
-}
+};
 
-export default SettingsActions
+export default SettingsActions;

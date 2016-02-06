@@ -1,11 +1,11 @@
-import React from 'react'
-import { Router } from 'react-router'
-import routes from '../../routes'
-import { Provider } from 'react-redux'
-import DevTools from '../devTools'
+import React from 'react';
+import {Router} from 'react-router';
+import routes from '../../routes';
+import {Provider} from 'react-redux';
+import DevTools from '../devTools';
 
 const Root = (props) => {
-  const { store, history } = props
+  const {store, history} = props;
 
   return (
     <Provider store={ store }>
@@ -14,7 +14,7 @@ const Root = (props) => {
         <DevTools />
       </div>
     </Provider>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;

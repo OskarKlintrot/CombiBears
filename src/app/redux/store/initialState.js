@@ -7,7 +7,7 @@ const InitialState = () => {
 		settings: {
 
 		}
-	}
-}
+	};
+};
 
-export default InitialState
+export default InitialState;
