@@ -25,9 +25,9 @@ export default function configureStore(initialState, history) {
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
-    module.hot.accept(CombinedReducers, () =>
-      store.replaceReducer(CombinedReducers/* .default if you use Babel 6+ */)
-    );
+    module.hot.accept(CombinedReducers, () => {
+      return store.replaceReducer(CombinedReducers/* .default if you use Babel 6+ */);
+    });
   }
 
   return store;

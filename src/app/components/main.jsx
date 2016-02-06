@@ -11,7 +11,9 @@ class Main extends React.Component {
     return (
       <div>
         <h2>Hello { user }!</h2>
-        <form onSubmit={(ev) => ev.preventDefault}>
+        <form onSubmit={(ev) => {
+            return ev.preventDefault;
+          }}>
           <label htmlFor='userInput'>Username: </label>
           <input id='userInput' type='text' placeholder={placeholder} ref='inputUser' autofocus autoComplete='off' />
           <button type='submit' onClick={ () => {

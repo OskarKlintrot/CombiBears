@@ -9,7 +9,7 @@ const {
 const AppActions = {
 	resetApp: () => {
 		return (dispatch, getState) => {
-			setTimeout(function() {
+			setTimeout(() => {
 				dispatch({
 					type: RESET
 				});
