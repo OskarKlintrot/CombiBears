@@ -246,3 +246,6 @@ ModelManifest.xml
 
 # Jetbrains WebStorm IDE specific
 .idea
+
+# OSX specific
+.DS_Store
