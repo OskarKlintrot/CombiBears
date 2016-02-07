@@ -22,7 +22,7 @@ const About = () => {
           Webpack
         </li>
       </ul>
-      <Link to={'/'}>Go back...</Link>
+      <Link to = {'/'}>Go back...</Link>
     </div>
   );
 };
