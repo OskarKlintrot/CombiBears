@@ -10,21 +10,23 @@ class Main extends React.Component {
 
     return (
       <div>
-        <h2>Hello { user }!</h2>
+        <h2>Hello {user}!</h2>
         <form onSubmit={(ev) => {
             return ev.preventDefault;
-          }}>
+          }}
+        >
           <label htmlFor='userInput'>Username: </label>
           <input id='userInput' type='text' placeholder={placeholder} ref='inputUser' autofocus autoComplete='off' />
-          <button type='submit' onClick={ () => {
+          <button type='submit' onClick={() => {
               setUser(this.refs.inputUser.value);
               this.refs.inputUser.value = "";
-            }
-          } >Update user</button>
-        <button type='reset' onClick={ () => {
+            }}
+          >Update user</button>
+        <button type='reset' onClick={() => {
               this.refs.inputUser.placeholder = "Notice the delay...";
               reset();
-            } }>Reset user</button>
+            }}
+        >Reset user</button>
         </form>
         <p>
           <Link to={'/about'}>Read more about this boilerplate...</Link>

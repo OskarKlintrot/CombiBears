@@ -108,10 +108,10 @@
     "no-shadow-restricted-names": 2,
     "no-shadow": 1,
     "no-undef-init": 2,
-    // Does not work with react
+    // Seems to not be working as expected
     "no-undef": 0,
     "no-undefined": 1,
-    // Does not work with react
+    // Seems to not be working as expected
     "no-unused-vars": 0,
     "no-use-before-define": 2,
 
@@ -204,7 +204,48 @@
     "require-yield": 2,
 
     // React specific
+    "react/display-name": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-closing-bracket-location": [1, "tag-aligned"],
+    "react/jsx-curly-spacing": [1, "never"],
+    "react/jsx-equals-spacing": [1, "always"],
+    "react/jsx-handler-names": 2,
 
+    // Because we do not use indent on normal code, we will not use it for react
+    // either
+    "react/jsx-indent-props": 0,
+    "react/jsx-indent": 0,
+    "react/jsx-key": 2,
+    "react/jsx-max-props-per-line": 0,
+    "react/jsx-no-bind": 2,
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-literals": 0,
+    "react/jsx-no-undef": 1,
+    "react/jsx-pascal-case": 1,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    // Seems to not be working as expected
+    "react/jsx-uses-react": 0,
+    // Seems to not be working as expected
+    "react/jsx-uses-vars": 0,
+    "react/no-danger": 2,
+    "react/no-deprecated": 2,
+    "react/no-did-mount-set-state": 2,
+    "react/no-did-update-set-state": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/no-is-mounted": 2,
+    "react/no-multi-comp": 0,
+    "react/no-set-state": 0,
+    "react/no-string-refs": 2,
+    "react/no-unknown-property": 2,
+    "react/prefer-es6-class": [2, "always"],
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 2,
+    "react/require-extension": 2,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1
   },
   "parser": "babel-eslint",
   "plugins": [
