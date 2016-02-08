@@ -2,12 +2,12 @@ const InitialState = () => {
 	return {
 		// Your initial state goes here
 		app: {
-			user: "World",
+			user: "World"
 		},
 		settings: {
 
-		},
-	}
-}
+		}
+	};
+};
 
-export default InitialState
+export default InitialState;
