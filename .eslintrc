@@ -161,7 +161,7 @@
     "no-trailing-spaces": [1, {"skipBlankLines": true}],
     "no-underscore-dangle": 0,
     "no-unneeded-ternary": 1,
-    "object-curly-spacing": [1, "never"],
+    "object-curly-spacing": [1, "always"],
     "one-var": 0,
     "operator-assignment": 0,
     "operator-linebreak": [1, "after"],
