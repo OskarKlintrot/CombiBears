@@ -4,10 +4,10 @@ const Wrapper = ( props ) => {
   const { children } = props
 
   return (
-        <div>
-          <h1>React, React Router, Redux, Redux Devtools and Webpack</h1>
-          { children }
-        </div>
+    <div>
+      <h1>React, React Router, Redux, Redux Devtools and Webpack</h1>
+      { children }
+    </div>
   )
 }
 
