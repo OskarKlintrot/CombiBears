@@ -1,5 +1,5 @@
-import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 class StartView extends React.Component {
   render() {
@@ -16,8 +16,8 @@ class StartView extends React.Component {
         <input type = 'button'></input>
         <infoFlash />
       </div>
-    );
+    )
   }
 }
 
-export default StartView;
+export default StartView
