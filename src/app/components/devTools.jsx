@@ -1,9 +1,9 @@
-import React from 'react';
-import {createDevTools} from 'redux-devtools';
-import LogMonitor from 'redux-devtools-log-monitor';
-import DockMonitor from 'redux-devtools-dock-monitor';
+import React from 'react'
+import { createDevTools } from 'redux-devtools'
+import LogMonitor from 'redux-devtools-log-monitor'
+import DockMonitor from 'redux-devtools-dock-monitor'
 
-console.log('DevTools loaded');
+console.log( 'DevTools loaded' )
 
 export default createDevTools(
   <DockMonitor toggleVisibilityKey = 'ctrl-h'
@@ -11,4 +11,4 @@ export default createDevTools(
   >
     <LogMonitor />
   </DockMonitor>
-);
+)

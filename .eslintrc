@@ -117,7 +117,7 @@
 
     // Stylistic Issues
     "array-bracket-spacing": [1, "never"],
-    "block-spacing": [1, "always"],
+    "block-spacing": [2, "always"],
     "brace-style": 1,
     "camelcase": 1,
     "comma-spacing": [1, {"before": false, "after": true}],
@@ -129,9 +129,7 @@
     "func-style": 0,
     "id-length": 1,
     "id-match": 0,
-
-    // Would enable this as such: "[1, "tab"]", but it does not work properly
-    "indent": 0,
+    "indent": [2, 2],
     "jsx-quotes": [1, "prefer-single"],
     "key-spacing": [1, {"beforeColon": false, "afterColon": true}],
     "linebreak-style": 0,
@@ -161,7 +159,7 @@
     "no-trailing-spaces": [1, {"skipBlankLines": true}],
     "no-underscore-dangle": 0,
     "no-unneeded-ternary": 1,
-    "object-curly-spacing": [1, "never"],
+    "object-curly-spacing": [2, "always"],
     "one-var": 0,
     "operator-assignment": 0,
     "operator-linebreak": [1, "after"],
@@ -170,13 +168,13 @@
     "quotes": 0,
     "require-jsdoc": 0,
     "semi-spacing": [1, {"before": false, "after": true}],
-    "semi": [1, "always"],
+    "semi": [2, "never"],
     "sort-vars": 0,
     "space-after-keywords": 1,
     "space-before-blocks": [1, "always"],
     "space-before-function-paren": [1, "never"],
     "space-before-keywords": [1, "always"],
-    "space-in-parens": [1, "never"],
+    "space-in-parens": [2, "always"],
     "space-infix-ops": 1,
     "space-return-throw-case": 1,
     "space-unary-ops": [1, {"words": true, "nonwords": false}],
@@ -208,7 +206,7 @@
     "react/forbid-prop-types": 0,
     "react/jsx-boolean-value": 0,
     "react/jsx-closing-bracket-location": [1, "tag-aligned"],
-    "react/jsx-curly-spacing": [1, "never"],
+    "react/jsx-curly-spacing": [2, "always"],
     "react/jsx-equals-spacing": [1, "always"],
     "react/jsx-handler-names": 2,
 
