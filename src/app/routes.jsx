@@ -1,16 +1,17 @@
-import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-import Wrapper from './components/shared/wrapper.jsx';
-import NoMatch from './components/shared/noMatch.jsx';
-import Main from './components/main.jsx';
-import StartView from './components/startView';
-import About from './components/about.jsx';
+import React from 'react'
+import { Route, IndexRoute } from 'react-router'
+import Wrapper from './components/shared/wrapper.jsx'
+
+import NoMatch from './components/shared/noMatch.jsx'
+import StartView from './components/StartView'
+import Main from './components/main.jsx'
+import About from './components/about.jsx'
 
 export default (
-  <Route path = '/' component = {Wrapper}>
-    <IndexRoute component = {Main} />
-    <Route path = '/start' component = {StartView}/>
-    <Route path = '/about' component = {About}/>
-    <Route path = '*' component = {NoMatch}/>
+  <Route path = '/' component = { Wrapper }>
+    <IndexRoute component = { Main } />
+    <Route path = '/about' component = { About }/>
+    <Route path = '/start' component = { StartView }/>
+    <Route path = '*' component = { NoMatch }/>
   </Route>
-);
+)

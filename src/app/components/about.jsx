@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React from 'react'
+import { Link } from 'react-router'
 
 const About = () => {
   return (
@@ -22,9 +22,9 @@ const About = () => {
           Webpack
         </li>
       </ul>
-      <Link to = {'/'}>Go back...</Link>
+      <Link to = { '/' }>Go back...</Link>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
