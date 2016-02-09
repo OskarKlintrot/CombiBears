@@ -28,7 +28,7 @@ export default function configureStore( initialState, history ) {
   if ( module.hot ) {
     module.hot.accept( CombinedReducers, () => {
       return store.replaceReducer( CombinedReducers ) // default if you use Babel 6+
-    } )
+    })
   }
 
   return store

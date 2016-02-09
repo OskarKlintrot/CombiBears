@@ -3,10 +3,10 @@ import { combineReducers } from 'redux'
 import AppReducer from './appReducer'
 import SettingsReducer from './settingsReducer'
 
-const CombinedReducers = combineReducers( {
+const CombinedReducers = combineReducers({
   // ...and combine them here
   app: AppReducer,
   settings: SettingsReducer
-} )
+})
 
 export default CombinedReducers
