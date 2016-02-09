@@ -8,9 +8,9 @@ const {
 const SettingsActions = {
   resetSettings: () => {
     return ( dispatch ) => {
-      dispatch( {
+      dispatch({
         type: RESET
-      } )
+      })
     }
   }
 }

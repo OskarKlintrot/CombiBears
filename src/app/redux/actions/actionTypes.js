@@ -9,6 +9,6 @@ export const ActionTypesSettings = {
   // ...just to increase code readability
 }
 
-const ActionTypes = Object.assign( {}, ActionTypesApp, ActionTypesSettings )
+const ActionTypes = Object.assign({}, ActionTypesApp, ActionTypesSettings )
 
 export default ActionTypes
