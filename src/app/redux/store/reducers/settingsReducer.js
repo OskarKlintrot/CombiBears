@@ -1,19 +1,18 @@
-import InitialState from '../initialState';
-import {ActionTypesSettings} from '../../actions/actionTypes';
+import InitialState from '../initialState'
+import { ActionTypesSettings } from '../../actions/actionTypes'
 
 const {
-  RESET,
-  SET_USER
+  RESET
   // Write down the actions you want to use here
-} = ActionTypesSettings;
+} = ActionTypesSettings
 
-const SettingsReducer = (state, action) => {
-  switch (action.type) {
-    case RESET:
-      return new InitialState().settings;
-    default:
-      return state || new InitialState().settings;
+const SettingsReducer = ( state, action ) => {
+  switch ( action.type ) {
+  case RESET:
+    return new InitialState().settings
+  default:
+    return state || new InitialState().settings
   }
-};
+}
 
-export default SettingsReducer;
+export default SettingsReducer
