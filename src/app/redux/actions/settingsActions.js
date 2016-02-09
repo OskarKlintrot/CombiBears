@@ -7,7 +7,7 @@ const {
 
 const SettingsActions = {
   resetSettings: () => {
-    return ( dispatch, getState ) => {
+    return ( dispatch ) => {
       dispatch( {
         type: RESET
       } )

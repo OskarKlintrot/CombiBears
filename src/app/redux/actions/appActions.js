@@ -6,9 +6,13 @@ const {
 	// Write down the actions you want to use here
 } = ActionTypes
 
+/* If you need to access the current state use this:
+ * return ( dispatch, getState ) => {
+ */
+
 const AppActions = {
   resetApp: () => {
-    return ( dispatch, getState ) => {
+    return ( dispatch ) => {
       setTimeout( () => {
         dispatch( {
           type: RESET
@@ -17,7 +21,7 @@ const AppActions = {
     }
   },
   setUser: ( user ) => {
-    return ( dispatch, getState ) => {
+    return ( dispatch ) => {
       dispatch( {
         type: SET_USER,
         user: user

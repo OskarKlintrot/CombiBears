@@ -4,9 +4,6 @@ import { Link } from 'react-router'
 import Actions from '../redux/actions/'
 
 class Main extends React.Component {
-  componentDidMount() {
-    const userInput = this.userInput
-  }
   render() {
     const { user, reset, setUser } = this.props
     const placeholder = "Enter your name here..."
@@ -31,11 +28,11 @@ class Main extends React.Component {
             this.userInput.value = ""
           } }
           >Update user</button>
-        <button type = 'reset' onClick = { () => {
-          this.userInput.placeholder = "Notice the delay..."
-          reset()
-        } }
-        >Reset user</button>
+          <button type = 'reset' onClick = { () => {
+            this.userInput.placeholder = "Notice the delay..."
+            reset()
+          } }
+          >Reset user</button>
         </form>
         <p>
           <Link to = { '/about' }>Read more about this boilerplate...</Link>
