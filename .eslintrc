@@ -109,10 +109,10 @@
     "no-shadow": 1,
     "no-undef-init": 2,
     // Seems to not be working as expected
-    "no-undef": 0,
+    "no-undef": 1,
     "no-undefined": 1,
     // Seems to not be working as expected
-    "no-unused-vars": 0,
+    "no-unused-vars": 1,
     "no-use-before-define": 2,
 
     // Stylistic Issues
@@ -207,11 +207,8 @@
     "react/jsx-curly-spacing": [2, "always"],
     "react/jsx-equals-spacing": [1, "always"],
     "react/jsx-handler-names": 2,
-
-    // Because we do not use indent on normal code, we will not use it for react
-    // either
-    "react/jsx-indent-props": 0,
-    "react/jsx-indent": 0,
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-indent": [2, 2],
     "react/jsx-key": 2,
     "react/jsx-max-props-per-line": 0,
     "react/jsx-no-bind": [2, {"allowArrowFunctions": true}],
@@ -221,10 +218,8 @@
     "react/jsx-pascal-case": 1,
     "react/jsx-sort-prop-types": 0,
     "react/jsx-sort-props": 0,
-    // Seems to not be working as expected
-    "react/jsx-uses-react": 0,
-    // Seems to not be working as expected
-    "react/jsx-uses-vars": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
     "react/no-danger": 2,
     "react/no-deprecated": 2,
     "react/no-did-mount-set-state": 2,

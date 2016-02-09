@@ -247,3 +247,5 @@ ModelManifest.xml
 # OSX files
 .DS_Store
 
+# Jetbrains IDE specific
+.idea

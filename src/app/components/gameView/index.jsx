@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
+import React from 'react'
 import PIXI from 'pixi.js/bin/pixi'
 import ReactPIXI from 'react-pixi'
 
@@ -112,33 +111,33 @@ class GameView extends React.Component {
     return (
       <Stage width = { this.props.width } height = { this.props.height }>
         <Sprite image = { this.assetPath( 'bears/white.png' ) }
-                scale = { new PIXI.Point( 0.2, 0.2 ) }
-                anchor = { new PIXI.Point( 0.5, 0 ) } key = '1'
-                x = '100'
-                y = '100'
-                interactive = 'true'
+          scale = { new PIXI.Point( 0.2, 0.2 ) }
+          anchor = { new PIXI.Point( 0.5, 0 ) } key = '1'
+          x = '100'
+          y = '100'
+          interactive = 'true'
 
           // Events for drag start
-                mousedown = { ( event ) => this.onDragStart( event ) }
-                touchstart = { ( event ) => this.onDragStart( event ) }
+          mousedown = { ( event ) => this.onDragStart( event ) }
+          touchstart = { ( event ) => this.onDragStart( event ) }
 
           // Events for drag end
-                mouseup = { ( event ) => this.onDragEnd( event ) }
-                mouseupoutside = { ( event ) => this.onDragEnd( event ) }
-                touchend = { ( event ) => this.onDragEnd( event ) }
-                touchendoutside = { ( event ) => this.onDragEnd( event ) }
+          mouseup = { ( event ) => this.onDragEnd( event ) }
+          mouseupoutside = { ( event ) => this.onDragEnd( event ) }
+          touchend = { ( event ) => this.onDragEnd( event ) }
+          touchendoutside = { ( event ) => this.onDragEnd( event ) }
 
           // Events for drag move
-                mousemove = { ( event ) => this.onDragMove( event ) }
-                touchmove = { ( event ) => this.onDragMove( event ) }
+          mousemove = { ( event ) => this.onDragMove( event ) }
+          touchmove = { ( event ) => this.onDragMove( event ) }
         />
 
         <Text text = 'Some nice vector text'
-              x = { this.props.xposition }
-              y = { 10 }
-              style = { fontstyle }
-              anchor = { new PIXI.Point( 0.5, 0 ) }
-              key = '2'
+          x = { this.props.xposition }
+          y = { 10 }
+          style = { fontstyle }
+          anchor = { new PIXI.Point( 0.5, 0 ) }
+          key = '2'
         />
       </Stage>
     )

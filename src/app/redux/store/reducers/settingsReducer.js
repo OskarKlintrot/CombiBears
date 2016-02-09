@@ -2,8 +2,7 @@ import InitialState from '../initialState'
 import { ActionTypesSettings } from '../../actions/actionTypes'
 
 const {
-  RESET,
-  SET_USER
+  RESET
   // Write down the actions you want to use here
 } = ActionTypesSettings
 
