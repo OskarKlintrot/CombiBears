@@ -40,7 +40,7 @@ class GameView extends React.Component {
   }
 
   assetPath( filename ) {
-    return 'assets/basic/' + filename
+    return 'public/pics/' + filename
   }
 
   onDragStart( event ) {
@@ -111,7 +111,7 @@ class GameView extends React.Component {
     const fontstyle = { font: '20px Arial' }
     return (
       <Stage width = { this.props.width } height = { this.props.height }>
-        <Sprite image = { this.assetPath( 'teddy.png' ) }
+        <Sprite image = { this.assetPath( 'bears/white.png' ) }
                 scale = { new PIXI.Point( 0.2, 0.2 ) }
                 anchor = { new PIXI.Point( 0.5, 0 ) } key = '1'
                 x = '100'
