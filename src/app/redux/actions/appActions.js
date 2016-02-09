@@ -14,18 +14,18 @@ const AppActions = {
   resetApp: () => {
     return ( dispatch ) => {
       setTimeout( () => {
-        dispatch( {
+        dispatch({
           type: RESET
-        } )
+        })
       }, 1000 )
     }
   },
   setUser: ( user ) => {
     return ( dispatch ) => {
-      dispatch( {
+      dispatch({
         type: SET_USER,
         user: user
-      } )
+      })
     }
   }
 }
