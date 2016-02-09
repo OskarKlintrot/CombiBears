@@ -5,7 +5,9 @@ class SavedCombinationsView extends React.Component {
   render() {
     return (
       <div>
-        <p>Hej!</p>
+        <img src="public/pics/icons/new-sofa.png" alt="Icon for new sofa" />
+        <img src="public/pics/icons/show-result.png" alt="Icon for showing result" />
+        <img src="public/pics/icons/arrow-right.png" alt="Icon for returning to game view" />
       </div>
     )
   }
