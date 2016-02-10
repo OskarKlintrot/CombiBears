@@ -3,11 +3,9 @@ import SofaSeat from './sofaSeat'
 
 class Sofa extends React.Component {
   render() {
-
-    return (
-  
-    )
+    return
   }
 }
+
 
 export default Sofa

@@ -3,9 +3,7 @@ import Bear from './bear'
 
 class SofaSeat extends React.Component {
   render() {
-    return (
-
-    )
+    return
   }
 }
 
