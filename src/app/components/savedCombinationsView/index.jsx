@@ -6,9 +6,13 @@ class SavedCombinationsView extends React.Component {
   render() {
     return (
       <div>
-        <img src = 'public/pics/icons/new-sofa.png' alt = 'Icon for new sofa' />
-        <img src = 'public/pics/icons/show-result.png' alt = 'Icon for showing result' />
-        <img src = 'public/pics/icons/arrow-right.png' alt = 'Icon for returning to game view' />
+        <div id = 'top-icons'>
+          <img src = 'public/pics/icons/new-sofa.png' alt = 'Icon for new sofa' className = 'icon' />
+          <img src = 'public/pics/icons/show-result.png' alt = 'Icon for showing result' className = 'icon' />
+        </div>
+        <div id = 'icon-return'>
+          <img src = 'public/pics/icons/arrow-right.png' alt = 'Icon for returning to game view' className = 'icon' />
+        </div>
       </div>
     )
   }

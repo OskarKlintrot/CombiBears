@@ -1,0 +1,17 @@
+.icon
+{
+  height: 100px;
+}
+
+#top-icons img:nth-child(2)
+{
+  float: right;
+}
+
+#icon-return
+{
+  position: absolute;
+  margin-top: 200px;
+}
+
+/*TODO: Dummy-placeringar, ska fixas*/
