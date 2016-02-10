@@ -1,5 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router'
+import Sofa from './sofa'
 
 class SavedCombinationsView extends React.Component {
   render() {
