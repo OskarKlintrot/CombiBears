@@ -5,8 +5,8 @@ const styles = {
     height: '1579px',
     width: '1000px',
     objectFit: 'none',
-    WebkitFilter: 'opacity(0.75)',
-    filter: 'opacity(0.75)',
+    WebkitFilter: 'opacity(0.85)',
+    filter: 'opacity(0.85)',
     zoom: '10%'
   },
   selected: {

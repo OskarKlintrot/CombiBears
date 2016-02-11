@@ -8,9 +8,9 @@ const Root = ( props ) => {
   const { store, history } = props
 
   return (
-    <Provider store = { store }>
+    <Provider store={ store }>
       <div>
-        <Router routes = { routes } history = { history } />
+        <Router routes={ routes } history={ history } />
         <DevTools />
       </div>
     </Provider>
