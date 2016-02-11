@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Teddybear extends React.Component {
+export default class Teddybear extends React.Component {
   render() {
     return (
       <div>
@@ -9,5 +9,3 @@ class Teddybear extends React.Component {
     )
   }
 }
-
-export default Teddybear

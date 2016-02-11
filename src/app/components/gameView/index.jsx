@@ -1,10 +1,19 @@
 import React from 'react'
+import Teddybear from './teddybear'
+import Sofa from './sofa'
+import StartingArea from './startingArea'
 
 class GameView extends React.Component {
   render() {
     return (
-      <div>
+      <div className='game-scene'>
         Hello I am Gameview
+        <Sofa/>
+        <Teddybear/>
+        <Teddybear/>
+        <Teddybear/>
+        <Teddybear/>
+        <StartingArea/>
       </div>
     )
   }
