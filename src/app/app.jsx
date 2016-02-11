@@ -26,6 +26,6 @@ window.React = React
 injectTapEventPlugin()
 
 ReactDOM.render(
-  <Root store={ Store } history={ history }/>,
+  <Root store = { Store } history = { history }/>,
   document.getElementById( 'app' )
 )
