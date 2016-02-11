@@ -12,7 +12,6 @@ const customStyles = {
   }
 }
 
-
 const InfoFlash = ( props ) => {
   const {
     open,
