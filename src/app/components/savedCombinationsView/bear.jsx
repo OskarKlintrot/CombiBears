@@ -3,7 +3,7 @@ import React from 'react'
 class Bear extends React.Component {
   render() {
     return (
-      <strong>{ this.props.bear.color }</strong>
+      <img src = { 'public/pics/bears/' + this.props.bear.color + '.png' } alt = 'Image of bear' className = 'saved-combinations-bear'/>
      )
   }
 }

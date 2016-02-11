@@ -1,17 +1,52 @@
-.icon
+.saved-combinations-icon
 {
   height: 100px;
 }
 
-#top-icons img:nth-child(2)
+#saved-combinations-top-icons img:nth-child(2)
 {
   float: right;
 }
 
-#icon-return
+#saved-combinations-icon-return
 {
   position: absolute;
   margin-top: 200px;
 }
+
+.saved-combinations-sofa
+{
+  width: 350px;
+}
+
+.saved-combinations-ul-bears
+{
+  list-style-type:none;
+  padding-left: 5px;
+  z-index: 10;
+  margin-top: -150px;
+}
+
+.saved-combinations-ul-sofas li, .saved-combinations-ul-bears li
+{
+  display:inline-block;
+}
+
+.saved-combinations-ul-bears li
+{
+  width: 85px;
+}
+
+.saved-combinations-ul-sofas
+{
+  list-style-type:none;
+  margin-left: 50px;
+}
+
+.saved-combinations-bear
+{
+  width: 100%;
+}
+
 
 /*TODO: Dummy-placeringar, ska fixas*/
