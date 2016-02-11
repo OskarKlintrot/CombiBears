@@ -4,6 +4,12 @@ import ReactPIXI from 'react-pixi'
 
 const Sprite = ReactPIXI.Sprite
 
+// Background original image width and height, used to calculate a sprite size that fits container.
+const backgroundImageOriginalSize = {
+  width: 1920,
+  height: 1200
+}
+
 class BackgroundSprite extends React.Component {
 
   /*
@@ -24,7 +30,7 @@ class BackgroundSprite extends React.Component {
       width: this.props.width || 800,
       height: this.props.height || 600,
       xPos: ( this.props.width ? this.props.width / 2 : null ) || 400,
-      yPos: ( this.props.height ? this.props.height / 2 : null ) || 300
+      yPos: ( this.props.height ? this.props.height : null ) || 600
     }
   }
 
@@ -32,16 +38,30 @@ class BackgroundSprite extends React.Component {
     return this.state.imgPath + name + '.jpg'
   }
 
+  calculateBgImageScale() {
+
+    let widthScaleFactor, heightScaleFactor, returnScaleFactor
+
+    // Calculate scale factors
+    widthScaleFactor = backgroundImageOriginalSize.width / this.state.width
+    heightScaleFactor = backgroundImageOriginalSize.height / this.state.height
+
+    // Return the smallest scale factor.
+    returnScaleFactor = widthScaleFactor < heightScaleFactor ? widthScaleFactor : heightScaleFactor
+
+    return new PIXI.Point( returnScaleFactor, returnScaleFactor )
+  }
+
   render() {
     return (
       <Sprite image = { this.getBgImg( this.state.background ) }
-        anchor = { new PIXI.Point( 0.5, 0.5 ) }
-        key = '1'
+        anchor = { new PIXI.Point( 0.5, 1 ) }
+        key = 'background'
         x = { this.state.xPos }
         y = { this.state.yPos }
         width = { this.state.width }
         height = { this.state.height }
-        scale = { new PIXI.Point( 0.5, 0.5 ) }
+        scale = { this.calculateBgImageScale() }
       />
     )
   }
