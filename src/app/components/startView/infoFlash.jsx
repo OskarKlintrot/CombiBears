@@ -24,24 +24,24 @@ const InfoFlash = ( props ) => {
   return (
     <div>
       <input
-        className = 'float-right'
-        type = 'button'
-        value = 'Info'
-        onClick = { handleOpenModal }
+        className='float-right'
+        type='button'
+        value='Info'
+        onClick={ handleOpenModal }
       />
       <Modal
-        isOpen = { open }
-        onRequestClose = { handleModalCloseRequest }
-        style = { modalStyles }
+        isOpen={ open }
+        onRequestClose={ handleModalCloseRequest }
+        style={ modalStyles }
       >
         <button
-          className = 'close-button'
-          style = { style }
-          aria-label = 'Close alert'
-          type = 'button'
-          onClick = { handleCloseModal }
+          className='close-button'
+          style={ style }
+          aria-label='Close alert'
+          type='button'
+          onClick={ handleCloseModal }
         >
-          <span aria-hidden = 'true'>&times;</span>
+          <span aria-hidden='true'>&times;</span>
         </button>
         <h1>Info flash</h1>
         <p>Some information for the teachers and parents.</p>

@@ -8,10 +8,10 @@ import Main from './components/main.jsx'
 import About from './components/about.jsx'
 
 export default (
-  <Route path = '/' component = { Wrapper }>
-    <IndexRoute component = { Main } />
-    <Route path = '/about' component = { About }/>
-    <Route path = '/start' component = { StartView }/>
-    <Route path = '*' component = { NoMatch }/>
+  <Route path='/' component={ Wrapper }>
+    <IndexRoute component={ Main } />
+    <Route path='/about' component={ About }/>
+    <Route path='/start' component={ StartView }/>
+    <Route path='*' component={ NoMatch }/>
   </Route>
 )
