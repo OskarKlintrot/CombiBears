@@ -1,6 +1,11 @@
 import React from 'react'
 
 class ColorPicker extends React.Component {
+  handleClick( event ) {
+    event.preventDefault()
+    this.render()
+  }
+
   render() {
     const colors = [
       'blue',
@@ -14,10 +19,10 @@ class ColorPicker extends React.Component {
     ]
 
     return (
-      <div className = 'colorPicker'>
+      <div className='colorPicker'>
         { colors.map( ( color, key ) => {
           return (
-            <div className = { 'color' + color } key = { key } />
+            <div className={ 'color' + color } key={ key } />
           )
         }) }
       </div>

@@ -43,48 +43,48 @@ class StartView extends React.Component {
 
   render() {
     return (
-      <div className = 'row'>
-        <div className = 'medium-12 columns'>
-          <div style = { styles.center }>
+      <div className='row'>
+        <div className='medium-12 columns'>
+          <div style={ styles.center }>
             <img
-              className = 'medium-12 columns'
-              id = 'Logotyp'
-              alt = 'Logotyp'
-              src = ''
+              className='medium-12 columns'
+              id='Logotyp'
+              alt='Logotyp'
+              src=''
             ></img>
           </div>
         </div>
-        <div className = 'medium-6 columns'>
-          <div style = { styles.center }>
+        <div className='medium-6 columns'>
+          <div style={ styles.center }>
             <SofaOptions />
           </div>
         </div>
-        <div className = 'medium-6 columns'>
-          <div style = { styles.center }>
+        <div className='medium-6 columns'>
+          <div style={ styles.center }>
             <BearOptions />
           </div>
         </div>
-        <div className = 'medium-12 columns'>
-          <div style = { styles.center }>
+        <div className='medium-12 columns'>
+          <div style={ styles.center }>
             <Link
-              to = { '/start' }
+              to={ '/start' }
             >
               <img
-                id = 'StartButton'
-                alt = 'StartButton'
-                src = '/public/pics/icons/start.png'
-                height = '50px'
-                width = '150px'
+                id='StartButton'
+                alt='StartButton'
+                src='/public/pics/icons/start.png'
+                height='50px'
+                width='150px'
               ></img>
             </Link>
           </div>
         </div>
-        <div className = 'medium-12 columns'>
+        <div className='medium-12 columns'>
           <InfoFlash
-            handleOpenModal = { this.onOpenModal }
-            handleCloseModal = { this.onCloseModal }
-            handleModalCloseRequest = { this.onModalCloseRequest }
-            open = { this.state.modalIsOpen }
+            handleOpenModal={ this.onOpenModal }
+            handleCloseModal={ this.onCloseModal }
+            handleModalCloseRequest={ this.onModalCloseRequest }
+            open={ this.state.modalIsOpen }
           />
         </div>
       </div>
