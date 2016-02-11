@@ -3,9 +3,14 @@ import React from 'react'
 import Sofa from './sofa'
 
 class SavedCombinationsView extends React.Component {
-  getSofa() {
+  getSofa1() {
     const bears = this.getBears()
-    return [{ id: 0, bear: bears[0] }, { id: 1, bear: bears[1] }, { id: 2, bear: bears[2] }, { id: 3, bear: bears[3] }]
+    return [{ id: 0, bear: bears[0] }, { id: 1, bear: bears[1] }, { id: 2, bear: bears[2] }, { id: 3, bear: null }]
+  }
+
+  getSofa2() {
+    const bears = this.getBears()
+    return [{ id: 4, bear: bears[0] }, { id: 5, bear: bears[1] }, { id: 6, bear: bears[2] }, { id: 7, bear: bears[3] }]
   }
 
   getBears() {
@@ -13,7 +18,8 @@ class SavedCombinationsView extends React.Component {
   }
 
   render() {
-    const sofa = this.getSofa()
+    const sofa1 = this.getSofa1()
+    const sofa2 = this.getSofa2()
     return (
       <div>
         <div id = 'top-icons'>
@@ -25,7 +31,12 @@ class SavedCombinationsView extends React.Component {
         </div>
         <div>
           <ul>
-            <Sofa sofa = { sofa } />
+            <li>
+              <Sofa sofa = { sofa1 } />
+            </li>
+            <li>
+              <Sofa sofa = { sofa2 } />
+            </li>
           </ul>
         </div>
       </div>

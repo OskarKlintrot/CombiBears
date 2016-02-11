@@ -4,13 +4,11 @@ import SofaSeat from './sofaSeat'
 class Sofa extends React.Component {
   render() {
     return (
-      <li>
-        <ul>
-          { this.props.sofa.map( ( sofaSeat ) => {
-            return <SofaSeat sofaSeat = { sofaSeat } key = { sofaSeat.id } />
-          }) }
-        </ul>
-      </li>
+      <ul>
+        { this.props.sofa.map( ( sofaSeat ) => {
+          return <SofaSeat sofaSeat = { sofaSeat } key = { sofaSeat.id } />
+        }) }
+      </ul>
     )
   }
 }
