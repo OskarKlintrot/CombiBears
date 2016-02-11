@@ -1,9 +1,13 @@
 import React from 'react'
-import Bear from './bear'
+// import Bear from './bear'
 
 class SofaSeat extends React.Component {
   render() {
-    return
+    return (
+      <li>
+        { this.props.sofaSeat.id } { this.props.sofaSeat.bear }
+      </li>
+    )
   }
 }
 
