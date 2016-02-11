@@ -33,11 +33,13 @@ window.React = React
 injectTapEventPlugin()
 
 ReactPIXI.render(
-  <GameView width = '800' height = '600' xposition = '100'/>,
+  <GameView width = { window.innerWidth } height = { window.innerHeight } />,
   document.getElementById( 'app-pixi' )
 )
 
+/*
 ReactDOM.render(
   <Root store = { Store } history = { history }/>,
   document.getElementById( 'app' )
 )
+*/

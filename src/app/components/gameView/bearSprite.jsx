@@ -19,7 +19,7 @@ class BearSprite extends React.Component {
     super( props )
 
     this.state = {
-      assetPath: 'public/pics/bears/',
+      imgPath: 'public/pics/bears/',
       isBeingDragged: false,
       data: null,
       xPos: this.props.x,
@@ -52,9 +52,6 @@ class BearSprite extends React.Component {
         data: null
       }
     )
-
-    // set the interaction data to null
-    // this.state.
   }
 
   onDragMove( event ) {
@@ -77,20 +74,19 @@ class BearSprite extends React.Component {
       // Set position on pixie obj
       draggedElement.position.x = newPosition.x
       draggedElement.position.y = newPosition.y
-
-      console.log( newPosition )
     }
   }
 
   getBearImg( color ) {
-    return this.state.assetPath + color + '.png'
+    return this.state.imgPath + color + '.png'
   }
 
   render() {
     return (
       <Sprite image = { this.getBearImg( this.props.color ) }
         scale = { new PIXI.Point( 0.2, 0.2 ) }
-        anchor = { new PIXI.Point( 0.5, 0 ) } key = '1'
+        anchor = { new PIXI.Point( 0.5, 0.5 ) }
+        key = '1'
         x = { this.state.xPos }
         y = { this.state.yPos }
         interactive = 'true'
