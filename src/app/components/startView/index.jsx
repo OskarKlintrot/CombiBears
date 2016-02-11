@@ -2,6 +2,7 @@ import React /* , { PropTypes }*/ from 'react'
 // import { Link } from 'react-router'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
+import InfoFlash from './infoFlash'
 
 class StartView extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class StartView extends React.Component {
         </div>
         <img id = 'StartButton' alt = 'StartButton' src = ''></img>
         <input type = 'button'></input>
-        <infoFlash />
+        <InfoFlash />
       </div>
     )
   }
