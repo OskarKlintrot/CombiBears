@@ -94,7 +94,7 @@ class StartView extends React.Component {
             </Link>
           </div>
         </div>
-        <div className='medium-12 columns' style={ styles.infoButton }>
+        <div className='medium-12 columns'>
           <InfoFlash
             style={ styles.infoButton }
             handleOpenModal={ this.onOpenModal }

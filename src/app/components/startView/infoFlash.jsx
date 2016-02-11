@@ -25,6 +25,7 @@ const InfoFlash = ( props ) => {
     <div>
       <input
         className='float-right'
+        style={ style }
         type='button'
         value='Info'
         onClick={ handleOpenModal }
@@ -36,7 +37,6 @@ const InfoFlash = ( props ) => {
       >
         <button
           className='close-button'
-          style={ style }
           aria-label='Close alert'
           type='button'
           onClick={ handleCloseModal }
