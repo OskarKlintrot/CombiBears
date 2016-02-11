@@ -1,6 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router'
-import SofaSeat from './sofaSeat'
+import Sofa from './sofa'
 
 class SavedCombinationsView extends React.Component {
   getSofa() {
@@ -25,9 +25,7 @@ class SavedCombinationsView extends React.Component {
         </div>
         <div>
           <ul>
-            { sofa.map( ( sofaSeat ) => {
-              return <SofaSeat sofaSeat = { sofaSeat } key = { sofaSeat.id } />
-            }) }
+            <Sofa sofa = { sofa } />
           </ul>
         </div>
       </div>
