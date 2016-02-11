@@ -1,17 +1,19 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
+import React /* , { PropTypes }*/ from 'react'
+// import { Link } from 'react-router'
+import SofaOptions from './sofaOptions'
+import BearOptions from './bearOptions'
 
 class StartView extends React.Component {
   render() {
     return (
       <div>
         <img id = 'Logotyp' alt = 'Logotyp' src = ''></img>
-        <options>
+        <div className = 'option'>
           <SofaOptions />
-        </options>
-        <options>
+        </div>
+        <div className = 'option'>
           <BearOptions />
-        </options>
+        </div>
         <img id = 'StartButton' alt = 'StartButton' src = ''></img>
         <input type = 'button'></input>
         <infoFlash />
