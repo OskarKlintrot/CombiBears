@@ -2,7 +2,9 @@ import React from 'react'
 
 class Bear extends React.Component {
   render() {
-    return
+    return (
+      <strong>{ this.props.bear.color }</strong>
+     )
   }
 }
 

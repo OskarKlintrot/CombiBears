@@ -4,7 +4,12 @@ import SofaSeat from './sofaSeat'
 
 class SavedCombinationsView extends React.Component {
   getSofa() {
-    return [{ id: 0, bear: 0 }, { id: 1, bear: 1 }, { id: 2, bear: 2 }, { id: 3, bear: null }]
+    const bears = this.getBears()
+    return [{ id: 0, bear: bears[0] }, { id: 1, bear: bears[1] }, { id: 2, bear: bears[2] }, { id: 3, bear: bears[3] }]
+  }
+
+  getBears() {
+    return [{ id: 0, color: "orange" }, { id: 1, color: "green" }, { id: 2, color: "blue" }, { id: 3, color: "pink" }]
   }
 
   render() {
