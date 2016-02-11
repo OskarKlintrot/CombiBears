@@ -25,7 +25,7 @@ class Main extends React.Component {
           />
           <button type='submit' onClick={ () => {
             setUser( this.userInput.value )
-            this.userInput.value = ""
+            this.userInput.value = ''
           } }
           >Update user</button>
           <button type='reset' onClick={ () => {
