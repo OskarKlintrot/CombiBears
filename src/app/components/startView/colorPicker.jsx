@@ -1,8 +1,7 @@
 import React from 'react'
 
 class ColorPicker extends React.Component {
-  handleClick( event ) {
-    event.preventDefault()
+  handleClick() {
     this.render()
   }
 
