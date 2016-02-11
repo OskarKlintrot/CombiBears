@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Modal from 'react-modal'
 
-const customStyles = {
+const modalStyles = {
   content: {
     top: '50%',
     left: '50%',
@@ -17,7 +17,8 @@ const InfoFlash = ( props ) => {
     open,
     handleOpenModal,
     handleCloseModal,
-    handleModalCloseRequest
+    handleModalCloseRequest,
+    style
   } = props
 
   return (
@@ -31,10 +32,11 @@ const InfoFlash = ( props ) => {
       <Modal
         isOpen={ open }
         onRequestClose={ handleModalCloseRequest }
-        style={ customStyles }
+        style={ modalStyles }
       >
         <button
           className='close-button'
+          style={ style }
           aria-label='Close alert'
           type='button'
           onClick={ handleCloseModal }
@@ -52,7 +54,8 @@ InfoFlash.propTypes = {
   open: PropTypes.bool.isRequired,
   handleOpenModal: PropTypes.func.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
-  handleModalCloseRequest: PropTypes.func.isRequired
+  handleModalCloseRequest: PropTypes.func.isRequired,
+  style: PropTypes.object
 }
 
 export default InfoFlash

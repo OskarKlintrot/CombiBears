@@ -23,3 +23,8 @@
   opacity: 0;
   transition: opacity 150ms ease-in;
 }
+
+body {
+  background: url(/public/pics/background.jpg) no-repeat center center fixed;
+  background-size: cover;
+}

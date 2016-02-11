@@ -7,6 +7,19 @@ import InfoFlash from './infoFlash'
 const styles = {
   center: {
     textAlign: 'center'
+  },
+  logotype: {
+    marginTop: '12px'
+  },
+  infoButton: {
+    position: 'fixed',
+    bottom: '70px',
+    right: '70px'
+  },
+  startButton: {
+    // position: 'relative',
+    // bottom: '70px'
+    // right: '50%'
   }
 }
 
@@ -48,9 +61,11 @@ class StartView extends React.Component {
           <div style={ styles.center }>
             <img
               className='medium-12 columns'
+              style={ styles.logotype }
               id='Logotyp'
               alt='Logotyp'
-              src=''
+              src='public/pics/logotype.png'
+              width='600px'
             ></img>
           </div>
         </div>
@@ -65,7 +80,7 @@ class StartView extends React.Component {
           </div>
         </div>
         <div className='medium-12 columns'>
-          <div style={ styles.center }>
+          <div style={ Object.assign({}, styles.center, styles.startButton ) }>
             <Link
               to={ '/start' }
             >
@@ -79,8 +94,9 @@ class StartView extends React.Component {
             </Link>
           </div>
         </div>
-        <div className='medium-12 columns'>
+        <div className='medium-12 columns' style={ styles.infoButton }>
           <InfoFlash
+            style={ styles.infoButton }
             handleOpenModal={ this.onOpenModal }
             handleCloseModal={ this.onCloseModal }
             handleModalCloseRequest={ this.onModalCloseRequest }
