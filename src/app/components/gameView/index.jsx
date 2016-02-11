@@ -7,7 +7,6 @@ class GameView extends React.Component {
   render() {
     return (
       <div className='game-scene'>
-        Hello I am Gameview
         <Sofa/>
         <Teddybear/>
         <Teddybear/>

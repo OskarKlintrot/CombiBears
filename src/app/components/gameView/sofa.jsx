@@ -4,11 +4,8 @@ import SofaSeat from './sofaSeat'
 class Sofa extends React.Component {
   render() {
     return (
-      <div>
-        Hello I am Sofa
-        <b><SofaSeat/></b>
-        <b><SofaSeat/></b>
-        <b><SofaSeat/></b>
+      <div className = 'sofa'>
+        <img src = 'public/pics/sofas/three.png' width = '400px' />
       </div>
     )
   }
