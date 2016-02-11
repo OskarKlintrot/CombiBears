@@ -33,13 +33,16 @@ const InfoFlash = ( props ) => {
         onRequestClose = { handleModalCloseRequest }
         style = { customStyles }
       >
+        <button
+          className = 'close-button'
+          aria-label = 'Close alert'
+          type = 'button'
+          onClick = { handleCloseModal }
+        >
+          <span aria-hidden = 'true'>&times;</span>
+        </button>
         <h1>Info flash</h1>
         <p>Some information for the teachers and parents.</p>
-        <input
-          type = 'button'
-          value = 'X'
-          onClick = { handleCloseModal }
-        />
       </Modal>
     </div>
   )
