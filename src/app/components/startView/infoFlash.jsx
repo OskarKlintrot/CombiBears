@@ -23,6 +23,7 @@ const InfoFlash = ( props ) => {
   return (
     <div>
       <input
+        className = 'float-right'
         type = 'button'
         value = 'Info'
         onClick = { handleOpenModal }

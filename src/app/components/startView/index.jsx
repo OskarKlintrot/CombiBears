@@ -4,6 +4,12 @@ import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
 import InfoFlash from './infoFlash'
 
+const styles = {
+  center: {
+    textAlign: 'center'
+  }
+}
+
 class StartView extends React.Component {
   constructor( props ) {
     super( props )
@@ -37,29 +43,50 @@ class StartView extends React.Component {
 
   render() {
     return (
-      <div>
-        <img id = 'Logotyp' alt = 'Logotyp' src = ''></img>
-        <div className = 'option'>
-          <SofaOptions />
+      <div className = 'row'>
+        <div className = 'medium-12 columns'>
+          <div style = { styles.center }>
+            <img
+              className = 'medium-12 columns'
+              id = 'Logotyp'
+              alt = 'Logotyp'
+              src = ''
+            ></img>
+          </div>
         </div>
-        <div className = 'option'>
-          <BearOptions />
+        <div className = 'medium-6 columns'>
+          <div style = { styles.center }>
+            <SofaOptions />
+          </div>
         </div>
-        <Link to = { '/start' }>
-          <img
-            id = 'StartButton'
-            alt = 'StartButton'
-            src = '/public/pics/icons/start.png'
-            height = '50px'
-            width = '150px'
-          ></img>
-        </Link>
-        <InfoFlash
-          handleOpenModal = { this.onOpenModal }
-          handleCloseModal = { this.onCloseModal }
-          handleModalCloseRequest = { this.onModalCloseRequest }
-          open = { this.state.modalIsOpen }
-        />
+        <div className = 'medium-6 columns'>
+          <div style = { styles.center }>
+            <BearOptions />
+          </div>
+        </div>
+        <div className = 'medium-12 columns'>
+          <div style = { styles.center }>
+            <Link
+              to = { '/start' }
+            >
+              <img
+                id = 'StartButton'
+                alt = 'StartButton'
+                src = '/public/pics/icons/start.png'
+                height = '50px'
+                width = '150px'
+              ></img>
+            </Link>
+          </div>
+        </div>
+        <div className = 'medium-12 columns'>
+          <InfoFlash
+            handleOpenModal = { this.onOpenModal }
+            handleCloseModal = { this.onCloseModal }
+            handleModalCloseRequest = { this.onModalCloseRequest }
+            open = { this.state.modalIsOpen }
+          />
+        </div>
       </div>
     )
   }
