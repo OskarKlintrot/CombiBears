@@ -14,7 +14,7 @@ const SettingsReducer = ( state, action ) => {
   case SET_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: action.numberOfSeats
+      numberOfSeats: action.numberOfSeats <= 2 ? 2 : action.numberOfSeats
     }
   default:
     return state || new InitialState().settings
