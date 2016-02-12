@@ -13,7 +13,7 @@ export default (
     <IndexRoute component={ Main } />
     <Route path='/start' component={ StartView }/>
     <Route path='/about' component={ About }/>
-    <Route path='/savedCombinations' component={ SavedCombinationsView } />
+    <Route path='/saved' component={ SavedCombinationsView } />
     <Route path='*' component={ NoMatch }/>
   </Route>
 )
