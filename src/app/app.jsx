@@ -12,7 +12,6 @@ import { useQueries } from 'history'
 import InitialState from './redux/store/initialState'
 
 // PIXI.js
-import PIXI from 'pixi.js/bin/pixi'
 import ReactPIXI from 'react-pixi'
 
 // Game View
