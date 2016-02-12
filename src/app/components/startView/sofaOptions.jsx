@@ -1,17 +1,11 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const styles = {
   img: {
     height: '1579px',
     width: '1000px',
     objectFit: 'none',
-    WebkitFilter: 'opacity(0.85)',
-    filter: 'opacity(0.85)',
     zoom: '10%'
-  },
-  selected: {
-    WebkitFilter: 'opacity(1)',
-    filter: 'opacity(1)'
   }
 }
 
@@ -30,18 +24,29 @@ const sprites = {
   }
 }
 
-const SofaOptions = () => {
+const SofaOptions = ( props ) => {
+  const { selected } = props
   const couch = []
   const klick = ( seat ) => console.log( seat )
 
   for ( const sprite in sprites ) {
-    if ( sprite !== isNaN ) {
+    if ( sprite ) {
+      const currentSeat = Number( sprite )
+      const minimumNumberOfSeats = 2
+      const style = Object.assign({}, styles.img, sprites[currentSeat] )
+
       couch.push(
         <img
-          key={ sprite }
-          onClick={ () => klick( sprite ) }
-          style={ Object.assign({}, styles.img, sprites[sprite] ) }
-          src='public/pics/sofas/four.png'
+          key={ currentSeat }
+          onClick={ () => klick( currentSeat ) }
+          style={ style }
+          src={
+            currentSeat <= selected ||
+            selected < minimumNumberOfSeats &&
+            currentSeat <= minimumNumberOfSeats &&
+            selected > 0 ?
+            'public/pics/sofas/slider-four.png' : 'public/pics/sofas/four.png'
+          }
         ></img>
       )
     }
@@ -52,6 +57,10 @@ const SofaOptions = () => {
       { couch }
     </div>
   )
+}
+
+SofaOptions.propTypes = {
+  selected: PropTypes.number.isRequired
 }
 
 export default SofaOptions

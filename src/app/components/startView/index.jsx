@@ -23,6 +23,8 @@ const styles = {
   }
 }
 
+const numberOfSelectedSeats = 3
+
 class StartView extends React.Component {
   constructor( props ) {
     super( props )
@@ -71,7 +73,7 @@ class StartView extends React.Component {
         </div>
         <div className='medium-6 columns'>
           <div style={ styles.center }>
-            <SofaOptions />
+            <SofaOptions selected={ numberOfSelectedSeats } />
           </div>
         </div>
         <div className='medium-6 columns'>
