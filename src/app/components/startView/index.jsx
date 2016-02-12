@@ -1,8 +1,10 @@
-import React /* , { PropTypes }*/ from 'react'
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
 import InfoFlash from './infoFlash'
+import Actions from '../../redux/actions/'
 
 const styles = {
   center: {
@@ -22,8 +24,6 @@ const styles = {
     // right: '50%'
   }
 }
-
-const numberOfSelectedSeats = 3
 
 class StartView extends React.Component {
   constructor( props ) {
@@ -73,7 +73,10 @@ class StartView extends React.Component {
         </div>
         <div className='medium-6 columns'>
           <div style={ styles.center }>
-            <SofaOptions selected={ numberOfSelectedSeats } />
+            <SofaOptions
+              selected={ this.props.numberOfSeats }
+              handleNumberOfSeats={ this.props.setNumberOfSeats }
+            />
           </div>
         </div>
         <div className='medium-6 columns'>
@@ -110,4 +113,19 @@ class StartView extends React.Component {
   }
 }
 
-export default StartView
+StartView.propTypes = {
+  numberOfSeats: PropTypes.string.isRequired,
+  setNumberOfSeats: PropTypes.func.isRequired
+}
+
+const mapStateToProps = ( state ) => state.settings
+
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    setNumberOfSeats: ( numberOfSeats ) => {
+      dispatch( Actions.setNumberOfSeats( numberOfSeats ) )
+    }
+  }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( StartView )
