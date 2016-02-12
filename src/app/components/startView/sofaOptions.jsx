@@ -5,7 +5,8 @@ const styles = {
     height: '1579px',
     width: '1000px',
     objectFit: 'none',
-    zoom: '10%'
+    zoom: '10%',
+    cursor: 'pointer'
   }
 }
 
