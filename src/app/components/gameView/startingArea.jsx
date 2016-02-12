@@ -3,8 +3,15 @@ import React from 'react'
 class StartingArea extends React.Component {
   render() {
     return (
-      <div>
-        Hello I am StartingArea
+      <div style = { {
+        position: 'absolute',
+        left: 0,
+        bottom: 0,
+        width: '100px',
+        height: '120px',
+        backgroundColor: 'WHITESMOKE'
+      } }>
+        { this.props.children }
       </div>
     )
   }

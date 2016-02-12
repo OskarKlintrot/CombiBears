@@ -6,6 +6,7 @@ class Sofa extends React.Component {
     return (
       <div className = 'sofa'>
         <img src = 'public/pics/sofas/three.png' width = '400px' />
+        <SofaSeat />
       </div>
     )
   }

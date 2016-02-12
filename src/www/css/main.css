@@ -1,7 +1,8 @@
 .game-scene {
     position: relative;
     background-color: darkseagreen;
-    width: 80%
+    width: 80%;
+    height: 400px;
 }
 
 .sofa {
