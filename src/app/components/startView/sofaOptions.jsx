@@ -5,8 +5,11 @@ const styles = {
     height: '1579px',
     width: '1000px',
     objectFit: 'none',
-    zoom: '10%',
+    zoom: '8%',
     cursor: 'pointer'
+  },
+  div: {
+    margin: '0 auto'
   }
 }
 
@@ -53,7 +56,7 @@ const SofaOptions = ( props ) => {
   }
 
   return (
-    <div>
+    <div style={ styles.div }>
       { couch }
     </div>
   )
