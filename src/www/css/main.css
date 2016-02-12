@@ -16,7 +16,7 @@
 
 .saved-combinations-sofa
 {
-  width: 350px;
+  width: 260px;
 }
 
 .saved-combinations-ul-bears
@@ -32,15 +32,23 @@
   display:inline-block;
 }
 
-.saved-combinations-ul-bears li
-{
-  width: 85px;
-}
+
 
 .saved-combinations-ul-sofas
 {
   list-style-type:none;
   margin-left: 50px;
+}
+
+.saved-combinations-ul-sofas li
+{
+  margin-left: 30px;
+}
+
+.saved-combinations-ul-bears li
+{
+  width: 85px;
+  margin-left: 0px;
 }
 
 .saved-combinations-bear

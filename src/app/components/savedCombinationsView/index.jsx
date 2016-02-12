@@ -3,23 +3,18 @@ import React from 'react'
 import Sofa from './sofa'
 
 class SavedCombinationsView extends React.Component {
-  getSofa1() {
+  getSofas() {
     const bears = this.getBears()
-    return [{ id: 0, bear: bears[0] }, { id: 1, bear: bears[1] }, { id: 2, bear: bears[2] }, { id: 3, bear: null }]
+    const seats1 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: null }]
+    const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: bears[2] }]
+    const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: bears[2] }, { seatId: 3, bear: bears[3] }]
+    return [{ id: 0, seats: seats1 }, { id: 1, seats: seats2 }, { id: 2, seats: seats3 }]
   }
-
-  getSofa2() {
-    const bears = this.getBears()
-    return [{ id: 4, bear: bears[0] }, { id: 5, bear: bears[1] }, { id: 6, bear: bears[2] }, { id: 7, bear: bears[3] }]
-  }
-
   getBears() {
     return [{ id: 0, color: "orange" }, { id: 1, color: "green" }, { id: 2, color: "blue" }, { id: 3, color: "pink" }]
   }
-
   render() {
-    const sofa1 = this.getSofa1()
-    const sofa2 = this.getSofa2()
+    const sofas = this.getSofas()
     return (
       <div>
         <div>
@@ -34,14 +29,9 @@ class SavedCombinationsView extends React.Component {
         </div>
         <div>
           <ul className='saved-combinations-ul-sofas'>
-            <li>
-              <img src='public/pics/sofas/four.png' alt='Image for four-seat sofa' className='saved-combinations-sofa'/>
-              <Sofa sofa={ sofa1 } />
-            </li>
-            <li>
-              <img src='public/pics/sofas/four.png' alt='Image for four-seat sofa' className='saved-combinations-sofa'/>
-              <Sofa sofa={ sofa2 } />
-            </li>
+            { sofas.map( ( sofa ) => {
+              return <Sofa sofa={ sofa } key={ sofa.id } />
+            }) }
           </ul>
         </div>
       </div>
