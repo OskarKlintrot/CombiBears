@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
 import InfoFlash from './infoFlash'
+import Option from './option'
 import Actions from '../../redux/actions/'
 
 const styles = {
@@ -73,15 +74,19 @@ class StartView extends React.Component {
         </div>
         <div className='medium-6 columns'>
           <div style={ styles.center }>
-            <SofaOptions
-              selected={ this.props.numberOfSeats }
-              handleNumberOfSeats={ this.props.setNumberOfSeats }
-            />
+            <Option>
+              <SofaOptions
+                selected={ this.props.numberOfSeats }
+                handleNumberOfSeats={ this.props.setNumberOfSeats }
+              />
+            </Option>
           </div>
         </div>
         <div className='medium-6 columns'>
           <div style={ styles.center }>
-            <BearOptions />
+            <Option>
+              <BearOptions />
+            </Option>
           </div>
         </div>
         <div className='medium-12 columns'>
