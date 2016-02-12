@@ -25,9 +25,8 @@ const sprites = {
 }
 
 const SofaOptions = ( props ) => {
-  const { selected } = props
+  const { selected, handleNumberOfSeats } = props
   const couch = []
-  const klick = ( seat ) => console.log( seat )
 
   for ( const sprite in sprites ) {
     if ( sprite ) {
@@ -38,7 +37,7 @@ const SofaOptions = ( props ) => {
       couch.push(
         <img
           key={ currentSeat }
-          onClick={ () => klick( currentSeat ) }
+          onClick={ () => handleNumberOfSeats( currentSeat ) }
           style={ style }
           src={
             currentSeat <= selected ||
@@ -60,7 +59,8 @@ const SofaOptions = ( props ) => {
 }
 
 SofaOptions.propTypes = {
-  selected: PropTypes.number.isRequired
+  selected: PropTypes.number.isRequired,
+  handleNumberOfSeats: PropTypes.func.isRequired
 }
 
 export default SofaOptions
