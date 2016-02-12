@@ -5,11 +5,24 @@ const styles = {
     height: '1579px',
     width: '1000px',
     objectFit: 'none',
-    zoom: '8%',
+    zoom: '9%',
     cursor: 'pointer'
   },
-  div: {
-    margin: '0 auto'
+  flexContainer: {
+    display: 'flex',
+    WebkitDisplay: 'flex',
+    flexWrap: 'nowrap',
+    WebkitFlexWrap: 'nowrap',
+    justifyContent: 'space-around',
+    WebkitJustifyContent: 'space-around',
+    alignItems: 'center',
+    WebkitAlignItems: 'center',
+    alignContent: 'center',
+    WebkitAlignContent: 'center',
+    height: '90%'
+  },
+  flexItem: {
+
   }
 }
 
@@ -36,7 +49,13 @@ const SofaOptions = ( props ) => {
     if ( sprite ) {
       const currentSeat = Number( sprite )
       const minimumNumberOfSeats = 2
-      const style = Object.assign({}, styles.img, sprites[currentSeat] )
+      const style = Object.assign(
+        {},
+        styles.img,
+        styles.flexItem,
+        sprites[currentSeat],
+        { order: currentSeat }
+      )
 
       couch.push(
         <img
@@ -56,7 +75,7 @@ const SofaOptions = ( props ) => {
   }
 
   return (
-    <div style={ styles.div }>
+    <div style={ styles.flexContainer }>
       { couch }
     </div>
   )
