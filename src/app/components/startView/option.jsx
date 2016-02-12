@@ -1,22 +1,25 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 const Option = ( props ) => {
-  const {
-    optionElement,
-    optionStyle
-  } = props
+  const optionStyle = {
+    optionElement: {
+      height: '25em',
+      width: '25em',
+      padding: '3em 5em 0 5em',
+      borderRadius: '50%',
+      backgroundColor: 'gray',
+      overflow: 'hidden'
+    }
+  }
 
   return (
     <div
       className='startViewOptions'
-      style={ optionStyle }
-    >{ optionElement }</div>
+      style={ optionStyle.optionElement }
+    >
+      { props.children }
+    </div>
   )
-}
-
-Option.propTypes = {
-  optionElement: PropTypes.func.isRequired,
-  optionStyle: PropTypes.object
 }
 
 export default Option

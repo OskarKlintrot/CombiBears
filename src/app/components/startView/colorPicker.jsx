@@ -1,10 +1,6 @@
 import React from 'react'
 
 class ColorPicker extends React.Component {
-  handleClick() {
-    this.render()
-  }
-
   render() {
     const colors = [
       'blue',
