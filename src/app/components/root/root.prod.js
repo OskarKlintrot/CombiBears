@@ -7,7 +7,7 @@ import routes from '../../routes'
 // Redux
 import { Provider } from 'react-redux'
 
-const Root = (props) => {
+const Root = ( props ) => {
   const { store, history } = props
 
   return (

@@ -243,3 +243,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# OSX files
+.DS_Store
+
+# Jetbrains IDE specific
+.idea

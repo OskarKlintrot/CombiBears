@@ -11,10 +11,10 @@ import createHistory from 'history/lib/createHashHistory'
 import { useQueries } from 'history'
 import InitialState from './redux/store/initialState'
 
-const history = useQueries(createHistory)()
-const Store = configureStore(InitialState(), history)
+const history = useQueries( createHistory )()
+const Store = configureStore( new InitialState(), history )
 
-//Needed for React Developer Tools
+// Needed for React Developer Tools
 window.React = React
 
 /*
@@ -26,5 +26,6 @@ window.React = React
 injectTapEventPlugin()
 
 ReactDOM.render(
-  <Root store={ Store } history={ history }/>
-, document.getElementById('app'))
+  <Root store={ Store } history={ history }/>,
+  document.getElementById( 'app' )
+)

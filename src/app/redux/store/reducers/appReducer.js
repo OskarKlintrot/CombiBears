@@ -3,23 +3,21 @@ import { ActionTypesApp } from '../../actions/actionTypes'
 
 const {
   RESET,
-  SET_USER,
+  SET_USER
   // Write down the actions you want to use here
 } = ActionTypesApp
 
-const AppReducer = (state, action) => {
-  switch (action.type) {
-    case RESET:
-      return InitialState().app
-      break
-    case SET_USER:
-      return {
-        ...state,
-        user: action.user,
-      }
-      break
-    default:
-      return state || InitialState().app
+const AppReducer = ( state, action ) => {
+  switch ( action.type ) {
+  case RESET:
+    return new InitialState().app
+  case SET_USER:
+    return {
+      ...state,
+      user: action.user
+    }
+  default:
+    return state || new InitialState().app
   }
 }
 
