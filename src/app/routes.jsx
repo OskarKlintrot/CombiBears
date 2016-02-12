@@ -8,14 +8,10 @@ import About from './components/about.jsx'
 import SavedCombinationsView from './components/savedCombinationsView'
 
 export default (
-  <Route path = '/' component = { Wrapper }>
-    <IndexRoute component = { Main } />
-    <Route path = '/about' component = { About }/>
-    <Route path = '/savedCombinations' component = { SavedCombinationsView } />
-    <Route path = '*' component = { NoMatch }/>
   <Route path='/' component={ Wrapper }>
     <IndexRoute component={ Main } />
     <Route path='/about' component={ About }/>
+    <Route path='/savedCombinations' component={ SavedCombinationsView } />
     <Route path='*' component={ NoMatch }/>
   </Route>
 )

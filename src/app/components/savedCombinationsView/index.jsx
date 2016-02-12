@@ -25,22 +25,22 @@ class SavedCombinationsView extends React.Component {
         <div>
           <h1>Sparade kombinationer</h1>
         </div>
-        <div id = 'saved-combinations-top-icons'>
-          <img src = 'public/pics/icons/new-sofa.png' alt = 'Icon for new sofa' className = 'saved-combinations-icon' />
-          <img src = 'public/pics/icons/show-result.png' alt = 'Icon for showing result' className = 'saved-combinations-icon' />
+        <div id='saved-combinations-top-icons'>
+          <img src='public/pics/icons/new-sofa.png' alt='Icon for new sofa' className='saved-combinations-icon' />
+          <img src='public/pics/icons/show-result.png' alt='Icon for showing result' className='saved-combinations-icon' />
         </div>
-        <div id = 'saved-combinations-icon-return'>
-          <img src = 'public/pics/icons/arrow-right.png' alt = 'Icon for returning to game view' className = 'saved-combinations-icon' />
+        <div id='saved-combinations-icon-return'>
+          <img src='public/pics/icons/arrow-right.png' alt='Icon for returning to game view' className='saved-combinations-icon' />
         </div>
         <div>
-          <ul className = 'saved-combinations-ul-sofas'>
+          <ul className='saved-combinations-ul-sofas'>
             <li>
-              <img src = 'public/pics/sofas/four.png' alt = 'Image for four-seat sofa' className = 'saved-combinations-sofa'/>
-              <Sofa sofa = { sofa1 } />
+              <img src='public/pics/sofas/four.png' alt='Image for four-seat sofa' className='saved-combinations-sofa'/>
+              <Sofa sofa={ sofa1 } />
             </li>
             <li>
-              <img src = 'public/pics/sofas/four.png' alt = 'Image for four-seat sofa' className = 'saved-combinations-sofa'/>
-              <Sofa sofa = { sofa2 } />
+              <img src='public/pics/sofas/four.png' alt='Image for four-seat sofa' className='saved-combinations-sofa'/>
+              <Sofa sofa={ sofa2 } />
             </li>
           </ul>
         </div>
