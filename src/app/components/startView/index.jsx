@@ -97,7 +97,7 @@ class StartView extends React.Component {
               <img
                 id='StartButton'
                 alt='StartButton'
-                src='/public/pics/icons/start.png'
+                src='public/pics/icons/start.png'
                 height='50px'
                 width='150px'
               ></img>
