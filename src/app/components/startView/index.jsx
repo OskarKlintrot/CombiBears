@@ -114,7 +114,7 @@ class StartView extends React.Component {
 }
 
 StartView.propTypes = {
-  numberOfSeats: PropTypes.string.isRequired,
+  numberOfSeats: PropTypes.number.isRequired,
   setNumberOfSeats: PropTypes.func.isRequired
 }
 
