@@ -43,11 +43,11 @@ class BackgroundSprite extends React.Component {
     let widthScaleFactor, heightScaleFactor, returnScaleFactor
 
     // Calculate scale factors
-    widthScaleFactor = backgroundImageOriginalSize.width / this.state.width
-    heightScaleFactor = backgroundImageOriginalSize.height / this.state.height
+    widthScaleFactor = this.state.width / backgroundImageOriginalSize.width
+    heightScaleFactor = this.state.height / backgroundImageOriginalSize.height
 
     // Return the smallest scale factor.
-    returnScaleFactor = widthScaleFactor < heightScaleFactor ? widthScaleFactor : heightScaleFactor
+    returnScaleFactor = widthScaleFactor > heightScaleFactor ? widthScaleFactor : heightScaleFactor
 
     return new PIXI.Point( returnScaleFactor, returnScaleFactor )
   }
