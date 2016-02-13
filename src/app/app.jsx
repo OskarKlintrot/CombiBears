@@ -29,4 +29,3 @@ ReactDOM.render(
   <Root store={ Store } history={ history }/>,
   document.getElementById( 'app' )
 )
-
