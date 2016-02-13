@@ -30,12 +30,12 @@ window.React = React
  * https://github.com/zilverline/react-tap-event-plugin
  */
 injectTapEventPlugin()
-
+/*
 ReactPIXI.render(
-  <GameView width = { window.innerWidth } height = { window.innerHeight } />,
+  <GameView width={ window.innerWidth } height={ window.innerHeight } />,
   document.getElementById( 'app-pixi' )
 )
-
+*/
 
 ReactDOM.render(
   <Root store={ Store } history={ history }/>,

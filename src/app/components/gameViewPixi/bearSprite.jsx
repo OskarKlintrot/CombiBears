@@ -82,28 +82,39 @@ class BearSprite extends React.Component {
   }
 
   render() {
+
+    const bearAnchor = {
+      xPos: 0.5,
+      yPos: 0.5
+    }
+
+    const bearScale = {
+      xScale: 0.2,
+      yScale: 0.2
+    }
+
     return (
-      <Sprite image = { this.getBearImg( this.props.color ) }
-        scale = { new PIXI.Point( 0.2, 0.2 ) }
-        anchor = { new PIXI.Point( 0.5, 0.5 ) }
-        key = '1'
-        x = { this.state.xPos }
-        y = { this.state.yPos }
-        interactive = 'true'
+      <Sprite image={ this.getBearImg( this.props.color ) }
+        scale={ new PIXI.Point( bearScale.xScale, bearScale.yScale ) }
+        anchor={ new PIXI.Point( bearAnchor.xPos, bearAnchor.yPos ) }
+        key='1'
+        x={ this.state.xPos }
+        y={ this.state.yPos }
+        interactive='true'
 
         // Events for drag start
-        mousedown = { ( event ) => this.onDragStart( event ) }
-        touchstart = { ( event ) => this.onDragStart( event ) }
+        mousedown={ ( event ) => this.onDragStart( event ) }
+        touchstart={ ( event ) => this.onDragStart( event ) }
 
         // Events for drag end
-        mouseup = { ( event ) => this.onDragEnd( event ) }
-        mouseupoutside = { ( event ) => this.onDragEnd( event ) }
-        touchend = { ( event ) => this.onDragEnd( event ) }
-        touchendoutside = { ( event ) => this.onDragEnd( event ) }
+        mouseup={ ( event ) => this.onDragEnd( event ) }
+        mouseupoutside={ ( event ) => this.onDragEnd( event ) }
+        touchend={ ( event ) => this.onDragEnd( event ) }
+        touchendoutside={ ( event ) => this.onDragEnd( event ) }
 
         // Events for drag move
-        mousemove = { ( event ) => this.onDragMove( event ) }
-        touchmove = { ( event ) => this.onDragMove( event ) }
+        mousemove={ ( event ) => this.onDragMove( event ) }
+        touchmove={ ( event ) => this.onDragMove( event ) }
       />
     )
   }

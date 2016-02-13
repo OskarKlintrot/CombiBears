@@ -14,7 +14,7 @@ export default (
     <IndexRoute component={ Main } />
     <Route path='/start' component={ StartView }/>
     <Route path='/saved' component={ SavedCombinationsView } />
-    <Route path='/game-pixi' component = { GameViewPixi } />
+    <Route path='/game-pixi' component={ GameViewPixi } />
     <Route path='/about' component={ About }/>
     <Route path='*' component={ NoMatch }/>
   </Route>

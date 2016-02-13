@@ -27,10 +27,10 @@ class BackgroundSprite extends React.Component {
     this.state = {
       imgPath: 'public/pics/backgrounds/',
       background: this.props.background || 'livingroom',
-      width: this.props.width || 800,
-      height: this.props.height || 600,
-      xPos: ( this.props.width ? this.props.width / 2 : null ) || 400,
-      yPos: ( this.props.height ? this.props.height : null ) || 600
+      width: this.props.width,
+      height: this.props.height,
+      xPos: ( this.props.width ? this.props.width / 2 : null ),
+      yPos: ( this.props.height ? this.props.height : null )
     }
   }
 
@@ -53,15 +53,21 @@ class BackgroundSprite extends React.Component {
   }
 
   render() {
+
+    const bgAnchor = {
+      xPos: 0.5,
+      yPos: 0.5
+    }
+
     return (
-      <Sprite image = { this.getBgImg( this.state.background ) }
-        anchor = { new PIXI.Point( 0.5, 1 ) }
-        key = 'background'
-        x = { this.state.xPos }
-        y = { this.state.yPos }
-        width = { this.state.width }
-        height = { this.state.height }
-        scale = { this.calculateBgImageScale() }
+      <Sprite image={ this.getBgImg( this.state.background ) }
+        anchor={ new PIXI.Point( bgAnchor.xPos, bgAnchor.yPos ) }
+        key='background'
+        x={ this.state.xPos }
+        y={ this.state.yPos }
+        width={ this.state.width }
+        height={ this.state.height }
+        scale={ this.calculateBgImageScale() }
       />
     )
   }

@@ -32,14 +32,25 @@ class SeatSprite extends React.Component {
   }
 
   render() {
+
+    const seatAnchor = {
+      xPos: 0.5,
+      yPos: 0.5
+    }
+
+    const seatScale = {
+      xScale: 0.2,
+      yScale: 0.2
+    }
+
     return (
-      <Sprite image = { this.getSeatImg( this.props.type ) }
-        scale = { new PIXI.Point( 0.2, 0.2 ) }
-        anchor = { new PIXI.Point( 0.5, 0.5 ) }
-        key = { this.props.key }
-        x = { this.state.xPos }
-        y = { this.state.yPos }
-        interactive = 'true'
+      <Sprite image={ this.getSeatImg( this.props.type ) }
+        scale={ new PIXI.Point( seatScale.xScale, seatScale.yScale ) }
+        anchor={ new PIXI.Point( seatAnchor.xPos, seatAnchor.yPos ) }
+        key={ this.props.key }
+        x={ this.state.xPos }
+        y={ this.state.yPos }
+        interactive='true'
       />
     )
   }

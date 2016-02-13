@@ -9,6 +9,7 @@ import SeatSprite from './seatSprite.jsx'
 
 const seatWidth = 200
 
+
 class SofaContainer extends React.Component {
 
   /*
@@ -28,15 +29,12 @@ class SofaContainer extends React.Component {
 
     let seatType
 
-    if ( seatNum === 0 ) {
+    if ( seatNum === 0 )
       seatType = 'start'
-    } else if ( seatNum + 1 === this.props.seats ) {
+    else if ( seatNum + 1 === this.props.seats )
       seatType = 'end'
-    } else {
+    else
       seatType = 'between'
-    }
-
-    console.log( seatType, "seattype" )
 
     return seatType
   }
@@ -45,28 +43,30 @@ class SofaContainer extends React.Component {
 
     const returnArray = []
 
-    for ( let num = 0; num < this.props.seats; num += 1 ) {
-      returnArray.push( num )
-    }
-
-    console.log( returnArray, "here it should be" + this.props.seats + " <- " )
+    for ( let num = 0; num < this.props.seats; num += 1 ) returnArray.push( num )
 
     return returnArray
   }
 
   render() {
+
+    const sofaContainerAnchor = {
+      xPos: 0.5,
+      yPos: 1
+    }
+
     return (
       <Container
-        x = { this.props.x }
-        y = { this.props.y }
-        anchor = { new PIXI.Point( 0.5, 1 ) }
+        x={ this.props.x }
+        y={ this.props.y }
+        anchor={ new PIXI.Point( sofaContainerAnchor.xPos, sofaContainerAnchor.yPos ) }
       >
         {
           this.getNumberOfSeatsArray().map( ( elem, seatNum ) =>
             <SeatSprite
-              type = { this.getSeatType( seatNum ) }
-              key = { seatNum + 1 }
-              x = { seatWidth * seatNum }
+              type={ this.getSeatType( seatNum ) }
+              key={ seatNum + 1 }
+              x={ seatWidth * seatNum }
             />
           )
         }
