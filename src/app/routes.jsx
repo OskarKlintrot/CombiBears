@@ -5,11 +5,13 @@ import Wrapper from './components/shared/wrapper.jsx'
 import NoMatch from './components/shared/noMatch.jsx'
 import Main from './components/main.jsx'
 import About from './components/about.jsx'
+import GameViewPixi from './components/gameViewPixi'
 
 export default (
   <Route path = '/' component = { Wrapper }>
     <IndexRoute component = { Main } />
-    <Route path = '/about' component = { About }/>
-    <Route path = '*' component = { NoMatch }/>
+    <Route path='/game-pixi' component = { GameViewPixi } />
+    <Route path='/about' component = { About }/>
+    <Route path='*' component = { NoMatch }/>
   </Route>
 )

@@ -81,7 +81,9 @@ var config = {
   },
   devtool: 'source-map',
   eslint: {
-    configFile: '.eslintrc'
+    configFile: '.eslintrc',
+    failOnWarning: false,
+    failOnError: false
   }
 }
 

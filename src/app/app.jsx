@@ -12,10 +12,10 @@ import { useQueries } from 'history'
 import InitialState from './redux/store/initialState'
 
 // PIXI.js
-import ReactPIXI from 'react-pixi'
+import ReactPIXI from './scripts/ReactPixi'
 
 // Game View
-import GameView from './components/gameView'
+import GameView from './components/gameViewPixi'
 
 const history = useQueries( createHistory )()
 const Store = configureStore( new InitialState(), history )
@@ -33,7 +33,7 @@ injectTapEventPlugin()
 
 ReactPIXI.render(
   <GameView width = { window.innerWidth } height = { window.innerHeight } />,
-  document.getElementById( 'game-view-pixi' )
+  document.getElementById( 'app-pixi' )
 )
 
 

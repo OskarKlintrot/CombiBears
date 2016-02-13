@@ -1,6 +1,6 @@
 import React from 'react'
 import PIXI from 'pixi.js/bin/pixi'
-import ReactPIXI from 'react-pixi'
+import ReactPIXI from './../../scripts/ReactPixi'
 
 import BearSprite from './bearSprite'
 import BackgroundSprite from './backgroundSprite'
@@ -9,7 +9,7 @@ import SofaContainer from './sofaContainer'
 const Stage = ReactPIXI.Stage
 const Text = ReactPIXI.Text
 
-class GameView extends React.Component {
+class GameViewPixi extends React.Component {
 
   /*
    * @param props
@@ -44,12 +44,6 @@ class GameView extends React.Component {
         height = { this.props.height }
       >
 
-        <BackgroundSprite
-          background = 'livingroom'
-          width = { this.state.width }
-          height = { this.state.height }
-        />
-
         <SofaContainer
           seats = { 3 }
           x = { this.getSofaPosition().x }
@@ -75,4 +69,4 @@ class GameView extends React.Component {
   }
 }
 
-export default GameView
+export default GameViewPixi
