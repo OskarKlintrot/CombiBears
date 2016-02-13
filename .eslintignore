@@ -1,3 +1,4 @@
 src/app/components/root/index.js
 src/app/redux/store/index.js
 src/app/scripts/
+webpack.config.js
