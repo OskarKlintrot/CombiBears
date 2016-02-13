@@ -11,12 +11,6 @@ import createHistory from 'history/lib/createHashHistory'
 import { useQueries } from 'history'
 import InitialState from './redux/store/initialState'
 
-// PIXI.js
-import ReactPIXI from './scripts/ReactPixi'
-
-// Game View
-import GameView from './components/gameViewPixi'
-
 const history = useQueries( createHistory )()
 const Store = configureStore( new InitialState(), history )
 
@@ -30,12 +24,6 @@ window.React = React
  * https://github.com/zilverline/react-tap-event-plugin
  */
 injectTapEventPlugin()
-/*
-ReactPIXI.render(
-  <GameView width={ window.innerWidth } height={ window.innerHeight } />,
-  document.getElementById( 'app-pixi' )
-)
-*/
 
 ReactDOM.render(
   <Root store={ Store } history={ history }/>,
