@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactPIXI from './../../scripts/ReactPixi'
+import ReactPIXI from '../../scripts/ReactPixi'
 
 import BearSprite from './bearSprite'
 // import BackgroundSprite from './backgroundSprite'
