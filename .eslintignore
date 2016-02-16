@@ -1,4 +1,5 @@
 src/app/components/root/index.js
 src/app/redux/store/index.js
 src/app/scripts/
+src/app/components/gameViewPixi/lib/
 webpack.config.js
