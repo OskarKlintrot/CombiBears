@@ -4,9 +4,10 @@ class Bear extends React.Component {
   render() {
     const styles = {
       img: {
+        position: 'absolute',
         width: '8%',
-        display: 'inline-block',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        zIndex: '1'
       }
     }
 
