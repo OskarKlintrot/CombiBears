@@ -6,7 +6,8 @@ const App = {
 
 const Settings = {
   RESET_SETTINGS: 'RESET_SETTINGS',
-  SET_NUMBER_OF_SEATS: 'SET_NUMBER_OF_SEATS'
+  INCREASE_NUMBER_OF_SEATS: 'INCREASE_NUMBER_OF_SEATS',
+  DECREASE_NUMBER_OF_SEATS: 'DECREASE_NUMBER_OF_SEATS'
   // ...just to increase code readability
 }
 

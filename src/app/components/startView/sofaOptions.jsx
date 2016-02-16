@@ -46,7 +46,11 @@ const sofa = {
 }
 
 const SofaOptions = ( props ) => {
-  const { selected, handleNumberOfSeats } = props
+  const {
+    selected,
+    handleIncreaseNumberOfSeats,
+    handleDecreaseNumberOfSeats
+  } = props
 
   const styleArrow = Object.assign(
     {},
@@ -67,7 +71,7 @@ const SofaOptions = ( props ) => {
       <img
         src={ 'public/pics/icons/arrow-left.png' }
         style={ styleArrow }
-        onClick={ () => console.log( 'uppåt' ) }
+        onClick={ handleIncreaseNumberOfSeats }
       ></img>
       <img
         src={ 'public/pics/sofas/' + sofa[selected] }
@@ -76,7 +80,7 @@ const SofaOptions = ( props ) => {
       <img
         src={ 'public/pics/icons/arrow-right.png' }
         style={ styleArrow }
-        onClick={ () => console.log( 'neråt' ) }
+        onClick={ handleDecreaseNumberOfSeats }
       ></img>
     </div>
   )
@@ -84,7 +88,8 @@ const SofaOptions = ( props ) => {
 
 SofaOptions.propTypes = {
   selected: PropTypes.number.isRequired,
-  handleNumberOfSeats: PropTypes.func.isRequired
+  handleIncreaseNumberOfSeats: PropTypes.func.isRequired,
+  handleDecreaseNumberOfSeats: PropTypes.func.isRequired
 }
 
 export default SofaOptions
