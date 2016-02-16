@@ -5,7 +5,8 @@ class Bear extends React.Component {
     const styles = {
       img: {
         width: '50%',
-        display: 'inline-block'
+        display: 'inline-block',
+        cursor: 'pointer'
       }
     }
 
