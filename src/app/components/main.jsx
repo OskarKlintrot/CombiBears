@@ -15,9 +15,6 @@ const Main = () => {
       <h2>
         <Link to={ '/saved' }>Sparade kombinationer</Link>
       </h2>
-      <h2>
-        <Link to={ '/game-pixi' }>Spel (pixi)</Link>
-      </h2>
     </div>
   )
 }

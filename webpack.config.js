@@ -42,9 +42,6 @@ var config = {
         PRODUCTION: production
     })
   ],
-  node: { // For pixi.js compability. Added by Johnny Pesola 2016-02-04
-    fs: "empty"
-  },
   module: {
     preLoaders: [
       {
@@ -68,10 +65,6 @@ var config = {
       {
         test: /\.html$/,
         loader: "file?name=[name].[ext]"
-      },
-      { // For pixi.js compability. Added by Johnny Pesola 2016-02-04
-        test: /\.json$/,
-        loader: 'json-loader'
       }
     ]
   },

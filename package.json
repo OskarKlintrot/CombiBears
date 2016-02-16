@@ -40,9 +40,6 @@
     "redux-thunk": "^1.0.2",
     "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "react-pixi": "^0.7.4",
-    "pixi.js": "3.0.7",
-    "json-loader": "0.5.4"
+    "webpack-dev-server": "^1.14.0"
   }
 }
