@@ -16,7 +16,7 @@ const styles = {
   }
 }
 
-const getSofaWidth = {
+const getSofaProps = {
   getSofaSize: function( sofa ) {
     let sofaSize = 0
     sofa.seats.map( ( seat ) => {
@@ -50,7 +50,7 @@ const getSofaWidth = {
     })
   },
 
-  sofaWidth: function( sofaSize, noOfBears ) {
+  getSofaWidth: function( sofaSize, noOfBears ) {
     let sofaWidth = ''
 
     if ( sofaSize === 4 ) {
@@ -75,14 +75,14 @@ const getSofaWidth = {
 }
 
 const Sofa = ( props ) => {
-  const sofaSize = getSofaWidth.getSofaSize( props.sofa )
-  const noOfBears = getSofaWidth.getNoOfBears( props.sofa )
+  const sofaSize = getSofaProps.getSofaSize( props.sofa )
+  const noOfBears = getSofaProps.getNoOfBears( props.sofa )
   return (
     <li style={ styles.ulSofasLi } className='small-4 medium-4 large-4 columns'>
-      <img src='public/pics/sofas/four.png' alt='Image for three-seat sofa' style={ getSofaWidth.sofaWidth( sofaSize, noOfBears ) }/>
+      <img src='public/pics/sofas/four.png' alt='Image for three-seat sofa' style={ getSofaProps.getSofaWidth( sofaSize, noOfBears ) }/>
       <ul style={ styles.ulBears }>
         { props.sofa.seats.map( ( seat ) => {
-          return <li key={ seat.seatId } style={ getSofaWidth.getSeatCss( props.sofa.seats.length ) }><Seat seat={ seat } key={ seat.seatId } /></li>
+          return <li key={ seat.seatId } style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }><Seat seat={ seat } key={ seat.seatId } /></li>
         }) }
       </ul>
     </li>
