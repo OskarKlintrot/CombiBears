@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="4d7e09d7-ea46-4ef2-87b9-ee92aab9b3d3"
+  name="React-Router" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="863e2c1b-756e-4fc0-9664-9980c2e83f65"
+        name="Routes"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="ceea6f45-e619-4d5a-adc4-9204a00b50e9">
+            <classMoniker
+              Id="5b16d40d-7b37-46e9-9bc7-64a89a0e754d"
+              LastKnownName="NoMatch"
+              LastKnownLocation="Package_1940.uml" />
+          </dependency>
+          <dependency
+            Id="0f7ddc09-189d-4caf-b069-e390c7c152a7">
+            <classMoniker
+              Id="69ebb75f-853c-49f6-aa13-65720dc0e753"
+              LastKnownName="Wrapper"
+              LastKnownLocation="Package_1940.uml" />
+          </dependency>
+          <dependency
+            Id="668a3d15-a144-4cc5-86fd-aee9562ad076">
+            <classMoniker
+              Id="7b1ea38e-e1b5-406d-b312-6ea4dcfa1de0"
+              LastKnownName="StartView"
+              LastKnownLocation="Package_1940.uml" />
+          </dependency>
+          <dependency
+            Id="be7aa097-dd6e-4638-ab65-07f816513dbd">
+            <classMoniker
+              Id="9207b406-e22c-4fed-9c27-05440348cd5c"
+              LastKnownName="SavedCombinationsView"
+              LastKnownLocation="Package_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8295f569-f79b-44dd-a226-f50f5906704f"
+        name="App"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="30a6c64f-7900-4712-9ae5-b33982b16d8e">
+            <classMoniker
+              Id="d009cb7f-bd44-474c-8062-9cc456a8a137"
+              LastKnownName="Root"
+              LastKnownLocation="Package_1940.uml" />
+          </dependency>
+          <dependency
+            Id="966ce07f-4234-4800-b488-9a94b7aad62f">
+            <classMoniker
+              Id="8e85e15a-09ea-4ee0-aa92-731ec8ff3fb0"
+              LastKnownName="Index"
+              LastKnownLocation="Package5_1940.uml" />
+          </dependency>
+          <dependency
+            Id="cbd52d4a-68fa-4a47-810c-99c2434fcd58">
+            <classMoniker
+              Id="4eb414c9-f946-4bad-b8c8-922041617042"
+              LastKnownName="InitialState"
+              LastKnownLocation="Package5_1940.uml" />
+          </dependency>
+          <dependency
+            Id="3948666d-63dd-417f-b26b-2e525837f8cb">
+            <classMoniker
+              Id="d7b8b983-28c5-4f8e-ae7f-00887d65848a"
+              LastKnownName="Index"
+              LastKnownLocation="Package_2051.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

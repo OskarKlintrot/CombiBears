@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="4c87039a-6737-45d9-8b28-b2b81b0b0b92"
   name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -140,6 +140,36 @@ Känn dig fri att ändra eller göra nya klassdiagram vid behov!</body>
         Id="292d5055-88a0-413e-88fa-a58e1018560d"
         LastKnownName="Alternativ 1 (Bättre)"
         LastKnownLocation="Package_1445.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="443fee50-9772-49cc-aff5-726aa8ce1c1a"
+        LastKnownName="React"
+        LastKnownLocation="Package_1940.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="94b38ab2-2bfd-4040-848d-4724073962d0"
+        LastKnownName="Master Component"
+        LastKnownLocation="Package1_1940.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="4d7e09d7-ea46-4ef2-87b9-ee92aab9b3d3"
+        LastKnownName="Controller - React-Router"
+        LastKnownLocation="Package2_1940.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="d783cd64-231d-47d2-929e-df12543f3433"
+        LastKnownName="Redux"
+        LastKnownLocation="Package3_1940.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c611c90e-5c33-4c0e-88c8-3c6b7b4fec37"
+        LastKnownName="Data - JS Objects"
+        LastKnownLocation="Package7_1940.uml" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

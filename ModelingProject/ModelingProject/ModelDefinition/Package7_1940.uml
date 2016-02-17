@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="c611c90e-5c33-4c0e-88c8-3c6b7b4fec37"
+  name="Data - JS Objects" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="9dba6228-5f30-42c6-98da-aef67f07d82e"
+        name="MnemonicDaysImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="50f5366b-41e6-445f-85ff-173b9f62f8a3"
+        name="MnemonicMaleNameImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ebd2b79a-2cb7-4fc4-9d2b-97828b53e2f3"
+        name="MnemonicFemaleNameImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b5382309-9c7f-423f-87c5-d61318fc30a0"
+        name="MnemonicMonthImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7476b589-a0cd-4177-b368-87e2645db437"
+        name="MnemonicNameImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="a1a11a51-c1bf-47c3-ae56-e1d95c3b8848">
+            <classMoniker
+              Id="50f5366b-41e6-445f-85ff-173b9f62f8a3"
+              LastKnownName="MnemonicMaleNameImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="c1f73108-8e4f-40e5-aaf1-21b45fb1d8f4">
+            <classMoniker
+              Id="ebd2b79a-2cb7-4fc4-9d2b-97828b53e2f3"
+              LastKnownName="MnemonicFemaleNameImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d7bb09ca-2033-4fa8-ba04-1eac3fcab5e4"
+        name="MnemonicNumberImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="910717e9-7ff0-4eab-bc56-5b584cc37905"
+        name="MnemonicThreeCharNumberImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0728efd4-8e32-4c4f-afc2-6dd0a3d0f379"
+        name="MnemonicAlphabetImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

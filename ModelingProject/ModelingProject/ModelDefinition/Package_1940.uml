@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="443fee50-9772-49cc-aff5-726aa8ce1c1a"
+  name="React" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="5b16d40d-7b37-46e9-9bc7-64a89a0e754d"
+        name="NoMatch"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="69ebb75f-853c-49f6-aa13-65720dc0e753"
+        name="Wrapper"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="4138f8e8-db9c-4433-956c-54f08c4a5bb0">
+            <classMoniker
+              Id="8df7db38-d262-43a0-b6d3-b1c8a14913b0"
+              LastKnownName="Container"
+              LastKnownLocation="Package1_1940.uml" />
+          </dependency>
+          <dependency
+            Id="188bc7ba-09b2-4129-99bf-cab52b6d3a37">
+            <classMoniker
+              Id="ac41e5c8-6db4-4723-893f-c7119d334bb2"
+              LastKnownName="Menu"
+              LastKnownLocation="Package1_1940.uml" />
+          </dependency>
+          <dependency
+            Id="d5411fdf-d6b1-412c-9f3b-9ca9595ab9d9">
+            <classMoniker
+              Id="f255fecb-7036-435f-8ec6-af0dad52d690"
+              LastKnownName="CustomHeader"
+              LastKnownLocation="Package1_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="be0ba1df-0ffd-4b58-9fbf-5d8a547789de"
+        name="DevTools"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="e967ada5-617a-4108-94fd-c998307bd68c">
+            <classMoniker
+              Id="1eb569f0-e29d-42a7-8897-5bb91f7d988f"
+              LastKnownName="Games"
+              LastKnownLocation="Package3_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7b1ea38e-e1b5-406d-b312-6ea4dcfa1de0"
+        name="StartView"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="b2866269-c074-422e-a7a4-b9bff38054f8">
+            <classMoniker
+              Id="e7b4f24a-19cb-432c-8d1a-d10a0c12a49f"
+              LastKnownName="GetMnemonicImages"
+              LastKnownLocation="Package3_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9207b406-e22c-4fed-9c27-05440348cd5c"
+        name="SavedCombinationsView"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="375d19d5-e308-49ee-b582-1cdabd4bff9e"
+        name="About"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="90e514bf-6ac6-4beb-96a0-eda3517d37a8"
+        name="Faq"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="dd3c6239-93de-4e01-90f1-16ccdf235574"
+        name="Contact"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d009cb7f-bd44-474c-8062-9cc456a8a137"
+        name="Root"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="64264d8b-4f4f-4e48-88ca-f99707f072a9"
+        LastKnownName="Root"
+        LastKnownLocation="Package_2051.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="64264d8b-4f4f-4e48-88ca-f99707f072a9"
+  name="Root" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="d7b8b983-28c5-4f8e-ae7f-00887d65848a"
+        name="Index"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="0b6f9238-b70f-40a2-805d-2fd16bae2e17">
+            <classMoniker
+              Id="a74ac803-f4a0-41bc-82f5-f196fe77e3a5"
+              LastKnownName="Root.Production"
+              LastKnownLocation="Package_2051.uml" />
+          </dependency>
+          <dependency
+            Id="6990ca7c-afac-4ed8-a7c0-8620afdaf478">
+            <classMoniker
+              Id="8b1a0235-ae86-4106-a41d-c923dc9ff602"
+              LastKnownName="Root.Development"
+              LastKnownLocation="Package_2051.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a74ac803-f4a0-41bc-82f5-f196fe77e3a5"
+        name="Root.Production"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="0a147e57-6c16-46b6-a4b7-aac39e753df1">
+            <classMoniker
+              Id="863e2c1b-756e-4fc0-9664-9980c2e83f65"
+              LastKnownName="Routes"
+              LastKnownLocation="Package2_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8b1a0235-ae86-4106-a41d-c923dc9ff602"
+        name="Root.Development"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="79fd996f-e0ed-48e6-8e2f-72b08a0afb8c">
+            <classMoniker
+              Id="be0ba1df-0ffd-4b58-9fbf-5d8a547789de"
+              LastKnownName="DevTools"
+              LastKnownLocation="Package_1940.uml" />
+          </dependency>
+          <dependency
+            Id="a6988e48-f798-4a7e-a67d-8265292762cf">
+            <classMoniker
+              Id="863e2c1b-756e-4fc0-9664-9980c2e83f65"
+              LastKnownName="Routes"
+              LastKnownLocation="Package2_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

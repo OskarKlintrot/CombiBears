@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="869d7923-c2b5-430f-8c90-dfca335f8cf2"
+  name="Store" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4eb414c9-f946-4bad-b8c8-922041617042"
+        name="InitialState"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8e85e15a-09ea-4ee0-aa92-731ec8ff3fb0"
+        name="Index"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="22178fd6-fa78-4178-b567-42aef179bc80">
+            <classMoniker
+              Id="cbd20c4b-1e64-4543-a8dc-9ce48160587c"
+              LastKnownName="ConfigureStore.Production"
+              LastKnownLocation="Package5_1940.uml" />
+          </dependency>
+          <dependency
+            Id="a7dc4222-d1fc-4d6b-a891-e99132a87c1f">
+            <classMoniker
+              Id="0334ac70-df4f-4a0c-9384-eaf21bd898d2"
+              LastKnownName="ConfigureStore.Development"
+              LastKnownLocation="Package5_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cbd20c4b-1e64-4543-a8dc-9ce48160587c"
+        name="ConfigureStore.Production"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0334ac70-df4f-4a0c-9384-eaf21bd898d2"
+        name="ConfigureStore.Development"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="77f94fb1-5da9-4817-a03f-f64cab5821c6"
+        LastKnownName="Reducers"
+        LastKnownLocation="Package6_1940.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

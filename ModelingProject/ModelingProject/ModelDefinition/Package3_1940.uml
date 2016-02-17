@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="d783cd64-231d-47d2-929e-df12543f3433"
+  name="Redux" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="46c24673-3bdd-4346-b142-8216ef2a0c3c"
+        LastKnownName="Actions"
+        LastKnownLocation="Package4_1940.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="869d7923-c2b5-430f-8c90-dfca335f8cf2"
+        LastKnownName="Store"
+        LastKnownLocation="Package5_1940.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1eb569f0-e29d-42a7-8897-5bb91f7d988f"
+        name="Games"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="9e1ab5da-32ad-4dc7-9b40-afeb82921398">
+            <classMoniker
+              Id="910717e9-7ff0-4eab-bc56-5b584cc37905"
+              LastKnownName="MnemonicThreeCharNumberImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="a63d9a7b-8efe-43ed-8697-242c39c0190f">
+            <classMoniker
+              Id="d7bb09ca-2033-4fa8-ba04-1eac3fcab5e4"
+              LastKnownName="MnemonicNumberImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="43e02587-c794-4ccd-9b39-eeb053722ef4">
+            <classMoniker
+              Id="7476b589-a0cd-4177-b368-87e2645db437"
+              LastKnownName="MnemonicNameImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="58124839-d2ee-47d8-8568-6324b021dede">
+            <classMoniker
+              Id="b5382309-9c7f-423f-87c5-d61318fc30a0"
+              LastKnownName="MnemonicMonthImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="b3f74b96-fdd4-48b4-abf6-e274e58bc950">
+            <classMoniker
+              Id="50f5366b-41e6-445f-85ff-173b9f62f8a3"
+              LastKnownName="MnemonicMaleNameImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="e952ce40-9d5d-4ce7-8879-4c7a242d2b3f">
+            <classMoniker
+              Id="ebd2b79a-2cb7-4fc4-9d2b-97828b53e2f3"
+              LastKnownName="MnemonicFemaleNameImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="f2c0dd9f-642e-4d01-93b2-157a49b60f83">
+            <classMoniker
+              Id="9dba6228-5f30-42c6-98da-aef67f07d82e"
+              LastKnownName="MnemonicDaysImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+          <dependency
+            Id="671858e6-9a83-412a-b7e2-ac8acd2a73fa">
+            <classMoniker
+              Id="0728efd4-8e32-4c4f-afc2-6dd0a3d0f379"
+              LastKnownName="MnemonicAlphabetImages"
+              LastKnownLocation="Package7_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e7b4f24a-19cb-432c-8d1a-d10a0c12a49f"
+        name="GetMnemonicImages"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="800469f2-b56b-4305-9c16-d4b06e2c9b3d">
+            <classMoniker
+              Id="1eb569f0-e29d-42a7-8897-5bb91f7d988f"
+              LastKnownName="Games"
+              LastKnownLocation="Package3_1940.uml" />
+          </dependency>
+          <dependency
+            Id="8e2e76dd-dbb4-45b6-9cd0-8a97c1138cf3">
+            <classMoniker
+              Id="2c694006-66cc-4e8e-85f6-4ae3d1e6a2b7"
+              LastKnownName="MnemonicHelper"
+              LastKnownLocation="Package3_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2c694006-66cc-4e8e-85f6-4ae3d1e6a2b7"
+        name="MnemonicHelper"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

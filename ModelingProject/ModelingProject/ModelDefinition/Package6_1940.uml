@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="77f94fb1-5da9-4817-a03f-f64cab5821c6"
+  name="Reducers" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4fedb621-a4c7-4fac-92cc-3f53a73c24b0"
+        name="CombinedReducers"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="18ad04f2-3e12-4f9d-9889-0397062b5f04">
+            <classMoniker
+              Id="e51060df-1e62-47d0-a316-bbc38c32612c"
+              LastKnownName="AppReducer"
+              LastKnownLocation="Package6_1940.uml" />
+          </dependency>
+          <dependency
+            Id="3eba3f28-3037-4bb9-bf86-b10cd91f0281">
+            <classMoniker
+              Id="bcd5a8d6-49ec-4c13-982f-aa83fdd303c0"
+              LastKnownName="SettingsReducer"
+              LastKnownLocation="Package6_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e51060df-1e62-47d0-a316-bbc38c32612c"
+        name="AppReducer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="06d66fc6-a15c-4858-be00-91004f117d58">
+            <classMoniker
+              Id="4eb414c9-f946-4bad-b8c8-922041617042"
+              LastKnownName="InitialState"
+              LastKnownLocation="Package5_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="bcd5a8d6-49ec-4c13-982f-aa83fdd303c0"
+        name="SettingsReducer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="6817fbf5-b39c-460c-bc7b-39b8094b1706">
+            <classMoniker
+              Id="4eb414c9-f946-4bad-b8c8-922041617042"
+              LastKnownName="InitialState"
+              LastKnownLocation="Package5_1940.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
