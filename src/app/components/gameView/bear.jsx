@@ -5,7 +5,7 @@ class Bear extends React.Component {
     const styles = {
       img: {
         position: 'absolute',
-        width: '8%',
+        width: '100%',
         cursor: 'pointer',
         zIndex: '1'
       }
