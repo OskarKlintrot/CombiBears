@@ -4,7 +4,7 @@ import Bear from './bear'
 const styles = {
   ulBearsLi: {
     display: 'inline-block',
-    width: '85px',
+    width: '25%',
     marginLeft: '0px'
   }
 }
