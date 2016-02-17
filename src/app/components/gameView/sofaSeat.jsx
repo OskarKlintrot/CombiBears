@@ -5,6 +5,9 @@ import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
   drop( props, monitor ) {
+
+    console.log( "sofaSeat: seatTarget -> drop" )
+
     moveTeddybear( props.seat )
   }
 }
@@ -18,9 +21,18 @@ function collect( connect, monitor ) {
 
 class SofaSeat extends React.Component {
   render() {
-    const { seat } = this.props
-    return (
-      <Seat />
+
+
+    console.log( "sofaSeat props", this.props )
+
+    const { seat, connectDropTarget, isOver } = this.props
+
+    return connectDropTarget(
+
+      <div style = { { background: "#f00" } } >
+        hej hej
+        <Seat />
+      </div>
     )
   }
 }

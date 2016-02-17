@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import { ItemTypes } from './constants'
+import { DropTarget } from 'react-dnd'
+
+const seatTarget = {
+  drop( props, monitor ) {
+
+    console.log( "sofaSeat: seatTarget -> drop" )
+
+    moveTeddybear( props.seat )
+  }
+}
+
+function collect( connect, monitor ) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  }
+}
 
 class Seat extends React.Component {
+
   render() {
-    return (
+
+    console.log( "sofaSeat props", this.props )
+
+    const { seat, connectDropTarget, isOver } = this.props
+
+    return connectDropTarget(
+
       <div style = { {
         position: 'absolute',
         left: 0,
@@ -12,10 +37,16 @@ class Seat extends React.Component {
         backgroundColor: 'WHITESMOKE',
         zIndex: 1,
         opacity: 0.8
-      } }>
+      } }
+      >
       </div>
+
     )
   }
 }
 
-export default Seat
+Seat.propTypes = {
+  seat: PropTypes.number.isRequired
+}
+
+export default DropTarget( ItemTypes.BEAR, seatTarget, collect )( Seat )

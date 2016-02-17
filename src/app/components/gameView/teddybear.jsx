@@ -9,6 +9,9 @@ const teddybearSource = {
 }
 
 function collect( connect, monitor ) {
+
+  // console.log( connect )
+
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()

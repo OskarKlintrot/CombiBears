@@ -25,6 +25,7 @@
     "file-loader": "^0.8.5",
     "history": "^1.17.0",
     "react": "^0.14.2",
+    "react-dnd": "^2.1.1",
     "react-dnd-touch-backend": "^0.2.4",
     "react-dom": "^0.14.2",
     "react-drag-and-drop": "^2.0.1",
@@ -42,5 +43,8 @@
     "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
+  },
+  "dependencies": {
+    "react-dnd": "^2.1.1"
   }
 }
