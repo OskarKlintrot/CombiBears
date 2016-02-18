@@ -1,7 +1,5 @@
 import React from 'react'
-import Teddybear from './teddybear'
 import Sofa from './sofa'
-import Seat from './seat'
 import StartingArea from './startingArea'
 
 // React Drag and Drop
@@ -15,8 +13,8 @@ import TouchBackend from 'react-dnd-touch-backend'
 // Below the length of the array represents the number of seats.
 // The string represents the color of the teddy
 const teddySeatArray = [
-  false,
-  false,
+  "orange",
+  null,
   "blue",
   "green"
 ]
@@ -37,42 +35,13 @@ class GameView extends React.Component {
     }
   }
 
-  renderSofaSeats( teddyColor, seatNumber ) {
-
-    return (
-      <Seat>
-        { typeof teddyColor === "string" ? (
-          <Teddybear color = { teddyColor } id = { seatNumber } />
-          ) : ''
-        }
-      </Seat>
-    )
-  }
-
-  renderStartAreaTeddies( teddyColor, seatNumber ) {
-
-    if ( typeof teddyColor === "string" )
-      return <Teddybear color = { teddyColor } id = { seatNumber } />
-  }
-
   render() {
     return (
       <div className = 'game-scene'>
 
-        <Sofa>
-          {
-            teddySeatArray.map( this.renderSofaSeats )
-          }
+        <Sofa bears = { teddySeatArray }/>
 
-        </Sofa>
-
-        <StartingArea>
-
-          {
-            teddyStartingAreaArray.map( this.renderStartAreaTeddies )
-          }
-
-        </StartingArea>
+        <StartingArea />
       </div>
     )
   }

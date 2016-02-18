@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import Seat from './seat'
+import Teddybear from './teddybear'
+
 
 class Sofa extends React.Component {
 
   getSeatsImage() {
-    switch ( this.props.children.length ) {
+    switch ( this.props.bears.length ) {
     case 2: return 'two'
     case 3: return 'three'
     case 4: return 'four'
@@ -11,6 +14,17 @@ class Sofa extends React.Component {
     }
   }
 
+  renderSeat( teddyColor ) {
+    const bear = typeof teddyColor === "string" ?
+      <Teddybear color = { teddyColor } /> :
+      null
+
+    return (
+      <Seat>
+        { bear }
+      </Seat>
+    )
+  }
   render() {
 
     const styles = {
@@ -25,10 +39,18 @@ class Sofa extends React.Component {
 
     return (
       <div className = 'sofa' style = { styles.sofa }>
-        { this.props.children }
+        {
+          this.props.bears.map( this.renderSeat )
+        }
       </div>
     )
   }
+}
+
+Sofa.propTypes = {
+  bears: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired
 }
 
 export default Sofa
