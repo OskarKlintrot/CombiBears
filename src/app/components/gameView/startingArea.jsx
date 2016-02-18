@@ -1,30 +1,45 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Teddybear from './teddybear'
+import Seat from './seat'
 
 class StartingArea extends React.Component {
-  renderStartAreaTeddies( teddyColor ) {
+  renderSeat( teddyColor ) {
+    const bear = typeof teddyColor === "string" ?
+      <Teddybear color = { teddyColor } /> :
+      null
 
-    if ( typeof teddyColor === "string" )
-      return <Teddybear color = { teddyColor } />
+    return (
+      <Seat>
+        { bear }
+      </Seat>
+    )
   }
 
   render() {
     return (
       <div
-        className = "starting-area"
+        className = 'starting-area'
         style = { {
           position: 'absolute',
           left: 0,
           bottom: 0,
-          width: '100px',
+          width: '130px',
           height: '120px',
           backgroundColor: 'WHITESMOKE'
         } }
       >
-        { this.props.children }
+      {
+        this.props.bears.map( this.renderSeat )
+      }
       </div>
     )
   }
+}
+
+StartingArea.propTypes = {
+  bears: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired
 }
 
 export default StartingArea

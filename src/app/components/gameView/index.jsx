@@ -41,7 +41,7 @@ class GameView extends React.Component {
 
         <Sofa bears = { teddySeatArray }/>
 
-        <StartingArea />
+        <StartingArea bears = { teddyStartingAreaArray }/>
       </div>
     )
   }
