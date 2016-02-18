@@ -16,7 +16,7 @@ class Sofa extends React.Component {
 
   renderSeat( teddyColor ) {
     const bear = typeof teddyColor === "string" ?
-      <Teddybear color = { teddyColor } /> :
+      <Teddybear color={ teddyColor } /> :
       null
 
     return (
@@ -38,7 +38,7 @@ class Sofa extends React.Component {
     }
 
     return (
-      <div className = 'sofa' style = { styles.sofa }>
+      <div className='sofa' style={ styles.sofa }>
         {
           this.props.bears.map( this.renderSeat )
         }

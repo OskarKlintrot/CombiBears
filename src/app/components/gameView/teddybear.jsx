@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import { ItemTypes } from './constants'
 import { DragSource } from 'react-dnd'
 
@@ -22,14 +22,14 @@ export default class Teddybear extends React.Component {
     const { connectDragSource, isDragging } = this.props
 
     return connectDragSource(
-      <div style = { {
+      <div style={ {
         opacity: isDragging ? 0.5 : 1
       } }
       >
         <img
-          src = { 'public/pics/bears/' + this.props.color + '.png' }
-          width = '100'
-          height = '120'
+          src={ 'public/pics/bears/' + this.props.color + '.png' }
+          width='100'
+          height='120'
         />
       </div>
     )

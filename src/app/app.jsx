@@ -14,8 +14,6 @@ import InitialState from './redux/store/initialState'
 const history = useQueries( createHistory )()
 const Store = configureStore( new InitialState(), history )
 
-import GameView from './components/gameView'
-
 // Needed for React Developer Tools
 window.React = React
 
@@ -33,6 +31,6 @@ injectTapEventPlugin()
 // )
 
 ReactDOM.render(
-  <GameView/>,
+  <Root store={ Store } history={ history }/>,
   document.getElementById( 'app' )
 )

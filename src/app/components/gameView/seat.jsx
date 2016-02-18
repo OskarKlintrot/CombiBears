@@ -25,7 +25,7 @@ class Seat extends React.Component {
 
     console.log( "sofaSeat props", this.props )
 
-    const { seat, connectDropTarget, isOver } = this.props
+    const { connectDropTarget, isOver } = this.props
 
     const styles = {
       seat: {
@@ -41,7 +41,7 @@ class Seat extends React.Component {
 
     return connectDropTarget(
 
-      <div style = { styles.seat } >
+      <div style={ styles.seat } >
 
       { this.props.children }
 

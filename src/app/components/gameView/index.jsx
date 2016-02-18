@@ -37,11 +37,11 @@ class GameView extends React.Component {
 
   render() {
     return (
-      <div className = 'game-scene'>
+      <div className='game-scene'>
 
-        <Sofa bears = { teddySeatArray }/>
+        <Sofa bears={ teddySeatArray }/>
 
-        <StartingArea bears = { teddyStartingAreaArray }/>
+        <StartingArea bears={ teddyStartingAreaArray }/>
       </div>
     )
   }

@@ -5,7 +5,7 @@ import Seat from './seat'
 class StartingArea extends React.Component {
   renderSeat( teddyColor ) {
     const bear = typeof teddyColor === "string" ?
-      <Teddybear color = { teddyColor } /> :
+      <Teddybear color={ teddyColor } /> :
       null
 
     return (
@@ -18,8 +18,8 @@ class StartingArea extends React.Component {
   render() {
     return (
       <div
-        className = 'starting-area'
-        style = { {
+        className='starting-area'
+        style={ {
           position: 'absolute',
           left: 0,
           bottom: 0,

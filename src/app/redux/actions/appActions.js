@@ -10,6 +10,8 @@ const {
  * return ( dispatch, getState ) => {
  */
 
+const delay = 1000
+
 const AppActions = {
   resetApp: () => {
     return ( dispatch ) => {
@@ -17,7 +19,7 @@ const AppActions = {
         dispatch({
           type: RESET
         })
-      }, 1000 )
+      }, delay )
     }
   },
   setUser: ( user ) => {
