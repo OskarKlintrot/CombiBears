@@ -10,21 +10,27 @@ const teddybearSource = {
 
 function collect( connect, monitor ) {
 
-  // console.log( connect )
-
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   }
 }
+
 export default class Teddybear extends React.Component {
   render() {
+
     const { connectDragSource, isDragging } = this.props
+
     return connectDragSource(
       <div style = { {
         opacity: isDragging ? 0.5 : 1
-      } }>
-        <img src = 'public/pics/bears/white.png' width = '100' height = '120'></img>
+      } }
+      >
+        <img
+          src = { 'public/pics/bears/' + this.props.color + '.png' }
+          width = '100'
+          height = '120'
+        />
       </div>
     )
   }
@@ -32,7 +38,8 @@ export default class Teddybear extends React.Component {
 
 Teddybear.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired
+  isDragging: PropTypes.bool.isRequired,
+  color: PropTypes.string.isRequired
 }
 
 export default DragSource( ItemTypes.BEAR, teddybearSource, collect )( Teddybear )

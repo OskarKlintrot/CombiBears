@@ -5,9 +5,10 @@ import { DropTarget } from 'react-dnd'
 const seatTarget = {
   drop( props, monitor ) {
 
-    console.log( "sofaSeat: seatTarget -> drop" )
+    console.log( "sofaSeat: seatTarget -> drop", props, monitor )
 
-    moveTeddybear( props.seat )
+    // moveTeddybear( props.seat )
+
   }
 }
 
@@ -26,19 +27,24 @@ class Seat extends React.Component {
 
     const { seat, connectDropTarget, isOver } = this.props
 
-    return connectDropTarget(
-
-      <div style = { {
-        position: 'absolute',
-        left: 0,
-        top: 0,
+    const styles = {
+      seat: {
+        display: 'inline-block',
         width: '130px',
         height: '120px',
-        backgroundColor: 'WHITESMOKE',
         zIndex: 1,
-        opacity: 0.8
-      } }
-      >
+        opacity: 0.8,
+        border: '1px solid #f00',
+        textAlign: 'center'
+      }
+    }
+
+    return connectDropTarget(
+
+      <div style = { styles.seat } >
+
+      { this.props.children }
+
       </div>
 
     )
