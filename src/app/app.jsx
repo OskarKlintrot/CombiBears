@@ -23,9 +23,12 @@ window.React = React
  * Check this repo:
  * https://github.com/zilverline/react-tap-event-plugin
  */
+
 injectTapEventPlugin()
+//<Root store = { Store } history = { history }/>,
+
 
 ReactDOM.render(
-  <Root store = { Store } history = { history }/>,
+  <Root store={ Store } history={ history }/>,
   document.getElementById( 'app' )
 )
