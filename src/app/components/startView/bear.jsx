@@ -1,17 +1,30 @@
 import React, { PropTypes } from 'react'
 import ColorPicker from './colorPicker'
 
-class Bear extends React.Component {
-  render() {
-    const styles = {
-      div: {
-        width: '50%',
-        display: 'inline-block',
-        cursor: 'pointer',
-        position: 'relative'
-      }
-    }
+const styles = {
+  div: {
+    width: '50%',
+    display: 'inline-block',
+    cursor: 'pointer',
+    position: 'relative'
+  }
+}
 
+class Bear extends React.Component {
+  constructor( props ) {
+    super( props )
+
+    this.handleToggleColorPicker = this.handleToggleColorPicker.bind( this )
+    this.state = {
+      showColorPicker: false
+    }
+  }
+
+  handleToggleColorPicker = () => {
+    this.setState({ showColorPicker: !this.state.showColorPicker })
+  };
+
+  render() {
     return (
       <div
         style={ styles.div }
@@ -24,8 +37,9 @@ class Bear extends React.Component {
             'public/pics/bears/placeholder.png'
           }
           style={ this.props.style }
+          onClick={ this.handleToggleColorPicker }
         />
-        <ColorPicker />
+      { this.state.showColorPicker ? <ColorPicker /> : null }
       </div>
     )
   }
@@ -33,7 +47,7 @@ class Bear extends React.Component {
 
 Bear.propTypes = {
   color: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object.isRequired
 }
 
 export default Bear

@@ -27,6 +27,7 @@ const BearOptions = () => {
         return (
           <Bear
             color={ color }
+            style={ style.bear }
             key={ key }
           />
         )
