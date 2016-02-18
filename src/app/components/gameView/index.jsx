@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Sofa from './sofa'
 import StartingArea from './startingArea'
+import { connect } from 'react-redux'
 
 // React Drag and Drop
 import { DragDropContext } from 'react-dnd'
@@ -39,12 +40,29 @@ class GameView extends React.Component {
     return (
       <div className='game-scene'>
 
-        <Sofa bears={ teddySeatArray }/>
+        <Sofa bears={ this.props.bearsOnSofa }/>
 
-        <StartingArea bears={ teddyStartingAreaArray }/>
+        <StartingArea bears={ this.props.bearsOnStart }/>
       </div>
     )
   }
 }
 
-export default DragDropContext( TouchBackend({ enableMouseEvents: true }) )( GameView )
+GameView.propTypes = {
+  bearsOnSofa: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired,
+  bearsOnStart: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired
+}
+
+const mapStateToProps = ( state ) => state.combination
+
+const mapDispatchToProps = ( dispatch ) => {
+  return {}
+
+}
+
+const connectObj = connect( mapStateToProps, mapDispatchToProps )( GameView )
+export default DragDropContext( TouchBackend({ enableMouseEvents: true }) )( connectObj )
