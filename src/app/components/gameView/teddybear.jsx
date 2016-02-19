@@ -21,17 +21,22 @@ export default class Teddybear extends React.Component {
 
     const { connectDragSource, isDragging } = this.props
 
-    return connectDragSource(
-      <div style={ {
+    const styles = {
+      bear: {
+        width: '80%',
         opacity: isDragging ? 0.5 : 1
-      } }
-      >
-        <img
-          src={ 'public/pics/bears/' + this.props.color + '.png' }
-          width='100'
-          height='120'
-        />
-      </div>
+
+
+      }
+    }
+
+    return connectDragSource(
+      <img
+        src={ 'public/pics/bears/' + this.props.color + '.png' }
+        width='100'
+        height='120'
+        style={ styles.bear }
+      />
     )
   }
 }

@@ -27,21 +27,41 @@ class Sofa extends React.Component {
   }
   render() {
 
+    const seatImgWidth = 1000
+
     const styles = {
       sofa: {
-        height: '210px',
+
         border: '1px solid #00f',
         background: 'url(public/pics/sofas/' + this.getSeatsImage() + '.png)',
         backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat'
+        backgroundPosition: 'top',
+        backgroundRepeat: 'no-repeat',
+
+        position: 'absolute',
+        bottom: '80px',
+        margin: '0 auto',
+        left: '0',
+        right: '0',
+        width: '500px',
+        height: '220px'
+
+      },
+
+      seatContainer: {
+        height: '65%'
+        // background: 'rgba(0, 255, 255, 0.5)'
       }
     }
 
+
     return (
       <div className='sofa' style={ styles.sofa }>
-        {
-          this.props.bears.map( this.renderSeat )
-        }
+        <div style={ styles.seatContainer }>
+          {
+            this.props.bears.map( this.renderSeat )
+          }
+        </div>
       </div>
     )
   }

@@ -25,7 +25,7 @@
 }
 
 body {
-  background: url(../../public/pics/background.jpg) no-repeat center center fixed;
+  background: url(../../public/pics/background.jpg) no-repeat center bottom fixed;
   background-size: cover;
 }
 
@@ -91,17 +91,4 @@ body {
 
 /*TODO: Dummy-placeringar, ska fixas*/
 
-/* GameView */
 
-.game-scene {
-    position: relative;
-    background-color: darkseagreen;
-    width: 80%;
-    height: 400px;
-}
-
-.sofa {
-    position: absolute;
-    top: 50px;
-    right: 10px;
-}

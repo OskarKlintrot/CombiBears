@@ -30,12 +30,13 @@ class Seat extends React.Component {
     const styles = {
       seat: {
         display: 'inline-block',
-        width: '130px',
-        height: '120px',
+        width: '25%',
+        height: '100%',
         zIndex: 1,
-        opacity: 0.8,
+        opacity: 1,
         border: '1px solid #f00',
-        textAlign: 'center'
+        textAlign: 'center',
+        verticalAlign: 'top'
       }
     }
 

@@ -16,17 +16,28 @@ class StartingArea extends React.Component {
   }
 
   render() {
+
+    const styles = {
+      startingArea: {
+
+        border: '1px solid #f0f',
+
+        bottom: '0',
+        margin: '0 auto',
+        left: '0',
+        //right: '0',
+
+        position: 'absolute',
+        width: '500px',
+        height: '125px'
+
+
+      }
+    }
+
     return (
       <div
-        className='starting-area'
-        style={ {
-          position: 'absolute',
-          left: 0,
-          bottom: 0,
-          width: '130px',
-          height: '120px',
-          backgroundColor: 'WHITESMOKE'
-        } }
+        style={ styles.startingArea }
       >
       {
         this.props.bears.map( this.renderSeat )
