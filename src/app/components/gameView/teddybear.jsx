@@ -24,8 +24,7 @@ export default class Teddybear extends React.Component {
     const styles = {
       bear: {
         width: '80%',
-        opacity: isDragging ? 0.5 : 1
-
+        opacity: isDragging ? 0.2 : 1
 
       }
     }
