@@ -7,8 +7,7 @@ const Option = ( props ) => {
       width: '25em',
       padding: '0 5em 0 5em',
       borderRadius: '50%',
-      backgroundColor: 'rgba(161, 161, 161, 0.56)',
-      overflow: 'hidden'
+      backgroundColor: 'rgba(161, 161, 161, 0.56)'
     }
   }
 
