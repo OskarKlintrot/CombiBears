@@ -2,12 +2,19 @@ import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
 import { ActionTypesSettings } from '../../actions/actionTypes'
 
+const getBearsFromObject = ( obj, seats ) => {
+  const filtered = Object.keys( obj ).filter( ( key ) => obj[key] )
+  const fill = seats - filtered.length > 0 ? Array(
+    ...Array( seats - filtered.length )
+  ).map( () => null ) : []
+  return filtered.concat( fill )
+}
+
 const {
   RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
   START_GAME
-  // Write down the actions you want to use here
 } = ActionTypesSettings
 
 const maxSeats = 4
@@ -31,9 +38,15 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       correctCombinations: Combinatorics.permutation(
-        Object.keys( state.bears ).filter( ( key ) => state.bears[key] ),
+        getBearsFromObject( state.bears, state.numberOfSeats ),
         state.numberOfSeats
-      ).toArray()
+      )
+      .toArray()
+      .map( ( item ) => JSON.stringify( item ) )  // Converting all arrays
+      .filter( ( elem, index, arr ) =>            // to JSON for comparsion
+        arr.indexOf( elem ) === index             // might be a bit "quick
+      )                                           // and dirty" but it's close
+      .map( ( item ) => JSON.parse( item ) )      // enough for our purposes
     }
   default:
     return state || new InitialState().settings
