@@ -1,3 +1,4 @@
+import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
 import { ActionTypesSettings } from '../../actions/actionTypes'
 
@@ -28,7 +29,10 @@ const SettingsReducer = ( state, action ) => {
     }
   case START_GAME:
     return {
-      ...state
+      ...state,
+      correctCombinations: Combinatorics.permutation(
+        Object.keys( state.bears ).filter( ( key ) => state.bears[key] ), state.numberOfSeats
+      ).toArray()
     }
   default:
     return state || new InitialState().settings
