@@ -96,17 +96,19 @@ class StartView extends React.Component {
         </div>
         <div className='medium-12 columns'>
           <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-            <Link
+            { /* <Link
               to={ '/start' }
-            >
-              <img
-                id='StartButton'
-                alt='StartButton'
-                src='public/pics/icons/start.png'
-                height='50px'
-                width='150px'
-              ></img>
-            </Link>
+            > */ }
+            <img
+              id='StartButton'
+              alt='StartButton'
+              src='public/pics/icons/start.png'
+              height='50px'
+              width='150px'
+              style={ { cursor: 'pointer' } }
+              onClick={ () => this.props.startGame() }
+            ></img>
+            { /* </Link> */ }
           </div>
         </div>
         <div className='medium-12 columns'>
@@ -138,6 +140,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     decreaseNumberOfSeats: () => {
       dispatch( Actions.decreaseNumberOfSeats() )
+    },
+    startGame: () => {
+      dispatch( Actions.startGame() )
     }
   }
 }

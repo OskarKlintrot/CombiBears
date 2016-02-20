@@ -4,7 +4,8 @@ import { ActionTypesSettings } from '../../actions/actionTypes'
 const {
   RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
-  DECREASE_NUMBER_OF_SEATS
+  DECREASE_NUMBER_OF_SEATS,
+  START_GAME
   // Write down the actions you want to use here
 } = ActionTypesSettings
 
@@ -24,6 +25,10 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       numberOfSeats: state.numberOfSeats - 1 < minSeats ? maxSeats : state.numberOfSeats - 1
+    }
+  case START_GAME:
+    return {
+      ...state
     }
   default:
     return state || new InitialState().settings

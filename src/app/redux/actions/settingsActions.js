@@ -3,8 +3,8 @@ import ActionTypes from "./actionTypes"
 const {
 	RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
-  DECREASE_NUMBER_OF_SEATS
-	// Write down the actions you want to use here
+  DECREASE_NUMBER_OF_SEATS,
+  START_GAME
 } = ActionTypes
 
 const SettingsActions = {
@@ -26,6 +26,18 @@ const SettingsActions = {
     return ( dispatch ) => {
       dispatch({
         type: DECREASE_NUMBER_OF_SEATS
+      })
+    }
+  },
+  startGame: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: START_GAME,
+        meta: {
+          transition: () => ({
+            path: '/start' // TODO: Change to game view once that is added
+          })
+        }
       })
     }
   }

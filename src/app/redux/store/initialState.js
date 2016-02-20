@@ -5,7 +5,13 @@ const InitialState = () => {
       user: "World"
     },
     settings: {
-      numberOfSeats: 2
+      numberOfSeats: 2,
+      bears: {
+        0: null,
+        1: null,
+        2: null,
+        3: null
+      }
     }
   }
 }
