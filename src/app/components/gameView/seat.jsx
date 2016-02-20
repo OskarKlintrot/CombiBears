@@ -5,25 +5,31 @@ import { DropTarget } from 'react-dnd'
 const seatTarget = {
   drop( props, monitor ) {
 
-    console.log( "sofaSeat: seatTarget -> drop", props, monitor )
+    // const dropResult = monitor.getDropResult()
 
-    // moveTeddybear( props.seat )
+    if ( props.canDrop )
 
+      props.onDrop( props.containerTypeName, props.index )
+
+
+    // props.onDrop( monitor.getItem() )
+    // console.log( 'Drop success' )
+    // console.log( 'sofaSeat: seatTarget -> drop', monitor )
+    // console.log( 'dropResult', dropResult )
   }
 }
 
 function collect( connect, monitor ) {
   return {
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
   }
 }
 
 class Seat extends React.Component {
 
   render() {
-
-    console.log( "sofaSeat props", this.props )
 
     const { connectDropTarget, isOver } = this.props
 
@@ -53,7 +59,10 @@ class Seat extends React.Component {
 }
 
 Seat.propTypes = {
-  seat: PropTypes.number.isRequired
+  canDrop: PropTypes.bool.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  containerTypeName: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired
 }
 
 export default DropTarget( ItemTypes.BEAR, seatTarget, collect )( Seat )

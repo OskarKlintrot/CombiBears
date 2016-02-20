@@ -31,8 +31,42 @@ class GameView extends React.Component {
 
     this.state = {
 
+      currentlyDraggedColor: null
+
+    }
+
+  }
+
+  handleDrop( containerTypeName, index ) {
+
+    // TODO: This points to the calling object instead of this class.
+
+
+    console.log( 'index -> handleDrop()', containerTypeName, index )
+
+    // this.state.currentlyDraggedColor <-- wont work. this points to wrong object
+
+    if ( containerTypeName === "Sofa" ) {
+
+      // Manipulate array here, the color being dragged should be in this.state.currentyDraggedColor
+
+
+    } else if ( containerTypeName === "StartingArea" ) {
+
+      // Manipulate array here, the color being dragged should be in this.state.currentyDraggedColor
+
     }
   }
+
+  handleBeginDrag( color ) {
+
+    // TODO: This points to the calling object instead of this class.
+
+    console.log( 'index -> handleBeginDrag(): currently dragged color is now', color )
+
+    // this.setState({ currentlyDraggedColor: color }) <--- wont work. this points to wrong object
+  }
+
 
   render() {
 
@@ -47,9 +81,8 @@ class GameView extends React.Component {
 
         <DraggedTeddy color='white' />
 
-        <Sofa bears={ this.props.bearsOnSofa }/>
-
-        <StartingArea bears={ this.props.bearsOnStart }/>
+        <Sofa onDrop={ this.handleDrop } onBeginDrag={ this.handleBeginDrag } bears={ this.props.bearsOnSofa }/>
+        <StartingArea onDrop={ this.handleDrop } onBeginDrag={ this.handleBeginDrag } bears={ this.props.bearsOnStart }/>
 
       </div>
     )

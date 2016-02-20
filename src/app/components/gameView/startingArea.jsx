@@ -3,13 +3,13 @@ import Teddybear from './teddybear'
 import Seat from './seat'
 
 class StartingArea extends React.Component {
-  renderSeat( teddyColor ) {
+  renderSeat( teddyColor, seatIndex ) {
     const bear = typeof teddyColor === "string" ?
-      <Teddybear color={ teddyColor } /> :
+      <Teddybear onBeginDrag={ this.props.onBeginDrag } color={ teddyColor } /> :
       null
 
     return (
-      <Seat>
+      <Seat index={ seatIndex } onDrop={ this.props.onDrop } canDrop={ bear === null } containerTypeName='StartingArea' >
         { bear }
       </Seat>
     )
@@ -40,7 +40,7 @@ class StartingArea extends React.Component {
         style={ styles.startingArea }
       >
       {
-        this.props.bears.map( this.renderSeat )
+        this.props.bears.map( ( bear, index ) => this.renderSeat( bear, index ) )
       }
       </div>
     )
@@ -50,7 +50,8 @@ class StartingArea extends React.Component {
 StartingArea.propTypes = {
   bears: PropTypes.arrayOf(
     PropTypes.string
-  ).isRequired
+  ).isRequired,
+  onBeginDrag: PropTypes.func.isRequired
 }
 
 export default StartingArea

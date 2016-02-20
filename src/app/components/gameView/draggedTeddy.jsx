@@ -17,8 +17,6 @@ function getItemStyles( props ) {
   const { currentOffset } = props
   if ( !currentOffset ) {
 
-    console.log( 'display none' )
-
     return {
       display: 'none'
     }
@@ -26,8 +24,6 @@ function getItemStyles( props ) {
 
   const { x, y } = currentOffset
   const transform = `translate(${x}px, ${y}px)`
-
-  console.log( transform, props )
 
   return {
     transform: transform,
@@ -61,7 +57,6 @@ class draggedTeddy extends React.Component {
             src={ 'public/pics/bears/' + this.props.color + '.png' }
             width='100'
             height='120'
-            style={ layerStyles }
           />
         </div>
       </div>

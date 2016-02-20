@@ -3,8 +3,21 @@ import { ItemTypes } from './constants'
 import { DragSource } from 'react-dnd'
 
 const teddybearSource = {
+
   beginDrag( props ) {
-    return {}
+
+    props.onBeginDrag( props.color )
+
+    return {
+      props
+    }
+  },
+
+  endDrag( props, monitor ) {
+    /*
+    const item = monitor.getItem()
+    const dropResult = monitor.getDropResult()
+    */
   }
 }
 
@@ -43,7 +56,8 @@ export default class Teddybear extends React.Component {
 Teddybear.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  onBeginDrag: PropTypes.func.isRequired
 }
 
 export default DragSource( ItemTypes.BEAR, teddybearSource, collect )( Teddybear )
