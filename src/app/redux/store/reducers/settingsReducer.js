@@ -31,7 +31,8 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       correctCombinations: Combinatorics.permutation(
-        Object.keys( state.bears ).filter( ( key ) => state.bears[key] ), state.numberOfSeats
+        Object.keys( state.bears ).filter( ( key ) => state.bears[key] ),
+        state.numberOfSeats
       ).toArray()
     }
   default:
