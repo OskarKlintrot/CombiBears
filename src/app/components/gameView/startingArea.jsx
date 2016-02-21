@@ -25,7 +25,7 @@ class StartingArea extends React.Component {
         bottom: '0',
         margin: '0 auto',
         left: '0',
-        //right: '0',
+        // right: '0',
 
         position: 'absolute',
         width: '500px',

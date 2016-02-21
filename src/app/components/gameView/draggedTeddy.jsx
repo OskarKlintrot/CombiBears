@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react'
-import { ItemTypes } from './constants'
+import React, { PropTypes } from 'react'
+// import { ItemTypes } from './constants'
 import { DragLayer } from 'react-dnd'
 
 
-function collect( monitor ) {
+const collect = ( monitor ) => {
   return {
     item: monitor.getItem(),
     itemType: monitor.getItemType(),
@@ -13,7 +13,7 @@ function collect( monitor ) {
 }
 
 
-function getItemStyles( props ) {
+const getItemStyles = ( props ) => {
   const { currentOffset } = props
   if ( !currentOffset ) {
 
@@ -34,7 +34,7 @@ function getItemStyles( props ) {
 class draggedTeddy extends React.Component {
   render() {
 
-    const { item, itemType, isDragging } = this.props
+    const { isDragging } = this.props
 
     // Only render if its dragging
     if ( !isDragging ) return null

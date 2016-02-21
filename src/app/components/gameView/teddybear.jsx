@@ -21,13 +21,14 @@ const teddybearSource = {
   }
 }
 
-function collect( connect, monitor ) {
-
+const collect = ( connect, monitor ) => {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   }
 }
+
+const transparency = 0.8
 
 export default class Teddybear extends React.Component {
   render() {
@@ -37,8 +38,7 @@ export default class Teddybear extends React.Component {
     const styles = {
       bear: {
         width: '80%',
-        opacity: isDragging ? 0.2 : 1
-
+        opacity: isDragging ? transparency : 1
       }
     }
 
