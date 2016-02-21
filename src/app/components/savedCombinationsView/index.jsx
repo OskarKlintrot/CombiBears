@@ -25,8 +25,8 @@ const styles = {
 const SavedCombinationsView = () => {
   const bears = [{ id: 0, color: "orange" }, { id: 1, color: "green" }, { id: 2, color: "blue" }, { id: 3, color: "pink" }]
   const seats1 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: bears[2] }]
-  const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: bears[2] }, { seatId: 3, bear: null }]
+  const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
+  const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
   const sofas = [{ id: 0, seats: seats1 }, { id: 1, seats: seats2 }, { id: 2, seats: seats3 }]
 
   return (
