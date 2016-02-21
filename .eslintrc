@@ -234,7 +234,7 @@
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
     "react/wrap-multilines": 1,
-    "react/jsx-max-props-per-line": [2, { "maximum": 1 }]
+    "react/jsx-max-props-per-line": [1, { "maximum": 1 }]
   },
   "parser": "babel-eslint",
   "plugins": [
