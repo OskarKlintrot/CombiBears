@@ -12,28 +12,14 @@ const styles = {
 
   ulSofasLi: {
     display: 'inline-block'
+  },
+
+  sofa: {
+    width: '100%'
   }
 }
 
 const getSofaProps = {
-  getSofaSize: function( sofa ) {
-    let sofaSize = 0
-    sofa.seats.map( ( seat ) => {
-      if ( seat.onSofa )
-        sofaSize += 1
-    })
-    return sofaSize
-  },
-
-  getNoOfBears: function( sofa ) {
-    let noOfBears = 0
-    sofa.seats.map( ( seat ) => {
-      if ( seat.bear !== null )
-        noOfBears += 1
-    })
-    return noOfBears
-  },
-
   getSeatCss: function( noOfTotalSeats ) {
     let seatWidth = ''
     if ( noOfTotalSeats === 4 )
@@ -47,38 +33,26 @@ const getSofaProps = {
       marginLeft: '0px',
       width: seatWidth
     })
-  },
+  }
 
-  getSofaWidth: function( sofaSize, noOfBears ) {
-    let sofaWidth = ''
+}
 
-    if ( sofaSize === 4 ) {
-      sofaWidth = '100%'
-    } else if ( sofaSize === 3 ) {
-      if ( noOfBears === 4 )
-        sofaWidth = '75%'
-      else
-        sofaWidth = '100%'
-    } else if ( sofaSize === 2 ) {
-      if ( noOfBears === 4 )
-        sofaWidth = '50%'
-      else if ( noOfBears === 3 )
-        sofaWidth = '67%'
-      else
-        sofaWidth = '100%'
+const noOfSeats = {
+  getSeatsImage: function( seats ) {
+    switch ( seats ) {
+    case 2: return 'two'
+    case 3: return 'three'
+    case 4: return 'four'
+    default: return 'four'
     }
-    return ({
-      width: sofaWidth
-    })
   }
 }
 
 const Sofa = ( props ) => {
-  const sofaSize = getSofaProps.getSofaSize( props.sofa )
-  const noOfBears = getSofaProps.getNoOfBears( props.sofa )
+
   return (
     <li style={ styles.ulSofasLi } className='small-4 medium-4 large-4 columns'>
-      <img src='public/pics/sofas/four.png' alt='Image for three-seat sofa' style={ getSofaProps.getSofaWidth( sofaSize, noOfBears ) }/>
+      <img src={ 'public/pics/sofas/' + noOfSeats.getSeatsImage( props.sofa.seats.length ) + '.png' } alt='Image for three-seat sofa' style={ styles.sofa }/>
       <ul style={ styles.ulBears }>
         { props.sofa.seats.map( ( seat ) => {
           return <li key={ seat.seatId } style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }><Seat seat={ seat } key={ seat.seatId } /></li>

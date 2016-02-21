@@ -24,9 +24,9 @@ const styles = {
 
 const SavedCombinationsView = () => {
   const bears = [{ id: 0, color: "orange" }, { id: 1, color: "green" }, { id: 2, color: "blue" }, { id: 3, color: "pink" }]
-  const seats1 = [{ seatId: 0, bear: bears[0], onSofa: true }, { seatId: 1, bear: bears[1], onSofa: true }, { seatId: 2, bear: null, onSofa: true }, { seatId: 3, bear: bears[3], onSofa: true }]
-  const seats2 = [{ seatId: 0, bear: bears[0], onSofa: true }, { seatId: 1, bear: bears[1], onSofa: true }, { seatId: 2, bear: bears[2], onSofa: true }, { seatId: 3, bear: bears[3], onSofa: true }]
-  const seats3 = [{ seatId: 0, bear: bears[0], onSofa: true }, { seatId: 1, bear: bears[1], onSofa: true }, { seatId: 2, bear: bears[2], onSofa: true }, { seatId: 3, bear: bears[3], onSofa: true }]
+  const seats1 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
+  const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: bears[2] }]
+  const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }, { seatId: 2, bear: bears[2] }, { seatId: 3, bear: null }]
   const sofas = [{ id: 0, seats: seats1 }, { id: 1, seats: seats2 }, { id: 2, seats: seats3 }]
 
   return (
