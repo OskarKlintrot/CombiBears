@@ -2,7 +2,8 @@ import ActionTypes from "./actionTypes"
 
 const {
 	RESET_SETTINGS,
-  SET_NUMBER_OF_SEATS
+  INCREASE_NUMBER_OF_SEATS,
+  DECREASE_NUMBER_OF_SEATS
 	// Write down the actions you want to use here
 } = ActionTypes
 
@@ -14,11 +15,17 @@ const SettingsActions = {
       })
     }
   },
-  setNumberOfSeats: ( numberOfSeats ) => {
+  increaseNumberOfSeats: () => {
     return ( dispatch ) => {
       dispatch({
-        type: SET_NUMBER_OF_SEATS,
-        numberOfSeats: numberOfSeats
+        type: INCREASE_NUMBER_OF_SEATS
+      })
+    }
+  },
+  decreaseNumberOfSeats: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: DECREASE_NUMBER_OF_SEATS
       })
     }
   }

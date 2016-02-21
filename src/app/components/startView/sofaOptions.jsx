@@ -2,15 +2,13 @@ import React, { PropTypes } from 'react'
 
 const styles = {
   img: {
-    height: '1579px',
-    width: '1000px',
-    objectFit: 'none',
-    zoom: '9%',
-    cursor: 'pointer'
+    objectFit: 'scale-down'
   },
   flexContainer: {
     display: 'flex',
     WebkitDisplay: 'flex',
+    flexDirection: 'column',
+    WebkitFlexDirection: 'column',
     flexWrap: 'nowrap',
     WebkitFlexWrap: 'nowrap',
     justifyContent: 'space-around',
@@ -19,71 +17,79 @@ const styles = {
     WebkitAlignItems: 'center',
     alignContent: 'center',
     WebkitAlignContent: 'center',
-    height: '90%'
+    height: '100%'
   },
   flexItem: {
 
+  },
+  arrow: {
+    cursor: 'pointer',
+    WebkitTransform: 'rotate(90deg)',
+    transform: 'rotate(90deg)',
+    flex: '0 1 auto',
+    WebkitFlex: '0 1 auto',
+    maxHeight: '25%',
+    maxWidth: '25%'
+  },
+  sofa: {
+    flex: '0 2 auto',
+    WebkitFlex: '0 2 auto',
+    maxHeight: '50%',
+    maxWidth: '100%'
   }
 }
 
-const sprites = {
-  1: {
-    objectPosition: '0 0'
-  },
-  2: {
-    objectPosition: '-1000px 0'
-  },
-  3: {
-    objectPosition: '-2000px 0'
-  },
-  4: {
-    objectPosition: '-3000px 0'
-  }
+const sofa = {
+  2: 'two.png',
+  3: 'three.png',
+  4: 'four.png'
 }
 
 const SofaOptions = ( props ) => {
-  const { selected, handleNumberOfSeats } = props
-  const couch = []
+  const {
+    selected,
+    handleIncreaseNumberOfSeats,
+    handleDecreaseNumberOfSeats
+  } = props
 
-  for ( const sprite in sprites ) {
-    if ( sprite ) {
-      const currentSeat = Number( sprite )
-      const minimumNumberOfSeats = 2
-      const style = Object.assign(
-        {},
-        styles.img,
-        styles.flexItem,
-        sprites[currentSeat],
-        { order: currentSeat }
-      )
+  const styleArrow = Object.assign(
+    {},
+    styles.img,
+    styles.arrow,
+    styles.flexItem
+  )
 
-      couch.push(
-        <img
-          key={ currentSeat }
-          onClick={ () => handleNumberOfSeats( currentSeat ) }
-          style={ style }
-          src={
-            currentSeat <= selected ||
-            selected < minimumNumberOfSeats &&
-            currentSeat <= minimumNumberOfSeats &&
-            selected > 0 ?
-            'public/pics/sofas/slider-four.png' : 'public/pics/sofas/four.png'
-          }
-        ></img>
-      )
-    }
-  }
+  const styleSofa = Object.assign(
+    {},
+    styles.img,
+    styles.sofa,
+    styles.flexItem
+  )
 
   return (
     <div style={ styles.flexContainer }>
-      { couch }
+      <img
+        src={ 'public/pics/icons/arrow-left.png' }
+        style={ styleArrow }
+        onClick={ handleIncreaseNumberOfSeats }
+      ></img>
+      <img
+        src={ 'public/pics/sofas/' + sofa[selected] }
+        style={ styleSofa }
+      ></img>
+      <img
+        src={ 'public/pics/icons/arrow-right.png' }
+        style={ styleArrow }
+        onClick={ handleDecreaseNumberOfSeats }
+      ></img>
     </div>
   )
 }
 
 SofaOptions.propTypes = {
   selected: PropTypes.number.isRequired,
-  handleNumberOfSeats: PropTypes.func.isRequired
+  handleIncreaseNumberOfSeats: PropTypes.func.isRequired,
+  handleDecreaseNumberOfSeats: PropTypes.func.isRequired
 }
 
 export default SofaOptions

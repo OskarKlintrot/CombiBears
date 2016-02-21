@@ -5,8 +5,13 @@ const InitialState = () => {
       user: "World"
     },
     settings: {
-      numberOfSeats: 0
+      numberOfSeats: 2
+    },
+    combination: {
+      bearsOnSofa: [null, null, "blue", "green"],
+      bearsOnStart: ["orange"]
     }
+
   }
 }
 

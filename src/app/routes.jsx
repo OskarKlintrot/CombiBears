@@ -6,6 +6,7 @@ import NoMatch from './components/shared/noMatch.jsx'
 import Main from './components/main.jsx'
 import About from './components/about.jsx'
 import StartView from './components/startView'
+import GameView from './components/gameView'
 import SavedCombinationsView from './components/savedCombinationsView'
 
 export default (
@@ -14,6 +15,7 @@ export default (
     <Route path='/start' component={ StartView }/>
     <Route path='/saved' component={ SavedCombinationsView } />
     <Route path='/about' component={ About }/>
+    <Route path='/game' component={ GameView }/>
     <Route path='*' component={ NoMatch }/>
   </Route>
 )

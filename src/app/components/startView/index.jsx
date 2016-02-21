@@ -77,7 +77,12 @@ class StartView extends React.Component {
             <Option>
               <SofaOptions
                 selected={ this.props.numberOfSeats }
-                handleNumberOfSeats={ this.props.setNumberOfSeats }
+                handleIncreaseNumberOfSeats={
+                  this.props.increaseNumberOfSeats
+                }
+                handleDecreaseNumberOfSeats={
+                  this.props.decreaseNumberOfSeats
+                }
               />
             </Option>
           </div>
@@ -120,15 +125,19 @@ class StartView extends React.Component {
 
 StartView.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
-  setNumberOfSeats: PropTypes.func.isRequired
+  increaseNumberOfSeats: PropTypes.func.isRequired,
+  decreaseNumberOfSeats: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.settings
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
-    setNumberOfSeats: ( numberOfSeats ) => {
-      dispatch( Actions.setNumberOfSeats( numberOfSeats ) )
+    increaseNumberOfSeats: () => {
+      dispatch( Actions.increaseNumberOfSeats() )
+    },
+    decreaseNumberOfSeats: () => {
+      dispatch( Actions.decreaseNumberOfSeats() )
     }
   }
 }
