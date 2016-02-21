@@ -8,7 +8,10 @@ const style = {
 class Bears extends React.Component {
   render() {
     return (
-      <div className='bears' style={ style }>
+      <div
+        className='bears'
+        style={ style }
+      >
         <Bear />
         <Bear />
         <Bear />

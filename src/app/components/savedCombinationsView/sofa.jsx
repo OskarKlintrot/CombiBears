@@ -54,11 +54,26 @@ const getSofaProps = {
 
 const Sofa = ( props ) => {
   return (
-    <li style={ styles.ulSofasLi } className='small-4 medium-4 large-4 columns'>
-      <div style={ getSofaProps.getSofaBackgroundImg( props.sofa.seats.length ) }>
+    <li
+      style={ styles.ulSofasLi }
+      className='small-4 medium-4 large-4 columns'
+    >
+      <div
+        style={ getSofaProps.getSofaBackgroundImg( props.sofa.seats.length ) }
+      >
         <ul style={ styles.ulBears }>
           { props.sofa.seats.map( ( seat ) => {
-            return <li key={ seat.seatId } style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }><Seat seat={ seat } key={ seat.seatId } /></li>
+            return (
+              <li
+                key={ seat.seatId }
+                style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }
+              >
+                <Seat
+                  key={ seat.seatId }
+                  seat={ seat }
+                />
+              </li>
+            )
           }) }
         </ul>
       </div>

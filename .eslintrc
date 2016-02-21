@@ -32,10 +32,9 @@
     "no-unexpected-multiline": 2,
     "no-unreachable": 2,
     "use-isnan": 2,
-    "valid-jsdoc": [1, {
-      "requireReturn": false
-    }],
+    "valid-jsdoc": [1, {"requireReturn": false}],
     "valid-typeof": 0,
+    "max-len": [2, 80, 4, {"ignoreUrls": true}],
 
     // Best Practices
     "accessor-pairs": 0,
@@ -234,7 +233,8 @@
     "react/require-extension": 2,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/wrap-multilines": 1,
+    "react/jsx-max-props-per-line": [2, { "maximum": 1 }]
   },
   "parser": "babel-eslint",
   "plugins": [

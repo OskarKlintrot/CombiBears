@@ -8,7 +8,11 @@ const styles = {
 
 const Bear = ( props ) => {
   return (
-    <img src={ 'public/pics/bears/' + props.bear.color + '.png' } alt='Image of bear' style={ styles.bear }/>
+    <img
+      src={ 'public/pics/bears/' + props.bear.color + '.png' }
+      alt='Image of bear'
+      style={ styles.bear }
+    />
    )
 }
 

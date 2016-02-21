@@ -14,19 +14,26 @@ class Sofa extends React.Component {
 
   renderSeat( teddyColor, seatIndex ) {
     const bear = typeof teddyColor === "string" ?
-      <Teddybear onBeginDrag={ this.props.onBeginDrag } color={ teddyColor } /> :
+      <Teddybear
+        onBeginDrag={ this.props.onBeginDrag }
+        color={ teddyColor }
+      /> :
       null
 
     return (
-      <Seat index={ seatIndex } onDrop={ this.props.onDrop } canDrop={ bear === null } onHandleAddBear={ this.props.handleAddBear } containerTypeName='Sofa' >
+      <Seat
+        index={ seatIndex }
+        onDrop={ this.props.onDrop }
+        canDrop={ bear === null }
+        onHandleAddBear={ this.props.handleAddBear }
+        containerTypeName='Sofa'
+      >
         { bear }
       </Seat>
     )
   }
 
   render() {
-    const seatImgWidth = 1000
-
     const styles = {
       sofa: {
         border: '1px solid #00f',
@@ -49,10 +56,15 @@ class Sofa extends React.Component {
     }
 
     return (
-      <div className='sofa' style={ styles.sofa }>
+      <div
+        className='sofa'
+        style={ styles.sofa }
+      >
         <div style={ styles.seatContainer }>
           {
-            this.props.bears.map( ( color, index ) => this.renderSeat( color, index ) )
+            this.props.bears.map( ( color, index ) =>
+              this.renderSeat( color, index )
+            )
           }
         </div>
       </div>

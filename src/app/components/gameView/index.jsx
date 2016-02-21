@@ -59,8 +59,18 @@ class GameView extends React.Component {
     return (
       <div style={ styles.gameScene } >
         <DraggedTeddy color='white' />
-        <Sofa onDrop={ this.handleDrop } onBeginDrag={ this.handleBeginDrag } handleAddBear={ this.props.addBear } handleRemoveBear={ this.props.removeBear } bears={ this.props.bearsOnSofa }/>
-        <StartingArea onDrop={ this.handleDrop } onBeginDrag={ this.handleBeginDrag } bears={ this.props.bearsOnStart }/>
+        <Sofa
+          onDrop={ this.handleDrop }
+          onBeginDrag={ this.handleBeginDrag }
+          handleAddBear={ this.props.addBear }
+          handleRemoveBear={ this.props.removeBear }
+          bears={ this.props.bearsOnSofa }
+        />
+        <StartingArea
+          onDrop={ this.handleDrop }
+          onBeginDrag={ this.handleBeginDrag }
+          bears={ this.props.bearsOnStart }
+        />
       </div>
     )
   }
@@ -91,4 +101,6 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 const connectObj = connect( mapStateToProps, mapDispatchToProps )( GameView )
-export default DragDropContext( touchBackend({ enableMouseEvents: true }) )( connectObj )
+export default DragDropContext(
+  touchBackend({ enableMouseEvents: true })
+)( connectObj )
