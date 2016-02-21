@@ -21,7 +21,7 @@ class Sofa extends React.Component {
       null
 
     return (
-      <Seat index={ seatIndex } onDrop={ this.props.onDrop } canDrop={ bear === null } containerTypeName='Sofa' >
+      <Seat index={ seatIndex } onDrop={ this.props.onDrop } canDrop={ bear === null } onHandleAddBear={ this.props.handleAddBear } containerTypeName='Sofa' >
         { bear }
       </Seat>
     )
@@ -74,7 +74,9 @@ Sofa.propTypes = {
   bears: PropTypes.arrayOf(
     PropTypes.string
   ).isRequired,
-  onBeginDrag: PropTypes.func.isRequired
+  onBeginDrag: PropTypes.func.isRequired,
+  handleAddBear: PropTypes.func.isRequired,
+  handleRemoveBear: PropTypes.func.isRequired
 }
 
 export default Sofa

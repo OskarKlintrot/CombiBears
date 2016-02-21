@@ -6,7 +6,7 @@ const seatTarget = {
   drop( props, monitor ) {
 
     // const dropResult = monitor.getDropResult()
-
+    props.onHandleAddBear( "orange", props.index )
     if ( props.canDrop )
 
       props.onDrop( props.containerTypeName, props.index )
@@ -62,7 +62,9 @@ Seat.propTypes = {
   canDrop: PropTypes.bool.isRequired,
   onDrop: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  onHandleAddBear: PropTypes.func.isRequired,
+  handleRemoveBear: PropTypes.func.isRequired
 }
 
 export default DropTarget( ItemTypes.BEAR, seatTarget, collect )( Seat )
