@@ -22,6 +22,7 @@ class Sofa extends React.Component {
 
     return (
       <Seat
+        key={ seatIndex }
         index={ seatIndex }
         onDrop={ this.props.onDrop }
         canDrop={ bear === null }
