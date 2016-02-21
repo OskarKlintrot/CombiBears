@@ -19,7 +19,7 @@ const seatTarget = {
   }
 }
 
-function collect( connect, monitor ) {
+const collect = ( connect, monitor ) => {
   return {
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
