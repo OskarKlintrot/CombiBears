@@ -35,7 +35,7 @@ const SettingsActions = {
         type: START_GAME,
         meta: {
           transition: () => ({
-            path: '/start' // TODO: Change to game view once that is added
+            path: '/game' // TODO: Change to game view once that is added
           })
         }
       })

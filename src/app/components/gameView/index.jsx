@@ -7,7 +7,7 @@ import Actions from '../../redux/actions/'
 
 // React Drag and Drop
 import { DragDropContext } from 'react-dnd'
-import TouchBackend from 'react-dnd-touch-backend'
+import touchBackend from 'react-dnd-touch-backend'
 
 
 /* TODO: Below is a suggestion for a standard format for data to store in redux.
@@ -102,7 +102,7 @@ GameView.propTypes = {
 }
 
 // Map redux state to props
-const mapStateToProps = ( state ) => state.combination
+const mapStateToProps = ( state ) => state.game
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
@@ -116,4 +116,4 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 const connectObj = connect( mapStateToProps, mapDispatchToProps )( GameView )
-export default DragDropContext( TouchBackend({ enableMouseEvents: true }) )( connectObj )
+export default DragDropContext( touchBackend({ enableMouseEvents: true }) )( connectObj )
