@@ -13,7 +13,12 @@ const InitialState = () => {
         3: null
       },
       correctCombinations: null
+    },
+    combination: {
+      bearsOnSofa: [null, null, "blue", "green"],
+      bearsOnStart: ["orange"]
     }
+
   }
 }
 

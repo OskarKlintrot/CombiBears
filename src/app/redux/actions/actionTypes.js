@@ -12,8 +12,16 @@ const Settings = {
   // ...just to increase code readability
 }
 
-const ActionTypes = Object.assign({}, App, Settings )
+const Combination = {
+  RESET_COMBINATION: 'RESET_COMBINATION',
+  ADD_BEAR: 'ADD_BEAR',
+  REMOVE_BEAR: 'REMOVE_BEAR'
+  // ...just to increase code readability
+}
+
+const ActionTypes = Object.assign({}, App, Settings, Combination )
 
 export const ActionTypesApp = Object.freeze( App )
 export const ActionTypesSettings = Object.freeze( Settings )
+export const ActionTypesCombination = Object.freeze( Combination )
 export default Object.freeze( ActionTypes )
