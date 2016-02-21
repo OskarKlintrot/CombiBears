@@ -7,8 +7,7 @@ const styles = {
     paddingLeft: '5px',
     zIndex: '10',
     marginLeft: '0px',
-    marginTop: '-150px',
-    display: 'inline-flex'
+    marginTop: '-130px'
   },
 
   ulSofasLi: {
@@ -44,7 +43,7 @@ const getSofaProps = {
     else
       seatWidth = '50%'
     return ({
-      display: 'inline',
+      display: 'inline-block',
       marginLeft: '0px',
       width: seatWidth
     })
