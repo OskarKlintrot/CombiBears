@@ -1,9 +1,5 @@
 const InitialState = () => {
   return {
-    // Your initial state goes here
-    app: {
-      user: "World"
-    },
     settings: {
       numberOfSeats: 2,
       bears: {
@@ -14,11 +10,10 @@ const InitialState = () => {
       },
       correctCombinations: null
     },
-    combination: {
+    game: {
       bearsOnSofa: [null, null, "blue", "green"],
       bearsOnStart: ["orange"]
     }
-
   }
 }
 

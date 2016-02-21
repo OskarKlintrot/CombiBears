@@ -1,7 +1,6 @@
-import AppActions from "./appActions"
+import GameActions from "./gameActions"
 import SettingsActions from "./settingsActions"
-import CombinationActions from "./combinationActions"
 
-const Actions = Object.assign({}, AppActions, SettingsActions, CombinationActions )
+const Actions = Object.assign({}, GameActions, SettingsActions )
 
 export default Actions

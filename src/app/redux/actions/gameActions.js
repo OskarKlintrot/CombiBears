@@ -1,17 +1,16 @@
 import ActionTypes from "./actionTypes"
 
 const {
-  RESET_COMBINATION,
+  RESET_GAME,
   ADD_BEAR,
   REMOVE_BEAR
-	// Write down the actions you want to use here
 } = ActionTypes
 
-const CombinationActions = {
+const GameActions = {
   resetCombination: () => {
     return ( dispatch ) => {
       dispatch({
-        type: RESET_COMBINATION
+        type: RESET_GAME
       })
     }
   },
@@ -34,4 +33,4 @@ const CombinationActions = {
   }
 }
 
-export default CombinationActions
+export default GameActions

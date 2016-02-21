@@ -1,9 +1,18 @@
-import React, { Component, PropTypes } from 'react'
-import { ItemTypes } from './constants'
+import React, { PropTypes } from 'react'
+// import { ItemTypes } from './constants'
 import { DragLayer } from 'react-dnd'
 
+const styles = {
+  position: 'fixed',
+  pointerEvents: 'none',
+  zIndex: 100,
+  width: 100,
+  height: 120,
+  left: 0,
+  top: 0
+}
 
-function collect( monitor ) {
+const collect = ( monitor ) => {
   return {
     item: monitor.getItem(),
     itemType: monitor.getItemType(),
@@ -12,8 +21,7 @@ function collect( monitor ) {
   }
 }
 
-
-function getItemStyles( props ) {
+const getItemStyles = ( props ) => {
   const { currentOffset } = props
   if ( !currentOffset ) {
 
@@ -31,30 +39,19 @@ function getItemStyles( props ) {
   }
 }
 
+// Not using stateless function since DragLayer need to use refs
 class draggedTeddy extends React.Component {
   render() {
-
-    const { item, itemType, isDragging } = this.props
+    const { isDragging, color } = this.props
 
     // Only render if its dragging
-    if ( !isDragging ) return null
-
-
-    const layerStyles = {
-      position: 'fixed',
-      pointerEvents: 'none',
-      zIndex: 100,
-      width: 100,
-      height: 120,
-      left: 0,
-      top: 0
-    }
+    if ( !isDragging ) return <div></div>
 
     return (
-      <div style={ layerStyles }>
+      <div style={ styles }>
         <div style={ getItemStyles( this.props ) }>
           <img
-            src={ 'public/pics/bears/' + this.props.color + '.png' }
+            src={ 'public/pics/bears/' + color + '.png' }
             width='100'
             height='120'
           />
@@ -65,13 +62,11 @@ class draggedTeddy extends React.Component {
 }
 
 draggedTeddy.propTypes = {
-
   currentOffset: PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired
   }),
   isDragging: PropTypes.bool.isRequired,
-
   color: PropTypes.string.isRequired
 }
 

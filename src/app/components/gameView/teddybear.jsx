@@ -3,11 +3,8 @@ import { ItemTypes } from './constants'
 import { DragSource } from 'react-dnd'
 
 const teddybearSource = {
-
   beginDrag( props ) {
-
     props.onBeginDrag( props.color )
-
     return {
       props
     }
@@ -21,36 +18,33 @@ const teddybearSource = {
   }
 }
 
-function collect( connect, monitor ) {
-
+const collect = ( connect, monitor ) => {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   }
 }
 
-export default class Teddybear extends React.Component {
-  render() {
+const transparency = 0.8
 
-    const { connectDragSource, isDragging } = this.props
+const Teddybear = ( props ) => {
+  const { connectDragSource, isDragging, color } = props
 
-    const styles = {
-      bear: {
-        width: '80%',
-        opacity: isDragging ? 0.2 : 1
-
-      }
+  const styles = {
+    bear: {
+      width: '80%',
+      opacity: isDragging ? transparency : 1
     }
-
-    return connectDragSource(
-      <img
-        src={ 'public/pics/bears/' + this.props.color + '.png' }
-        width='100'
-        height='120'
-        style={ styles.bear }
-      />
-    )
   }
+
+  return connectDragSource(
+    <img
+      src={ 'public/pics/bears/' + color + '.png' }
+      width='100'
+      height='120'
+      style={ styles.bear }
+    />
+  )
 }
 
 Teddybear.propTypes = {

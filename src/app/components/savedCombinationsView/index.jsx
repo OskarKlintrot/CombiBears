@@ -35,16 +35,33 @@ const SavedCombinationsView = () => {
         <h1>Sparade kombinationer</h1>
       </div>
       <div>
-        <img src='public/pics/icons/new-sofa.png' alt='Icon for new sofa' style={ styles.icon } />
-        <img src='public/pics/icons/show-result.png' alt='Icon for showing result' style={ styles.iconRight } />
+        <img
+          src='public/pics/icons/new-sofa.png'
+          alt='Icon for new sofa'
+          style={ styles.icon }
+        />
+        <img
+          src='public/pics/icons/show-result.png'
+          alt='Icon for showing result'
+          style={ styles.iconRight }
+        />
       </div>
       <div style={ styles.iconReturn }>
-        <img src='public/pics/icons/arrow-right.png' alt='Icon for returning to game view' style={ styles.icon } />
+        <img
+          src='public/pics/icons/arrow-right.png'
+          alt='Icon for returning to game view'
+          style={ styles.icon }
+        />
       </div>
       <div className='row'>
         <ul style={ styles.ulSofas }>
           { sofas.map( ( sofa ) => {
-            return <Sofa sofa={ sofa } key={ sofa.id } />
+            return (
+              <Sofa
+                key={ sofa.id }
+                sofa={ sofa }
+              />
+            )
           }) }
         </ul>
       </div>
