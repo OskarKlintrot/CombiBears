@@ -13,7 +13,6 @@ const styles = {
 class Bear extends React.Component {
   constructor( props ) {
     super( props )
-
     this.handleToggleColorPicker = this.handleToggleColorPicker.bind( this )
     this.state = {
       showColorPicker: false
