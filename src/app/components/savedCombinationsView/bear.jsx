@@ -1,11 +1,15 @@
 import React from 'react'
 
-class Bear extends React.Component {
-  render() {
-    return (
-      <img src={ 'public/pics/bears/' + this.props.bear.color + '.png' } alt='Image of bear' className='saved-combinations-bear'/>
-     )
+const styles = {
+  bear: {
+    width: '100%'
   }
+}
+
+const Bear = ( props ) => {
+  return (
+    <img src={ 'public/pics/bears/' + props.bear.color + '.png' } alt='Image of bear' style={ styles.bear }/>
+   )
 }
 
 export default Bear
