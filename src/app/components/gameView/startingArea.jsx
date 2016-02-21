@@ -5,42 +5,44 @@ import Seat from './seat'
 class StartingArea extends React.Component {
   renderSeat( teddyColor, seatIndex ) {
     const bear = typeof teddyColor === "string" ?
-      <Teddybear onBeginDrag={ this.props.onBeginDrag } color={ teddyColor } /> :
+      <Teddybear
+        onBeginDrag={ this.props.onBeginDrag }
+        color={ teddyColor }
+      /> :
       null
 
     return (
-      <Seat index={ seatIndex } onDrop={ this.props.onDrop } canDrop={ bear === null } containerTypeName='StartingArea' >
+      <Seat
+        index={ seatIndex }
+        onDrop={ this.props.onDrop }
+        canDrop={ bear === null }
+        containerTypeName='StartingArea'
+      >
         { bear }
       </Seat>
     )
   }
 
   render() {
-
     const styles = {
       startingArea: {
-
         border: '1px solid #f0f',
-
         bottom: '0',
         margin: '0 auto',
         left: '0',
         // right: '0',
-
         position: 'absolute',
         width: '500px',
         height: '125px'
-
-
       }
     }
 
     return (
-      <div
-        style={ styles.startingArea }
-      >
+      <div style={ styles.startingArea } >
       {
-        this.props.bears.map( ( bear, index ) => this.renderSeat( bear, index ) )
+        this.props.bears.map(
+          ( bear, index ) => this.renderSeat( bear, index )
+        )
       }
       </div>
     )
@@ -48,9 +50,7 @@ class StartingArea extends React.Component {
 }
 
 StartingArea.propTypes = {
-  bears: PropTypes.arrayOf(
-    PropTypes.string
-  ).isRequired,
+  bears: PropTypes.arrayOf( PropTypes.string ).isRequired,
   onBeginDrag: PropTypes.func.isRequired
 }
 

@@ -4,14 +4,10 @@ import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
   drop( props, monitor ) {
-
     // const dropResult = monitor.getDropResult()
     props.onHandleAddBear( "orange", props.index )
     if ( props.canDrop )
-
       props.onDrop( props.containerTypeName, props.index )
-
-
     // props.onDrop( monitor.getItem() )
     // console.log( 'Drop success' )
     // console.log( 'sofaSeat: seatTarget -> drop', monitor )
@@ -28,9 +24,7 @@ const collect = ( connect, monitor ) => {
 }
 
 class Seat extends React.Component {
-
   render() {
-
     const { connectDropTarget, isOver } = this.props
 
     const styles = {
@@ -47,13 +41,9 @@ class Seat extends React.Component {
     }
 
     return connectDropTarget(
-
       <div style={ styles.seat } >
-
       { this.props.children }
-
       </div>
-
     )
   }
 }

@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 // import { ItemTypes } from './constants'
 import { DragLayer } from 'react-dnd'
 
-
 const collect = ( monitor ) => {
   return {
     item: monitor.getItem(),
@@ -11,7 +10,6 @@ const collect = ( monitor ) => {
     isDragging: monitor.isDragging()
   }
 }
-
 
 const getItemStyles = ( props ) => {
   const { currentOffset } = props
@@ -33,12 +31,10 @@ const getItemStyles = ( props ) => {
 
 class draggedTeddy extends React.Component {
   render() {
-
     const { isDragging } = this.props
 
     // Only render if its dragging
     if ( !isDragging ) return null
-
 
     const layerStyles = {
       position: 'fixed',
@@ -65,13 +61,11 @@ class draggedTeddy extends React.Component {
 }
 
 draggedTeddy.propTypes = {
-
   currentOffset: PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired
   }),
   isDragging: PropTypes.bool.isRequired,
-
   color: PropTypes.string.isRequired
 }
 

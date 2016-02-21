@@ -3,11 +3,8 @@ import { ItemTypes } from './constants'
 import { DragSource } from 'react-dnd'
 
 const teddybearSource = {
-
   beginDrag( props ) {
-
     props.onBeginDrag( props.color )
-
     return {
       props
     }
@@ -32,7 +29,6 @@ const transparency = 0.8
 
 export default class Teddybear extends React.Component {
   render() {
-
     const { connectDragSource, isDragging } = this.props
 
     const styles = {
