@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux'
-// Import your reducers...
-import AppReducer from './appReducer'
 import SettingsReducer from './settingsReducer'
+import GameReducer from './gameReducer'
 
 const CombinedReducers = combineReducers({
-  // ...and combine them here
-  app: AppReducer,
-  settings: SettingsReducer
+  settings: SettingsReducer,
+  game: GameReducer
 })
 
 export default CombinedReducers

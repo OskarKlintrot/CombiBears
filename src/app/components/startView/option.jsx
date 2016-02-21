@@ -1,21 +1,20 @@
 import React from 'react'
 
-const Option = ( props ) => {
-  const optionStyle = {
-    optionElement: {
-      height: '25em',
-      width: '25em',
-      padding: '3em 5em 0 5em',
-      borderRadius: '50%',
-      backgroundColor: 'rgba(161, 161, 161, 0.56)',
-      overflow: 'hidden'
-    }
+const styles = {
+  optionElement: {
+    height: '25em',
+    width: '25em',
+    padding: '0 5em 0 5em',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(161, 161, 161, 0.56)'
   }
+}
 
+const Option = ( props ) => {
   return (
     <div
       className='startViewOptions'
-      style={ optionStyle.optionElement }
+      style={ styles.optionElement }
     >
       { props.children }
     </div>

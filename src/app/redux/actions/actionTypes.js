@@ -1,15 +1,18 @@
-export const ActionTypesApp = {
-  RESET: 'RESET',
-  SET_USER: 'SET_USER'
-  // You can have several objects here...
+const Game = {
+  RESET_GAME: 'RESET_GAME',
+  ADD_BEAR: 'ADD_BEAR',
+  REMOVE_BEAR: 'REMOVE_BEAR'
 }
 
-export const ActionTypesSettings = {
+const Settings = {
   RESET_SETTINGS: 'RESET_SETTINGS',
-  SET_NUMBER_OF_SEATS: 'SET_NUMBER_OF_SEATS'
-  // ...just to increase code readability
+  INCREASE_NUMBER_OF_SEATS: 'INCREASE_NUMBER_OF_SEATS',
+  DECREASE_NUMBER_OF_SEATS: 'DECREASE_NUMBER_OF_SEATS',
+  START_GAME: 'START_GAME'
 }
 
-const ActionTypes = Object.assign({}, ActionTypesApp, ActionTypesSettings )
+const ActionTypes = Object.assign({}, Game, Settings )
 
-export default ActionTypes
+export const ActionTypesGame = Object.freeze( Game )
+export const ActionTypesSettings = Object.freeze( Settings )
+export default Object.freeze( ActionTypes )

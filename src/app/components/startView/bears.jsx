@@ -1,17 +1,22 @@
 import React from 'react'
 import Bear from './bear'
 
-class Bears extends React.Component {
-  render() {
-    return (
-      <div className='bears'>
-        <Bear />
-        <Bear />
-        <Bear />
-        <Bear />
-      </div>
-    )
-  }
+const style = {
+  paddingTop: '3em'
+}
+
+const Bears = () => {
+  return (
+    <div
+      className='bears'
+      style={ style }
+    >
+      <Bear />
+      <Bear />
+      <Bear />
+      <Bear />
+    </div>
+  )
 }
 
 export default Bears
