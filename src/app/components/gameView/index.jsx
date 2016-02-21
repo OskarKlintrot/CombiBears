@@ -77,12 +77,8 @@ class GameView extends React.Component {
 }
 
 GameView.propTypes = {
-  bearsOnSofa: PropTypes.arrayOf(
-    PropTypes.string
-  ).isRequired,
-  bearsOnStart: PropTypes.arrayOf(
-    PropTypes.string
-  ).isRequired,
+  bearsOnSofa: PropTypes.arrayOf( PropTypes.string ).isRequired,
+  bearsOnStart: PropTypes.arrayOf( PropTypes.string ).isRequired,
   addBear: PropTypes.func.isRequired,
   removeBear: PropTypes.func.isRequired
 }

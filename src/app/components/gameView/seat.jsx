@@ -23,29 +23,27 @@ const collect = ( connect, monitor ) => {
   }
 }
 
-class Seat extends React.Component {
-  render() {
-    const { connectDropTarget, isOver } = this.props
+const Seat = ( props ) => {
+  const { connectDropTarget, isOver } = props
 
-    const styles = {
-      seat: {
-        display: 'inline-block',
-        width: '25%',
-        height: '100%',
-        zIndex: 1,
-        opacity: 1,
-        border: '1px solid #f00',
-        textAlign: 'center',
-        verticalAlign: 'top'
-      }
+  const styles = {
+    seat: {
+      display: 'inline-block',
+      width: '25%',
+      height: '100%',
+      zIndex: 1,
+      opacity: 1,
+      border: '1px solid #f00',
+      textAlign: 'center',
+      verticalAlign: 'top'
     }
-
-    return connectDropTarget(
-      <div style={ styles.seat } >
-      { this.props.children }
-      </div>
-    )
   }
+
+  return connectDropTarget(
+    <div style={ styles.seat } >
+    { props.children }
+    </div>
+  )
 }
 
 Seat.propTypes = {

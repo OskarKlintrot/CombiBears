@@ -27,26 +27,24 @@ const collect = ( connect, monitor ) => {
 
 const transparency = 0.8
 
-export default class Teddybear extends React.Component {
-  render() {
-    const { connectDragSource, isDragging } = this.props
+const Teddybear = ( props ) => {
+  const { connectDragSource, isDragging, color } = props
 
-    const styles = {
-      bear: {
-        width: '80%',
-        opacity: isDragging ? transparency : 1
-      }
+  const styles = {
+    bear: {
+      width: '80%',
+      opacity: isDragging ? transparency : 1
     }
-
-    return connectDragSource(
-      <img
-        src={ 'public/pics/bears/' + this.props.color + '.png' }
-        width='100'
-        height='120'
-        style={ styles.bear }
-      />
-    )
   }
+
+  return connectDragSource(
+    <img
+      src={ 'public/pics/bears/' + color + '.png' }
+      width='100'
+      height='120'
+      style={ styles.bear }
+    />
+  )
 }
 
 Teddybear.propTypes = {
