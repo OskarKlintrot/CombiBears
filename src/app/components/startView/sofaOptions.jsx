@@ -20,7 +20,9 @@ const styles = {
     height: '100%'
   },
   flexItem: {
-
+    flexGrow: '1',
+    WebkitFlexGrow: '1',
+    minHeight: '110px'
   },
   arrow: {
     cursor: 'pointer',
@@ -66,22 +68,31 @@ const SofaOptions = ( props ) => {
     styles.flexItem
   )
 
+  const maxNumberOfSeats = 4
+  const minNumberOfSeats = 2
+
   return (
     <div style={ styles.flexContainer }>
-      <img
-        src={ 'public/pics/icons/arrow-left.png' }
-        style={ styleArrow }
-        onClick={ handleIncreaseNumberOfSeats }
-      ></img>
+      <div style={ styles.flexItem }>
+        <img
+          src={ 'public/pics/icons/arrow-left.png' }
+          style={ styleArrow }
+          onClick={ handleIncreaseNumberOfSeats }
+          hidden={ selected >= maxNumberOfSeats }
+        ></img>
+      </div>
       <img
         src={ 'public/pics/sofas/' + sofa[selected] }
         style={ styleSofa }
       ></img>
-      <img
-        src={ 'public/pics/icons/arrow-right.png' }
-        style={ styleArrow }
-        onClick={ handleDecreaseNumberOfSeats }
-      ></img>
+      <div style={ styles.flexItem }>
+        <img
+          src={ 'public/pics/icons/arrow-right.png' }
+          style={ styleArrow }
+          onClick={ handleDecreaseNumberOfSeats }
+          hidden={ selected <= minNumberOfSeats }
+        ></img>
+      </div>
     </div>
   )
 }
