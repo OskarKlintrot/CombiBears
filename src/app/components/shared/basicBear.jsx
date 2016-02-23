@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const originalStyle = {
   // TODO: Do we need any common css?
@@ -20,6 +20,10 @@ const BasicBear = ( props ) => {
       ></img>
     </div>
   )
+}
+
+BasicBear.propTypes = {
+  bear: PropTypes.object.isRequired
 }
 
 export default BasicBear
