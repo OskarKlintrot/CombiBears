@@ -14,7 +14,10 @@ const BasicBear = ( props ) => {
       { ...otherProps }
       style={ mergedStyle }
     >
-      <img src={ bear.src }></img>
+      <img
+        src={ bear.src }
+        alt='Image of a bear'
+      ></img>
     </div>
   )
 }
