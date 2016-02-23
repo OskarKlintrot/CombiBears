@@ -1,5 +1,5 @@
 export default Object.freeze({
-  IMAGES: {
+  SRC_TO_IMAGES: {
     SOFAS: {
       2: 'public/pics/sofas/two.svg',
       3: 'public/pics/sofas/three.svg',

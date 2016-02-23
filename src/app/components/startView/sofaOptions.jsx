@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import C from '../../constants'
 
 const styles = {
   img: {
@@ -41,12 +42,6 @@ const styles = {
   }
 }
 
-const sofa = {
-  2: 'two.png',
-  3: 'three.png',
-  4: 'four.png'
-}
-
 const SofaOptions = ( props ) => {
   const {
     selected,
@@ -75,19 +70,19 @@ const SofaOptions = ( props ) => {
     <div style={ styles.flexContainer }>
       <div style={ styles.flexItem }>
         <img
-          src={ 'public/pics/icons/arrow-left.png' }
+          src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
           style={ styleArrow }
           onClick={ handleIncreaseNumberOfSeats }
           hidden={ selected >= maxNumberOfSeats }
         ></img>
       </div>
       <img
-        src={ 'public/pics/sofas/' + sofa[selected] }
+        src={ C.SRC_TO_IMAGES.SOFAS[selected] }
         style={ styleSofa }
       ></img>
       <div style={ styles.flexItem }>
         <img
-          src={ 'public/pics/icons/arrow-right.png' }
+          src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
           style={ styleArrow }
           onClick={ handleDecreaseNumberOfSeats }
           hidden={ selected <= minNumberOfSeats }

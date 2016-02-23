@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 // import { Link } from 'react-router'
+import C from '../../constants'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
 import InfoFlash from './infoFlash'
@@ -67,7 +68,7 @@ class StartView extends React.Component {
               style={ styles.logotype }
               id='Logotyp'
               alt='Logotyp'
-              src='public/pics/logotype.png'
+              src={ C.SRC_TO_IMAGES.LOGOTYPE }
               width='600px'
             ></img>
           </div>
@@ -102,7 +103,7 @@ class StartView extends React.Component {
             <img
               id='StartButton'
               alt='StartButton'
-              src='public/pics/icons/start.png'
+              src={ C.SRC_TO_IMAGES.ICONS.START }
               height='50px'
               width='150px'
               style={ { cursor: 'pointer' } }
