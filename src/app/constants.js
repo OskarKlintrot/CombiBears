@@ -18,12 +18,12 @@ export default Object.freeze({
       START: 'public/pics/icons/start.png'
     },
     BEARS: {
-      BLUE: 'public/pics/blue.png',
-      GREEN: 'public/pics/green.png',
-      ORANGE: 'public/pics/orange.png',
-      PINK: 'public/pics/pink.png',
-      WHITE: 'public/pics/white.png',
-      PLACEHOLDER: 'public/pics/placeholder.png'
+      BLUE: 'public/pics/bears/blue.png',
+      GREEN: 'public/pics/bears/green.png',
+      ORANGE: 'public/pics/bears/orange.png',
+      PINK: 'public/pics/bears/pink.png',
+      WHITE: 'public/pics/bears/white.png',
+      PLACEHOLDER: 'public/pics/bears/placeholder.png'
     },
     LOGOTYPE: 'public/pics/logotype.png'
   },
