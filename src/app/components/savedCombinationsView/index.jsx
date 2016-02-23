@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router'
+import { Link } from 'react-router'
 import C from '../../constants'
 import Sofa from './sofa'
 
@@ -36,11 +36,15 @@ const SavedCombinationsView = () => {
         <h1>Sparade kombinationer</h1>
       </div>
       <div>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
-          alt='Icon for new sofa'
-          style={ styles.icon }
-        />
+        <Link
+          to={ '/start' }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
+            alt='Icon for new sofa'
+            style={ styles.icon }
+          />
+        </Link>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
           alt='Icon for showing result'
@@ -48,11 +52,15 @@ const SavedCombinationsView = () => {
         />
       </div>
       <div style={ styles.iconReturn }>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
-          alt='Icon for returning to game view'
-          style={ styles.icon }
-        />
+        <Link
+          to={ '/game' }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
+            alt='Icon for returning to game view'
+            style={ styles.icon }
+          />
+        </Link>
       </div>
       <div className='row'>
         <ul style={ styles.ulSofas }>
