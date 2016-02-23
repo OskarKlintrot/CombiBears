@@ -1,4 +1,5 @@
 import React from 'react'
+import C from '../../constants'
 import Bear from './bear'
 
 const style = {
@@ -11,10 +12,10 @@ const style = {
 }
 
 const colors = [
-  'blue',
-  'green',
-  'placeholder',
-  'placeholder'
+  C.COLORS.BLUE,
+  C.COLORS.GREEN,
+  C.COLORS.PLACEHOLDER,
+  C.COLORS.PLACEHOLDER
 ]
 
 const BearOptions = () => {

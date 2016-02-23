@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import C from '../../constants'
 import ColorPicker from './colorPicker'
 import BasicBear from '../shared/basicBear'
 
@@ -32,9 +33,7 @@ class Bear extends React.Component {
         <BasicBear
           className='bear'
           bear={ {
-            src: this.props.color ?
-            'public/pics/bears/' + this.props.color + '.png' :
-            'public/pics/bears/placeholder.png'
+            src: C.SRC_TO_IMAGES.BEARS[this.props.color]
           } }
           style={ this.props.style }
           onClick={ this.handleToggleColorPicker }
