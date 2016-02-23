@@ -11,28 +11,31 @@ const style = {
   }
 }
 
-const colors = [
-  C.COLORS.BLUE,
-  C.COLORS.GREEN,
-  C.COLORS.PLACEHOLDER,
-  C.COLORS.PLACEHOLDER
-]
+const BearOptions = ( props ) => {
+  const { bears } = props
 
-const BearOptions = () => {
+  const bearsToRender = []
+  const placeholder = { src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
+
+  for ( const item in bears ) {
+    if ( bears.hasOwnProperty( item ) ) {
+      bearsToRender.push(
+        <Bear
+          key={ item }
+          bear={ bears[item] || placeholder }
+          style={ style.bear }
+          bearID={ item }
+        />
+      )
+    }
+  }
+
   return (
     <div
       className='bears'
       style={ style.box }
     >
-      { colors.map( ( color, key ) => {
-        return (
-          <Bear
-            color={ color }
-            style={ style.bear }
-            key={ key }
-          />
-        )
-      }) }
+      { bearsToRender }
     </div>
   )
 }

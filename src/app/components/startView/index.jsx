@@ -91,7 +91,7 @@ class StartView extends React.Component {
         <div className='medium-6 columns'>
           <div style={ styles.center }>
             <Option>
-              <BearOptions />
+              <BearOptions bears={ this.props.bears } />
             </Option>
           </div>
         </div>
@@ -128,6 +128,7 @@ class StartView extends React.Component {
 
 StartView.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
+  bears: PropTypes.object.isRequired,
   increaseNumberOfSeats: PropTypes.func.isRequired,
   decreaseNumberOfSeats: PropTypes.func.isRequired
 }

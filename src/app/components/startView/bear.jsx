@@ -32,9 +32,7 @@ class Bear extends React.Component {
       >
         <BasicBear
           className='bear'
-          bear={ {
-            src: C.SRC_TO_IMAGES.BEARS[this.props.color]
-          } }
+          bear={ this.props.bear }
           style={ this.props.style }
           onClick={ this.handleToggleColorPicker }
         />
