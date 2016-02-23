@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import { ItemTypes } from './constants'
+import C from '../../constants'
 import { DragSource } from 'react-dnd'
+import BasicBear from '../shared/basicBear'
 
 const teddybearSource = {
   beginDrag( props ) {
@@ -33,17 +35,20 @@ const Teddybear = ( props ) => {
   const styles = {
     bear: {
       width: '80%',
+      margin: 'auto',
       opacity: isDragging ? transparency : 1
     }
   }
 
   return connectDragSource(
-    <img
-      src={ 'public/pics/bears/' + color + '.png' }
-      width='100'
-      height='120'
-      style={ styles.bear }
-    />
+    <div>
+      <BasicBear
+        bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
+        width='100'
+        height='120'
+        style={ styles.bear }
+      />
+    </div>
   )
 }
 

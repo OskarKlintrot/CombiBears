@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import C from '../../constants'
 import Sofa from './sofa'
 import DraggedTeddy from './draggedTeddy'
 import StartingArea from './startingArea'
@@ -58,7 +59,7 @@ class GameView extends React.Component {
 
     return (
       <div style={ styles.gameScene } >
-        <DraggedTeddy color='white' />
+        <DraggedTeddy color={ C.COLORS.WHITE } />
         <Sofa
           onDrop={ this.handleDrop }
           onBeginDrag={ this.handleBeginDrag }

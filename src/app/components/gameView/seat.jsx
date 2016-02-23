@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
 import { ItemTypes } from './constants'
+import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
   drop( props, monitor ) {
     // const dropResult = monitor.getDropResult()
-    props.onHandleAddBear( "orange", props.index )
+    props.onHandleAddBear( C.COLORS.ORANGE, props.index )
     if ( props.canDrop )
       props.onDrop( props.containerTypeName, props.index )
     // props.onDrop( monitor.getItem() )

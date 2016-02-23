@@ -1,4 +1,5 @@
 import React from 'react'
+import C from '../../constants'
 import Seat from './seat'
 
 const styles = {
@@ -11,17 +12,6 @@ const styles = {
 
   ulSofasLi: {
     display: 'inline-block'
-  }
-}
-
-const noOfSeats = {
-  getSeatsImage: function( seats ) {
-    switch ( seats ) {
-    case 2: return 'two'
-    case 3: return 'three'
-    case 4: return 'four'
-    default: return 'four'
-    }
   }
 }
 
@@ -41,10 +31,8 @@ const getSofaProps = {
     })
   },
   getSofaBackgroundImg: function( sofaLength ) {
-    const seats = noOfSeats.getSeatsImage( sofaLength )
-    const url = 'public/pics/sofas/' + seats + '.png'
     return ({
-      backgroundImage: 'url(' + url + ')',
+      backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS[sofaLength] + ')',
       backgroundRepeat: 'no-repeat',
       backgroundSize: '100% 100%',
       display: 'block'

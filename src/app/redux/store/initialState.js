@@ -11,8 +11,8 @@ const InitialState = () => {
       correctCombinations: null
     },
     game: {
-      bearsOnSofa: [null, null, "blue", "green"],
-      bearsOnStart: ["orange"]
+      bearsOnSofa: [null, null, "BLUE", "GREEN"],
+      bearsOnStart: ["ORANGE"]
     }
   }
 }

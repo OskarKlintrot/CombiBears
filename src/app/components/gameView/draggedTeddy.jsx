@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 // import { ItemTypes } from './constants'
+import C from '../../constants'
+import BasicBear from '../shared/basicBear'
 import { DragLayer } from 'react-dnd'
 
 const styles = {
@@ -50,8 +52,8 @@ class draggedTeddy extends React.Component {
     return (
       <div style={ styles }>
         <div style={ getItemStyles( this.props ) }>
-          <img
-            src={ 'public/pics/bears/' + color + '.png' }
+          <BasicBear
+            bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
             width='100'
             height='120'
           />
