@@ -1,4 +1,5 @@
 import ActionTypes from "./actionTypes"
+import C from "../../constants"
 
 const {
 	RESET_SETTINGS,
@@ -35,7 +36,7 @@ const SettingsActions = {
         type: START_GAME,
         meta: {
           transition: () => ({
-            path: '/game' // TODO: Change to game view once that is added
+            path: C.ROUTES.GAME
           })
         }
       })

@@ -1,5 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router'
+import C from '../../constants'
 import Sofa from './sofa'
 
 const styles = {
@@ -23,7 +24,7 @@ const styles = {
 }
 
 const SavedCombinationsView = () => {
-  const bears = [{ id: 0, color: "orange" }, { id: 1, color: "green" }, { id: 2, color: "blue" }, { id: 3, color: "pink" }]
+  const bears = [{ id: 0, color: C.COLORS.ORANGE }, { id: 1, color: C.COLORS.GREEN }, { id: 2, color: C.COLORS.BLUE }, { id: 3, color: C.COLORS.PINK }]
   const seats1 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
   const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
   const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
@@ -36,19 +37,19 @@ const SavedCombinationsView = () => {
       </div>
       <div>
         <img
-          src='public/pics/icons/new-sofa.png'
+          src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
           alt='Icon for new sofa'
           style={ styles.icon }
         />
         <img
-          src='public/pics/icons/show-result.png'
+          src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
           alt='Icon for showing result'
           style={ styles.iconRight }
         />
       </div>
       <div style={ styles.iconReturn }>
         <img
-          src='public/pics/icons/arrow-right.png'
+          src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
           alt='Icon for returning to game view'
           style={ styles.icon }
         />
