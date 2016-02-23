@@ -19,15 +19,24 @@ Note that all source code is located under `src/`.
 ```
 +---app
 |   +---components
+|   |   +---gameView
 |   |   +---root
-|   |   \---shared
+|   |   +---savedCombinationsView
+|   |   +---shared
+|   |   \---startView
 |   +---redux
 |   |   +---actions
 |   |   \---store
+|   |       +---helpers
 |   |       \---reducers
 |   \---scripts
 \---www
-    \---css
+    \---public
+        +---css
+        \---pics
+            +---bears
+            +---icons
+            \---sofas
 ```
 
 ## Installation
