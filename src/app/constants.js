@@ -34,5 +34,10 @@ export default Object.freeze({
     PINK: 'PINK',
     WHITE: 'WHITE',
     PLACEHOLDER: 'PLACEHOLDER'
+  },
+  ROUTES: {
+    START: '/start',
+    GAME: '/game',
+    SAVED: '/saved'
   }
 })
