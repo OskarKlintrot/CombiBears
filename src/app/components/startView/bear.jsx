@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import C from '../../constants'
 import ColorPicker from './colorPicker'
 import BasicBear from '../shared/basicBear'
 
