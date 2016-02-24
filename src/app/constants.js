@@ -38,7 +38,6 @@ export default Object.freeze({
   ROUTES: {
     START: '/start',
     GAME: '/game',
-    SAVED: '/saved',
-    RESULTS: '/results'
+    SAVED: '/saved'
   }
 })

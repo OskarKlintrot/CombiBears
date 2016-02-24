@@ -9,7 +9,6 @@ import About from './components/about.jsx'
 import StartView from './components/startView'
 import GameView from './components/gameView'
 import SavedCombinationsView from './components/savedCombinationsView'
-// import ResultsView from './components/resultsView'
 
 export default (
   <Route path='/'
