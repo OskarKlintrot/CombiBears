@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import C from '../../constants'
-import Sofa from './sofa'
+import SofaList from './sofaList'
+// import BasicBear from '../shared/basicBear'
 
 const styles = {
   icon: {
@@ -16,10 +17,6 @@ const styles = {
   iconReturn: {
     position: 'absolute',
     marginTop: '200px'
-  },
-
-  ulSofas: {
-    listStyleType: 'none'
   }
 }
 
@@ -62,18 +59,7 @@ const SavedCombinationsView = () => {
           />
         </Link>
       </div>
-      <div className='row'>
-        <ul style={ styles.ulSofas }>
-          { sofas.map( ( sofa ) => {
-            return (
-              <Sofa
-                key={ sofa.id }
-                sofa={ sofa }
-              />
-            )
-          }) }
-        </ul>
-      </div>
+      <SofaList sofas={ sofas } />
     </div>
   )
 }
