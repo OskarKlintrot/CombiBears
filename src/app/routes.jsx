@@ -11,23 +11,11 @@ import GameView from './components/gameView'
 import SavedCombinationsView from './components/savedCombinationsView'
 
 export default (
-  <Route path='/'
-    component={ Wrapper }
-  >
-    <IndexRoute
-      component={ Main }
-    />
-    <Route path={ C.ROUTES.START }
-      component={ StartView }
-    />
-    <Route path={ C.ROUTES.GAME }
-      component={ GameView }
-    />
-    <Route path={ C.ROUTES.SAVED }
-      component={ SavedCombinationsView }
-    />
-    <Route path='*'
-      component={ NoMatch }
-    />
+  <Route path='/' component={ Wrapper } >
+    <IndexRoute component={ Main } />
+    <Route path={ C.ROUTES.START } component={ StartView } />
+    <Route path={ C.ROUTES.GAME } component={ GameView } />
+    <Route path={ C.ROUTES.SAVED } component={ SavedCombinationsView } />
+    <Route path='*' component={ NoMatch } />
   </Route>
 )
