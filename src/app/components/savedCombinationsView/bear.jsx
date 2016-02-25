@@ -1,5 +1,4 @@
 import React from 'react'
-import C from '../../constants'
 import BasicBear from '../shared/basicBear'
 
 const styles = {
@@ -11,7 +10,7 @@ const styles = {
 const Bear = ( props ) => {
   return (
     <BasicBear
-      bear={ { src: C.SRC_TO_IMAGES.BEARS[props.bear.color] } }
+      bear={ { id: props.bear.id, src: props.bear.src } }
       style={ styles.bear }
     />
    )

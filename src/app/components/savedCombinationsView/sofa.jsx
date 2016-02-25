@@ -18,9 +18,11 @@ const styles = {
 const getSofaProps = {
   getSeatCss: function( noOfTotalSeats ) {
     let seatWidth = ''
-    if ( noOfTotalSeats === 4 )
+    const four = 4
+    const three = 3
+    if ( noOfTotalSeats === four )
       seatWidth = '25%'
-    else if ( noOfTotalSeats === 3 )
+    else if ( noOfTotalSeats === three )
       seatWidth = '33%'
     else
       seatWidth = '50%'
@@ -47,18 +49,18 @@ const Sofa = ( props ) => {
       className='small-4 medium-4 large-4 columns'
     >
       <div
-        style={ getSofaProps.getSofaBackgroundImg( props.sofa.seats.length ) }
+        style={ getSofaProps.getSofaBackgroundImg( props.sofa.bears.length ) }
       >
         <ul style={ styles.ulBears }>
-          { props.sofa.seats.map( ( seat ) => {
+          { props.sofa.bears.map( ( bear ) => {
             return (
               <li
-                key={ seat.seatId }
-                style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }
+                key={ bear.id }
+                style={ getSofaProps.getSeatCss( props.sofa.bears.length ) }
               >
                 <Seat
-                  key={ seat.seatId }
-                  seat={ seat }
+                  key={ bear.id }
+                  bear={ bear }
                 />
               </li>
             )

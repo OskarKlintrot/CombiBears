@@ -6,13 +6,21 @@ const InitialState = () => {
       numberOfSeats: 2,
       bears: {
         0: {
+          id: 0,
           src: C.SRC_TO_IMAGES.BEARS.BLUE
         },
         1: {
+          id: 1,
           src: C.SRC_TO_IMAGES.BEARS.GREEN
         },
-        2: null,
-        3: null
+        2: {
+          id: 2,
+          src: null
+        },
+        3: {
+          id: 3,
+          src: null
+        }
       },
       correctCombinations: null
     },

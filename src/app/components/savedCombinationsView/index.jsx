@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import C from '../../constants'
 import SofaList from './sofaList'
-// import BasicBear from '../shared/basicBear'
 
 const styles = {
   icon: {
@@ -20,12 +20,12 @@ const styles = {
   }
 }
 
-const SavedCombinationsView = () => {
-  const bears = [{ id: 0, color: C.COLORS.ORANGE }, { id: 1, color: C.COLORS.GREEN }, { id: 2, color: C.COLORS.BLUE }, { id: 3, color: C.COLORS.PINK }]
-  const seats1 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const sofas = [{ id: 0, seats: seats1 }, { id: 1, seats: seats2 }, { id: 2, seats: seats3 }]
+const SavedCombinationsView = ( props ) => {
+  const bears = []
+  for ( const bear in props.bears )
+    bears.push( props.bears[bear] )
+
+  const sofas = [{ id: 0, bears: bears }]
 
   return (
     <div>
@@ -42,11 +42,15 @@ const SavedCombinationsView = () => {
             style={ styles.icon }
           />
         </Link>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
-          alt='Icon for showing result'
-          style={ styles.iconRight }
-        />
+        <Link
+          to={ '/results' }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
+            alt='Icon for showing result'
+            style={ styles.iconRight }
+          />
+        </Link>
       </div>
       <div style={ styles.iconReturn }>
         <Link
@@ -64,4 +68,8 @@ const SavedCombinationsView = () => {
   )
 }
 
-export default SavedCombinationsView
+SavedCombinationsView.propTypes = { correctCombinations: PropTypes.array }
+
+const mapStateToProps = ( state ) => state.settings
+
+export default connect( mapStateToProps )( SavedCombinationsView )
