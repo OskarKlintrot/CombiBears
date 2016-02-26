@@ -24,17 +24,23 @@ const SavedCombinationsView = ( props ) => {
   let iInLoop = 0
   const sofas = []
   for ( iInLoop; iInLoop < props.correctCombinations.length; iInLoop += 1 ) {
-    const bears = []
+    const seats = []
     const sofa = { id: iInLoop }
     for ( let jInLoop = 0; jInLoop < props.correctCombinations[iInLoop].length; jInLoop += 1 ) {
-      const bear = { id: props.correctCombinations[iInLoop][jInLoop] }
-      bears.push( bear )
+      const seat = { id: jInLoop }
+      if ( props.correctCombinations[iInLoop][jInLoop] !== null ) {
+        const bearKey = props.correctCombinations[iInLoop][jInLoop]
+        const bear = props.bears[bearKey]
+        bear.id = bearKey
+        seat.bear = bear
+      } else {
+        seat.bear = null
+      }
+      seats.push( seat )
     }
-    sofa.bears = bears
+    sofa.seats = seats
     sofas.push( sofa )
   }
-
-  console.log( sofas )
 
   return (
     <div>

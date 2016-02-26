@@ -1,11 +1,9 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import Bear from './bear'
 
 const Seat = ( props ) => {
-  const bear = props.bears[props.bear.id]
-  if ( bear !== null )
-    return <Bear bear={ bear }/>
+  if ( props.bear !== null )
+    return <Bear bear={ props.bear }/>
   return <div></div>
 }
 

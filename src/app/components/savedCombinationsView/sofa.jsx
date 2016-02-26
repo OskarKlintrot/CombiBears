@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import C from '../../constants'
 import Seat from './seat'
 
@@ -50,18 +49,18 @@ const Sofa = ( props ) => {
       className='small-4 medium-4 large-4 columns'
     >
       <div
-        style={ getSofaProps.getSofaBackgroundImg( props.sofa.bears.length ) }
+        style={ getSofaProps.getSofaBackgroundImg( props.sofa.seats.length ) }
       >
         <ul style={ styles.ulBears }>
-          { props.sofa.bears.map( ( bear ) => {
+          { props.sofa.seats.map( ( seat ) => {
             return (
               <li
-                key={ bear.id }
-                style={ getSofaProps.getSeatCss( props.sofa.bears.length ) }
+                key={ seat.id }
+                style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }
               >
                 <Seat
-                  key={ bear.id }
-                  bear={ bear }
+                  key={ seat.id }
+                  bear={ seat.bear }
                 />
               </li>
             )
