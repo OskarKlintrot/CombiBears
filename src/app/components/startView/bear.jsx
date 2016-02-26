@@ -30,7 +30,7 @@ class Bear extends React.Component {
         style={ styles.div }
       >
         <BasicBear
-          className='bear'
+          className='big-6 columns'
           bear={ this.props.bear }
           style={ this.props.style }
           onClick={ this.handleToggleColorPicker }
