@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 import BasicBear from '../shared/basicBear'
 
 const styles = {
@@ -10,7 +11,7 @@ const styles = {
 const Bear = ( props ) => {
   return (
     <BasicBear
-      bear={ { id: props.bear.id, src: props.bear.src } }
+      bear={ { src: props.bear.src } }
       style={ styles.bear }
     />
    )
