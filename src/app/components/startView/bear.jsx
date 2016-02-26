@@ -34,7 +34,7 @@ class Bear extends React.Component {
         style={ styles.div }
       >
         <BasicBear
-          className='big-6 columns'
+          className='big-6 columns ignore-react-onclickoutside'
           bear={ this.props.bear }
           style={ this.props.style }
           onClick={ this.handleToggleColorPicker }
