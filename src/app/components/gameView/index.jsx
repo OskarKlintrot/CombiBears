@@ -66,8 +66,9 @@ class GameView extends React.Component {
         float: 'right'
       },
 
-      iconReturn: {
+      arrowDiv: {
         position: 'absolute',
+        right: '0',
         marginTop: '200px'
       },
 
@@ -125,6 +126,17 @@ class GameView extends React.Component {
             alt='Icon for putting bears back in startingArea'
             style={ styles.iconRestart }
           />
+        </div>
+        <div style={ styles.arrowDiv }>
+          <Link
+            to={ '/saved' }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+              alt='Icon for maximizing saved permutations-list'
+              style={ styles.icon }
+            />
+          </Link>
         </div>
       </div>
     )
