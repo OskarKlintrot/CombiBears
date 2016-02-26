@@ -4,7 +4,9 @@ import Bear from './bear'
 
 const style = {
   box: {
-    position: 'relative'
+    position: 'relative',
+    top: '50%',
+    transform: 'translateY(-50%)'
   },
   bear: {
     position: 'relative'
@@ -35,7 +37,14 @@ const BearOptions = ( props ) => {
       className='bears'
       style={ style.box }
     >
-      { bearsToRender }
+      <div className='row'>
+        { bearsToRender[0] }
+        { bearsToRender[1] }
+      </div>
+      <div className='row'>
+        { bearsToRender[2] }
+        { bearsToRender[3] }
+      </div>
     </div>
   )
 }
