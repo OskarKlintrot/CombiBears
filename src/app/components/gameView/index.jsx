@@ -45,6 +45,7 @@ class GameView extends React.Component {
     } else if ( containerTypeName === "StartingArea" ) {
 
 
+
     }
   }
 
@@ -55,6 +56,12 @@ class GameView extends React.Component {
     this.setState({ currentlyDraggedColor: color })
   }
 
+  savePermutation() {
+    console.log( 'should save permutation' )
+
+    this.props.savePermutation( this.props.currentCombination )
+
+  }
 
   render() {
     const styles = {
@@ -74,12 +81,13 @@ class GameView extends React.Component {
       arrowDiv: {
         position: 'absolute',
         right: '0',
-        marginTop: '200px'
+        top: '50%',
+        marginTop: '-50px'
       },
 
       iconRestart: {
         bottom: '0',
-        right: '50%',
+        right: '0',
         position: 'absolute',
         height: '80px'
       }
@@ -91,10 +99,9 @@ class GameView extends React.Component {
 
     return (
       <div style={ styles.gameScene } >
+
         <div>
-          <Link
-            to={ '/start' }
-          >
+          <Link to={ '/start' }>
             <img
               src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
               alt='Icon for new sofa'
@@ -105,10 +112,9 @@ class GameView extends React.Component {
             src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
             alt='Icon for saving permutation'
             style={ styles.iconRight }
+            onClick={ () => this.savePermutation() }
           />
-          <Link
-            to={ '/results' }
-          >
+          <Link to={ '/results' }>
             <img
               src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
               alt='Icon for showing result'
@@ -116,12 +122,14 @@ class GameView extends React.Component {
             />
           </Link>
         </div>
+
         <DraggedTeddy color={ this.state.currentlyDraggedColor } />
         <Sofa
           onDrop={ handleDrop }
           onBeginDrag={ handleBeginDrag }
           bears={ this.props.currentCombination.bearsOnSofa }
         />
+
         <div>
           <StartingArea
             onDrop={ handleDrop }
@@ -134,10 +142,9 @@ class GameView extends React.Component {
             style={ styles.iconRestart }
           />
         </div>
+
         <div style={ styles.arrowDiv }>
-          <Link
-            to={ '/saved' }
-          >
+          <Link to={ '/saved' }>
             <img
               src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
               alt='Icon for maximizing saved permutations-list'
@@ -145,6 +152,7 @@ class GameView extends React.Component {
             />
           </Link>
         </div>
+
       </div>
     )
   }
@@ -155,7 +163,8 @@ GameView.propTypes = {
   // bearsOnStart: PropTypes.arrayOf( PropTypes.string ).isRequired,
   currentCombination: PropTypes.object.isRequired,
   addBear: PropTypes.func.isRequired,
-  removeBear: PropTypes.func.isRequired
+  removeBear: PropTypes.func.isRequired,
+  savePermutation: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.game
@@ -167,6 +176,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     removeBear: ( position ) => {
       dispatch( Actions.removeBear( position ) )
+    },
+    savePermutation: ( combination ) => {
+      dispatch( Actions.savePermutation( combination ) )
     }
   }
 }

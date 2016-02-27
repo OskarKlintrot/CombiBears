@@ -3,7 +3,8 @@ import ActionTypes from "./actionTypes"
 const {
   RESET_GAME,
   ADD_BEAR,
-  REMOVE_BEAR
+  REMOVE_BEAR,
+  SAVE_PERMUTATION
 } = ActionTypes
 
 const GameActions = {
@@ -28,6 +29,14 @@ const GameActions = {
       dispatch({
         type: REMOVE_BEAR,
         position: position
+      })
+    }
+  },
+  savePermutation: ( permutation ) => {
+    return ( dispatch ) => {
+      dispatch({
+        type: SAVE_PERMUTATION,
+        permutation: permutation
       })
     }
   }

@@ -20,7 +20,7 @@ const InitialState = () => {
       // bearsOnSofa: [null, null, C.COLORS.BLUE, C.COLORS.GREEN],
       // bearsOnStart: [C.COLORS.ORANGE],
 
-      savedCombinations: [],
+      savedPermutations: [],
       currentCombination: {
         bearsOnSofa: [null, null, C.COLORS.BLUE, C.COLORS.GREEN],
         bearsOnStart: [C.COLORS.ORANGE, null, null, null]

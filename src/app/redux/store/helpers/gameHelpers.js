@@ -13,3 +13,12 @@ export const removeBear = ( array, position ) => {
     ...array.slice( position + 1 )
   ]
 }
+
+export const savePermutation = ( savedPermutations, permutation ) => {
+
+  console.log( "savePermutation", permutation )
+
+  savedPermutations.push( permutation )
+
+  return savedPermutations
+}
