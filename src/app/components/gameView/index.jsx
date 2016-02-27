@@ -30,7 +30,11 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
     this.state = {
-      currentlyDraggedColor: C.COLORS.WHITE
+      currentlyDraggedObj: {
+        color: C.COLORS.WHITE,
+        srcIndex: 0,
+        srcTypeName: "StartingArea"
+      }
     }
   }
 
@@ -40,20 +44,44 @@ class GameView extends React.Component {
 
     if ( containerTypeName === "Sofa" ) {
 
-      this.props.addBear( this.state.currentlyDraggedColor, index )
+      this.props.addBearToSofa( this.state.currentlyDraggedObj.color, index )
+
+      if ( this.state.currentlyDraggedObj.srcTypeName === "StartingArea" )
+
+        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+
+      else if ( this.state.currentlyDraggedObj.srcTypeName === "Sofa" )
+
+        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
 
     } else if ( containerTypeName === "StartingArea" ) {
 
+      this.props.addBearToStart( this.state.currentlyDraggedObj.color, index )
 
+      if ( this.state.currentlyDraggedObj.srcTypeName === "StartingArea" )
+
+        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+
+      else if ( this.state.currentlyDraggedObj.srcTypeName === "Sofa" )
+
+        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
 
     }
   }
 
-  handleBeginDrag( containerTypeName, index, color ) {
-    // TODO: This points to the calling object instead of this class.
-    console.log( 'index -> handleBeginDrag(): currently dragged color is now', color )
 
-    this.setState({ currentlyDraggedColor: color })
+  handleBeginDrag( containerTypeName, index, color ) {
+
+    this.setState(
+      {
+        currentlyDraggedObj: {
+          color: color,
+          srcIndex: index, // We need to save the dragged source index, so we later know which index to delete on successful drop.
+          srcTypeName: containerTypeName // Same with type (distinguish between sofa and start source)
+        }
+      }
+    )
+
   }
 
   savePermutation() {
@@ -123,7 +151,7 @@ class GameView extends React.Component {
           </Link>
         </div>
 
-        <DraggedTeddy color={ this.state.currentlyDraggedColor } />
+        <DraggedTeddy color={ this.state.currentlyDraggedObj.color } />
         <Sofa
           onDrop={ handleDrop }
           onBeginDrag={ handleBeginDrag }
@@ -164,6 +192,13 @@ GameView.propTypes = {
   currentCombination: PropTypes.object.isRequired,
   addBear: PropTypes.func.isRequired,
   removeBear: PropTypes.func.isRequired,
+
+  addBearToSofa: PropTypes.func.isRequired,
+  removeBearFromSofa: PropTypes.func.isRequired,
+
+  addBearToStart: PropTypes.func.isRequired,
+  removeBearFromStart: PropTypes.func.isRequired,
+
   savePermutation: PropTypes.func.isRequired
 }
 
@@ -176,6 +211,18 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     removeBear: ( position ) => {
       dispatch( Actions.removeBear( position ) )
+    },
+    addBearToSofa: ( color, position ) => {
+      dispatch( Actions.addBearToSofa( color, position ) )
+    },
+    removeBearFromSofa: ( position ) => {
+      dispatch( Actions.removeBearFromSofa( position ) )
+    },
+    addBearToStart: ( color, position ) => {
+      dispatch( Actions.addBearToStart( color, position ) )
+    },
+    removeBearFromStart: ( position ) => {
+      dispatch( Actions.removeBearFromStart( position ) )
     },
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
