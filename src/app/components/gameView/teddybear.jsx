@@ -6,7 +6,7 @@ import BasicBear from '../shared/basicBear'
 
 const teddybearSource = {
   beginDrag( props ) {
-    props.onBeginDrag( props.color )
+    props.onBeginDrag( props.containerTypeName, props.index, props.color )
     return {
       props
     }
@@ -54,8 +54,10 @@ const Teddybear = ( props ) => {
 
 Teddybear.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
+  containerTypeName: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
   color: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   onBeginDrag: PropTypes.func.isRequired
 }
 

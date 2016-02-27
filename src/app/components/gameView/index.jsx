@@ -29,27 +29,31 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
     this.state = {
-      currentlyDraggedTeddy: null
+      currentlyDraggedColor: C.COLORS.WHITE
     }
   }
 
   handleDrop( containerTypeName, index ) {
-    // TODO: This points to the calling object instead of this class.
+
     console.log( 'index -> handleDrop()', containerTypeName, index )
-    // this.state.currentlyDraggedColor <-- wont work. this points to wrong object
+
     if ( containerTypeName === "Sofa" ) {
-      // Manipulate array here, the color being dragged should be in this.state.currentyDraggedColor
+
+      this.props.addBear( this.state.currentlyDraggedColor, index )
+
     } else if ( containerTypeName === "StartingArea" ) {
-      // Manipulate array here, the color being dragged should be in this.state.currentyDraggedColor
+
+
     }
   }
 
-  handleBeginDrag( color ) {
+  handleBeginDrag( containerTypeName, index, color ) {
     // TODO: This points to the calling object instead of this class.
     console.log( 'index -> handleBeginDrag(): currently dragged color is now', color )
 
     this.setState({ currentlyDraggedColor: color })
   }
+
 
   render() {
     const styles = {
@@ -68,14 +72,12 @@ class GameView extends React.Component {
         <Sofa
           onDrop={ handleDrop }
           onBeginDrag={ handleBeginDrag }
-          handleAddBear={ this.props.addBear }
-          handleRemoveBear={ this.props.removeBear }
-          bears={ this.props.bearsOnSofa }
+          bears={ this.props.currentCombination.bearsOnSofa }
         />
         <StartingArea
           onDrop={ handleDrop }
           onBeginDrag={ handleBeginDrag }
-          bears={ this.props.bearsOnStart }
+          bears={ this.props.currentCombination.bearsOnStart }
         />
       </div>
     )
@@ -83,8 +85,9 @@ class GameView extends React.Component {
 }
 
 GameView.propTypes = {
-  bearsOnSofa: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  bearsOnStart: PropTypes.arrayOf( PropTypes.string ).isRequired,
+  // bearsOnSofa: PropTypes.arrayOf( PropTypes.string ).isRequired,
+  // bearsOnStart: PropTypes.arrayOf( PropTypes.string ).isRequired,
+  currentCombination: PropTypes.object.isRequired,
   addBear: PropTypes.func.isRequired,
   removeBear: PropTypes.func.isRequired
 }

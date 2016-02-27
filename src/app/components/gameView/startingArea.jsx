@@ -5,9 +5,9 @@ import Seat from './seat'
 const styles = {
   startingArea: {
     border: '1px solid #f0f',
-    bottom: '0',
+    bottom: '10px',
     margin: '0 auto',
-    left: '0',
+    left: '10px',
     // right: '0',
     position: 'absolute',
     width: '500px',
@@ -25,8 +25,13 @@ const StartingArea = ( props ) => {
         <Teddybear
           onBeginDrag={ onBeginDrag }
           color={ teddyColor }
+          containerTypeName='StartingArea'
+          key={ seatIndex }
+          index={ seatIndex }
         /> :
         null
+
+
 
       return (
         <Seat

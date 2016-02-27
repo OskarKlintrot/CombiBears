@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 import Seat from './seat'
 import Teddybear from './teddybear'
 
+const containerTypeName = 'Sofa'
+
 class Sofa extends React.Component {
   getSeatsImage() {
     switch ( this.props.bears.length ) {
@@ -15,8 +17,11 @@ class Sofa extends React.Component {
   renderSeat( teddyColor, seatIndex ) {
     const bear = typeof teddyColor === "string" ?
       <Teddybear
+        key={ seatIndex }
+        index={ seatIndex }
         onBeginDrag={ this.props.onBeginDrag }
         color={ teddyColor }
+        containerTypeName={ containerTypeName }
       /> :
       null
 
@@ -26,8 +31,7 @@ class Sofa extends React.Component {
         index={ seatIndex }
         onDrop={ this.props.onDrop }
         canDrop={ bear === null }
-        onHandleAddBear={ this.props.handleAddBear }
-        containerTypeName='Sofa'
+        containerTypeName={ containerTypeName }
       >
         { bear }
       </Seat>
@@ -75,9 +79,7 @@ class Sofa extends React.Component {
 
 Sofa.propTypes = {
   bears: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  onBeginDrag: PropTypes.func.isRequired,
-  handleAddBear: PropTypes.func.isRequired,
-  handleRemoveBear: PropTypes.func.isRequired
+  onBeginDrag: PropTypes.func.isRequired
 }
 
 export default Sofa

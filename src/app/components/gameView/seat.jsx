@@ -6,9 +6,11 @@ import { DropTarget } from 'react-dnd'
 const seatTarget = {
   drop( props, monitor ) {
     // const dropResult = monitor.getDropResult()
-    props.onHandleAddBear( C.COLORS.ORANGE, props.index )
+
     if ( props.canDrop )
       props.onDrop( props.containerTypeName, props.index )
+
+
     // props.onDrop( monitor.getItem() )
     // console.log( 'Drop success' )
     // console.log( 'sofaSeat: seatTarget -> drop', monitor )
@@ -51,9 +53,7 @@ Seat.propTypes = {
   canDrop: PropTypes.bool.isRequired,
   onDrop: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  onHandleAddBear: PropTypes.func.isRequired,
-  handleRemoveBear: PropTypes.func.isRequired
+  index: PropTypes.number.isRequired
 }
 
 export default DropTarget( ItemTypes.BEAR, seatTarget, collect )( Seat )

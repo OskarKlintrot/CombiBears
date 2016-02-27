@@ -15,12 +15,12 @@ const CombinationReducer = ( state, action ) => {
   case ADD_BEAR:
     return {
       ...state,
-      bearsOnSofa: addBear( state.bearsOnSofa, action.color, action.position )
+      bearsOnSofa: addBear( state.currentCombination.bearsOnSofa, action.color, action.position )
     }
   case REMOVE_BEAR:
     return {
       ...state,
-      bearsOnStart: removeBear( state.bearsOnStart, action.position )
+      bearsOnStart: removeBear( state.currentCombination.bearsOnStart, action.position )
     }
   default:
     return state || new InitialState().game
