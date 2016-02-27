@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
+import { Link } from 'react-router'
 import Sofa from './sofa'
 import DraggedTeddy from './draggedTeddy'
 import StartingArea from './startingArea'
@@ -59,6 +60,28 @@ class GameView extends React.Component {
     const styles = {
       gameScene: {
         height: window.innerHeight + 'px'
+      },
+
+      icon: {
+        height: '100px'
+      },
+
+      iconRight: {
+        height: '100px',
+        float: 'right'
+      },
+
+      arrowDiv: {
+        position: 'absolute',
+        right: '0',
+        marginTop: '200px'
+      },
+
+      iconRestart: {
+        bottom: '0',
+        right: '50%',
+        position: 'absolute',
+        height: '80px'
       }
     }
 
@@ -68,17 +91,60 @@ class GameView extends React.Component {
 
     return (
       <div style={ styles.gameScene } >
+        <div>
+          <Link
+            to={ '/start' }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
+              alt='Icon for new sofa'
+              style={ styles.icon }
+            />
+          </Link>
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
+            alt='Icon for saving permutation'
+            style={ styles.iconRight }
+          />
+          <Link
+            to={ '/results' }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
+              alt='Icon for showing result'
+              style={ styles.iconRight }
+            />
+          </Link>
+        </div>
         <DraggedTeddy color={ this.state.currentlyDraggedColor } />
         <Sofa
           onDrop={ handleDrop }
           onBeginDrag={ handleBeginDrag }
           bears={ this.props.currentCombination.bearsOnSofa }
         />
-        <StartingArea
-          onDrop={ handleDrop }
-          onBeginDrag={ handleBeginDrag }
-          bears={ this.props.currentCombination.bearsOnStart }
-        />
+        <div>
+          <StartingArea
+            onDrop={ handleDrop }
+            onBeginDrag={ handleBeginDrag }
+            bears={ this.props.currentCombination.bearsOnStart }
+          />
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.RESTART }
+            alt='Icon for putting bears back in startingArea'
+            style={ styles.iconRestart }
+          />
+        </div>
+        <div style={ styles.arrowDiv }>
+          <Link
+            to={ '/saved' }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+              alt='Icon for maximizing saved permutations-list'
+              style={ styles.icon }
+            />
+          </Link>
+        </div>
       </div>
     )
   }
