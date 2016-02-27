@@ -29,7 +29,7 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
     this.state = {
-      currentlyDraggedColor: null
+      currentlyDraggedTeddy: null
     }
   }
 
@@ -47,7 +47,8 @@ class GameView extends React.Component {
   handleBeginDrag( color ) {
     // TODO: This points to the calling object instead of this class.
     console.log( 'index -> handleBeginDrag(): currently dragged color is now', color )
-    // this.setState({ currentlyDraggedColor: color }) <--- wont work. this points to wrong object
+
+    this.setState({ currentlyDraggedColor: color })
   }
 
   render() {
@@ -57,19 +58,23 @@ class GameView extends React.Component {
       }
     }
 
+    // Bind 'this' to GameView on passed methods
+    const handleDrop = this.handleDrop.bind( this )
+    const handleBeginDrag = this.handleBeginDrag.bind( this )
+
     return (
       <div style={ styles.gameScene } >
-        <DraggedTeddy color={ C.COLORS.WHITE } />
+        <DraggedTeddy color={ this.state.currentlyDraggedColor } />
         <Sofa
-          onDrop={ this.handleDrop }
-          onBeginDrag={ this.handleBeginDrag }
+          onDrop={ handleDrop }
+          onBeginDrag={ handleBeginDrag }
           handleAddBear={ this.props.addBear }
           handleRemoveBear={ this.props.removeBear }
           bears={ this.props.bearsOnSofa }
         />
         <StartingArea
-          onDrop={ this.handleDrop }
-          onBeginDrag={ this.handleBeginDrag }
+          onDrop={ handleDrop }
+          onBeginDrag={ handleBeginDrag }
           bears={ this.props.bearsOnStart }
         />
       </div>
