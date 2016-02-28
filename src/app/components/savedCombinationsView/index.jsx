@@ -21,25 +21,30 @@ const styles = {
 }
 
 const SavedCombinationsView = ( props ) => {
-  let iInLoop = 0
   const sofas = []
-  for ( iInLoop; iInLoop < props.correctCombinations.length; iInLoop += 1 ) {
-    const seats = []
-    const sofa = { id: iInLoop }
-    for ( let jInLoop = 0; jInLoop < props.correctCombinations[iInLoop].length; jInLoop += 1 ) {
-      const seat = { id: jInLoop }
-      if ( props.correctCombinations[iInLoop][jInLoop] !== null ) {
-        const bearKey = props.correctCombinations[iInLoop][jInLoop]
-        const bear = props.bears[bearKey]
-        bear.id = bearKey
-        seat.bear = bear
-      } else {
-        seat.bear = null
+  if ( props.correctCombinations !== null ) {
+    let iInLoop = 0
+    for ( iInLoop; iInLoop < props.correctCombinations.length; iInLoop += 1 ) {
+      const seats = []
+      const sofa = { id: iInLoop }
+      for ( let jInLoop = 0; jInLoop < props.correctCombinations[iInLoop].length; jInLoop += 1 ) {
+        const seat = { id: jInLoop }
+        if ( props.correctCombinations[iInLoop][jInLoop] !== null ) {
+          const bearKey = props.correctCombinations[iInLoop][jInLoop]
+          const bear = props.bears[bearKey]
+          seat.bear = bear
+        } else {
+          seat.bear = null
+        }
+        seats.push( seat )
       }
-      seats.push( seat )
+      sofa.seats = seats
+      sofas.push( sofa )
     }
-    sofa.seats = seats
-    sofas.push( sofa )
+  } else {
+    return (
+      <div></div>
+    )
   }
 
   return (
