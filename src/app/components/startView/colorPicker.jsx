@@ -45,6 +45,10 @@ class ColorPicker extends React.Component {
     this.props.handleClickOutside()
   };
 
+  handleColorClick = ( color ) => {
+    this.props.handleBearColorChange( color )
+  };
+
   render() {
     return (
       <div
@@ -61,7 +65,7 @@ class ColorPicker extends React.Component {
             <div
               className={ 'color' + color }
               key={ key }
-              onClick={ this.props.handleBearColorChange( color ) }
+              onClick={ this.handleColorClick( color ) }
               style={ colorStyle }
             />
           )

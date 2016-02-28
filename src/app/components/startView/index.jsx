@@ -93,7 +93,7 @@ class StartView extends React.Component {
             <Option>
               <BearOptions
                 bears={ this.props.bears }
-                updateBearArray={ this.props.updateBearAray }
+                updateBearArray={ this.props.updateBearArray }
               />
             </Option>
           </div>
