@@ -41,7 +41,7 @@ const Teddybear = ( props ) => {
   return connectDragSource(
     <div>
       <BasicBear
-        bear={ { src: C.SRC_TO_IMAGES.BEARS_SVG[color] } }
+        bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
         width='100'
         height='120'
         style={ styles.bear }
