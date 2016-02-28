@@ -1,9 +1,9 @@
 import InitialState from '../initialState'
-import { addBear, removeBear, savePermutation } from '../helpers/gameHelpers'
+import { addBear, removeBear, savePermutation, moveAllBearsToStart } from '../helpers/gameHelpers'
 import { ActionTypesGame } from '../../actions/actionTypes'
 
 const {
-  RESET_GAME,
+  RESET_PERMUTATION,
   ADD_BEAR,
   REMOVE_BEAR,
 
@@ -18,38 +18,44 @@ const {
 
 const CombinationReducer = ( state, action ) => {
   switch ( action.type ) {
-  case RESET_GAME:
-    return new InitialState().game
+  case RESET_PERMUTATION:
+    // return new InitialState().game
+
+    return {
+      ...state,
+      bearsOnStart: moveAllBearsToStart( state.bearsOnSofa, state.bearsOnStart ),
+      bearsOnSofa: state.bearsOnSofa.map( () => null )
+    }
   case ADD_BEAR:
     return {
       ...state,
-      bearsOnSofa: addBear( state.currentCombination.bearsOnSofa, action.color, action.position )
+      bearsOnSofa: addBear( state.bearsOnSofa, action.color, action.position )
     }
   case REMOVE_BEAR:
     return {
       ...state,
-      bearsOnStart: removeBear( state.currentCombination.bearsOnStart, action.position )
+      bearsOnStart: removeBear( state.bearsOnStart, action.position )
     }
 
   case ADD_BEAR_TO_SOFA:
     return {
       ...state,
-      bearsOnSofa: addBear( state.currentCombination.bearsOnSofa, action.color, action.position )
+      bearsOnSofa: addBear( state.bearsOnSofa, action.color, action.position )
     }
   case REMOVE_BEAR_FROM_SOFA:
     return {
       ...state,
-      bearsOnSofa: removeBear( state.currentCombination.bearsOnSofa, action.position )
+      bearsOnSofa: removeBear( state.bearsOnSofa, action.position )
     }
   case ADD_BEAR_TO_START:
     return {
       ...state,
-      bearsOnStart: addBear( state.currentCombination.bearsOnStart, action.color, action.position )
+      bearsOnStart: addBear( state.bearsOnStart, action.color, action.position )
     }
   case REMOVE_BEAR_FROM_START:
     return {
       ...state,
-      bearsOnStart: removeBear( state.currentCombination.bearsOnStart, action.position )
+      bearsOnStart: removeBear( state.bearsOnStart, action.position )
     }
 
   case SAVE_PERMUTATION:

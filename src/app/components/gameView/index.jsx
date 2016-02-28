@@ -90,7 +90,13 @@ class GameView extends React.Component {
 
   savePermutation() {
 
-    this.props.savePermutation( this.props.currentCombination )
+    this.props.savePermutation( this.props.bearsOnSofa )
+
+  }
+
+  resetPermutation() {
+
+    this.props.resetPermutation()
 
   }
 
@@ -158,19 +164,20 @@ class GameView extends React.Component {
         <Sofa
           onDrop={ handleDrop }
           onBeginDrag={ handleBeginDrag }
-          bears={ this.props.currentCombination.bearsOnSofa }
+          bears={ this.props.bearsOnSofa }
         />
 
         <div>
           <StartingArea
             onDrop={ handleDrop }
             onBeginDrag={ handleBeginDrag }
-            bears={ this.props.currentCombination.bearsOnStart }
+            bears={ this.props.bearsOnStart }
           />
           <img
             src={ C.SRC_TO_IMAGES.ICONS.RESTART }
             alt='Icon for putting bears back in startingArea'
             style={ styles.iconRestart }
+            onClick={ () => this.resetPermutation() }
           />
         </div>
 
@@ -191,16 +198,14 @@ class GameView extends React.Component {
 
 GameView.propTypes = {
 
-  currentCombination: PropTypes.object.isRequired,
-  addBear: PropTypes.func.isRequired,
-  removeBear: PropTypes.func.isRequired,
+  bearsOnSofa: PropTypes.object.isRequired,
+  bearsOnStart: PropTypes.object.isRequired,
 
   addBearToSofa: PropTypes.func.isRequired,
   removeBearFromSofa: PropTypes.func.isRequired,
-
   addBearToStart: PropTypes.func.isRequired,
   removeBearFromStart: PropTypes.func.isRequired,
-
+  resetPermutation: PropTypes.func.isRequired,
   savePermutation: PropTypes.func.isRequired
 }
 
@@ -208,12 +213,6 @@ const mapStateToProps = ( state ) => state.game
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
-    addBear: ( color, position ) => {
-      dispatch( Actions.addBear( color, position ) )
-    },
-    removeBear: ( position ) => {
-      dispatch( Actions.removeBear( position ) )
-    },
     addBearToSofa: ( color, position ) => {
       dispatch( Actions.addBearToSofa( color, position ) )
     },
@@ -225,6 +224,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     removeBearFromStart: ( position ) => {
       dispatch( Actions.removeBearFromStart( position ) )
+    },
+    resetPermutation: ( position ) => {
+      dispatch( Actions.resetPermutation( position ) )
     },
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )

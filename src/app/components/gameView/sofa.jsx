@@ -94,8 +94,6 @@ class Sofa extends React.Component {
 
     const sofaStyles = Object.assign({}, styles.sofa, this.getSofaStyles() )
 
-    console.log( "SofaStyles", sofaStyles )
-
     return (
       <div
         className='sofa'
