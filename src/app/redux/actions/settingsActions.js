@@ -5,7 +5,8 @@ const {
 	RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
-	UPDATE_BEAR_ARRAY,
+	UPDATE_BEAR,
+	DELETE_BEAR,
   START_GAME
 } = ActionTypes
 
@@ -31,11 +32,19 @@ const SettingsActions = {
       })
     }
   },
-  updateBearArray: ( bearSrc, bearId ) => {
+  updateBear: ( bearSrc, bearId ) => {
     return ( dispatch ) => {
       dispatch({
-        type: UPDATE_BEAR_ARRAY,
+        type: UPDATE_BEAR,
         bearSrc: bearSrc,
+        bearId: bearId
+      })
+    }
+  },
+  deleteBear: ( bearId ) => {
+    return ( dispatch ) => {
+      dispatch({
+        type: DELETE_BEAR,
         bearId: bearId
       })
     }

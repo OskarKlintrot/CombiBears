@@ -1,7 +1,7 @@
 import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
 import { ActionTypesSettings } from '../../actions/actionTypes'
-import { updateBear } from '../helpers/startHelpers'
+import { updateBear, deleteBear } from '../helpers/startHelpers'
 
 const getBearsFromObject = ( obj, seats ) => {
   const filtered = Object.keys( obj ).filter( ( key ) => obj[key] )
@@ -15,7 +15,8 @@ const {
   RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
-  UPDATE_BEAR_ARRAY,
+  UPDATE_BEAR,
+  DELETE_BEAR,
   START_GAME
 } = ActionTypesSettings
 
@@ -36,10 +37,15 @@ const SettingsReducer = ( state, action ) => {
       ...state,
       numberOfSeats: state.numberOfSeats - 1 < minSeats ? maxSeats : state.numberOfSeats - 1
     }
-  case UPDATE_BEAR_ARRAY:
+  case UPDATE_BEAR:
     return {
       ...state,
       bears: updateBear( state.bears, action.bearSrc, action.bearId )
+    }
+  case DELETE_BEAR:
+    return {
+      ...state,
+      bears: deleteBear( state.bears, action.bearId )
     }
   case START_GAME:
     return {

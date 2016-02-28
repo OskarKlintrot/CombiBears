@@ -32,7 +32,7 @@ class Bear extends React.Component {
 
   onHandleBearColorChange = ( color ) => {
     this.src = this.getImageSrcFromColorString( color )
-    this.props.updateBearArray( this.src, this.props.bearID )
+    this.props.updateBear( this.src, this.props.bearID )
   };
 
   getImageSrcFromColorString = ( color ) => {
@@ -85,7 +85,8 @@ Bear.propTypes = {
   bearID: PropTypes.number.isRequired,
   color: PropTypes.string,
   style: PropTypes.object.isRequired,
-  updateBearArray: PropTypes.func.isRequired
+  updateBear: PropTypes.func.isRequired,
+  deleteBear: PropTypes.func.isRequired
 }
 
 export default Bear

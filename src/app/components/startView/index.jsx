@@ -93,7 +93,8 @@ class StartView extends React.Component {
             <Option>
               <BearOptions
                 bears={ this.props.bears }
-                updateBearArray={ this.props.updateBearArray }
+                updateBear={ this.props.updateBear }
+                deleteBear={ this.props.deleteBear }
               />
             </Option>
           </div>
@@ -134,7 +135,8 @@ StartView.propTypes = {
   bears: PropTypes.object.isRequired,
   increaseNumberOfSeats: PropTypes.func.isRequired,
   decreaseNumberOfSeats: PropTypes.func.isRequired,
-  updateBearArray: PropTypes.func.isRequired
+  updateBear: PropTypes.func.isRequired,
+  deleteBear: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.settings
@@ -147,8 +149,11 @@ const mapDispatchToProps = ( dispatch ) => {
     decreaseNumberOfSeats: () => {
       dispatch( Actions.decreaseNumberOfSeats() )
     },
-    updateBearArray: ( bearSrc, bearId ) => {
-      dispatch( Actions.updateBearArray( bearSrc, bearId ) )
+    updateBear: ( bearSrc, bearId ) => {
+      dispatch( Actions.updateBear( bearSrc, bearId ) )
+    },
+    deleteBear: ( bearId ) => {
+      dispatch( Actions.deleteBear( bearId ) )
     },
     startGame: () => {
       dispatch( Actions.startGame() )
