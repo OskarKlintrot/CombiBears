@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import listensToClickOutside from 'react-onclickoutside/decorator'
+import C from '../../constants'
 
 const styles = {
   box: {
@@ -24,14 +25,14 @@ const styles = {
 }
 
 const colors = [
-  'blue',
-  'green',
-  'yellow',
-  'red',
-  'purple',
-  'pink',
-  'orange',
-  'brown'
+  C.COLORS.BLUE,
+  C.COLORS.GREEN,
+  C.COLORS.YELLOW,
+  C.COLORS.RED,
+  C.COLORS.PURPLE,
+  C.COLORS.PINK,
+  C.COLORS.ORANGE,
+  C.COLORS.BROWN
 ]
 
 class ColorPicker extends React.Component {
@@ -60,6 +61,7 @@ class ColorPicker extends React.Component {
             <div
               className={ 'color' + color }
               key={ key }
+              onClick={ this.props.handleBearColorChange( color ) }
               style={ colorStyle }
             />
           )
@@ -70,7 +72,8 @@ class ColorPicker extends React.Component {
 }
 
 ColorPicker.props = {
-  handleClickOutside: PropTypes.func.isRequired
+  handleClickOutside: PropTypes.func.isRequired,
+  handleBearColorChange: PropTypes.func.isRequired
 }
 
 export default listensToClickOutside( ColorPicker )

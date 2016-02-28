@@ -14,7 +14,7 @@ const style = {
 }
 
 const BearOptions = ( props ) => {
-  const { bears } = props
+  const { bears, updateBearArray } = props
 
   const bearsToRender = []
   const placeholder = { src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
@@ -25,8 +25,9 @@ const BearOptions = ( props ) => {
         <Bear
           key={ item }
           bear={ bears[item] || placeholder }
+          updateBearArray={ updateBearArray }
           style={ style.bear }
-          bearID={ item }
+          bearID={ parseInt( item ) }
         />
       )
     }

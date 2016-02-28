@@ -14,6 +14,7 @@ const {
   RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
+  UPDATE_BEAR_ARRAY,
   START_GAME
 } = ActionTypesSettings
 
@@ -33,6 +34,11 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       numberOfSeats: state.numberOfSeats - 1 < minSeats ? maxSeats : state.numberOfSeats - 1
+    }
+  case UPDATE_BEAR_ARRAY:
+    return {
+      ...state,
+      bears: state.bears[action.bearId] = action.bearSrc
     }
   case START_GAME:
     return {
