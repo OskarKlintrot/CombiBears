@@ -6,7 +6,7 @@ const style = {
   box: {
     position: 'relative',
     top: '50%',
-    transform: 'translateY(-50%)'
+    transform: 'translateY(-55%)'
   },
   bear: {
     position: 'relative'
