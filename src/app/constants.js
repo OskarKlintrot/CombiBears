@@ -18,14 +18,6 @@ export default Object.freeze({
       START: 'public/pics/icons/start.png'
     },
     BEARS: {
-      BLUE: 'public/pics/bears/blue.png',
-      GREEN: 'public/pics/bears/green.png',
-      ORANGE: 'public/pics/bears/orange.png',
-      PINK: 'public/pics/bears/pink.png',
-      WHITE: 'public/pics/bears/white.png',
-      PLACEHOLDER: 'public/pics/bears/placeholder.png'
-    },
-    BEARS_SVG: {
       BLUE: 'public/pics/bears/blue.svg',
       BROWN: 'public/pics/bears/brown.svg',
       GREEN: 'public/pics/bears/green.svg',
