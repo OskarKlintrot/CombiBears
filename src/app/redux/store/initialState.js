@@ -17,8 +17,14 @@ const InitialState = () => {
       correctCombinations: null
     },
     game: {
-      bearsOnSofa: [null, null, C.COLORS.BLUE, C.COLORS.GREEN],
-      bearsOnStart: [C.COLORS.ORANGE]
+      // bearsOnSofa: [null, null, C.COLORS.BLUE, C.COLORS.GREEN],
+      // bearsOnStart: [C.COLORS.ORANGE],
+
+      savedPermutations: [],
+      currentCombination: {
+        bearsOnSofa: [null, null, C.COLORS.BLUE, C.COLORS.GREEN],
+        bearsOnStart: [C.COLORS.ORANGE, null, null, null]
+      }
     }
   }
 }

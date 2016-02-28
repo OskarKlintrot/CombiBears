@@ -39,9 +39,13 @@ export default Object.freeze({
   },
   COLORS: {
     BLUE: 'BLUE',
+    BROWN: 'BROWN',
     GREEN: 'GREEN',
     ORANGE: 'ORANGE',
     PINK: 'PINK',
+    PURPLE: 'PURPLE',
+    RED: 'RED',
+    YELLOW: 'YELLOW',
     WHITE: 'WHITE',
     PLACEHOLDER: 'PLACEHOLDER'
   },
@@ -50,5 +54,10 @@ export default Object.freeze({
     GAME: '/game',
     SAVED: '/saved',
     RESULTS: '/results'
+  },
+  COMPONENT_NAMES: {
+    BEAR: 'teddybear',
+    STARTING_AREA: 'StartingArea',
+    SOFA: 'Sofa'
   }
 })

@@ -8,8 +8,8 @@ const styles = {
   position: 'fixed',
   pointerEvents: 'none',
   zIndex: 100,
-  width: 100,
-  height: 120,
+  width: 120,
+  height: 140,
   left: 0,
   top: 0
 }
@@ -53,7 +53,7 @@ class draggedTeddy extends React.Component {
       <div style={ styles }>
         <div style={ getItemStyles( this.props ) }>
           <BasicBear
-            bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
+            bear={ { src: C.SRC_TO_IMAGES.BEARS_SVG[color] } }
             width='100'
             height='120'
           />
