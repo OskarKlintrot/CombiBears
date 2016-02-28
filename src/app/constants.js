@@ -25,6 +25,16 @@ export default Object.freeze({
       WHITE: 'public/pics/bears/white.png',
       PLACEHOLDER: 'public/pics/bears/placeholder.png'
     },
+    BEARS_SVG: {
+      BLUE: 'public/pics/bears/blue.svg',
+      BROWN: 'public/pics/bears/brown.svg',
+      GREEN: 'public/pics/bears/green.svg',
+      ORANGE: 'public/pics/bears/orange.svg',
+      PINK: 'public/pics/bears/pink.svg',
+      PURPLE: 'public/pics/bears/purple.svg',
+      RED: 'public/pics/bears/red.svg',
+      YELLOW: 'public/pics/bears/yellow.svg'
+    },
     LOGOTYPE: 'public/pics/logotype.png'
   },
   COLORS: {
