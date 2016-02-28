@@ -1,16 +1,31 @@
 import React, { PropTypes } from 'react'
 import Seat from './seat'
 import Teddybear from './teddybear'
+import C from '../../constants'
 
-const containerTypeName = 'Sofa'
+const containerTypeName = C.COMPONENT_NAMES.SOFA
 
 class Sofa extends React.Component {
+
+  getSeatStyles() {
+    switch ( this.props.bears.length ) {
+    case 2: return {
+      background: C.SRC_TO_IMAGES.SOFAS['2'],
+      width: '300px',
+
+    }
+    case 3: return C.SRC_TO_IMAGES.SOFAS['3']
+    case 4: return C.SRC_TO_IMAGES.SOFAS['4']
+    default: return C.SRC_TO_IMAGES.SOFAS['4']
+    }
+  }
+
   getSeatsImage() {
     switch ( this.props.bears.length ) {
-    case 2: return 'two'
-    case 3: return 'three'
-    case 4: return 'four'
-    default: return 'four'
+    case 2: return C.SRC_TO_IMAGES.SOFAS['2']
+    case 3: return C.SRC_TO_IMAGES.SOFAS['3']
+    case 4: return C.SRC_TO_IMAGES.SOFAS['4']
+    default: return C.SRC_TO_IMAGES.SOFAS['4']
     }
   }
 
@@ -42,7 +57,7 @@ class Sofa extends React.Component {
     const styles = {
       sofa: {
         border: '1px solid #00f',
-        background: 'url(public/pics/sofas/' + this.getSeatsImage() + '.png)',
+        background: 'url(' + this.getSeatsImage() + ')',
         backgroundSize: 'contain',
         backgroundPosition: 'top',
         backgroundRepeat: 'no-repeat',
@@ -51,6 +66,7 @@ class Sofa extends React.Component {
         margin: '0 auto',
         left: '0',
         right: '0',
+        textAlign: 'center',
         width: '500px',
         height: '220px'
       },

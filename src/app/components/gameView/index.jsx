@@ -23,6 +23,9 @@ import touchBackend from 'react-dnd-touch-backend'
  * ]
  * const teddyStartingAreaArray = [
  *   "pink"
+ *   null,
+ *   null,
+ *   null
  * ]
  */
 
@@ -40,32 +43,33 @@ class GameView extends React.Component {
 
   handleDrop( containerTypeName, index ) {
 
-    console.log( 'index -> handleDrop()', containerTypeName, index )
+    if ( containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
-    if ( containerTypeName === "Sofa" ) {
-
+      // Add bear to new sofa seat
       this.props.addBearToSofa( this.state.currentlyDraggedObj.color, index )
 
-      if ( this.state.currentlyDraggedObj.srcTypeName === "StartingArea" )
-
+      // Remove bear from previous seat
+      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+        // From Starting area
         this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
 
-      else if ( this.state.currentlyDraggedObj.srcTypeName === "Sofa" )
-
+      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+        // From Sofa
         this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
 
-    } else if ( containerTypeName === "StartingArea" ) {
+    } else if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
+      // Add bear to new Starting area seat
       this.props.addBearToStart( this.state.currentlyDraggedObj.color, index )
 
-      if ( this.state.currentlyDraggedObj.srcTypeName === "StartingArea" )
-
+      // Remove bear from previous seat
+      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+        // From Starting area seat
         this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
 
-      else if ( this.state.currentlyDraggedObj.srcTypeName === "Sofa" )
-
+      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+        // From sofa seat
         this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
-
     }
   }
 
@@ -77,7 +81,7 @@ class GameView extends React.Component {
         currentlyDraggedObj: {
           color: color,
           srcIndex: index, // We need to save the dragged source index, so we later know which index to delete on successful drop.
-          srcTypeName: containerTypeName // Same with type (distinguish between sofa and start source)
+          srcTypeName: containerTypeName // Same with type (distinguish between Sofa and Starting Area source type)
         }
       }
     )
@@ -85,7 +89,6 @@ class GameView extends React.Component {
   }
 
   savePermutation() {
-    console.log( 'should save permutation' )
 
     this.props.savePermutation( this.props.currentCombination )
 
@@ -187,8 +190,7 @@ class GameView extends React.Component {
 }
 
 GameView.propTypes = {
-  // bearsOnSofa: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  // bearsOnStart: PropTypes.arrayOf( PropTypes.string ).isRequired,
+
   currentCombination: PropTypes.object.isRequired,
   addBear: PropTypes.func.isRequired,
   removeBear: PropTypes.func.isRequired,

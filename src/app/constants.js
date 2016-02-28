@@ -25,13 +25,27 @@ export default Object.freeze({
       WHITE: 'public/pics/bears/white.png',
       PLACEHOLDER: 'public/pics/bears/placeholder.png'
     },
+    BEARS_SVG: {
+      BLUE: 'public/pics/bears/blue.svg',
+      BROWN: 'public/pics/bears/brown.svg',
+      GREEN: 'public/pics/bears/green.svg',
+      ORANGE: 'public/pics/bears/orange.svg',
+      PINK: 'public/pics/bears/pink.svg',
+      PURPLE: 'public/pics/bears/purple.svg',
+      RED: 'public/pics/bears/red.svg',
+      YELLOW: 'public/pics/bears/yellow.svg'
+    },
     LOGOTYPE: 'public/pics/logotype.png'
   },
   COLORS: {
     BLUE: 'BLUE',
+    BROWN: 'BROWN',
     GREEN: 'GREEN',
     ORANGE: 'ORANGE',
     PINK: 'PINK',
+    PURPLE: 'PURPLE',
+    RED: 'RED',
+    YELLOW: 'YELLOW',
     WHITE: 'WHITE',
     PLACEHOLDER: 'PLACEHOLDER'
   },
@@ -40,5 +54,10 @@ export default Object.freeze({
     GAME: '/game',
     SAVED: '/saved',
     RESULTS: '/results'
+  },
+  COMPONENT_NAMES: {
+    BEAR: 'teddybear',
+    STARTING_AREA: 'StartingArea',
+    SOFA: 'Sofa'
   }
 })

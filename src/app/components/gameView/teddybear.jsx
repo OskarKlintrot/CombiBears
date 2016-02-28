@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import { ItemTypes } from './constants'
 import C from '../../constants'
 import { DragSource } from 'react-dnd'
 import BasicBear from '../shared/basicBear'
@@ -13,10 +12,7 @@ const teddybearSource = {
   },
 
   endDrag( props, monitor ) {
-    /*
-    const item = monitor.getItem()
-    const dropResult = monitor.getDropResult()
-    */
+
   }
 }
 
@@ -27,7 +23,7 @@ const collect = ( connect, monitor ) => {
   }
 }
 
-const transparency = 0.8
+const transparency = 0.5
 
 const Teddybear = ( props ) => {
   const { connectDragSource, isDragging, color } = props
@@ -43,7 +39,7 @@ const Teddybear = ( props ) => {
   return connectDragSource(
     <div>
       <BasicBear
-        bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
+        bear={ { src: C.SRC_TO_IMAGES.BEARS_SVG[color] } }
         width='100'
         height='120'
         style={ styles.bear }
@@ -61,4 +57,4 @@ Teddybear.propTypes = {
   onBeginDrag: PropTypes.func.isRequired
 }
 
-export default DragSource( ItemTypes.BEAR, teddybearSource, collect )( Teddybear )
+export default DragSource( C.COMPONENT_NAMES.BEAR, teddybearSource, collect )( Teddybear )
