@@ -30,11 +30,13 @@ const Teddybear = ( props ) => {
 
   const styles = {
     bear: {
-      width: '80%',
+      width: '95%',
       margin: 'auto',
       opacity: isDragging ? transparency : 1
     }
   }
+
+
 
   return connectDragSource(
     <div>

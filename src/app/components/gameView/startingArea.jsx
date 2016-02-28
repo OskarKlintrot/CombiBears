@@ -11,7 +11,7 @@ const styles = {
     // right: '0',
     position: 'absolute',
     width: '500px',
-    height: '125px'
+    height: '150px'
   }
 }
 

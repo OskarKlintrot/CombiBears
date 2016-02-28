@@ -7,18 +7,33 @@ const containerTypeName = C.COMPONENT_NAMES.SOFA
 
 class Sofa extends React.Component {
 
-  getSeatStyles() {
+  getSofaStyles() {
     switch ( this.props.bears.length ) {
     case 2: return {
-      background: C.SRC_TO_IMAGES.SOFAS['2'],
-      width: '300px',
-
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
+      width: '450px',
+      height: '240px',
+      padding: '20px 8px 0 12px'
     }
-    case 3: return C.SRC_TO_IMAGES.SOFAS['3']
-    case 4: return C.SRC_TO_IMAGES.SOFAS['4']
+
+      
+
+    case 3: return {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
+      width: '500px',
+      height: '270px',
+      padding: '40px 8px 0 12px'
+    }
+    case 4: return {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
+      width: '600px',
+      height: '300px',
+      padding: '70px 75px 0 85px'
+    }
     default: return C.SRC_TO_IMAGES.SOFAS['4']
     }
   }
+
 
   getSeatsImage() {
     switch ( this.props.bears.length ) {
@@ -54,6 +69,7 @@ class Sofa extends React.Component {
   }
 
   render() {
+
     const styles = {
       sofa: {
         border: '1px solid #00f',
@@ -76,10 +92,14 @@ class Sofa extends React.Component {
       }
     }
 
+    const sofaStyles = Object.assign({}, styles.sofa, this.getSofaStyles() )
+
+    console.log( "SofaStyles", sofaStyles )
+
     return (
       <div
         className='sofa'
-        style={ styles.sofa }
+        style={ sofaStyles }
       >
         <div style={ styles.seatContainer }>
           {
@@ -87,6 +107,7 @@ class Sofa extends React.Component {
               this.renderSeat( color, index )
             )
           }
+
         </div>
       </div>
     )
