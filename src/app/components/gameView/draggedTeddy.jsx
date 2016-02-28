@@ -8,8 +8,8 @@ const styles = {
   position: 'fixed',
   pointerEvents: 'none',
   zIndex: 100,
-  width: 100,
-  height: 120,
+  width: 120,
+  height: 140,
   left: 0,
   top: 0
 }

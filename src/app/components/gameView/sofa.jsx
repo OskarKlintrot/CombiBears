@@ -16,7 +16,7 @@ class Sofa extends React.Component {
       padding: '20px 8px 0 12px'
     }
 
-      
+
 
     case 3: return {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
