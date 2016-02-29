@@ -9,7 +9,7 @@ import About from './components/about.jsx'
 import StartView from './components/startView'
 import GameView from './components/gameView'
 import SavedCombinationsView from './components/savedCombinationsView'
-// import ResultsView from './components/resultsView'
+import ResultsView from './components/resultsView'
 
 export default (
   <Route path='/' component={ Wrapper } >
@@ -17,6 +17,7 @@ export default (
     <Route path={ C.ROUTES.START } component={ StartView } />
     <Route path={ C.ROUTES.GAME } component={ GameView } />
     <Route path={ C.ROUTES.SAVED } component={ SavedCombinationsView } />
+    <Route path={ C.ROUTES.RESULTS } component={ ResultsView } />
     <Route path='*' component={ NoMatch } />
   </Route>
 )
