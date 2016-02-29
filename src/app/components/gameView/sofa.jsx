@@ -36,11 +36,6 @@ const Sofa = ( props ) => {
       backgroundSize: 'contain',
       backgroundPosition: 'top',
       backgroundRepeat: 'no-repeat',
-      position: 'absolute',
-      bottom: '80px',
-      margin: '0 auto',
-      left: '0',
-      right: '0',
       textAlign: 'center'
     },
     seatContainer: {
@@ -48,7 +43,7 @@ const Sofa = ( props ) => {
     }
   }
 
-  // Merge styles
+  // Merge styles: hard defined styles, prop styles, and sofa specific styles
   const sofaStyles = Object.assign({}, styles.sofa, props.styles, getSofaStyles() )
 
   return (

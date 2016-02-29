@@ -130,6 +130,14 @@ class GameView extends React.Component {
     const styles = {
       gameScene: {
         height: window.innerHeight + 'px'
+      },
+
+      sofa: {
+        position: 'absolute',
+        bottom: '80px',
+        margin: '0 auto',
+        left: '0',
+        right: '0'
       }
     }
 
@@ -146,6 +154,7 @@ class GameView extends React.Component {
         <Sofa
           scale={ 1 }
           numberOfSeats={ this.props.bearsOnSofa.length }
+          styles={ styles.sofa }
         >
           {
             this.props.bearsOnSofa.map( ( color, index ) =>
