@@ -2,3 +2,4 @@ src/app/components/root/index.js
 src/app/redux/store/index.js
 src/app/scripts/upup
 src/app/scripts/redirectToHTTPS.js
+webpack.config.js

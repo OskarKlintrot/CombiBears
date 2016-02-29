@@ -11,8 +11,8 @@ const Root = ( props ) => {
   const { store, history } = props
 
   return (
-    <Provider store = { store }>
-      <Router routes = { routes } history = { history } />
+    <Provider store={ store }>
+      <Router routes={ routes } history={ history } />
     </Provider>
   )
 }
