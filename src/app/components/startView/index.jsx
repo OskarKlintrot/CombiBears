@@ -91,7 +91,11 @@ class StartView extends React.Component {
         <div className='medium-6 columns'>
           <div style={ styles.center }>
             <Option>
-              <BearOptions bears={ this.props.bears } />
+              <BearOptions
+                bears={ this.props.bears }
+                updateBear={ this.props.updateBear }
+                deleteBear={ this.props.deleteBear }
+              />
             </Option>
           </div>
         </div>
@@ -130,7 +134,9 @@ StartView.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
   bears: PropTypes.object.isRequired,
   increaseNumberOfSeats: PropTypes.func.isRequired,
-  decreaseNumberOfSeats: PropTypes.func.isRequired
+  decreaseNumberOfSeats: PropTypes.func.isRequired,
+  updateBear: PropTypes.func.isRequired,
+  deleteBear: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.settings
@@ -142,6 +148,12 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     decreaseNumberOfSeats: () => {
       dispatch( Actions.decreaseNumberOfSeats() )
+    },
+    updateBear: ( bearSrc, bearId ) => {
+      dispatch( Actions.updateBear( bearSrc, bearId ) )
+    },
+    deleteBear: ( bearId ) => {
+      dispatch( Actions.deleteBear( bearId ) )
     },
     startGame: () => {
       dispatch( Actions.startGame() )
