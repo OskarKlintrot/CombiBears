@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
-import Teddybear from './teddybear'
 import Seat from './seat'
+import C from '../../constants'
 
 const styles = {
   startingArea: {
@@ -16,42 +16,19 @@ const styles = {
 }
 
 const StartingArea = ( props ) => {
-  const { bears, onDrop, onBeginDrag } = props
 
   return (
-    <div style={ styles.startingArea } >
-    { bears.map( ( teddyColor, seatIndex ) => {
-      const bear = typeof teddyColor === "string" ?
-        <Teddybear
-          onBeginDrag={ onBeginDrag }
-          color={ teddyColor }
-          containerTypeName='StartingArea'
-          key={ seatIndex }
-          index={ seatIndex }
-        /> :
-        null
-
-
-
-      return (
-        <Seat
-          key={ seatIndex }
-          index={ seatIndex }
-          onDrop={ onDrop }
-          canDrop={ bear === null }
-          containerTypeName='StartingArea'
-        >
-          { bear }
-        </Seat>
-      )
-    }) }
+    <div
+      className={ C.COMPONENT_NAMES.STARTING_AREA }
+      style={ styles.startingArea }
+    >
+      { props.children }
     </div>
   )
 }
 
 StartingArea.propTypes = {
-  bears: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  onBeginDrag: PropTypes.func.isRequired
+
 }
 
 export default StartingArea

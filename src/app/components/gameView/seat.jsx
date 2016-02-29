@@ -4,7 +4,6 @@ import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
   drop( props, monitor ) {
-    // const dropResult = monitor.getDropResult()
 
     if ( props.canDrop )
       props.onDrop( props.containerTypeName, props.index )
