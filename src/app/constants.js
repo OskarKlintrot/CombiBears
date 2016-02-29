@@ -6,16 +6,16 @@ export default Object.freeze({
       4: 'public/pics/sofas/four.svg'
     },
     ICONS: {
-      ARROW_LEFT: 'public/pics/icons/arrow-left.png',
-      ARROW_RIGHT: 'public/pics/icons/arrow-right.png',
-      CONTINUE: 'public/pics/icons/continue.png',
-      NEW_SOFA: 'public/pics/icons/new-sofa.png',
-      RESTART: 'public/pics/icons/restart.png',
-      SAVE_PERMUTATION: 'public/pics/icons/save-permutation.png',
-      SCREENSHOT: 'public/pics/icons/screenshot.png',
-      SHOW_RESULT: 'public/pics/icons/show-result.png',
-      SHOW_SOLUTION: 'public/pics/icons/show-solution.png',
-      START: 'public/pics/icons/start.png'
+      ARROW_LEFT: 'public/pics/icons/arrow-left.svg',
+      ARROW_RIGHT: 'public/pics/icons/arrow-right.svg',
+      CONTINUE: 'public/pics/icons/continue.svg',
+      NEW_SOFA: 'public/pics/icons/new-sofa.svg',
+      RESTART: 'public/pics/icons/restart.svg',
+      SAVE_PERMUTATION: 'public/pics/icons/save-permutation.svg',
+      SCREENSHOT: 'public/pics/icons/screenshot.svg',
+      SHOW_RESULT: 'public/pics/icons/show-result.svg',
+      SHOW_SOLUTION: 'public/pics/icons/show-solution.svg',
+      START: 'public/pics/icons/start.svg'
     },
     BEARS: {
       BLUE: 'public/pics/bears/blue.svg',
