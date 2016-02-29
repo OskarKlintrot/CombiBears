@@ -1,4 +1,5 @@
 import React from 'react'
+import C from '../../constants'
 import Seat from './seat'
 
 const styles = {
@@ -14,23 +15,14 @@ const styles = {
   }
 }
 
-const noOfSeats = {
-  getSeatsImage: function( seats ) {
-    switch ( seats ) {
-    case 2: return 'two'
-    case 3: return 'three'
-    case 4: return 'four'
-    default: return 'four'
-    }
-  }
-}
-
 const getSofaProps = {
   getSeatCss: function( noOfTotalSeats ) {
     let seatWidth = ''
-    if ( noOfTotalSeats === 4 )
+    const four = 4
+    const three = 3
+    if ( noOfTotalSeats === four )
       seatWidth = '25%'
-    else if ( noOfTotalSeats === 3 )
+    else if ( noOfTotalSeats === three )
       seatWidth = '33%'
     else
       seatWidth = '50%'
@@ -41,10 +33,8 @@ const getSofaProps = {
     })
   },
   getSofaBackgroundImg: function( sofaLength ) {
-    const seats = noOfSeats.getSeatsImage( sofaLength )
-    const url = 'public/pics/sofas/' + seats + '.png'
     return ({
-      backgroundImage: 'url(' + url + ')',
+      backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS[sofaLength] + ')',
       backgroundRepeat: 'no-repeat',
       backgroundSize: '100% 100%',
       display: 'block'
@@ -65,12 +55,12 @@ const Sofa = ( props ) => {
           { props.sofa.seats.map( ( seat ) => {
             return (
               <li
-                key={ seat.seatId }
+                key={ seat.id }
                 style={ getSofaProps.getSeatCss( props.sofa.seats.length ) }
               >
                 <Seat
-                  key={ seat.seatId }
-                  seat={ seat }
+                  key={ seat.id }
+                  bear={ seat.bear }
                 />
               </li>
             )

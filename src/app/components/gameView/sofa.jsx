@@ -1,83 +1,75 @@
 import React, { PropTypes } from 'react'
-import Seat from './seat'
-import Teddybear from './teddybear'
+import C from '../../constants'
 
-class Sofa extends React.Component {
-  getSeatsImage() {
-    switch ( this.props.bears.length ) {
-    case 2: return 'two'
-    case 3: return 'three'
-    case 4: return 'four'
-    default: return 'four'
-    }
+const Sofa = ( props ) => {
+
+  const applyScale = ( value, unit ) => {
+    return ( props.scale * Number( value ) ).toString() + unit
   }
 
-  renderSeat( teddyColor, seatIndex ) {
-    const bear = typeof teddyColor === "string" ?
-      <Teddybear
-        onBeginDrag={ this.props.onBeginDrag }
-        color={ teddyColor }
-      /> :
-      null
+  const getSofaStyles = () => {
 
-    return (
-      <Seat
-        key={ seatIndex }
-        index={ seatIndex }
-        onDrop={ this.props.onDrop }
-        canDrop={ bear === null }
-        onHandleAddBear={ this.props.handleAddBear }
-        containerTypeName='Sofa'
-      >
-        { bear }
-      </Seat>
-    )
-  }
-
-  render() {
-    const styles = {
-      sofa: {
-        border: '1px solid #00f',
-        background: 'url(public/pics/sofas/' + this.getSeatsImage() + '.png)',
-        backgroundSize: 'contain',
-        backgroundPosition: 'top',
-        backgroundRepeat: 'no-repeat',
-        position: 'absolute',
-        bottom: '80px',
-        margin: '0 auto',
-        left: '0',
-        right: '0',
-        width: '500px',
-        height: '220px'
+    const sofaStyles = {
+      twoSeats: {
+        background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
+        width: applyScale( '450', 'px' ),
+        height: applyScale( '240', 'px' ),
+        padding: `${ applyScale( '20', 'px ' ) } ${ applyScale( '8', 'px' ) } 0 ${ applyScale( '12', 'px' ) }`
       },
-      seatContainer: {
-        height: '65%'
-        // background: 'rgba(0, 255, 255, 0.5)'
+      threeSeats: {
+        background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
+        width: applyScale( '500', 'px' ),
+        height: applyScale( '270', 'px' ),
+        padding: `${ applyScale( '40', 'px ' ) } ${ applyScale( '8', 'px' ) } 0 ${ applyScale( '12', 'px' ) }`
+      },
+      fourSeats: {
+        background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
+        width: applyScale( '600', 'px' ),
+        height: applyScale( '300', 'px' ),
+        padding: `${ applyScale( '70', 'px ' ) } ${ applyScale( '75', 'px' ) } 0 ${ applyScale( '85', 'px' ) }`
       }
     }
 
-    return (
-      <div
-        className='sofa'
-        style={ styles.sofa }
-      >
-        <div style={ styles.seatContainer }>
-          {
-            this.props.bears.map( ( color, index ) =>
-              this.renderSeat( color, index )
-            )
-          }
-        </div>
-      </div>
-    )
+    switch ( props.numberOfSeats ) {
+    case 2: return sofaStyles.twoSeats
+    case 3: return sofaStyles.threeSeats
+    case 4: return sofaStyles.fourSeats
+    default: return sofaStyles.fourSeats
+    }
   }
+
+  const genericStyles = {
+    sofa: {
+      backgroundSize: 'contain',
+      backgroundPosition: 'top',
+      backgroundRepeat: 'no-repeat',
+      textAlign: 'center'
+    },
+    seatContainer: {
+      height: applyScale( '150', 'px' )
+    }
+  }
+
+  // Merge styles: genericStyles, prop.styles, and sofaStyles
+  const mergedStyles = Object.assign({}, genericStyles.sofa, props.styles, getSofaStyles() )
+
+  return (
+    <div
+      className={ C.COMPONENT_NAMES.SOFA }
+      style={ mergedStyles }
+    >
+      <div style={ genericStyles.seatContainer }>
+
+        { props.children }
+
+      </div>
+    </div>
+  )
 }
 
 Sofa.propTypes = {
-  bears: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  onBeginDrag: PropTypes.func.isRequired,
-  handleAddBear: PropTypes.func.isRequired,
-  handleRemoveBear: PropTypes.func.isRequired
+  numberOfSeats: PropTypes.number.isRequired,
+  scale: PropTypes.number.isRequired
 }
 
 export default Sofa

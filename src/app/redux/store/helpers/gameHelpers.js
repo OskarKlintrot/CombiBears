@@ -13,3 +13,22 @@ export const removeBear = ( array, position ) => {
     ...array.slice( position + 1 )
   ]
 }
+
+export const savePermutation = ( savedPermutations, permutation ) => {
+
+  savedPermutations.push( permutation )
+
+  return savedPermutations
+}
+
+export const moveAllBearsToStart = ( bearsOnSofa, bearsOnStart ) => {
+
+  // Remove all null elements from arrays
+  bearsOnStart = bearsOnStart.filter( ( elem ) => typeof elem === "string" )
+  bearsOnSofa = bearsOnSofa.filter( ( elem ) => typeof elem === "string" )
+
+  // Return combined array
+  return bearsOnStart.concat( bearsOnSofa )
+}
+
+

@@ -1,5 +1,5 @@
 {
-  "name": "TeddySofa",
+  "name": "BearGoesWhere",
   "version": "0.0.1",
   "description": "A childish game",
   "repository": {
@@ -33,6 +33,7 @@
     "react-hot-loader": "^1.3.0",
     "react-mdl": "^1.0.2",
     "react-modal": "^0.6.1",
+    "react-onclickoutside": "^4.5.0",
     "react-redux": "^4.0.4",
     "react-router": "^1.0.2",
     "react-tap-event-plugin": "^0.2.1",

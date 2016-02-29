@@ -1,4 +1,5 @@
 import React from 'react'
+import C from '../constants'
 import { Link } from 'react-router'
 
 const style = {
@@ -10,13 +11,13 @@ const Main = () => {
     <div style={ style }>
       <h1>Tjo!</h1>
       <h2>
-        <Link to={ '/start' }>Start</Link>
+        <Link to={ C.ROUTES.START }>Start</Link>
       </h2>
       <h2>
-        <Link to={ '/saved' }>Sparade kombinationer</Link>
+        <Link to={ C.ROUTES.GAME }>Spel</Link>
       </h2>
       <h2>
-        <Link to={ '/game' }>Kombinera</Link>
+        <Link to={ C.ROUTES.SAVED }>Sparade permutationer</Link>
       </h2>
     </div>
   )

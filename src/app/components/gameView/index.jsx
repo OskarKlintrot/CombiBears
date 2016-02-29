@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react'
+import C from '../../constants'
 import Sofa from './sofa'
-import DraggedTeddy from './draggedTeddy'
+import DraggedTeddy from './draggedBear'
 import StartingArea from './startingArea'
+import Seat from './seat'
+import Buttons from './buttons'
+import DraggableBear from './draggableBear.jsx'
 import { connect } from 'react-redux'
 import Actions from '../../redux/actions/'
 
@@ -21,6 +25,9 @@ import touchBackend from 'react-dnd-touch-backend'
  * ]
  * const teddyStartingAreaArray = [
  *   "pink"
+ *   null,
+ *   null,
+ *   null
  * ]
  */
 
@@ -28,70 +35,185 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
     this.state = {
-      currentlyDraggedColor: null
+      currentlyDraggedObj: {
+        color: C.COLORS.WHITE,
+        srcIndex: 0,
+        srcTypeName: C.COMPONENT_NAMES.STARTING_AREA
+      }
     }
   }
 
   handleDrop( containerTypeName, index ) {
-    // TODO: This points to the calling object instead of this class.
-    console.log( 'index -> handleDrop()', containerTypeName, index )
-    // this.state.currentlyDraggedColor <-- wont work. this points to wrong object
-    if ( containerTypeName === "Sofa" ) {
-      // Manipulate array here, the color being dragged should be in this.state.currentyDraggedColor
-    } else if ( containerTypeName === "StartingArea" ) {
-      // Manipulate array here, the color being dragged should be in this.state.currentyDraggedColor
+
+    if ( containerTypeName === C.COMPONENT_NAMES.SOFA ) {
+
+      // Add bear to new sofa seat
+      this.props.addBearToSofa( this.state.currentlyDraggedObj.color, index )
+
+      // Remove bear from previous seat
+      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+        // From Starting area
+        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+
+      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+        // From Sofa
+        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
+
+    }
+
+    if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
+
+      // Add bear to new Starting area seat
+      this.props.addBearToStart( this.state.currentlyDraggedObj.color, index )
+
+      // Remove bear from previous seat
+      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+        // From Starting area seat
+        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+
+      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+        // From sofa seat
+        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
     }
   }
 
-  handleBeginDrag( color ) {
-    // TODO: This points to the calling object instead of this class.
-    console.log( 'index -> handleBeginDrag(): currently dragged color is now', color )
-    // this.setState({ currentlyDraggedColor: color }) <--- wont work. this points to wrong object
+  handleBeginDrag( containerTypeName, index, color ) {
+    this.setState(
+      {
+        currentlyDraggedObj: {
+          color: color,
+          srcIndex: index, // We need to save the dragged source index, so we later know which index to delete on successful drop.
+          srcTypeName: containerTypeName // Same with type (distinguish between Sofa and Starting Area source type)
+        }
+      }
+    )
+  }
+
+  savePermutation() {
+    this.props.savePermutation( this.props.bearsOnSofa )
+  }
+
+  resetPermutation() {
+    this.props.resetPermutation()
+  }
+
+  renderSeat( teddyColor, seatIndex, containerTypeName ) {
+
+    // Bind 'this' to GameView on passed methods
+    const handleDrop = this.handleDrop.bind( this )
+    const handleBeginDrag = this.handleBeginDrag.bind( this )
+
+    const bear = typeof teddyColor === "string" ?
+      <DraggableBear
+        key={ seatIndex }
+        index={ seatIndex }
+        onBeginDrag={ handleBeginDrag }
+        color={ teddyColor }
+        containerTypeName={ containerTypeName }
+      /> :
+      null
+
+    return (
+      <Seat
+        key={ seatIndex }
+        index={ seatIndex }
+        onDrop={ handleDrop }
+        canDrop={ bear === null }
+        containerTypeName={ containerTypeName }
+      >
+        { bear }
+      </Seat>
+    )
   }
 
   render() {
     const styles = {
       gameScene: {
         height: window.innerHeight + 'px'
+      },
+
+      sofa: {
+        position: 'absolute',
+        bottom: '80px',
+        margin: '0 auto',
+        left: '0',
+        right: '0'
       }
     }
 
+    // Bind 'this' to GameView on passed methods
+    const resetPermutation = this.resetPermutation.bind( this )
+    const savePermutation = this.savePermutation.bind( this )
+
     return (
       <div style={ styles.gameScene } >
-        <DraggedTeddy color='white' />
+
+        <Buttons
+          onRestart={ resetPermutation }
+          onSave={ savePermutation }
+        />
+
         <Sofa
-          onDrop={ this.handleDrop }
-          onBeginDrag={ this.handleBeginDrag }
-          handleAddBear={ this.props.addBear }
-          handleRemoveBear={ this.props.removeBear }
-          bears={ this.props.bearsOnSofa }
-        />
-        <StartingArea
-          onDrop={ this.handleDrop }
-          onBeginDrag={ this.handleBeginDrag }
-          bears={ this.props.bearsOnStart }
-        />
+          scale={ 1 }
+          numberOfSeats={ this.props.bearsOnSofa.length }
+          styles={ styles.sofa }
+        >
+          {
+            this.props.bearsOnSofa.map( ( color, index ) =>
+              this.renderSeat( color, index, C.COMPONENT_NAMES.SOFA )
+            )
+          }
+        </Sofa>
+
+        <StartingArea>
+          {
+            this.props.bearsOnStart.map( ( color, index ) =>
+              this.renderSeat( color, index, C.COMPONENT_NAMES.STARTING_AREA )
+              )
+          }
+        </StartingArea>
+
+        <DraggedTeddy color={ this.state.currentlyDraggedObj.color } />
+
       </div>
     )
   }
 }
 
 GameView.propTypes = {
-  bearsOnSofa: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  bearsOnStart: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  addBear: PropTypes.func.isRequired,
-  removeBear: PropTypes.func.isRequired
+
+  bearsOnSofa: PropTypes.array.isRequired,
+  bearsOnStart: PropTypes.array.isRequired,
+
+  addBearToSofa: PropTypes.func.isRequired,
+  removeBearFromSofa: PropTypes.func.isRequired,
+  addBearToStart: PropTypes.func.isRequired,
+  removeBearFromStart: PropTypes.func.isRequired,
+  resetPermutation: PropTypes.func.isRequired,
+  savePermutation: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.game
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
-    addBear: ( color, position ) => {
-      dispatch( Actions.addBear( color, position ) )
+    addBearToSofa: ( color, position ) => {
+      dispatch( Actions.addBearToSofa( color, position ) )
     },
-    removeBear: ( position ) => {
-      dispatch( Actions.removeBear( position ) )
+    removeBearFromSofa: ( position ) => {
+      dispatch( Actions.removeBearFromSofa( position ) )
+    },
+    addBearToStart: ( color, position ) => {
+      dispatch( Actions.addBearToStart( color, position ) )
+    },
+    removeBearFromStart: ( position ) => {
+      dispatch( Actions.removeBearFromStart( position ) )
+    },
+    resetPermutation: ( position ) => {
+      dispatch( Actions.resetPermutation( position ) )
+    },
+    savePermutation: ( combination ) => {
+      dispatch( Actions.savePermutation( combination ) )
     }
   }
 }
