@@ -43,7 +43,7 @@ export default Object.freeze({
     PLACEHOLDER: 'PLACEHOLDER'
   },
   ROUTES: {
-    START: '/start',
+    START: '/',
     GAME: '/game',
     SAVED: '/saved',
     RESULTS: '/results'

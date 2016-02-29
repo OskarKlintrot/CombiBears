@@ -35,7 +35,7 @@ class Buttons extends React.Component {
     return (
 
       <div>
-        <Link to={ '/start' }>
+        <Link to={ C.ROUTES.START }>
           <img
             src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
             alt='Icon for new sofa'
@@ -48,7 +48,7 @@ class Buttons extends React.Component {
           style={ styles.iconRight }
           onClick={ () => this.props.onSave() }
         />
-        <Link to={ '/results' }>
+        <Link to={ C.ROUTES.RESULTS }>
           <img
             src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
             alt='Icon for showing result'
@@ -64,7 +64,7 @@ class Buttons extends React.Component {
         />
 
         <div style={ styles.arrowDiv }>
-          <Link to={ '/saved' }>
+          <Link to={ C.ROUTES.SAVED }>
             <img
               src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
               alt='Icon for maximizing saved permutations-list'
