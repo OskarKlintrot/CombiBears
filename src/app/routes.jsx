@@ -7,7 +7,7 @@ import NoMatch from './components/shared/noMatch.jsx'
 import StartView from './components/startView'
 import GameView from './components/gameView'
 import SavedCombinationsView from './components/savedCombinationsView'
-import ResultsView from './components/resultsView'
+import ResultsView from './components/resultview'
 
 export default (
   <Route path={ C.ROUTES.START } component={ Wrapper } >
