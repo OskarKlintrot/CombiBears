@@ -3,7 +3,7 @@ import C from '../../constants'
 import { DragSource } from 'react-dnd'
 import BasicBear from '../shared/basicBear'
 
-const teddybearSource = {
+const draggableBearSource = {
   beginDrag( props ) {
     props.onBeginDrag( props.containerTypeName, props.index, props.color )
     return {
@@ -25,7 +25,7 @@ const collect = ( connect, monitor ) => {
 
 const transparency = 0.5
 
-const Teddybear = ( props ) => {
+const DraggableBear = ( props ) => {
   const { connectDragSource, isDragging, color } = props
 
   const styles = {
@@ -35,8 +35,6 @@ const Teddybear = ( props ) => {
       opacity: isDragging ? transparency : 1
     }
   }
-
-
 
   return connectDragSource(
     <div>
@@ -50,7 +48,7 @@ const Teddybear = ( props ) => {
   )
 }
 
-Teddybear.propTypes = {
+DraggableBear.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
@@ -59,4 +57,4 @@ Teddybear.propTypes = {
   onBeginDrag: PropTypes.func.isRequired
 }
 
-export default DragSource( C.COMPONENT_NAMES.BEAR, teddybearSource, collect )( Teddybear )
+export default DragSource( C.COMPONENT_NAMES.BEAR, draggableBearSource, collect )( DraggableBear )

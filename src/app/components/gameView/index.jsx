@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
-import { Link } from 'react-router'
 import Sofa from './sofa'
-import DraggedTeddy from './draggedTeddy'
+import DraggedTeddy from './draggedBear'
 import StartingArea from './startingArea'
+import Seat from './seat'
+import Buttons from './buttons'
+import DraggableBear from './draggableBear.jsx'
 import { connect } from 'react-redux'
 import Actions from '../../redux/actions/'
 
@@ -36,7 +38,7 @@ class GameView extends React.Component {
       currentlyDraggedObj: {
         color: C.COLORS.WHITE,
         srcIndex: 0,
-        srcTypeName: "StartingArea"
+        srcTypeName: C.COMPONENT_NAMES.STARTING_AREA
       }
     }
   }
@@ -57,7 +59,9 @@ class GameView extends React.Component {
         // From Sofa
         this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
 
-    } else if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
+    }
+
+    if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
       // Add bear to new Starting area seat
       this.props.addBearToStart( this.state.currentlyDraggedObj.color, index )
@@ -73,9 +77,7 @@ class GameView extends React.Component {
     }
   }
 
-
   handleBeginDrag( containerTypeName, index, color ) {
-
     this.setState(
       {
         currentlyDraggedObj: {
@@ -85,111 +87,82 @@ class GameView extends React.Component {
         }
       }
     )
-
   }
 
   savePermutation() {
-
     this.props.savePermutation( this.props.bearsOnSofa )
-
   }
 
   resetPermutation() {
-
     this.props.resetPermutation()
+  }
 
+  renderSeat( teddyColor, seatIndex, containerTypeName ) {
+
+    // Bind 'this' to GameView on passed methods
+    const handleDrop = this.handleDrop.bind( this )
+    const handleBeginDrag = this.handleBeginDrag.bind( this )
+
+    const bear = typeof teddyColor === "string" ?
+      <DraggableBear
+        key={ seatIndex }
+        index={ seatIndex }
+        onBeginDrag={ handleBeginDrag }
+        color={ teddyColor }
+        containerTypeName={ containerTypeName }
+      /> :
+      null
+
+    return (
+      <Seat
+        key={ seatIndex }
+        index={ seatIndex }
+        onDrop={ handleDrop }
+        canDrop={ bear === null }
+        containerTypeName={ containerTypeName }
+      >
+        { bear }
+      </Seat>
+    )
   }
 
   render() {
     const styles = {
       gameScene: {
         height: window.innerHeight + 'px'
-      },
-
-      icon: {
-        height: '100px'
-      },
-
-      iconRight: {
-        height: '100px',
-        float: 'right'
-      },
-
-      arrowDiv: {
-        position: 'absolute',
-        right: '0',
-        top: '50%',
-        marginTop: '-50px'
-      },
-
-      iconRestart: {
-        bottom: '0',
-        right: '0',
-        position: 'absolute',
-        height: '80px'
       }
     }
 
     // Bind 'this' to GameView on passed methods
-    const handleDrop = this.handleDrop.bind( this )
-    const handleBeginDrag = this.handleBeginDrag.bind( this )
+    const resetPermutation = this.resetPermutation.bind( this )
 
     return (
       <div style={ styles.gameScene } >
 
-        <div>
-          <Link to={ '/start' }>
-            <img
-              src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
-              alt='Icon for new sofa'
-              style={ styles.icon }
-            />
-          </Link>
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
-            alt='Icon for saving permutation'
-            style={ styles.iconRight }
-            onClick={ () => this.savePermutation() }
-          />
-          <Link to={ '/results' }>
-            <img
-              src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
-              alt='Icon for showing result'
-              style={ styles.iconRight }
-            />
-          </Link>
-        </div>
-
-        <DraggedTeddy color={ this.state.currentlyDraggedObj.color } />
-        <Sofa
-          onDrop={ handleDrop }
-          onBeginDrag={ handleBeginDrag }
-          bears={ this.props.bearsOnSofa }
+        <Buttons
+          onRestart={ resetPermutation }
         />
 
-        <div>
-          <StartingArea
-            onDrop={ handleDrop }
-            onBeginDrag={ handleBeginDrag }
-            bears={ this.props.bearsOnStart }
-          />
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.RESTART }
-            alt='Icon for putting bears back in startingArea'
-            style={ styles.iconRestart }
-            onClick={ () => this.resetPermutation() }
-          />
-        </div>
+        <Sofa
+          scale={ 1 }
+          numberOfSeats={ this.props.bearsOnSofa.length }
+        >
+          {
+            this.props.bearsOnSofa.map( ( color, index ) =>
+              this.renderSeat( color, index, C.COMPONENT_NAMES.SOFA )
+            )
+          }
+        </Sofa>
 
-        <div style={ styles.arrowDiv }>
-          <Link to={ '/saved' }>
-            <img
-              src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-              alt='Icon for maximizing saved permutations-list'
-              style={ styles.icon }
-            />
-          </Link>
-        </div>
+        <StartingArea>
+          {
+            this.props.bearsOnStart.map( ( color, index ) =>
+              this.renderSeat( color, index, C.COMPONENT_NAMES.STARTING_AREA )
+              )
+          }
+        </StartingArea>
+
+        <DraggedTeddy color={ this.state.currentlyDraggedObj.color } />
 
       </div>
     )
@@ -198,8 +171,8 @@ class GameView extends React.Component {
 
 GameView.propTypes = {
 
-  bearsOnSofa: PropTypes.object.isRequired,
-  bearsOnStart: PropTypes.object.isRequired,
+  bearsOnSofa: PropTypes.array.isRequired,
+  bearsOnStart: PropTypes.array.isRequired,
 
   addBearToSofa: PropTypes.func.isRequired,
   removeBearFromSofa: PropTypes.func.isRequired,

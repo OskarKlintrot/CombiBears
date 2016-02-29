@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-// import { ItemTypes } from './constants'
 import C from '../../constants'
 import BasicBear from '../shared/basicBear'
 import { DragLayer } from 'react-dnd'
@@ -42,7 +41,7 @@ const getItemStyles = ( props ) => {
 }
 
 // Not using stateless function since DragLayer need to use refs
-class draggedTeddy extends React.Component {
+class DraggedBear extends React.Component {
   render() {
     const { isDragging, color } = this.props
 
@@ -63,7 +62,7 @@ class draggedTeddy extends React.Component {
   }
 }
 
-draggedTeddy.propTypes = {
+DraggedBear.propTypes = {
   currentOffset: PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired
@@ -72,4 +71,4 @@ draggedTeddy.propTypes = {
   color: PropTypes.string.isRequired
 }
 
-export default DragLayer( collect )( draggedTeddy )
+export default DragLayer( collect )( DraggedBear )
