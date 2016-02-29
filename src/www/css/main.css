@@ -1,0 +1,124 @@
+/* CSS for Resultview*/
+
+.boards { margin: 20px 0; overflow: hidden; }
+.board { border: 5px solid #ccc; float: left; font: 700 24px HelveticaNeue, Helvetica, Arial; margin-right: 20px; padding: 20px; }
+.board.selected { border-color: #3BA8AA; }
+.boards { margin: 20px 0; overflow: hidden; }
+.board { border: 5px solid #ccc; float: left; font: 700 24px HelveticaNeue, Helvetica, Arial; margin-right: 20px; padding: 20px; }
+.board.selected { border-color: #3BA8AA; }
+
+#selected
+{
+    border: 5px solid #938e8e;
+    float: left;
+    font: 700 18px HelveticaNeue, Helvetica, Arial;
+    margin-right: 4px;
+    padding: 3px;
+    color: white;
+    background: #938e8e;
+}
+
+#notselected
+{
+    border: 5px solid #CCC;
+    float: left;
+    font: 700 18px HelveticaNeue, Helvetica, Arial;
+    margin-right: 3px;
+    padding: 3px;
+    background: #ccc;
+    color: white;
+}
+
+
+/*länkar*/
+
+#link
+{
+    /* border: 5px solid #ccc; float: left;  margin-right: 20px; padding: 20px; */
+}
+
+#link2
+{
+
+}
+
+#link3
+{
+
+}
+
+
+a /* ger li a följande egenskaper som alltid är bundna till meny div */
+{
+    display: block;
+    float:left;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    padding: 10px 20px 10px 20px;
+    margin: .4em;
+}
+
+a:hover /* ger li A följande egenskaper när mus pekaren svävar över den */
+{
+    color: white;
+    background-color: #c1c3c1;
+}
+
+#position_of_button button
+{
+    display: block;
+    float: left;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    padding: 10px 20px 10px 20px;
+    margin: .4em;
+    font-weight: normal;
+    background: white;
+}
+
+#position_of_button
+{
+
+}
+
+#position_of_button button:hover /* ger li A följande egenskaper när mus pekaren svävar över den */
+{
+    color: white;
+    background-color: #c1c3c1;
+}
+/*Found*/
+
+#found
+{
+    border: 1px solid #938e8e;
+    float: left;
+    font: 700 18px HelveticaNeue, Helvetica, Arial;
+    margin-right: 4px;
+    padding: 3px;
+    color: white;
+    margin: .4em;
+}
+
+#notfound
+{
+    border: 1px solid #938e8e;
+    float: left;
+    font: 700 18px HelveticaNeue, Helvetica, Arial;
+    margin-right: 4px;
+    padding: 3px;
+    color: white;
+    margin: .4em;
+    opacity: 0.4;
+}
+
+.foundboard {
+    margin: 20px 0;
+    overflow: hidden;
+    max-width: 974px;
+}

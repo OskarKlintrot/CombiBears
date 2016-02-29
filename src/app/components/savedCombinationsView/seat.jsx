@@ -1,9 +1,9 @@
 import React from 'react'
-import Bear from './bear'
+import BasicBear from '../shared/basicBear'
 
 const Seat = ( props ) => {
-  if ( props.seat.bear !== null )
-    return <Bear bear={ props.seat.bear }/>
+  if ( props.bear !== null )
+    return <BasicBear bear={ props.bear }/>
   return <div></div>
 }
 
