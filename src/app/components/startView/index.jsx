@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
+import C from '../../constants'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
 import InfoFlash from './infoFlash'
@@ -67,7 +68,7 @@ class StartView extends React.Component {
               style={ styles.logotype }
               id='Logotyp'
               alt='Logotyp'
-              src='public/pics/logotype.png'
+              src={ C.SRC_TO_IMAGES.LOGOTYPE }
               width='600px'
             ></img>
           </div>
@@ -90,23 +91,29 @@ class StartView extends React.Component {
         <div className='medium-6 columns'>
           <div style={ styles.center }>
             <Option>
-              <BearOptions />
+              <BearOptions
+                bears={ this.props.bears }
+                updateBear={ this.props.updateBear }
+                deleteBear={ this.props.deleteBear }
+              />
             </Option>
           </div>
         </div>
         <div className='medium-12 columns'>
           <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-            <Link
+            { /* <Link
               to={ '/start' }
-            >
-              <img
-                id='StartButton'
-                alt='StartButton'
-                src='public/pics/icons/start.png'
-                height='50px'
-                width='150px'
-              ></img>
-            </Link>
+            > */ }
+            <img
+              id='StartButton'
+              alt='StartButton'
+              src={ C.SRC_TO_IMAGES.ICONS.START }
+              height='50px'
+              width='150px'
+              style={ { cursor: 'pointer' } }
+              onClick={ () => this.props.startGame() }
+            ></img>
+            { /* </Link> */ }
           </div>
         </div>
         <div className='medium-12 columns'>
@@ -125,8 +132,11 @@ class StartView extends React.Component {
 
 StartView.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
+  bears: PropTypes.object.isRequired,
   increaseNumberOfSeats: PropTypes.func.isRequired,
-  decreaseNumberOfSeats: PropTypes.func.isRequired
+  decreaseNumberOfSeats: PropTypes.func.isRequired,
+  updateBear: PropTypes.func.isRequired,
+  deleteBear: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.settings
@@ -138,6 +148,15 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     decreaseNumberOfSeats: () => {
       dispatch( Actions.decreaseNumberOfSeats() )
+    },
+    updateBear: ( bearSrc, bearId ) => {
+      dispatch( Actions.updateBear( bearSrc, bearId ) )
+    },
+    deleteBear: ( bearId ) => {
+      dispatch( Actions.deleteBear( bearId ) )
+    },
+    startGame: () => {
+      dispatch( Actions.startGame() )
     }
   }
 }

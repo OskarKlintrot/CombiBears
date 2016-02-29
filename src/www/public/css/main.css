@@ -25,7 +25,7 @@
 }
 
 body {
-  background: url(../../public/pics/background.jpg) no-repeat center center fixed;
+  background: url(../../public/pics/background.jpg) no-repeat center bottom fixed;
   background-size: cover;
 }
 

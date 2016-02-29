@@ -1,17 +1,10 @@
 import React from 'react'
-import Bear from './bear'
+import BasicBear from '../shared/basicBear'
 
-class Seat extends React.Component {
-  render() {
-    let bear
-    if ( this.props.seat.bear !== null )
-      bear = <Bear bear={ this.props.seat.bear } />
-    return (
-      <li>
-        { bear }
-      </li>
-    )
-  }
+const Seat = ( props ) => {
+  if ( props.bear !== null )
+    return <BasicBear bear={ props.bear }/>
+  return <div></div>
 }
 
 export default Seat

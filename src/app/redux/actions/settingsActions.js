@@ -1,10 +1,13 @@
 import ActionTypes from "./actionTypes"
+import C from "../../constants"
 
 const {
 	RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
-  DECREASE_NUMBER_OF_SEATS
-	// Write down the actions you want to use here
+  DECREASE_NUMBER_OF_SEATS,
+	UPDATE_BEAR,
+	DELETE_BEAR,
+  START_GAME
 } = ActionTypes
 
 const SettingsActions = {
@@ -26,6 +29,35 @@ const SettingsActions = {
     return ( dispatch ) => {
       dispatch({
         type: DECREASE_NUMBER_OF_SEATS
+      })
+    }
+  },
+  updateBear: ( bearSrc, bearId ) => {
+    return ( dispatch ) => {
+      dispatch({
+        type: UPDATE_BEAR,
+        bearSrc: bearSrc,
+        bearId: bearId
+      })
+    }
+  },
+  deleteBear: ( bearId ) => {
+    return ( dispatch ) => {
+      dispatch({
+        type: DELETE_BEAR,
+        bearId: bearId
+      })
+    }
+  },
+  startGame: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: START_GAME,
+        meta: {
+          transition: () => ({
+            path: C.ROUTES.GAME
+          })
+        }
       })
     }
   }
