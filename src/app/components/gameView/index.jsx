@@ -143,12 +143,14 @@ class GameView extends React.Component {
 
     // Bind 'this' to GameView on passed methods
     const resetPermutation = this.resetPermutation.bind( this )
+    const savePermutation = this.savePermutation.bind( this )
 
     return (
       <div style={ styles.gameScene } >
 
         <Buttons
           onRestart={ resetPermutation }
+          onSave={ savePermutation }
         />
 
         <Sofa

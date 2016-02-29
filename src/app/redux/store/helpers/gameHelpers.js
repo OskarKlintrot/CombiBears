@@ -16,8 +16,6 @@ export const removeBear = ( array, position ) => {
 
 export const savePermutation = ( savedPermutations, permutation ) => {
 
-  console.log( "savePermutation", permutation )
-
   savedPermutations.push( permutation )
 
   return savedPermutations

@@ -46,7 +46,7 @@ class Buttons extends React.Component {
           src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
           alt='Icon for saving permutation'
           style={ styles.iconRight }
-          onClick={ () => this.props.handleSavePermutation() }
+          onClick={ () => this.props.onSave() }
         />
         <Link to={ '/results' }>
           <img
@@ -79,7 +79,8 @@ class Buttons extends React.Component {
 }
 
 Buttons.propTypes = {
-  onRestart: PropTypes.func.isRequired
+  onRestart: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired
 }
 
 
