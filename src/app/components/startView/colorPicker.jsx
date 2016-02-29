@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import listensToClickOutside from 'react-onclickoutside/decorator'
+import C from '../../constants'
 
 const styles = {
   box: {
@@ -23,38 +25,59 @@ const styles = {
 }
 
 const colors = [
-  'blue',
-  'green',
-  'yellow',
-  'red',
-  'purple',
-  'pink',
-  'orange',
-  'brown'
+  C.COLORS.BLUE,
+  C.COLORS.GREEN,
+  C.COLORS.YELLOW,
+  C.COLORS.RED,
+  C.COLORS.PURPLE,
+  C.COLORS.PINK,
+  C.COLORS.ORANGE,
+  C.COLORS.BROWN
 ]
 
-const ColorPicker = () => {
-  return (
-    <div
-      className='colorPicker'
-      style={ styles.box }
-    >
-      { colors.map( ( color, key ) => {
-        const colorStyle = Object.assign(
-          {},
-          styles.color,
-          { backgroundColor: color }
-        )
-        return (
-          <div
-            className={ 'color' + color }
-            key={ key }
-            style={ colorStyle }
-          />
-        )
-      }) }
-    </div>
-  )
+class ColorPicker extends React.Component {
+  constructor( props ) {
+    super( props )
+    this.handleClickOutside = this.handleClickOutside.bind( this )
+  }
+
+  handleClickOutside = () => {
+    this.props.handleClickOutside()
+  };
+
+  handleColorClick = ( color ) => {
+    this.props.handleBearColorChange( color )
+  };
+
+  render() {
+    return (
+      <div
+        className='colorPicker'
+        style={ styles.box }
+      >
+        { colors.map( ( color, key ) => {
+          const colorStyle = Object.assign(
+            {},
+            styles.color,
+            { backgroundColor: color }
+          )
+          return (
+            <div
+              className={ 'color' + color }
+              key={ key }
+              onClick={ this.handleColorClick( color ) }
+              style={ colorStyle }
+            />
+          )
+        }) }
+      </div>
+    )
+  }
 }
 
-export default ColorPicker
+ColorPicker.props = {
+  handleClickOutside: PropTypes.func.isRequired,
+  handleBearColorChange: PropTypes.func.isRequired
+}
+
+export default listensToClickOutside( ColorPicker )
