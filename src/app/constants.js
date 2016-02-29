@@ -25,6 +25,7 @@ export default Object.freeze({
       PINK: 'public/pics/bears/pink.svg',
       PURPLE: 'public/pics/bears/purple.svg',
       RED: 'public/pics/bears/red.svg',
+      WHITE: 'public/pics/bears/white.svg',
       YELLOW: 'public/pics/bears/yellow.svg'
     },
     LOGOTYPE: 'public/pics/logotype.png'

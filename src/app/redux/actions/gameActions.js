@@ -1,7 +1,7 @@
 import ActionTypes from "./actionTypes"
 
 const {
-  RESET_GAME,
+  RESET_PERMUTATION,
   ADD_BEAR,
   REMOVE_BEAR,
   ADD_BEAR_TO_SOFA,
@@ -12,10 +12,10 @@ const {
 } = ActionTypes
 
 const GameActions = {
-  resetCombination: () => {
+  resetPermutation: () => {
     return ( dispatch ) => {
       dispatch({
-        type: RESET_GAME
+        type: RESET_PERMUTATION
       })
     }
   },

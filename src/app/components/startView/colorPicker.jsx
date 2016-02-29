@@ -65,7 +65,7 @@ class ColorPicker extends React.Component {
             <div
               className={ 'color' + color }
               key={ key }
-              onClick={ this.handleColorClick( color ) }
+              onClick={ () => this.handleColorClick( color ) }
               style={ colorStyle }
             />
           )
