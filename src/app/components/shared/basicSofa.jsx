@@ -32,7 +32,7 @@ const BasicSofa = ( props ) => {
       }
     }
 
-    switch ( props.numberOfSeats ) {
+    switch ( props.settings.numberOfSeats ) {
     case 2: return sofaStyles.twoSeats
     case 3: return sofaStyles.threeSeats
     case 4: return sofaStyles.fourSeats
@@ -100,7 +100,6 @@ const BasicSofa = ( props ) => {
 }
 
 BasicSofa.propTypes = {
-  numberOfSeats: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   bearsOnSofa: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired
