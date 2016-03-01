@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
-
+import SavedPermutationsSofaList from './savedPermutationsSofaList'
 import { Link } from 'react-router'
 
 const styles = {
