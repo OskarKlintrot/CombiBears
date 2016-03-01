@@ -4,8 +4,11 @@ import SavedPermutationsSofaList from './savedPermutationsSofaList'
 import { Link } from 'react-router'
 
 const styles = {
-  icon: {
-    height: '100px'
+  savedPermutations: {
+    width: '20%',
+    height: window.innerHeight + 'px',
+    float: 'right',
+    background: '#FFF'
   }
 }
 
@@ -32,12 +35,14 @@ const SavedPermutations = ( props ) => {
     }
   } else {
     return (
-      <div></div>
+      <div style={ styles.savedPermutations }></div>
     )
   }
 
   return (
-    <SavedPermutationsSofaList savedPermutationsSofas={ savedPermutationsSofas } />
+    <div style={ styles.savedPermutations }>
+      <SavedPermutationsSofaList savedPermutationsSofas={ savedPermutationsSofas } />
+    </div>
   )
 }
 

@@ -5,7 +5,7 @@ import C from '../../constants'
 const styles = {
   box: {
     width: '10em',
-    height: '5em',
+    height: '7.5em',
     backgroundColor: 'darkgray',
     border: '0.1em solid gray',
     zIndex: 2,
@@ -20,6 +20,15 @@ const styles = {
     margin: '0.25em',
     display: 'inline-block',
     cursor: 'pointer',
+    border: '0.1em solid gray'
+  },
+  deleteBearBox: {
+    width: '100%'
+  },
+  deleteBearImg: {
+    cursor: 'pointer',
+    height: '1.5em',
+    width: '1.5em',
     border: '0.1em solid gray'
   }
 }
@@ -45,10 +54,6 @@ class ColorPicker extends React.Component {
     this.props.handleClickOutside()
   };
 
-  handleColorClick = ( color ) => {
-    this.props.handleBearColorChange( color )
-  };
-
   render() {
     return (
       <div
@@ -63,13 +68,24 @@ class ColorPicker extends React.Component {
           )
           return (
             <div
-              className={ 'color' + color }
+              className={ 'color' + color + ' small-4-columns' }
               key={ key }
-              onClick={ () => this.handleColorClick( color ) }
+              onClick={ () => this.props.handleBearColorChange( color ) }
               style={ colorStyle }
             />
           )
         }) }
+        <div
+          className='deleteBearBox'
+          style={ styles.deleteBearBox }
+        >
+          <img
+            className='deleteBear'
+            src={ C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
+            onClick={ this.props.handleDeleteBear }
+            style={ styles.deleteBearImg }
+          />
+        </div>
       </div>
     )
   }
@@ -77,7 +93,8 @@ class ColorPicker extends React.Component {
 
 ColorPicker.props = {
   handleClickOutside: PropTypes.func.isRequired,
-  handleBearColorChange: PropTypes.func.isRequired
+  handleBearColorChange: PropTypes.func.isRequired,
+  handleDeleteBear: PropTypes.func.isRequired
 }
 
 export default listensToClickOutside( ColorPicker )

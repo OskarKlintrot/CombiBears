@@ -116,7 +116,8 @@ class GameView extends React.Component {
     const styles = {
       gameScene: {
         height: window.innerHeight + 'px',
-        width: '80%'
+        width: '80%',
+        float: 'left'
       },
 
       sofa: {
