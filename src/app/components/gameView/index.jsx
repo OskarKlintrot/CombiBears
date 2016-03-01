@@ -171,7 +171,7 @@ class GameView extends React.Component {
 
         <SavedPermutations
           savedPermutations={ this.props.game.savedPermutations }
-          bears={ this.props.settings.bears }
+          settings={ this.props.settings }
         />
 
       </div>

@@ -16,6 +16,7 @@ const SavedPermutationsSofaList = ( props ) => {
             <SavedPermutationsSofa
               key={ savedPermutationsSofa.id }
               savedPermutationsSofa={ savedPermutationsSofa }
+              settings={ props.settings }
             />
           )
         }) }
