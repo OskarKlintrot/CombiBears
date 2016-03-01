@@ -60,70 +60,78 @@ class StartView extends React.Component {
 
   render() {
     return (
-      <div className='row'>
-        <div className='medium-12 columns'>
-          <div style={ styles.center }>
-            <img
-              className='medium-12 columns'
-              style={ styles.logotype }
-              id='Logotyp'
-              alt='Logotyp'
-              src={ C.SRC_TO_IMAGES.LOGOTYPE }
-              width='600px'
-            ></img>
+      <div className='startView'>
+        <div className='row'>
+          <div className='medium-12 columns'>
+            <div style={ styles.center }>
+              <img
+                className='medium-12 columns'
+                style={ styles.logotype }
+                id='Logotyp'
+                alt='Logotyp'
+                src={ C.SRC_TO_IMAGES.LOGOTYPE }
+                width='600px'
+              ></img>
+            </div>
           </div>
         </div>
-        <div className='medium-6 columns'>
-          <div style={ styles.center }>
-            <Option>
-              <SofaOptions
-                selected={ this.props.numberOfSeats }
-                handleIncreaseNumberOfSeats={
-                  this.props.increaseNumberOfSeats
-                }
-                handleDecreaseNumberOfSeats={
-                  this.props.decreaseNumberOfSeats
-                }
-              />
-            </Option>
+        <div className='row'>
+          <div className='small-6 columns'>
+            <div style={ styles.center }>
+              <Option>
+                <SofaOptions
+                  selected={ this.props.numberOfSeats }
+                  handleIncreaseNumberOfSeats={
+                    this.props.increaseNumberOfSeats
+                  }
+                  handleDecreaseNumberOfSeats={
+                    this.props.decreaseNumberOfSeats
+                  }
+                />
+              </Option>
+            </div>
+          </div>
+          <div className='small-6 columns'>
+            <div style={ styles.center }>
+              <Option>
+                <BearOptions
+                  bears={ this.props.bears }
+                  updateBear={ this.props.updateBear }
+                  deleteBear={ this.props.deleteBear }
+                />
+              </Option>
+            </div>
           </div>
         </div>
-        <div className='medium-6 columns'>
-          <div style={ styles.center }>
-            <Option>
-              <BearOptions
-                bears={ this.props.bears }
-                updateBear={ this.props.updateBear }
-                deleteBear={ this.props.deleteBear }
-              />
-            </Option>
+        <div className='row'>
+          <div className='medium-12 columns'>
+            <div style={ Object.assign({}, styles.center, styles.startButton ) }>
+              { /* <Link
+                to={ '/start' }
+              > */ }
+              <img
+                id='StartButton'
+                alt='StartButton'
+                src={ C.SRC_TO_IMAGES.ICONS.START }
+                height='50px'
+                width='150px'
+                style={ { cursor: 'pointer' } }
+                onClick={ () => this.props.startGame() }
+              ></img>
+              { /* </Link> */ }
+            </div>
           </div>
         </div>
-        <div className='medium-12 columns'>
-          <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-            { /* <Link
-              to={ '/start' }
-            > */ }
-            <img
-              id='StartButton'
-              alt='StartButton'
-              src={ C.SRC_TO_IMAGES.ICONS.START }
-              height='50px'
-              width='150px'
-              style={ { cursor: 'pointer' } }
-              onClick={ () => this.props.startGame() }
-            ></img>
-            { /* </Link> */ }
+        <div className='row'>
+          <div className='medium-12 columns'>
+            <InfoFlash
+              style={ styles.infoButton }
+              handleOpenModal={ this.onOpenModal }
+              handleCloseModal={ this.onCloseModal }
+              handleModalCloseRequest={ this.onModalCloseRequest }
+              open={ this.state.modalIsOpen }
+            />
           </div>
-        </div>
-        <div className='medium-12 columns'>
-          <InfoFlash
-            style={ styles.infoButton }
-            handleOpenModal={ this.onOpenModal }
-            handleCloseModal={ this.onCloseModal }
-            handleModalCloseRequest={ this.onModalCloseRequest }
-            open={ this.state.modalIsOpen }
-          />
         </div>
       </div>
     )

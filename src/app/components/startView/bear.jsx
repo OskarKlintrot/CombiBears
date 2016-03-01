@@ -16,7 +16,7 @@ class Bear extends React.Component {
   constructor( props ) {
     super( props )
     this.handleToggleColorPicker = this.handleToggleColorPicker.bind( this )
-    this.src = this.getImageSrcFromColorString( this.props.color )
+    this.src = C.SRC_TO_IMAGES.BEARS[this.props.color]
     this.state = {
       showColorPicker: false
     }
@@ -31,35 +31,14 @@ class Bear extends React.Component {
   };
 
   onHandleBearColorChange = ( color ) => {
-    this.src = this.getImageSrcFromColorString( color )
+    this.src = C.SRC_TO_IMAGES.BEARS[color]
     this.props.updateBear( this.src, this.props.bearID )
+    this.handleToggleColorPicker()
   };
 
   onHandleDeleteBear = () => {
     this.props.deleteBear( this.props.bearID )
-  };
-
-  getImageSrcFromColorString = ( color ) => {
-    switch ( color ) {
-    case C.COLORS.BLUE:
-      return C.SRC_TO_IMAGES.BEARS.BLUE
-    case C.COLORS.GREEN:
-      return C.SRC_TO_IMAGES.BEARS.GREEN
-    case C.COLORS.YELLOW:
-      return C.SRC_TO_IMAGES.BEARS.YELLOW
-    case C.COLORS.RED:
-      return C.SRC_TO_IMAGES.BEARS.RED
-    case C.COLORS.PURPLE:
-      return C.SRC_TO_IMAGES.BEARS.PURPLE
-    case C.COLORS.PINK:
-      return C.SRC_TO_IMAGES.BEARS.PINK
-    case C.COLORS.ORANGE:
-      return C.SRC_TO_IMAGES.BEARS.ORANGE
-    case C.COLORS.BROWN:
-      return C.SRC_TO_IMAGES.BEARS.BROWN
-    default :
-      return C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
-    }
+    this.handleToggleColorPicker()
   };
 
   render() {
