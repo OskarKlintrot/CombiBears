@@ -60,7 +60,7 @@ const BasicSofa = ( props ) => {
   const mergedStyles = Object.assign({}, genericStyles.sofa, props.styles, getSofaStyles() )
 
   const renderSeat = ( bearKey, seatIndex, containerTypeName ) => {
-
+    console.log( bearKey, seatIndex )
     const bear = bearKey !== null ?
       <BasicBear
         key={ seatIndex }
