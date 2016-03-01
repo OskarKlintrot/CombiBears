@@ -12,9 +12,9 @@ export default class Box extends React.Component {
     if( this.props.list.found === 1 )
     {
 
-      for( let i = 1; i < num; i++ )
+      for( let counter = 1; counter < num; counter++ )
       {
-        if( this.props.list.answer === i )
+        if( this.props.list.answer === counter )
           img += 'b2.png'
 
       }
