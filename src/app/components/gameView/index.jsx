@@ -119,7 +119,8 @@ class GameView extends React.Component {
   render() {
     const styles = {
       gameScene: {
-        height: window.innerHeight + 'px'
+        height: window.innerHeight + 'px',
+        width: '80%'
       },
 
       sofa: {
@@ -128,52 +129,61 @@ class GameView extends React.Component {
         margin: '0 auto',
         left: '0',
         right: '0'
+      },
+
+      savedPermutations: {
+        width: '20%',
+        float: 'right'
       }
     }
 
     // Bind 'this' to GameView on passed methods
     const resetPermutation = this.resetPermutation.bind( this )
     const savePermutation = this.savePermutation.bind( this )
-    const selectPermutation = this.selectPermutation.bind( this )
 
     return (
-      <div style={ styles.gameScene } >
+      <div>
+        <div style={ styles.gameScene } >
 
-        <Buttons
-          onRestart={ resetPermutation }
-          onSave={ savePermutation }
-        />
-        <SavedPermutations
-          savedPermutations={ this.props.game.savedPermutations }
-          selectPermutation={ selectPermutation }
-        />
+          <Buttons
+            onRestart={ resetPermutation }
+            onSave={ savePermutation }
+          />
 
-
-        <Sofa
-          scale={ 1 }
-          numberOfSeats={ this.props.game.bearsOnSofa.length }
-          styles={ styles.sofa }
-        >
-          {
-            this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
-              this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
-            )
-          }
-        </Sofa>
-
-        <StartingArea>
-          {
-            this.props.game.bearsOnStart.map( ( bearKey, index ) =>
-              this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA )
+          <Sofa
+            scale={ 1 }
+            numberOfSeats={ this.props.game.bearsOnSofa.length }
+            styles={ styles.sofa }
+          >
+            {
+              this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
+                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
               )
-          }
-        </StartingArea>
+            }
+          </Sofa>
 
-        <DraggedBear
-          bearKey={ this.state.currentlyDraggedObj.bearKey }
-          bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
-        />
+          <StartingArea>
+            {
+              this.props.game.bearsOnStart.map( ( bearKey, index ) =>
+                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA )
+                )
+            }
+          </StartingArea>
 
+          <DraggedBear
+            bearKey={ this.state.currentlyDraggedObj.bearKey }
+            bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
+          />
+
+        </div>
+        <div
+          style={ styles.savedPermutations }
+        >
+          <SavedPermutations
+            savedPermutations={ this.props.game.savedPermutations }
+            bears={ this.props.settings.bears }
+          />
+        </div>
       </div>
     )
   }
