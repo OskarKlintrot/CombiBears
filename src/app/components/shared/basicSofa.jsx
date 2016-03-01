@@ -100,7 +100,6 @@ const BasicSofa = ( props ) => {
 }
 
 BasicSofa.propTypes = {
-  numberOfSeats: PropTypes.number.isRequired,
   scale: PropTypes.number.isRequired,
   bearsOnSofa: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired
