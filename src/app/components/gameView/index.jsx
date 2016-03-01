@@ -13,27 +13,10 @@ import Actions from '../../redux/actions/'
 import { DragDropContext } from 'react-dnd'
 import touchBackend from 'react-dnd-touch-backend'
 
-/* TODO: Below is a suggestion for a standard format for data to store in redux.
- *  At the moment it's stored like that. May change in the future.
- *  Number of seats is determined by teddySeatArray.length
- *
- * const teddySeatArray = [
- *   "orange",
- *   null,
- *   "blue",
- *   "green"
- * ]
- * const teddyStartingAreaArray = [
- *   "pink"
- *   null,
- *   null,
- *   null
- * ]
- */
-
 class GameView extends React.Component {
   constructor( props ) {
     super( props )
+
     this.state = {
       currentlyDraggedObj: {
         bearKey: "0",
@@ -110,7 +93,7 @@ class GameView extends React.Component {
         index={ seatIndex }
         onBeginDrag={ handleBeginDrag }
         bearKey={ bearKey }
-        bearsSettings={ this.props.settings.bears } // Pass the bears settings (contains bear keys mapped to image files)
+        bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
         containerTypeName={ containerTypeName }
       /> :
       null
@@ -177,7 +160,7 @@ class GameView extends React.Component {
 
         <DraggedBear
           bearKey={ this.state.currentlyDraggedObj.bearKey }
-          bearsSettings={ this.props.settings.bears } // Pass the bears settings (contains bear keys mapped to image files)
+          bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
         />
 
       </div>
@@ -205,11 +188,6 @@ const mapStateToProps = ( state ) => {
   }
 }
 
-
-
-
-
-
 const mapDispatchToProps = ( dispatch ) => {
   return {
     addBearToSofa: ( color, position ) => {
@@ -232,10 +210,6 @@ const mapDispatchToProps = ( dispatch ) => {
     }
   }
 }
-
-
-
-
 
 const connectObj = connect( mapStateToProps, mapDispatchToProps )( GameView )
 export default DragDropContext(

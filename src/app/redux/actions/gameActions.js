@@ -2,8 +2,6 @@ import ActionTypes from "./actionTypes"
 
 const {
   RESET_PERMUTATION,
-  ADD_BEAR,
-  REMOVE_BEAR,
   ADD_BEAR_TO_SOFA,
   ADD_BEAR_TO_START,
   REMOVE_BEAR_FROM_SOFA,
@@ -16,23 +14,6 @@ const GameActions = {
     return ( dispatch ) => {
       dispatch({
         type: RESET_PERMUTATION
-      })
-    }
-  },
-  addBear: ( color, position ) => {
-    return ( dispatch ) => {
-      dispatch({
-        type: ADD_BEAR,
-        color: color,
-        position: position
-      })
-    }
-  },
-  removeBear: ( position ) => {
-    return ( dispatch ) => {
-      dispatch({
-        type: REMOVE_BEAR,
-        position: position
       })
     }
   },

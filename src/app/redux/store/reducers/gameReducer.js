@@ -4,14 +4,10 @@ import { ActionTypesGame } from '../../actions/actionTypes'
 
 const {
   RESET_PERMUTATION,
-  ADD_BEAR,
-  REMOVE_BEAR,
-
   ADD_BEAR_TO_SOFA,
   ADD_BEAR_TO_START,
   REMOVE_BEAR_FROM_SOFA,
   REMOVE_BEAR_FROM_START,
-
   SAVE_PERMUTATION
 
 } = ActionTypesGame
@@ -19,22 +15,11 @@ const {
 const CombinationReducer = ( state, action ) => {
   switch ( action.type ) {
   case RESET_PERMUTATION:
-    // return new InitialState().game
 
     return {
       ...state,
       bearsOnStart: moveAllBearsToStart( state.bearsOnSofa, state.bearsOnStart ),
       bearsOnSofa: state.bearsOnSofa.map( () => null )
-    }
-  case ADD_BEAR:
-    return {
-      ...state,
-      bearsOnSofa: addBear( state.bearsOnSofa, action.color, action.position )
-    }
-  case REMOVE_BEAR:
-    return {
-      ...state,
-      bearsOnStart: removeBear( state.bearsOnStart, action.position )
     }
 
   case ADD_BEAR_TO_SOFA:
