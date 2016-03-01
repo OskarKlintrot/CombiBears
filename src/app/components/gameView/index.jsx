@@ -151,7 +151,7 @@ class GameView extends React.Component {
 
         <Sofa
           scale={ 1 }
-          numberOfSeats={ this.props.game.bearsOnSofa.length }
+          numberOfSeats={ this.props.settings.numberOfSeats }
           styles={ styles.sofa }
         >
           {
