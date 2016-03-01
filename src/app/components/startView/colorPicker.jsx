@@ -5,14 +5,14 @@ import C from '../../constants'
 const styles = {
   box: {
     width: '18em',
-    height: '13.5em',
+    height: '13em',
     backgroundColor: 'rgba(225, 225, 215, 1)',
     border: '0.2em solid rgb(205, 205, 195)',
     borderRadius: '0.5em',
     zIndex: 2,
     position: 'absolute',
-    top: 0,
-    right: '-100%',
+    top: '-40%',
+    right: '-60%',
     cursor: 'auto'
   },
   color: {
