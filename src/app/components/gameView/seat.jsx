@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react'
-import { ItemTypes } from './constants'
 import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
   drop( props, monitor ) {
-    // const dropResult = monitor.getDropResult()
-    props.onHandleAddBear( C.COLORS.ORANGE, props.index )
+
     if ( props.canDrop )
       props.onDrop( props.containerTypeName, props.index )
-    // props.onDrop( monitor.getItem() )
-    // console.log( 'Drop success' )
-    // console.log( 'sofaSeat: seatTarget -> drop', monitor )
-    // console.log( 'dropResult', dropResult )
+
   }
 }
 
@@ -51,9 +46,7 @@ Seat.propTypes = {
   canDrop: PropTypes.bool.isRequired,
   onDrop: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  onHandleAddBear: PropTypes.func.isRequired,
-  handleRemoveBear: PropTypes.func.isRequired
+  index: PropTypes.number.isRequired
 }
 
-export default DropTarget( ItemTypes.BEAR, seatTarget, collect )( Seat )
+export default DropTarget( C.COMPONENT_NAMES.BEAR, seatTarget, collect )( Seat )

@@ -1,7 +1,8 @@
-import React from 'react'
-// import { Link } from 'react-router'
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import C from '../../constants'
-import Sofa from './sofa'
+import SofaList from './sofaList'
 
 const styles = {
   icon: {
@@ -16,19 +17,35 @@ const styles = {
   iconReturn: {
     position: 'absolute',
     marginTop: '200px'
-  },
-
-  ulSofas: {
-    listStyleType: 'none'
   }
 }
 
-const SavedCombinationsView = () => {
-  const bears = [{ id: 0, color: C.COLORS.ORANGE }, { id: 1, color: C.COLORS.GREEN }, { id: 2, color: C.COLORS.BLUE }, { id: 3, color: C.COLORS.PINK }]
-  const seats1 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const seats2 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const seats3 = [{ seatId: 0, bear: bears[0] }, { seatId: 1, bear: bears[1] }]
-  const sofas = [{ id: 0, seats: seats1 }, { id: 1, seats: seats2 }, { id: 2, seats: seats3 }]
+const SavedCombinationsView = ( props ) => {
+  const sofas = []
+  if ( props.game.savedPermutations !== null ) {
+    let iInLoop = 0
+    for ( iInLoop; iInLoop < props.game.savedPermutations.length; iInLoop += 1 ) {
+      const seats = []
+      const sofa = { id: iInLoop }
+      for ( let jInLoop = 0; jInLoop < props.game.savedPermutations[iInLoop].length; jInLoop += 1 ) {
+        const seat = { id: jInLoop }
+        if ( props.game.savedPermutations[iInLoop][jInLoop] !== null ) {
+          const bearKey = props.game.savedPermutations[iInLoop][jInLoop]
+          const bear = props.settings.bears[bearKey]
+          seat.bear = bear
+        } else {
+          seat.bear = null
+        }
+        seats.push( seat )
+      }
+      sofa.seats = seats
+      sofas.push( sofa )
+    }
+  } else {
+    return (
+      <div></div>
+    )
+  }
 
   return (
     <div>
@@ -36,38 +53,48 @@ const SavedCombinationsView = () => {
         <h1>Sparade kombinationer</h1>
       </div>
       <div>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
-          alt='Icon for new sofa'
-          style={ styles.icon }
-        />
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
-          alt='Icon for showing result'
-          style={ styles.iconRight }
-        />
+        <Link
+          to={ '/start' }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
+            alt='Icon for new sofa'
+            style={ styles.icon }
+          />
+        </Link>
+        <Link
+          to={ '/results' }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
+            alt='Icon for showing result'
+            style={ styles.iconRight }
+          />
+        </Link>
       </div>
       <div style={ styles.iconReturn }>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
-          alt='Icon for returning to game view'
-          style={ styles.icon }
-        />
+        <Link
+          to={ '/game' }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
+            alt='Icon for returning to game view'
+            style={ styles.icon }
+          />
+        </Link>
       </div>
-      <div className='row'>
-        <ul style={ styles.ulSofas }>
-          { sofas.map( ( sofa ) => {
-            return (
-              <Sofa
-                key={ sofa.id }
-                sofa={ sofa }
-              />
-            )
-          }) }
-        </ul>
-      </div>
+      <SofaList sofas={ sofas } />
     </div>
   )
 }
 
-export default SavedCombinationsView
+SavedCombinationsView.propTypes = { savedPermutations: PropTypes.array }
+
+const mapStateToProps = ( state ) => {
+  return {
+    game: state.game,
+    settings: state.settings
+  }
+}
+
+export default connect( mapStateToProps )( SavedCombinationsView )

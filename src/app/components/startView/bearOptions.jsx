@@ -6,7 +6,7 @@ const style = {
   box: {
     position: 'relative',
     top: '50%',
-    transform: 'translateY(-50%)'
+    transform: 'translateY(-55%)'
   },
   bear: {
     position: 'relative'
@@ -14,7 +14,7 @@ const style = {
 }
 
 const BearOptions = ( props ) => {
-  const { bears } = props
+  const { bears, updateBear, deleteBear } = props
 
   const bearsToRender = []
   const placeholder = { src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
@@ -25,8 +25,10 @@ const BearOptions = ( props ) => {
         <Bear
           key={ item }
           bear={ bears[item] || placeholder }
+          updateBear={ updateBear }
+          deleteBear={ deleteBear }
           style={ style.bear }
-          bearID={ item }
+          bearID={ parseInt( item ) }
         />
       )
     }

@@ -1,83 +1,74 @@
 import React, { PropTypes } from 'react'
-import Seat from './seat'
-import Teddybear from './teddybear'
+import C from '../../constants'
 
-class Sofa extends React.Component {
-  getSeatsImage() {
-    switch ( this.props.bears.length ) {
-    case 2: return 'two'
-    case 3: return 'three'
-    case 4: return 'four'
-    default: return 'four'
-    }
-  }
-
-  renderSeat( teddyColor, seatIndex ) {
-    const bear = typeof teddyColor === "string" ?
-      <Teddybear
-        onBeginDrag={ this.props.onBeginDrag }
-        color={ teddyColor }
-      /> :
-      null
-
-    return (
-      <Seat
-        key={ seatIndex }
-        index={ seatIndex }
-        onDrop={ this.props.onDrop }
-        canDrop={ bear === null }
-        onHandleAddBear={ this.props.handleAddBear }
-        containerTypeName='Sofa'
-      >
-        { bear }
-      </Seat>
-    )
-  }
-
-  render() {
-    const styles = {
-      sofa: {
-        border: '1px solid #00f',
-        background: 'url(public/pics/sofas/' + this.getSeatsImage() + '.png)',
-        backgroundSize: 'contain',
-        backgroundPosition: 'top',
-        backgroundRepeat: 'no-repeat',
-        position: 'absolute',
-        bottom: '80px',
-        margin: '0 auto',
-        left: '0',
-        right: '0',
-        width: '500px',
-        height: '220px'
-      },
-      seatContainer: {
-        height: '65%'
-        // background: 'rgba(0, 255, 255, 0.5)'
-      }
-    }
-
-    return (
-      <div
-        className='sofa'
-        style={ styles.sofa }
-      >
-        <div style={ styles.seatContainer }>
-          {
-            this.props.bears.map( ( color, index ) =>
-              this.renderSeat( color, index )
-            )
-          }
-        </div>
+const Sofa = ( props ) => {
+  const { scale, styles, numberOfSeats } = props
+  return (
+    <div
+      className={ C.COMPONENT_NAMES.SOFA }
+      style={ Sofa.mergedStyles( styles, scale, numberOfSeats ) }
+    >
+      <div style={ Sofa.genericStyles( scale ).seatContainer }>
+        { props.children }
       </div>
-    )
+    </div>
+  )
+}
+
+Sofa.applyScale = ( value, unit, scale ) => {
+  return ( scale * Number( value ) ).toString() + unit
+}
+
+Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
+  const sofaStyles = {
+    twoSeats: {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
+      width: Sofa.applyScale( '450', 'px', scale ),
+      height: Sofa.applyScale( '240', 'px', scale ),
+      padding: `${ Sofa.applyScale( '20', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+    },
+    threeSeats: {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
+      width: Sofa.applyScale( '500', 'px', scale ),
+      height: Sofa.applyScale( '270', 'px', scale ),
+      padding: `${ Sofa.applyScale( '40', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+    },
+    fourSeats: {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
+      width: Sofa.applyScale( '600', 'px', scale ),
+      height: Sofa.applyScale( '300', 'px', scale ),
+      padding: `${ Sofa.applyScale( '70', 'px', scale ) } ${ Sofa.applyScale( '75', 'px', scale ) } 0 ${ Sofa.applyScale( '85', 'px', scale ) }`
+    }
+  }
+
+  switch ( numberOfSeats ) {
+  case 2: return sofaStyles.twoSeats
+  case 3: return sofaStyles.threeSeats
+  case 4: return sofaStyles.fourSeats
+  default: return sofaStyles.fourSeats
   }
 }
 
+Sofa.genericStyles = ( scale ) => {
+  return ({
+    sofa: {
+      backgroundSize: 'contain',
+      backgroundPosition: 'top',
+      backgroundRepeat: 'no-repeat',
+      textAlign: 'center'
+    },
+    seatContainer: {
+      height: Sofa.applyScale( '150', 'px', scale )
+    }
+  })
+}
+
+// Merge styles: genericStyles, prop.styles, and sofaStyles
+Sofa.mergedStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
+
 Sofa.propTypes = {
-  bears: PropTypes.arrayOf( PropTypes.string ).isRequired,
-  onBeginDrag: PropTypes.func.isRequired,
-  handleAddBear: PropTypes.func.isRequired,
-  handleRemoveBear: PropTypes.func.isRequired
+  numberOfSeats: PropTypes.number.isRequired,
+  scale: PropTypes.number.isRequired
 }
 
 export default Sofa
