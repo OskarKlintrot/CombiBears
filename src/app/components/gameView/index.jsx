@@ -5,6 +5,7 @@ import DraggedBear from './draggedBear'
 import StartingArea from './startingArea'
 import Seat from './seat'
 import Buttons from './buttons'
+import SavedPermutations from './savedPermutations'
 import DraggableBear from './draggableBear.jsx'
 import { connect } from 'react-redux'
 import Actions from '../../redux/actions/'
@@ -77,6 +78,10 @@ class GameView extends React.Component {
     this.props.savePermutation( this.props.game.bearsOnSofa )
   }
 
+  selectPermutation() {
+
+  }
+
   resetPermutation() {
     this.props.resetPermutation()
   }
@@ -129,6 +134,7 @@ class GameView extends React.Component {
     // Bind 'this' to GameView on passed methods
     const resetPermutation = this.resetPermutation.bind( this )
     const savePermutation = this.savePermutation.bind( this )
+    const selectPermutation = this.selectPermutation.bind( this )
 
     return (
       <div style={ styles.gameScene } >
@@ -137,6 +143,11 @@ class GameView extends React.Component {
           onRestart={ resetPermutation }
           onSave={ savePermutation }
         />
+        <SavedPermutations
+          savedPermutations={ this.props.game.savedPermutations }
+          selectPermutation={ selectPermutation }
+        />
+
 
         <Sofa
           scale={ 1 }
