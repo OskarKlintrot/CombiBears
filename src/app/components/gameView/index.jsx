@@ -78,10 +78,6 @@ class GameView extends React.Component {
     this.props.savePermutation( this.props.game.bearsOnSofa )
   }
 
-  selectPermutation() {
-
-  }
-
   resetPermutation() {
     this.props.resetPermutation()
   }
@@ -129,11 +125,6 @@ class GameView extends React.Component {
         margin: '0 auto',
         left: '0',
         right: '0'
-      },
-
-      savedPermutations: {
-        width: '20%',
-        float: 'right'
       }
     }
 
@@ -176,14 +167,12 @@ class GameView extends React.Component {
           />
 
         </div>
-        <div
-          style={ styles.savedPermutations }
-        >
-          <SavedPermutations
-            savedPermutations={ this.props.game.savedPermutations }
-            bears={ this.props.settings.bears }
-          />
-        </div>
+
+        <SavedPermutations
+          savedPermutations={ this.props.game.savedPermutations }
+          bears={ this.props.settings.bears }
+        />
+
       </div>
     )
   }

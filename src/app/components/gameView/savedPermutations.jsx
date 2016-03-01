@@ -43,7 +43,7 @@ const SavedPermutations = ( props ) => {
 
 SavedPermutations.propTypes = {
   savedPermutations: PropTypes.array.isRequired,
-  bears: PropTypes.array.isRequired
+  bears: PropTypes.object.isRequired
 }
 
 export default SavedPermutations
