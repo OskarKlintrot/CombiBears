@@ -22,16 +22,16 @@ const styles = {
 
 const SavedCombinationsView = ( props ) => {
   const sofas = []
-  if ( props.correctCombinations !== null ) {
+  if ( props.game.savedPermutations !== null ) {
     let iInLoop = 0
-    for ( iInLoop; iInLoop < props.correctCombinations.length; iInLoop += 1 ) {
+    for ( iInLoop; iInLoop < props.game.savedPermutations.length; iInLoop += 1 ) {
       const seats = []
       const sofa = { id: iInLoop }
-      for ( let jInLoop = 0; jInLoop < props.correctCombinations[iInLoop].length; jInLoop += 1 ) {
+      for ( let jInLoop = 0; jInLoop < props.game.savedPermutations[iInLoop].length; jInLoop += 1 ) {
         const seat = { id: jInLoop }
-        if ( props.correctCombinations[iInLoop][jInLoop] !== null ) {
-          const bearKey = props.correctCombinations[iInLoop][jInLoop]
-          const bear = props.bears[bearKey]
+        if ( props.game.savedPermutations[iInLoop][jInLoop] !== null ) {
+          const bearKey = props.game.savedPermutations[iInLoop][jInLoop]
+          const bear = props.settings.bears[bearKey]
           seat.bear = bear
         } else {
           seat.bear = null
@@ -88,8 +88,13 @@ const SavedCombinationsView = ( props ) => {
   )
 }
 
-SavedCombinationsView.propTypes = { correctCombinations: PropTypes.array }
+SavedCombinationsView.propTypes = { savedPermutations: PropTypes.array }
 
-const mapStateToProps = ( state ) => state.settings
+const mapStateToProps = ( state ) => {
+  return {
+    game: state.game,
+    settings: state.settings
+  }
+}
 
 export default connect( mapStateToProps )( SavedCombinationsView )
