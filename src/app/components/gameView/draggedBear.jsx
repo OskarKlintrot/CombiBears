@@ -68,7 +68,7 @@ DraggedBear.propTypes = {
     y: PropTypes.number.isRequired
   }),
   isDragging: PropTypes.bool.isRequired,
-  bearKey: PropTypes.number.isRequired,
+  bearKey: PropTypes.string.isRequired,
   bearsSettings: PropTypes.object.isRequired
 }
 

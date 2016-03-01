@@ -36,7 +36,7 @@ class GameView extends React.Component {
     super( props )
     this.state = {
       currentlyDraggedObj: {
-        bearKey: 0,
+        bearKey: "0",
         srcIndex: 0,
         srcTypeName: C.COMPONENT_NAMES.STARTING_AREA
       }

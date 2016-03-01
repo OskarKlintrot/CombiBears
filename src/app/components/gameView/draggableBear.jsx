@@ -36,8 +36,6 @@ const DraggableBear = ( props ) => {
     }
   }
 
-  console.log( 'DraggableBear props', props )
-
   return connectDragSource(
     <div>
       <BasicBear
@@ -54,7 +52,7 @@ DraggableBear.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  bearKey: PropTypes.number.isRequired,
+  bearKey: PropTypes.string.isRequired,
   bearsSettings: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   onBeginDrag: PropTypes.func.isRequired
