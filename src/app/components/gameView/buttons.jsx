@@ -83,5 +83,4 @@ Buttons.propTypes = {
   onSave: PropTypes.func.isRequired
 }
 
-
 export default Buttons
