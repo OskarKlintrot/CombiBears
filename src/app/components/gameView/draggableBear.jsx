@@ -5,7 +5,7 @@ import BasicBear from '../shared/basicBear'
 
 const draggableBearSource = {
   beginDrag( props ) {
-    props.onBeginDrag( props.containerTypeName, props.index, props.color )
+    props.onBeginDrag( props.containerTypeName, props.index, props.bearKey )
     return {
       props
     }
@@ -26,7 +26,7 @@ const collect = ( connect, monitor ) => {
 const transparency = 0.5
 
 const DraggableBear = ( props ) => {
-  const { connectDragSource, isDragging, color } = props
+  const { connectDragSource, isDragging, bearKey, bearsSettings } = props
 
   const styles = {
     bear: {
@@ -36,10 +36,12 @@ const DraggableBear = ( props ) => {
     }
   }
 
+  console.log( 'DraggableBear props', props )
+
   return connectDragSource(
     <div>
       <BasicBear
-        bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
+        bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
         width='100'
         height='120'
         style={ styles.bear }
@@ -52,7 +54,8 @@ DraggableBear.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  color: PropTypes.string.isRequired,
+  bearKey: PropTypes.number.isRequired,
+  bearsSettings: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   onBeginDrag: PropTypes.func.isRequired
 }

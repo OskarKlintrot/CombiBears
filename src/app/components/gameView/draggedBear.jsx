@@ -43,7 +43,7 @@ const getItemStyles = ( props ) => {
 // Not using stateless function since DragLayer need to use refs
 class DraggedBear extends React.Component {
   render() {
-    const { isDragging, color } = this.props
+    const { isDragging, bearKey, bearsSettings } = this.props
 
     // Only render if its dragging
     if ( !isDragging ) return <div></div>
@@ -52,7 +52,7 @@ class DraggedBear extends React.Component {
       <div style={ styles }>
         <div style={ getItemStyles( this.props ) }>
           <BasicBear
-            bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
+            bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
             width='100'
             height='120'
           />
@@ -68,7 +68,8 @@ DraggedBear.propTypes = {
     y: PropTypes.number.isRequired
   }),
   isDragging: PropTypes.bool.isRequired,
-  color: PropTypes.string.isRequired
+  bearKey: PropTypes.number.isRequired,
+  bearsSettings: PropTypes.object.isRequired
 }
 
 export default DragLayer( collect )( DraggedBear )
