@@ -32,7 +32,7 @@ const BasicSofa = ( props ) => {
       }
     }
 
-    switch ( props.numberOfSeats ) {
+    switch ( props.settings.numberOfSeats ) {
     case 2: return sofaStyles.twoSeats
     case 3: return sofaStyles.threeSeats
     case 4: return sofaStyles.fourSeats
