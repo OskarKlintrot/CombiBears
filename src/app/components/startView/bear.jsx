@@ -35,6 +35,10 @@ class Bear extends React.Component {
     this.props.updateBear( this.src, this.props.bearID )
   };
 
+  onHandleDeleteBear = () => {
+    this.props.deleteBear( this.props.bearID )
+  };
+
   getImageSrcFromColorString = ( color ) => {
     switch ( color ) {
     case C.COLORS.BLUE:
@@ -73,6 +77,7 @@ class Bear extends React.Component {
         <ColorPicker
           handleClickOutside={ this.onHandleOnClickOutsideColorPicker }
           handleBearColorChange={ this.onHandleBearColorChange }
+          handleDeleteBear={ this.onHandleDeleteBear }
         /> :
         null
       }
