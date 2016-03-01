@@ -9,7 +9,8 @@ const style = {
     transform: 'translateY(-55%)'
   },
   bear: {
-    position: 'relative'
+    position: 'relative',
+    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(240, 240, 230, 1))'
   }
 }
 
