@@ -10,7 +10,7 @@ const style = {
   },
   bear: {
     position: 'relative',
-    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(240, 240, 230, 1))'
+    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
   }
 }
 
