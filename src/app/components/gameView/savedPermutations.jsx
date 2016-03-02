@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
-import BasicSofa from '../shared/basicSofa'
+import BasicSofa from '../shared/basicSofa-v2'
 import { Link } from 'react-router'
 
 const styles = {
