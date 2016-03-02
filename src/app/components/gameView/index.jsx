@@ -92,6 +92,19 @@ class GameView extends React.Component {
     }
   }
 
+  getTotalNumberOfBears() {
+
+    const combinedSeats = this.props.game.bearsOnSofa.concat( this.props.game.bearsOnStart )
+
+    const bearsCount = combinedSeats.filter( ( seat ) => seat !== null )
+
+    return bearsCount.length
+  }
+
+  getNumberOfBearsInSofa() {
+    return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null ).length
+  }
+
   savePermutation() {
 
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
@@ -100,8 +113,8 @@ class GameView extends React.Component {
     // Check that permutation does not already exists
     if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
-      // Check that sofas all seats are taken
-      if ( !bearsToSave.some( ( permutation ) => permutation === null ) )
+      // Check that all bears are in sofa
+      if ( this.getNumberOfBearsInSofa() === this.getTotalNumberOfBears() )
 
         this.props.savePermutation( bearsToSave )
 
