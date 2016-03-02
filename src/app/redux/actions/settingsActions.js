@@ -1,5 +1,6 @@
 import ActionTypes from "./actionTypes"
 import C from "../../constants"
+import { numberOfBears } from "./helpers/settingsActionHelpers"
 
 const {
 	RESET_SETTINGS,
@@ -49,15 +50,17 @@ const SettingsActions = {
     }
   },
   startGame: () => {
-    return ( dispatch ) => {
-      dispatch({
-        type: START_GAME,
-        meta: {
-          transition: () => ({
-            path: C.ROUTES.GAME
-          })
-        }
-      })
+    return ( dispatch, getState ) => {
+      if ( numberOfBears( getState().settings.bears ) >= 2 ) {
+        dispatch({
+          type: START_GAME,
+          meta: {
+            transition: () => ({
+              path: C.ROUTES.GAME
+            })
+          }
+        })
+      }
     }
   }
 }
