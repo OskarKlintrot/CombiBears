@@ -169,7 +169,7 @@ class GameView extends React.Component {
       },
 
       sofa: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: '80px',
         margin: '0 auto',
         left: '0',

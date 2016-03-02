@@ -9,7 +9,7 @@ const styles = {
     margin: '0 auto',
     left: '10px',
     // right: '0',
-    position: 'absolute',
+    position: 'fixed',
     width: '500px',
     height: '150px'
   }

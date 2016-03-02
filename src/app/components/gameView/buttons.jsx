@@ -23,7 +23,7 @@ class Buttons extends React.Component {
       },
 
       arrowDiv: {
-        position: 'absolute',
+        position: 'fixed',
         right: '0',
         top: '50%',
         marginTop: '-50px'
@@ -32,7 +32,7 @@ class Buttons extends React.Component {
       iconRestart: {
         bottom: '0',
         right: '0',
-        position: 'absolute',
+        position: 'fixed',
         height: '80px',
         cursor: 'pointer'
       }
