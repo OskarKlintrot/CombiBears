@@ -28,7 +28,8 @@ const styles = {
   deleteBearImg: {
     cursor: 'pointer',
     height: '3.5em',
-    width: '3.5em'
+    width: '3.5em',
+    marginTop: '0.5em'
   }
 }
 
