@@ -1,6 +1,6 @@
 import React from 'react'
 import C from '../../constants'
-import SavedPermutationsSeat from './savedPermutationsSeat'
+import BasicSofa from '../shared/basicSofa'
 
 const styles = {
   ulBears: {
@@ -15,51 +15,23 @@ const styles = {
   }
 }
 
-const getSofaProps = {
-  getSeatCss: function( noOfTotalSeats ) {
-    let seatWidth = ''
-    const four = 4
-    const three = 3
-    if ( noOfTotalSeats === four )
-      seatWidth = '25%'
-    else if ( noOfTotalSeats === three )
-      seatWidth = '33%'
-    else
-      seatWidth = '50%'
-    return ({
-      display: 'inline-block',
-      marginLeft: '0px',
-      width: seatWidth
-    })
-  },
-  getSofaBackgroundImg: function( sofaLength ) {
-    return ({
-      backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS[sofaLength] + ')',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '100% 100%',
-      display: 'block'
-    })
-  }
-}
-
 const SavedPermutationsSofa = ( props ) => {
   return (
     <li
       style={ styles.ulSofasLi }
     >
-      <div
-        style={ getSofaProps.getSofaBackgroundImg( props.savedPermutationsSofa.savedPermutationsSeats.length ) }
-      >
+      <div>
         <ul style={ styles.ulBears }>
           { props.savedPermutationsSofa.savedPermutationsSeats.map( ( savedPermutationsSeat ) => {
             return (
               <li
                 key={ savedPermutationsSeat.id }
-                style={ getSofaProps.getSeatCss( props.savedPermutationsSofa.savedPermutationsSeats.length ) }
               >
-                <SavedPermutationsSeat
+                <BasicSofa
                   key={ savedPermutationsSeat.id }
-                  savedPermutationsBear={ savedPermutationsSeat.savedPermutationsBear }
+                  scale={ 0.5 }
+                  bearsOnSofa={ props.savedPermutationsSeat }
+                  settings={ props.settings }
                 />
               </li>
             )

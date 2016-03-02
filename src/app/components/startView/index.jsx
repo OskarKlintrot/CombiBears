@@ -17,8 +17,10 @@ const styles = {
   },
   infoButton: {
     position: 'fixed',
+    height: '100px',
     bottom: '70px',
-    right: '70px'
+    right: '70px',
+    cursor: 'pointer'
   },
   startButton: {
     // position: 'relative',
@@ -116,7 +118,11 @@ class StartView extends React.Component {
                 height='50px'
                 width='150px'
                 style={ { cursor: 'pointer' } }
-                onClick={ () => this.props.startGame() }
+                onClick={ () => {
+                  this.props.startGame()
+                  this.props.initBears()
+                  this.props.initSofa()
+                } }
               ></img>
               { /* </Link> */ }
             </div>
@@ -165,6 +171,12 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     startGame: () => {
       dispatch( Actions.startGame() )
+    },
+    initBears: () => {
+      dispatch( Actions.initBears() )
+    },
+    initSofa: () => {
+      dispatch( Actions.initSofa() )
     }
   }
 }

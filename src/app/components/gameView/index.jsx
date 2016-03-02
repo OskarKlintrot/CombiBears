@@ -75,7 +75,11 @@ class GameView extends React.Component {
   }
 
   savePermutation() {
-    this.props.savePermutation( this.props.game.bearsOnSofa )
+
+    // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
+    const bearsToSave = Array.from( this.props.game.bearsOnSofa )
+
+    this.props.savePermutation( bearsToSave )
   }
 
   resetPermutation() {
@@ -144,21 +148,20 @@ class GameView extends React.Component {
 
           <Sofa
             scale={ 1 }
-            numberOfSeats={ this.props.game.bearsOnSofa.length }
+            numberOfSeats={ this.props.settings.numberOfSeats }
             styles={ styles.sofa }
           >
             {
-              this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
-                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
-              )
+                this.props.game.bearsOnSofa ? this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
+                  this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
+              ) : null
             }
           </Sofa>
 
           <StartingArea>
             {
-              this.props.game.bearsOnStart.map( ( bearKey, index ) =>
-                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA )
-                )
+              this.props.game.bearsOnStart ? this.props.game.bearsOnStart.map( ( bearKey, index ) =>
+                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA ) ) : null
             }
           </StartingArea>
 
@@ -171,7 +174,7 @@ class GameView extends React.Component {
 
         <SavedPermutations
           savedPermutations={ this.props.game.savedPermutations }
-          bears={ this.props.settings.bears }
+          settings={ this.props.settings }
         />
 
       </div>

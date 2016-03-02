@@ -8,20 +8,19 @@ const {
   ADD_BEAR_TO_START,
   REMOVE_BEAR_FROM_SOFA,
   REMOVE_BEAR_FROM_START,
-  SAVE_PERMUTATION
-
+  SAVE_PERMUTATION,
+  INIT_BEARS,
+  INIT_SOFA
 } = ActionTypesGame
 
 const CombinationReducer = ( state, action ) => {
   switch ( action.type ) {
   case RESET_PERMUTATION:
-
     return {
       ...state,
       bearsOnStart: moveAllBearsToStart( state.bearsOnSofa, state.bearsOnStart ),
       bearsOnSofa: state.bearsOnSofa.map( () => null )
     }
-
   case ADD_BEAR_TO_SOFA:
     return {
       ...state,
@@ -42,13 +41,21 @@ const CombinationReducer = ( state, action ) => {
       ...state,
       bearsOnStart: removeBear( state.bearsOnStart, action.position )
     }
-
   case SAVE_PERMUTATION:
     return {
       ...state,
       savedPermutations: savePermutation( state.savedPermutations, action.permutation )
     }
-
+  case INIT_BEARS:
+    return {
+      ...state,
+      bearsOnStart: action.bearsOnStart
+    }
+  case INIT_SOFA:
+    return {
+      ...state,
+      bearsOnSofa: Array( ...Array( action.numberOfSeats ) ).map( () => null )
+    }
   default:
     return state || new InitialState().game
   }

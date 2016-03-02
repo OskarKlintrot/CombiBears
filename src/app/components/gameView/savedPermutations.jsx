@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
-import SavedPermutationsSofaList from './savedPermutationsSofaList'
+import BasicSofa from '../shared/basicSofa'
 import { Link } from 'react-router'
 
 const styles = {
@@ -9,46 +9,46 @@ const styles = {
     height: window.innerHeight + 'px',
     float: 'right',
     background: '#FFF'
+  },
+
+  ulSofas: {
+    listStyleType: 'none'
   }
 }
 
 const SavedPermutations = ( props ) => {
-  const savedPermutationsSofas = []
-  if ( props.savedPermutations !== null ) {
-    let iInLoop = 0
-    for ( iInLoop; iInLoop < props.savedPermutations.length; iInLoop += 1 ) {
-      const savedPermutationsSeats = []
-      const savedPermutationsSofa = { id: iInLoop }
-      for ( let jInLoop = 0; jInLoop < props.savedPermutations[iInLoop].length; jInLoop += 1 ) {
-        const savedPermutationsSeat = { id: jInLoop }
-        if ( props.savedPermutations[iInLoop][jInLoop] !== null ) {
-          const bearKey = props.savedPermutations[iInLoop][jInLoop]
-          const savedPermutationsBear = props.bears[bearKey]
-          savedPermutationsSeat.savedPermutationsBear = savedPermutationsBear
-        } else {
-          savedPermutationsSeat.savedPermutationsBear = null
-        }
-        savedPermutationsSeats.push( savedPermutationsSeat )
-      }
-      savedPermutationsSofa.savedPermutationsSeats = savedPermutationsSeats
-      savedPermutationsSofas.push( savedPermutationsSofa )
-    }
-  } else {
+
+  const renderSofa = ( bearsOnSofa ) => {
     return (
-      <div style={ styles.savedPermutations }></div>
+      <BasicSofa
+        scale={ 0.5 }
+        numberOfSeats={ props.settings.numberOfSeats }
+        settings={ props.settings }
+        bearsOnSofa={ bearsOnSofa }
+      />
     )
   }
 
+  if ( props.savedPermutations !== null ) {
+    return (
+      <div style={ styles.savedPermutations }>
+        {
+            props.savedPermutations.map( ( bearsOnSofa ) =>
+            renderSofa( bearsOnSofa )
+          )
+        }
+      </div>
+    )
+  }
   return (
-    <div style={ styles.savedPermutations }>
-      <SavedPermutationsSofaList savedPermutationsSofas={ savedPermutationsSofas } />
-    </div>
+    <div style={ styles.savedPermutations }></div>
   )
+
 }
 
 SavedPermutations.propTypes = {
   savedPermutations: PropTypes.array.isRequired,
-  bears: PropTypes.object.isRequired
+  settings: PropTypes.object.isRequired
 }
 
 export default SavedPermutations
