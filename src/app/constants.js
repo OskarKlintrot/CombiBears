@@ -19,15 +19,15 @@ const CONSTANTS = {
       START: 'public/pics/icons/start.svg'
     },
     BEARS: {
-      BLUE: 'public/pics/bears/blue.svg',
-      BROWN: 'public/pics/bears/brown.svg',
-      GREEN: 'public/pics/bears/green.svg',
-      ORANGE: 'public/pics/bears/orange.svg',
-      PINK: 'public/pics/bears/pink.svg',
-      PURPLE: 'public/pics/bears/purple.svg',
-      RED: 'public/pics/bears/red.svg',
-      WHITE: 'public/pics/bears/white.svg',
-      YELLOW: 'public/pics/bears/yellow.svg'
+      BLUE: 'public/pics/bears/blue.png',
+      BROWN: 'public/pics/bears/brown.png',
+      GREEN: 'public/pics/bears/green.png',
+      ORANGE: 'public/pics/bears/orange.png',
+      PINK: 'public/pics/bears/pink.png',
+      PURPLE: 'public/pics/bears/purple.png',
+      RED: 'public/pics/bears/red.png',
+      WHITE: 'public/pics/bears/white.png',
+      YELLOW: 'public/pics/bears/yellow.png'
     },
     LOGOTYPE: 'public/pics/logotype.png'
   },
