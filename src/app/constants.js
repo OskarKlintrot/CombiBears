@@ -33,6 +33,17 @@ CONSTANTS.SRC_TO_IMAGES = {
   LOGOTYPE: 'public/pics/logotype.png'
 }
 
+CONSTANTS.ACCESSORIES: {
+  BLUE: 'public/pics/accessories/flower.svg',
+  BROWN: 'public/pics/accessories/scarf.svg',
+  GREEN: 'public/pics/accessories/pacifier.svg',
+  ORANGE: 'public/pics/accessories/necklace.svg',
+  PINK: 'public/pics/accessories/bowtie.svg',
+  PURPLE: 'public/pics/accessories/tie.svg',
+  RED: 'public/pics/accessories/hat.svg',
+  YELLOW: 'public/pics/accessories/crown.svg'
+}
+
 CONSTANTS.COLORS = {
   BLUE: 'BLUE',
   BROWN: 'BROWN',
