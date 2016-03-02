@@ -75,7 +75,7 @@ const GameActions = {
     return ( dispatch, getState ) => {
       const bears = []
       for ( const bear in getState().settings.bears ) {
-        if ( getState().settings.bears[bear].color !== C.COLORS.WHITE )
+        if ( getState().settings.bears[bear].color !== C.BEAR_TO_IGNORE )
           bears.push( bear )
       }
       dispatch({

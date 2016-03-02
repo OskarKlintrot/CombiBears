@@ -30,21 +30,17 @@ const styles = {
   }
 }
 
-const colors = [
-  C.COLORS.BLUE,
-  C.COLORS.GREEN,
-  C.COLORS.YELLOW,
-  C.COLORS.RED,
-  C.COLORS.PURPLE,
-  C.COLORS.PINK,
-  C.COLORS.ORANGE,
-  C.COLORS.BROWN
-]
+const colors = []
 
 class ColorPicker extends React.Component {
   constructor( props ) {
     super( props )
     this.handleClickOutside = this.handleClickOutside.bind( this )
+    colors.length = 0 // Deleting all elements
+    for ( const color in C.COLORS ) {
+      if ( C.COLORS.hasOwnProperty( color ) )
+        colors.push( C.COLORS[color] )
+    }
   }
 
   handleClickOutside = () => {
@@ -73,15 +69,22 @@ class ColorPicker extends React.Component {
         style={ boxStyle }
       >
         { colors.map( ( color, key ) => {
-          return (
-            <img
-              className={ 'color' + color }
-              src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
-              key={ key }
-              onClick={ () => this.props.handleBearColorChange( color ) }
-              style={ styles.color }
-            />
-          )
+          if ( color !== C.BEAR_TO_IGNORE ) {
+            const colorStyle = Object.assign(
+              {},
+              styles.color,
+              { backgroundColor: color }
+            )
+            return (
+              <img
+                className={ 'color' + color }
+                src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
+                key={ key }
+                onClick={ () => this.props.handleBearColorChange( color ) }
+                style={ styles.color }
+              />
+            )
+          }
         }) }
         <div
           className='deleteBearBox'

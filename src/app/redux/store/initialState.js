@@ -1,7 +1,7 @@
 import C from '../../constants'
 
 const randomBearNumber = ( exception ) => {
-  const maxBear = 8
+  const maxBear = Object.keys( C.COLORS_ENUM ).length - 1
   let random
   do
     random = Math.floor( ( Math.random() * maxBear ) + 0 )
@@ -26,12 +26,12 @@ const InitialState = () => {
           src: C.SRC_TO_IMAGES.BEARS[C.COLORS_ENUM[secondBear]]
         },
         2: {
-          color: C.COLORS.WHITE,
-          src: C.SRC_TO_IMAGES.BEARS.WHITE
+          color: C.COLORS.PLACEHOLDER,
+          src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
         },
         3: {
-          color: C.COLORS.WHITE,
-          src: C.SRC_TO_IMAGES.BEARS.WHITE
+          color: C.COLORS.PLACEHOLDER,
+          src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
         }
       },
       correctCombinations: null

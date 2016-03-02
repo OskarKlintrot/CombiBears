@@ -32,7 +32,11 @@ class Bear extends React.Component {
 
   onHandleBearColorChange = ( color ) => {
     this.src = C.SRC_TO_IMAGES.BEARS[color]
-    this.props.updateBear( this.src, this.props.bearID )
+    this.props.updateBear({
+      color: color,
+      src: this.src,
+      id: this.props.bearID
+    })
     this.handleToggleColorPicker()
   };
 

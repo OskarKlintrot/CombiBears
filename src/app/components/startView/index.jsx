@@ -167,8 +167,8 @@ const mapDispatchToProps = ( dispatch ) => {
     decreaseNumberOfSeats: () => {
       dispatch( Actions.decreaseNumberOfSeats() )
     },
-    updateBear: ( bearSrc, bearId ) => {
-      dispatch( Actions.updateBear( bearSrc, bearId ) )
+    updateBear: ( bear ) => {
+      dispatch( Actions.updateBear( bear ) )
     },
     deleteBear: ( bearId ) => {
       dispatch( Actions.deleteBear( bearId ) )

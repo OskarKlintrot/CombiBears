@@ -32,12 +32,11 @@ const SettingsActions = {
       })
     }
   },
-  updateBear: ( bearSrc, bearId ) => {
+  updateBear: ( bear ) => {
     return ( dispatch ) => {
       dispatch({
         type: UPDATE_BEAR,
-        bearSrc: bearSrc,
-        bearId: bearId
+        bear: bear
       })
     }
   },
