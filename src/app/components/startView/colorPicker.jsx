@@ -36,21 +36,17 @@ const styles = {
   }
 }
 
-const colors = [
-  C.COLORS.BLUE,
-  C.COLORS.GREEN,
-  C.COLORS.YELLOW,
-  C.COLORS.RED,
-  C.COLORS.PURPLE,
-  C.COLORS.PINK,
-  C.COLORS.ORANGE,
-  C.COLORS.BROWN
-]
+const colors = []
 
 class ColorPicker extends React.Component {
   constructor( props ) {
     super( props )
     this.handleClickOutside = this.handleClickOutside.bind( this )
+    colors.length = 0 // Deleting all elements
+    for ( const color in C.COLORS ) {
+      if ( C.COLORS.hasOwnProperty( color ) )
+        colors.push( C.COLORS[color] )
+    }
   }
 
   handleClickOutside = () => {
