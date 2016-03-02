@@ -31,14 +31,15 @@ const styles = {
     transform: 'rotate(90deg)',
     flex: '0 1 auto',
     WebkitFlex: '0 1 auto',
-    maxHeight: '25%',
-    maxWidth: '25%'
+    maxHeight: '35%',
+    maxWidth: '35%'
   },
   sofa: {
     flex: '0 2 auto',
     WebkitFlex: '0 2 auto',
     maxHeight: '50%',
-    maxWidth: '100%'
+    maxWidth: '100%',
+    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
   }
 }
 

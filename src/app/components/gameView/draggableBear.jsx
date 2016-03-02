@@ -5,7 +5,6 @@ import BasicBear from '../shared/basicBear'
 
 const draggableBearSource = {
   beginDrag( props ) {
-    props.onBeginDrag( props.containerTypeName, props.index, props.color )
     return {
       props
     }
@@ -13,6 +12,25 @@ const draggableBearSource = {
 
   endDrag( props, monitor ) {
 
+    // Get drop target result from seat or gamescene components.
+    const dropTargetResult = monitor.getDropResult()
+
+    if ( dropTargetResult ) {
+
+      props.onDrop(
+        {
+          bearKey: props.bearKey,
+          from: {
+            containerTypeName: props.containerTypeName,
+            index: props.index
+          },
+          to: {
+            containerTypeName: dropTargetResult.containerTypeName,
+            index: dropTargetResult.index
+          }
+        }
+      )
+    }
   }
 }
 
@@ -26,7 +44,7 @@ const collect = ( connect, monitor ) => {
 const transparency = 0.5
 
 const DraggableBear = ( props ) => {
-  const { connectDragSource, isDragging, color } = props
+  const { connectDragSource, isDragging, bearKey, bearsSettings } = props
 
   const styles = {
     bear: {
@@ -39,7 +57,7 @@ const DraggableBear = ( props ) => {
   return connectDragSource(
     <div>
       <BasicBear
-        bear={ { src: C.SRC_TO_IMAGES.BEARS[color] } }
+        bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
         width='100'
         height='120'
         style={ styles.bear }
@@ -49,12 +67,13 @@ const DraggableBear = ( props ) => {
 }
 
 DraggableBear.propTypes = {
+  onDrop: PropTypes.func.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  color: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  onBeginDrag: PropTypes.func.isRequired
+  bearKey: PropTypes.string.isRequired,
+  bearsSettings: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired
 }
 
 export default DragSource( C.COMPONENT_NAMES.BEAR, draggableBearSource, collect )( DraggableBear )

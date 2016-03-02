@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import Modal from 'react-modal'
+import C from '../../constants'
 
 const modalStyles = {
   content: {
@@ -23,11 +24,10 @@ const InfoFlash = ( props ) => {
 
   return (
     <div>
-      <input
+      <img
         className='float-right'
+        src={ C.SRC_TO_IMAGES.ICONS.INFO }
         style={ style }
-        type='button'
-        value='Info'
         onClick={ handleOpenModal }
       />
       <Modal

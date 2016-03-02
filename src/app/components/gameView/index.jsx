@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
 import Sofa from './sofa'
-import DraggedTeddy from './draggedBear'
+import DraggedBear from './draggedBear'
 import StartingArea from './startingArea'
 import Seat from './seat'
 import Buttons from './buttons'
+import GameScene from './gameScene'
+import SavedPermutations from './savedPermutations'
 import DraggableBear from './draggableBear.jsx'
 import { connect } from 'react-redux'
 import Actions from '../../redux/actions/'
@@ -13,103 +15,100 @@ import Actions from '../../redux/actions/'
 import { DragDropContext } from 'react-dnd'
 import touchBackend from 'react-dnd-touch-backend'
 
-/* TODO: Below is a suggestion for a standard format for data to store in redux.
- *  At the moment it's stored like that. May change in the future.
- *  Number of seats is determined by teddySeatArray.length
- *
- * const teddySeatArray = [
- *   "orange",
- *   null,
- *   "blue",
- *   "green"
- * ]
- * const teddyStartingAreaArray = [
- *   "pink"
- *   null,
- *   null,
- *   null
- * ]
- */
-
 class GameView extends React.Component {
   constructor( props ) {
     super( props )
-    this.state = {
-      currentlyDraggedObj: {
-        color: C.COLORS.WHITE,
-        srcIndex: 0,
-        srcTypeName: C.COMPONENT_NAMES.STARTING_AREA
-      }
-    }
+
+    this.state = {}
+
   }
 
-  handleDrop( containerTypeName, index ) {
+  handleDrop( event ) {
 
-    if ( containerTypeName === C.COMPONENT_NAMES.SOFA ) {
+    /* The following values are passed in the event object
+      event.bearKey
+      event.from.containerTypeName
+      event.from.index
+      event.to.containerTypeName
+      event.to.index
+    */
+
+
+    // When dropped on Sofa
+    if ( event.to.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
       // Add bear to new sofa seat
-      this.props.addBearToSofa( this.state.currentlyDraggedObj.color, index )
+      this.props.addBearToSofa( event.bearKey, event.to.index )
 
       // Remove bear from previous seat
-      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
         // From Starting area
-        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromStart( event.from.index )
 
-      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+      else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
         // From Sofa
-        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromSofa( event.from.index )
 
     }
 
-    if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
+    // When dropped on Starting Area
+    if ( event.to.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
       // Add bear to new Starting area seat
-      this.props.addBearToStart( this.state.currentlyDraggedObj.color, index )
+      this.props.addBearToStart( event.bearKey, event.to.index )
 
       // Remove bear from previous seat
-      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
         // From Starting area seat
-        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromStart( event.from.index )
 
-      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+      else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
         // From sofa seat
-        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromSofa( event.from.index )
     }
-  }
 
-  handleBeginDrag( containerTypeName, index, color ) {
-    this.setState(
-      {
-        currentlyDraggedObj: {
-          color: color,
-          srcIndex: index, // We need to save the dragged source index, so we later know which index to delete on successful drop.
-          srcTypeName: containerTypeName // Same with type (distinguish between Sofa and Starting Area source type)
-        }
+    // When dropped on Game Scene (outside of starting area and sofa)
+    if ( event.to.containerTypeName === C.COMPONENT_NAMES.GAME_SCENE ) {
+
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
+
+        // Get index of first free seat in bearsOnStart array
+        const freeSeatIndex = this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
+
+        // Add bear to new Starting area seat
+        this.props.addBearToStart( event.bearKey, freeSeatIndex )
+
+        // Remove bear from sofa seat
+        this.props.removeBearFromSofa( event.from.index )
       }
-    )
+    }
   }
 
   savePermutation() {
-    this.props.savePermutation( this.props.bearsOnSofa )
+
+    // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
+    const bearsToSave = Array.from( this.props.game.bearsOnSofa )
+
+    this.props.savePermutation( bearsToSave )
   }
 
   resetPermutation() {
     this.props.resetPermutation()
   }
 
-  renderSeat( teddyColor, seatIndex, containerTypeName ) {
+  renderSeat( bearKey, seatIndex, containerTypeName ) {
 
     // Bind 'this' to GameView on passed methods
     const handleDrop = this.handleDrop.bind( this )
-    const handleBeginDrag = this.handleBeginDrag.bind( this )
 
-    const bear = typeof teddyColor === "string" ?
+    const bear = bearKey !== null ?
       <DraggableBear
         key={ seatIndex }
         index={ seatIndex }
-        onBeginDrag={ handleBeginDrag }
-        color={ teddyColor }
+        bearKey={ bearKey }
+        bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
         containerTypeName={ containerTypeName }
+        onDrop={ handleDrop }
       /> :
       null
 
@@ -117,7 +116,6 @@ class GameView extends React.Component {
       <Seat
         key={ seatIndex }
         index={ seatIndex }
-        onDrop={ handleDrop }
         canDrop={ bear === null }
         containerTypeName={ containerTypeName }
       >
@@ -129,7 +127,9 @@ class GameView extends React.Component {
   render() {
     const styles = {
       gameScene: {
-        height: window.innerHeight + 'px'
+        height: window.innerHeight + 'px',
+        width: '80%',
+        float: 'left'
       },
 
       sofa: {
@@ -146,34 +146,42 @@ class GameView extends React.Component {
     const savePermutation = this.savePermutation.bind( this )
 
     return (
-      <div style={ styles.gameScene } >
+      <div>
+        <GameScene>
+          <Buttons
+            onRestart={ resetPermutation }
+            onSave={ savePermutation }
+          />
 
-        <Buttons
-          onRestart={ resetPermutation }
-          onSave={ savePermutation }
+          <Sofa
+            scale={ 1 }
+            numberOfSeats={ this.props.settings.numberOfSeats }
+            styles={ styles.sofa }
+          >
+            {
+              this.props.game.bearsOnSofa ? this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
+                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
+                ) : null
+              }
+          </Sofa>
+
+          <StartingArea>
+            {
+              this.props.game.bearsOnStart ? this.props.game.bearsOnStart.map( ( bearKey, index ) =>
+                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA ) ) : null
+              }
+          </StartingArea>
+
+        </GameScene>
+
+        <SavedPermutations
+          savedPermutations={ this.props.game.savedPermutations }
+          settings={ this.props.settings }
         />
 
-        <Sofa
-          scale={ 1 }
-          numberOfSeats={ this.props.bearsOnSofa.length }
-          styles={ styles.sofa }
-        >
-          {
-            this.props.bearsOnSofa.map( ( color, index ) =>
-              this.renderSeat( color, index, C.COMPONENT_NAMES.SOFA )
-            )
-          }
-        </Sofa>
-
-        <StartingArea>
-          {
-            this.props.bearsOnStart.map( ( color, index ) =>
-              this.renderSeat( color, index, C.COMPONENT_NAMES.STARTING_AREA )
-              )
-          }
-        </StartingArea>
-
-        <DraggedTeddy color={ this.state.currentlyDraggedObj.color } />
+        <DraggedBear
+          bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
+        />
 
       </div>
     )
@@ -182,8 +190,8 @@ class GameView extends React.Component {
 
 GameView.propTypes = {
 
-  bearsOnSofa: PropTypes.array.isRequired,
-  bearsOnStart: PropTypes.array.isRequired,
+  game: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
 
   addBearToSofa: PropTypes.func.isRequired,
   removeBearFromSofa: PropTypes.func.isRequired,
@@ -193,7 +201,12 @@ GameView.propTypes = {
   savePermutation: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ( state ) => state.game
+const mapStateToProps = ( state ) => {
+  return {
+    game: state.game,
+    settings: state.settings
+  }
+}
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
