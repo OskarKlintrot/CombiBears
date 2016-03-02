@@ -7,6 +7,7 @@ const styles = {
   savedPermutations: {
     width: '20%',
     height: window.innerHeight + 'px',
+    overflow: 'scroll',
     float: 'right',
     background: '#FFF'
   },
