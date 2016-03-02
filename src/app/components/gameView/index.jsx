@@ -31,14 +31,19 @@ class GameView extends React.Component {
       event.from.index
       event.to.containerTypeName
       event.to.index
+      event.to.canDrop
     */
 
+    // If the bear is dropped on the same seat. Abort
+    if ( JSON.stringify( event.from ) === JSON.stringify( event.to ) )
+      return
+
+    // Abort if cannot drop on target
+    if ( !event.to.canDrop )
+      return
 
     // When dropped on Sofa
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
-
-      // Add bear to new sofa seat
-      this.props.addBearToSofa( event.bearKey, event.to.index )
 
       // Remove bear from previous seat
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
@@ -49,37 +54,40 @@ class GameView extends React.Component {
         // From Sofa
         this.props.removeBearFromSofa( event.from.index )
 
+      // Add bear to new sofa seat
+      this.props.addBearToSofa( event.bearKey, event.to.index )
     }
 
     // When dropped on Starting Area
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
-      // Add bear to new Starting area seat
-      this.props.addBearToStart( event.bearKey, event.to.index )
-
       // Remove bear from previous seat
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
-        // From Starting area seat
+        // From Starting Area seat
         this.props.removeBearFromStart( event.from.index )
 
       else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
-        // From sofa seat
+        // From Sofa Seat
         this.props.removeBearFromSofa( event.from.index )
+
+      // Add bear to new Starting Area seat
+      this.props.addBearToStart( event.bearKey, event.to.index )
     }
 
     // When dropped on Game Scene (outside of starting area and sofa)
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.GAME_SCENE ) {
 
+      // Make sure the source is the sofa
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
         // Get index of first free seat in bearsOnStart array
         const freeSeatIndex = this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
 
-        // Add bear to new Starting area seat
-        this.props.addBearToStart( event.bearKey, freeSeatIndex )
-
         // Remove bear from sofa seat
         this.props.removeBearFromSofa( event.from.index )
+
+        // Add bear to new Starting area seat
+        this.props.addBearToStart( event.bearKey, freeSeatIndex )
       }
     }
   }
@@ -89,7 +97,19 @@ class GameView extends React.Component {
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
-    this.props.savePermutation( bearsToSave )
+    // Check that permutation does not already exists
+    if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
+
+      // Check that sofas all seats are taken
+      if ( !bearsToSave.some( ( permutation ) => permutation === null ) )
+
+        this.props.savePermutation( bearsToSave )
+
+    } else {
+
+      // TODO: The permutation already exists. Visual feedback?
+
+    }
   }
 
   resetPermutation() {
