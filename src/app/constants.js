@@ -1,4 +1,4 @@
-export default Object.freeze({
+const CONSTANTS = {
   SRC_TO_IMAGES: {
     SOFAS: {
       2: 'public/pics/sofas/two.svg',
@@ -54,4 +54,19 @@ export default Object.freeze({
     STARTING_AREA: 'StartingArea',
     SOFA: 'Sofa'
   }
-})
+}
+
+CONSTANTS.COLORS_ENUM = {
+  0: CONSTANTS.COLORS.BLUE,
+  1: CONSTANTS.COLORS.BROWN,
+  2: CONSTANTS.COLORS.GREEN,
+  3: CONSTANTS.COLORS.ORANGE,
+  4: CONSTANTS.COLORS.PINK,
+  5: CONSTANTS.COLORS.PURPLE,
+  6: CONSTANTS.COLORS.RED,
+  7: CONSTANTS.COLORS.YELLOW,
+  8: CONSTANTS.COLORS.WHITE,
+  9: CONSTANTS.COLORS.PLACEHOLDER
+}
+
+export default Object.freeze( CONSTANTS )
