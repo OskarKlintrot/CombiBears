@@ -5,14 +5,14 @@ import C from '../../constants'
 const styles = {
   box: {
     width: '18em',
-    height: '14.8em',
-    backgroundImage: 'url(public/pics/icons/colorpicker-bkgr-outlined.svg)',
+    height: '16.5em',
+    backgroundImage: 'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
     backgroundSize: '100%',
-    paddingTop: '1em',
+    paddingTop: '1.5em',
     zIndex: 2,
     position: 'absolute',
-    top: '-45%',
-    right: '-64%',
+    top: '-180%',
+    left: '-120%',
     cursor: 'auto'
   },
   color: {
@@ -20,9 +20,7 @@ const styles = {
     height: '3.5em',
     margin: '0.25em',
     display: 'inline-block',
-    cursor: 'pointer',
-    border: '0.2em solid rgb(205, 205, 195)',
-    borderRadius: '50%'
+    cursor: 'pointer'
   },
   deleteBearBox: {
     width: '100%'
@@ -30,9 +28,7 @@ const styles = {
   deleteBearImg: {
     cursor: 'pointer',
     height: '3.5em',
-    width: '3.5em',
-    border: '0.2em solid rgb(205, 205, 195)',
-    borderRadius: '50%'
+    width: '3.5em'
   }
 }
 
@@ -64,17 +60,13 @@ class ColorPicker extends React.Component {
         style={ styles.box }
       >
         { colors.map( ( color, key ) => {
-          const colorStyle = Object.assign(
-            {},
-            styles.color,
-            { backgroundColor: color }
-          )
           return (
-            <div
+            <img
               className={ 'color' + color }
+              src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
               key={ key }
               onClick={ () => this.props.handleBearColorChange( color ) }
-              style={ colorStyle }
+              style={ styles.color }
             />
           )
         }) }
@@ -84,7 +76,7 @@ class ColorPicker extends React.Component {
         >
           <img
             className='deleteBear'
-            src={ C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
+            src={ C.SRC_TO_IMAGES.ICONS.WRONG }
             onClick={ this.props.handleDeleteBear }
             style={ styles.deleteBearImg }
           />
