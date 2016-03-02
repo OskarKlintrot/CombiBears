@@ -9,6 +9,7 @@ export default Object.freeze({
       ARROW_LEFT: 'public/pics/icons/arrow-left.svg',
       ARROW_RIGHT: 'public/pics/icons/arrow-right.svg',
       CONTINUE: 'public/pics/icons/continue.svg',
+      INFO: 'public/pics/icons/info.svg',
       NEW_SOFA: 'public/pics/icons/new-sofa.svg',
       RESTART: 'public/pics/icons/restart.svg',
       SAVE_PERMUTATION: 'public/pics/icons/save-permutation.svg',

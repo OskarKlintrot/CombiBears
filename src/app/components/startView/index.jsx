@@ -17,8 +17,10 @@ const styles = {
   },
   infoButton: {
     position: 'fixed',
+    height: '100px',
     bottom: '70px',
-    right: '70px'
+    right: '70px',
+    cursor: 'pointer'
   },
   startButton: {
     // position: 'relative',
