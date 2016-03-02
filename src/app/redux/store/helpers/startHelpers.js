@@ -23,7 +23,7 @@ export const updateBear = ( bears, bear ) => {
     src: bear.src
   }
 
-  return bears
+  return Object.assign({}, bears )
 }
 
 export const deleteBear = ( bears, bearId ) => {
@@ -42,5 +42,5 @@ export const deleteBear = ( bears, bearId ) => {
     }
   }
 
-  return bears
+  return Object.assign({}, bears )
 }
