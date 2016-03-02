@@ -5,12 +5,10 @@ import { DropTarget } from 'react-dnd'
 const seatTarget = {
   drop( props, monitor ) {
 
-    if ( props.canDrop ) {
-
-      return {
-        containerTypeName: props.containerTypeName,
-        index: props.index
-      }
+    return {
+      containerTypeName: props.containerTypeName,
+      index: props.index,
+      canDrop: props.canDrop
     }
   }
 }

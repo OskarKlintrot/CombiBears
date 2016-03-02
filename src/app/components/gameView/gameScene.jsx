@@ -7,7 +7,8 @@ const dropTarget = {
 
     return {
       containerTypeName: C.COMPONENT_NAMES.GAME_SCENE,
-      index: null
+      index: null,
+      canDrop: true
     }
   }
 }
@@ -28,7 +29,7 @@ const GameScene = ( props ) => {
     gameScene: {
       height: window.innerHeight + 'px',
       width: '80%',
-      float: 'left',
+      float: 'left'
     }
   }
 
