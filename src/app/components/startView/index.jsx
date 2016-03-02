@@ -120,6 +120,7 @@ class StartView extends React.Component {
                 style={ { cursor: 'pointer' } }
                 onClick={ () => {
                   this.props.startGame()
+                  this.props.resetGame()
                   this.props.initBears()
                   this.props.initSofa()
                 } }
@@ -157,6 +158,9 @@ const mapStateToProps = ( state ) => state.settings
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
+    resetGame: () => {
+      dispatch( Actions.resetGame() )
+    },
     increaseNumberOfSeats: () => {
       dispatch( Actions.increaseNumberOfSeats() )
     },
