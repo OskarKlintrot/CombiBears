@@ -6,12 +6,9 @@ const styles = {
   box: {
     width: '18em',
     height: '16.5em',
-    backgroundImage: 'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
     backgroundSize: '100%',
-    paddingTop: '1.5em',
     zIndex: 2,
     position: 'absolute',
-    top: '-180%',
     left: '-120%',
     cursor: 'auto'
   },
@@ -55,10 +52,25 @@ class ColorPicker extends React.Component {
   };
 
   render() {
+    const boxStyle = Object.assign(
+      {},
+      styles.box,
+      {
+        backgroundImage: this.props.topBear ?
+          'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg)' :
+          'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
+        top: this.props.topBear ?
+          '70%' :
+          '-190%',
+        paddingTop: this.props.topBear ?
+          '3em' :
+          '1.5em'
+      }
+    )
     return (
       <div
         className='colorPicker'
-        style={ styles.box }
+        style={ boxStyle }
       >
         { colors.map( ( color, key ) => {
           return (
@@ -90,7 +102,8 @@ class ColorPicker extends React.Component {
 ColorPicker.props = {
   handleClickOutside: PropTypes.func.isRequired,
   handleBearColorChange: PropTypes.func.isRequired,
-  handleDeleteBear: PropTypes.func.isRequired
+  handleDeleteBear: PropTypes.func.isRequired,
+  topBear: PropTypes.bool.isRequired
 }
 
 export default listensToClickOutside( ColorPicker )

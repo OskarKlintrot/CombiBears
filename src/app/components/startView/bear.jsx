@@ -57,6 +57,7 @@ class Bear extends React.Component {
           handleClickOutside={ this.onHandleOnClickOutsideColorPicker }
           handleBearColorChange={ this.onHandleBearColorChange }
           handleDeleteBear={ this.onHandleDeleteBear }
+          topBear={ this.props.bearID < 2 }
         /> :
         null
       }
