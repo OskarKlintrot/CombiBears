@@ -1,5 +1,6 @@
 .ReactModal__Overlay {
   opacity: 0;
+  z-index: 999999999999;
 }
 
 .ReactModal__Overlay--after-open {
