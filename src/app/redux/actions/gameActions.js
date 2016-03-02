@@ -3,6 +3,7 @@ import { shuffleArray } from "./helpers/gameActionHelpers"
 import C from '../../constants'
 
 const {
+  RESET_GAME,
   RESET_PERMUTATION,
   ADD_BEAR_TO_SOFA,
   ADD_BEAR_TO_START,
@@ -14,6 +15,13 @@ const {
 } = ActionTypes
 
 const GameActions = {
+  resetGame: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: RESET_GAME
+      })
+    }
+  },
   resetPermutation: () => {
     return ( dispatch ) => {
       dispatch({
@@ -67,7 +75,7 @@ const GameActions = {
     return ( dispatch, getState ) => {
       const bears = []
       for ( const bear in getState().settings.bears ) {
-        if ( getState().settings.bears[bear].color !== C.COLORS.WHITE )
+        if ( getState().settings.bears[bear].color !== C.BEAR_TO_IGNORE )
           bears.push( bear )
       }
       dispatch({

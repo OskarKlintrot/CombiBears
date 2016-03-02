@@ -54,7 +54,7 @@ const SavedCombinationsView = ( props ) => {
       </div>
       <div>
         <Link
-          to={ '/start' }
+          to={ C.ROUTES.START }
         >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
@@ -63,7 +63,7 @@ const SavedCombinationsView = ( props ) => {
           />
         </Link>
         <Link
-          to={ '/results' }
+          to={ C.ROUTES.RESULTS }
         >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
@@ -74,7 +74,7 @@ const SavedCombinationsView = ( props ) => {
       </div>
       <div style={ styles.iconReturn }>
         <Link
-          to={ '/game' }
+          to={ C.ROUTES.GAME }
         >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }

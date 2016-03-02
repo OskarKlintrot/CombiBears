@@ -32,7 +32,11 @@ class Bear extends React.Component {
 
   onHandleBearColorChange = ( color ) => {
     this.src = C.SRC_TO_IMAGES.BEARS[color]
-    this.props.updateBear( this.src, this.props.bearID )
+    this.props.updateBear({
+      color: color,
+      src: this.src,
+      id: this.props.bearID
+    })
     this.handleToggleColorPicker()
   };
 
@@ -57,6 +61,7 @@ class Bear extends React.Component {
           handleClickOutside={ this.onHandleOnClickOutsideColorPicker }
           handleBearColorChange={ this.onHandleBearColorChange }
           handleDeleteBear={ this.onHandleDeleteBear }
+          topBear={ this.props.bearID < 2 }
         /> :
         null
       }
