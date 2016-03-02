@@ -10,7 +10,7 @@ const BasicSofa = ( props ) => {
   }
 
   const getSofaStyles = () => {
-
+  
     const sofaStyles = {
       twoSeats: {
         background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
@@ -60,7 +60,6 @@ const BasicSofa = ( props ) => {
   const mergedStyles = Object.assign({}, genericStyles.sofa, props.styles, getSofaStyles() )
 
   const renderSeat = ( bearKey, seatIndex, containerTypeName ) => {
-    console.log( bearKey, seatIndex )
     const bear = bearKey !== null ?
       <BasicBear
         key={ seatIndex }
