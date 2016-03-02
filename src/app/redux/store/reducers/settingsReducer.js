@@ -40,7 +40,7 @@ const SettingsReducer = ( state, action ) => {
   case UPDATE_BEAR:
     return {
       ...state,
-      bears: updateBear( state.bears, action.bearSrc, action.bearId )
+      bears: updateBear( state.bears, action.bear )
     }
   case DELETE_BEAR:
     return {

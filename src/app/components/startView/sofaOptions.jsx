@@ -38,7 +38,8 @@ const styles = {
     flex: '0 2 auto',
     WebkitFlex: '0 2 auto',
     maxHeight: '50%',
-    maxWidth: '100%'
+    maxWidth: '100%',
+    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
   }
 }
 

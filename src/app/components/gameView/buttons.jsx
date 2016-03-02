@@ -14,7 +14,8 @@ class Buttons extends React.Component {
 
       iconRight: {
         height: '100px',
-        float: 'right'
+        float: 'right',
+        cursor: 'pointer'
       },
 
       arrowDiv: {
@@ -28,7 +29,8 @@ class Buttons extends React.Component {
         bottom: '0',
         right: '0',
         position: 'absolute',
-        height: '80px'
+        height: '80px',
+        cursor: 'pointer'
       }
     }
 
@@ -82,6 +84,5 @@ Buttons.propTypes = {
   onRestart: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired
 }
-
 
 export default Buttons

@@ -2,43 +2,55 @@ import React, { PropTypes } from 'react'
 import C from '../../constants'
 
 const Sofa = ( props ) => {
+  const { scale, styles, numberOfSeats } = props
+  return (
+    <div
+      className={ C.COMPONENT_NAMES.SOFA }
+      style={ Sofa.mergedStyles( styles, scale, numberOfSeats ) }
+    >
+      <div style={ Sofa.genericStyles( scale ).seatContainer }>
+        { props.children }
+      </div>
+    </div>
+  )
+}
 
-  const applyScale = ( value, unit ) => {
-    return ( props.scale * Number( value ) ).toString() + unit
+Sofa.applyScale = ( value, unit, scale ) => {
+  return ( scale * Number( value ) ).toString() + unit
+}
+
+Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
+  const sofaStyles = {
+    twoSeats: {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
+      width: Sofa.applyScale( '450', 'px', scale ),
+      height: Sofa.applyScale( '240', 'px', scale ),
+      padding: `${ Sofa.applyScale( '20', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+    },
+    threeSeats: {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
+      width: Sofa.applyScale( '500', 'px', scale ),
+      height: Sofa.applyScale( '270', 'px', scale ),
+      padding: `${ Sofa.applyScale( '40', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+    },
+    fourSeats: {
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
+      width: Sofa.applyScale( '600', 'px', scale ),
+      height: Sofa.applyScale( '300', 'px', scale ),
+      padding: `${ Sofa.applyScale( '70', 'px', scale ) } ${ Sofa.applyScale( '75', 'px', scale ) } 0 ${ Sofa.applyScale( '85', 'px', scale ) }`
+    }
   }
 
-  const getSofaStyles = () => {
-
-    const sofaStyles = {
-      twoSeats: {
-        background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
-        width: applyScale( '450', 'px' ),
-        height: applyScale( '240', 'px' ),
-        padding: `${ applyScale( '20', 'px ' ) } ${ applyScale( '8', 'px' ) } 0 ${ applyScale( '12', 'px' ) }`
-      },
-      threeSeats: {
-        background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
-        width: applyScale( '500', 'px' ),
-        height: applyScale( '270', 'px' ),
-        padding: `${ applyScale( '40', 'px ' ) } ${ applyScale( '8', 'px' ) } 0 ${ applyScale( '12', 'px' ) }`
-      },
-      fourSeats: {
-        background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
-        width: applyScale( '600', 'px' ),
-        height: applyScale( '300', 'px' ),
-        padding: `${ applyScale( '70', 'px ' ) } ${ applyScale( '75', 'px' ) } 0 ${ applyScale( '85', 'px' ) }`
-      }
-    }
-
-    switch ( props.numberOfSeats ) {
-    case 2: return sofaStyles.twoSeats
-    case 3: return sofaStyles.threeSeats
-    case 4: return sofaStyles.fourSeats
-    default: return sofaStyles.fourSeats
-    }
+  switch ( numberOfSeats ) {
+  case 2: return sofaStyles.twoSeats
+  case 3: return sofaStyles.threeSeats
+  case 4: return sofaStyles.fourSeats
+  default: return sofaStyles.fourSeats
   }
+}
 
-  const genericStyles = {
+Sofa.genericStyles = ( scale ) => {
+  return ({
     sofa: {
       backgroundSize: 'contain',
       backgroundPosition: 'top',
@@ -46,26 +58,13 @@ const Sofa = ( props ) => {
       textAlign: 'center'
     },
     seatContainer: {
-      height: applyScale( '150', 'px' )
+      height: Sofa.applyScale( '150', 'px', scale )
     }
-  }
-
-  // Merge styles: genericStyles, prop.styles, and sofaStyles
-  const mergedStyles = Object.assign({}, genericStyles.sofa, props.styles, getSofaStyles() )
-
-  return (
-    <div
-      className={ C.COMPONENT_NAMES.SOFA }
-      style={ mergedStyles }
-    >
-      <div style={ genericStyles.seatContainer }>
-
-        { props.children }
-
-      </div>
-    </div>
-  )
+  })
 }
+
+// Merge styles: genericStyles, prop.styles, and sofaStyles
+Sofa.mergedStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
 
 Sofa.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
