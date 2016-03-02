@@ -75,7 +75,11 @@ class GameView extends React.Component {
   }
 
   savePermutation() {
-    this.props.savePermutation( this.props.game.bearsOnSofa )
+
+    // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
+    const bearsToSave = Array.from( this.props.game.bearsOnSofa )
+
+    this.props.savePermutation( bearsToSave )
   }
 
   resetPermutation() {
