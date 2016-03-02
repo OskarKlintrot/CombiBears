@@ -67,7 +67,8 @@ CONSTANTS.ROUTES = {
 CONSTANTS.COMPONENT_NAMES = {
   BEAR: 'teddybear',
   STARTING_AREA: 'StartingArea',
-  SOFA: 'Sofa'
+  SOFA: 'Sofa',
+  GAME_SCENE: 'GameScene'
 }
 
 CONSTANTS.COLORS_ENUM = {

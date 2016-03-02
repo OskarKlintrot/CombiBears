@@ -14,11 +14,19 @@ const styles = {
 }
 
 const collect = ( monitor ) => {
+
+  // Get source item, where the dragged item came from.
+  const sourceItem =  monitor.getItem()
+
+  // Get bearKey from source item if possible
+  const bearKey = sourceItem ? sourceItem.props.bearKey : null
+
   return {
     item: monitor.getItem(),
     itemType: monitor.getItemType(),
     currentOffset: monitor.getSourceClientOffset(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
+    bearKey: bearKey
   }
 }
 
@@ -68,7 +76,6 @@ DraggedBear.propTypes = {
     y: PropTypes.number.isRequired
   }),
   isDragging: PropTypes.bool.isRequired,
-  bearKey: PropTypes.string.isRequired,
   bearsSettings: PropTypes.object.isRequired
 }
 

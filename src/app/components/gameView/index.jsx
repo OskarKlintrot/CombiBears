@@ -5,6 +5,7 @@ import DraggedBear from './draggedBear'
 import StartingArea from './startingArea'
 import Seat from './seat'
 import Buttons from './buttons'
+import GameScene from './gameScene'
 import SavedPermutations from './savedPermutations'
 import DraggableBear from './draggableBear.jsx'
 import { connect } from 'react-redux'
@@ -18,60 +19,69 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
 
-    this.state = {
-      currentlyDraggedObj: {
-        bearKey: "0",
-        srcIndex: 0,
-        srcTypeName: C.COMPONENT_NAMES.STARTING_AREA
-      }
-    }
+    this.state = {}
+
   }
 
-  handleDrop( containerTypeName, index ) {
+  handleDrop( event ) {
 
-    if ( containerTypeName === C.COMPONENT_NAMES.SOFA ) {
+    /* The following values are passed in the event object
+      event.bearKey
+      event.from.containerTypeName
+      event.from.index
+      event.to.containerTypeName
+      event.to.index
+    */
+
+
+    // When dropped on Sofa
+    if ( event.to.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
       // Add bear to new sofa seat
-      this.props.addBearToSofa( this.state.currentlyDraggedObj.bearKey, index )
+      this.props.addBearToSofa( event.bearKey, event.to.index )
 
       // Remove bear from previous seat
-      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
         // From Starting area
-        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromStart( event.from.index )
 
-      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+      else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
         // From Sofa
-        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromSofa( event.from.index )
 
     }
 
-    if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
+    // When dropped on Starting Area
+    if ( event.to.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
       // Add bear to new Starting area seat
-      this.props.addBearToStart( this.state.currentlyDraggedObj.bearKey, index )
+      this.props.addBearToStart( event.bearKey, event.to.index )
 
       // Remove bear from previous seat
-      if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
         // From Starting area seat
-        this.props.removeBearFromStart( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromStart( event.from.index )
 
-      else if ( this.state.currentlyDraggedObj.srcTypeName === C.COMPONENT_NAMES.SOFA )
+      else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
         // From sofa seat
-        this.props.removeBearFromSofa( this.state.currentlyDraggedObj.srcIndex )
+        this.props.removeBearFromSofa( event.from.index )
     }
-  }
 
+    // When dropped on Game Scene (outside of starting area and sofa)
+    if ( event.to.containerTypeName === C.COMPONENT_NAMES.GAME_SCENE ) {
 
-  handleBeginDrag( containerTypeName, index, bearKey ) {
-    this.setState(
-      {
-        currentlyDraggedObj: {
-          bearKey: bearKey,
-          srcIndex: index, // We need to save the dragged source index, so we later know which index to delete on successful drop.
-          srcTypeName: containerTypeName // Same with type (distinguish between Sofa and Starting Area source type)
-        }
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
+
+        // Get index of first free seat in bearsOnStart array
+        const freeSeatIndex = this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
+
+        // Add bear to new Starting area seat
+        this.props.addBearToStart( event.bearKey, freeSeatIndex )
+
+        // Remove bear from sofa seat
+        this.props.removeBearFromSofa( event.from.index )
       }
-    )
+    }
   }
 
   savePermutation() {
@@ -90,16 +100,15 @@ class GameView extends React.Component {
 
     // Bind 'this' to GameView on passed methods
     const handleDrop = this.handleDrop.bind( this )
-    const handleBeginDrag = this.handleBeginDrag.bind( this )
 
     const bear = bearKey !== null ?
       <DraggableBear
         key={ seatIndex }
         index={ seatIndex }
-        onBeginDrag={ handleBeginDrag }
         bearKey={ bearKey }
         bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
         containerTypeName={ containerTypeName }
+        onDrop={ handleDrop }
       /> :
       null
 
@@ -107,7 +116,6 @@ class GameView extends React.Component {
       <Seat
         key={ seatIndex }
         index={ seatIndex }
-        onDrop={ handleDrop }
         canDrop={ bear === null }
         containerTypeName={ containerTypeName }
       >
@@ -139,8 +147,7 @@ class GameView extends React.Component {
 
     return (
       <div>
-        <div style={ styles.gameScene } >
-
+        <GameScene>
           <Buttons
             onRestart={ resetPermutation }
             onSave={ savePermutation }
@@ -152,29 +159,28 @@ class GameView extends React.Component {
             styles={ styles.sofa }
           >
             {
-                this.props.game.bearsOnSofa ? this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
-                  this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
-              ) : null
-            }
+              this.props.game.bearsOnSofa ? this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
+                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
+                ) : null
+              }
           </Sofa>
 
           <StartingArea>
             {
               this.props.game.bearsOnStart ? this.props.game.bearsOnStart.map( ( bearKey, index ) =>
                 this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA ) ) : null
-            }
+              }
           </StartingArea>
 
-          <DraggedBear
-            bearKey={ this.state.currentlyDraggedObj.bearKey }
-            bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
-          />
-
-        </div>
+        </GameScene>
 
         <SavedPermutations
           savedPermutations={ this.props.game.savedPermutations }
           settings={ this.props.settings }
+        />
+
+        <DraggedBear
+          bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
         />
 
       </div>

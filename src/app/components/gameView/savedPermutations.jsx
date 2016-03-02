@@ -40,8 +40,8 @@ const SavedPermutations = ( props ) => {
           {
             props.savedPermutations.map( ( bearsOnSofa ) =>
               renderSofa( bearsOnSofa )
-            )
-          }
+              )
+            }
         </ul>
       </div>
     )
