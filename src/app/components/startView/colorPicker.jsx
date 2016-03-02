@@ -60,19 +60,21 @@ class ColorPicker extends React.Component {
         style={ styles.box }
       >
         { colors.map( ( color, key ) => {
-          const colorStyle = Object.assign(
-            {},
-            styles.color,
-            { backgroundColor: color }
-          )
-          return (
-            <div
-              className={ 'color' + color }
-              key={ key }
-              onClick={ () => this.props.handleBearColorChange( color ) }
-              style={ colorStyle }
-            />
-          )
+          if ( color !== C.BEAR_TO_IGNORE ) {
+            const colorStyle = Object.assign(
+              {},
+              styles.color,
+              { backgroundColor: color }
+            )
+            return (
+              <div
+                className={ 'color' + color }
+                key={ key }
+                onClick={ () => this.props.handleBearColorChange( color ) }
+                style={ colorStyle }
+              />
+            )
+          }
         }) }
         <div
           className='deleteBearBox'
