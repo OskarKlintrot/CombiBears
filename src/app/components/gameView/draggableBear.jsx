@@ -5,7 +5,6 @@ import BasicBear from '../shared/basicBear'
 
 const draggableBearSource = {
   beginDrag( props ) {
-    props.onBeginDrag( props.containerTypeName, props.index, props.bearKey )
     return {
       props
     }
@@ -13,6 +12,25 @@ const draggableBearSource = {
 
   endDrag( props, monitor ) {
 
+    // Get drop target result from seat or gamescene components.
+    const dropTargetResult = monitor.getDropResult()
+
+    if ( dropTargetResult ) {
+
+      props.onDrop(
+        {
+          bearKey: props.bearKey,
+          from: {
+            containerTypeName: props.containerTypeName,
+            index: props.index
+          },
+          to: {
+            containerTypeName: dropTargetResult.containerTypeName,
+            index: dropTargetResult.index
+          }
+        }
+      )
+    }
   }
 }
 
@@ -49,13 +67,13 @@ const DraggableBear = ( props ) => {
 }
 
 DraggableBear.propTypes = {
+  onDrop: PropTypes.func.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   isDragging: PropTypes.bool.isRequired,
   bearKey: PropTypes.string.isRequired,
   bearsSettings: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
-  onBeginDrag: PropTypes.func.isRequired
+  index: PropTypes.number.isRequired
 }
 
 export default DragSource( C.COMPONENT_NAMES.BEAR, draggableBearSource, collect )( DraggableBear )

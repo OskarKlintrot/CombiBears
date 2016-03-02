@@ -5,9 +5,13 @@ import { DropTarget } from 'react-dnd'
 const seatTarget = {
   drop( props, monitor ) {
 
-    if ( props.canDrop )
-      props.onDrop( props.containerTypeName, props.index )
+    if ( props.canDrop ) {
 
+      return {
+        containerTypeName: props.containerTypeName,
+        index: props.index
+      }
+    }
   }
 }
 
@@ -44,7 +48,6 @@ const Seat = ( props ) => {
 
 Seat.propTypes = {
   canDrop: PropTypes.bool.isRequired,
-  onDrop: PropTypes.func.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 }
