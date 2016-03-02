@@ -16,7 +16,8 @@ const CONSTANTS = {
       SCREENSHOT: 'public/pics/icons/screenshot.svg',
       SHOW_RESULT: 'public/pics/icons/show-result.svg',
       SHOW_SOLUTION: 'public/pics/icons/show-solution.svg',
-      START: 'public/pics/icons/start.svg'
+      START: 'public/pics/icons/start.svg',
+      WRONG: 'public/pics/icons/wrong.svg'
     },
     BEARS: {
       BLUE: 'public/pics/bears/blue.png',
@@ -28,6 +29,16 @@ const CONSTANTS = {
       RED: 'public/pics/bears/red.png',
       WHITE: 'public/pics/bears/white.png',
       YELLOW: 'public/pics/bears/yellow.png'
+    },
+    ACCESSORIES: {
+      BLUE: 'public/pics/accessories/flower.svg',
+      BROWN: 'public/pics/accessories/scarf.svg',
+      GREEN: 'public/pics/accessories/pacifier.svg',
+      ORANGE: 'public/pics/accessories/necklace.svg',
+      PINK: 'public/pics/accessories/bowtie.svg',
+      PURPLE: 'public/pics/accessories/tie.svg',
+      RED: 'public/pics/accessories/hat.svg',
+      YELLOW: 'public/pics/accessories/crown.svg'
     },
     LOGOTYPE: 'public/pics/logotype.png'
   },

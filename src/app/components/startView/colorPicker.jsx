@@ -5,14 +5,11 @@ import C from '../../constants'
 const styles = {
   box: {
     width: '18em',
-    height: '14.8em',
-    backgroundImage: 'url(public/pics/icons/colorpicker-bkgr-outlined.svg)',
+    height: '16.5em',
     backgroundSize: '100%',
-    paddingTop: '1em',
     zIndex: 2,
     position: 'absolute',
-    top: '-45%',
-    right: '-64%',
+    left: '-120%',
     cursor: 'auto'
   },
   color: {
@@ -20,9 +17,7 @@ const styles = {
     height: '3.5em',
     margin: '0.25em',
     display: 'inline-block',
-    cursor: 'pointer',
-    border: '0.2em solid rgb(205, 205, 195)',
-    borderRadius: '50%'
+    cursor: 'pointer'
   },
   deleteBearBox: {
     width: '100%'
@@ -31,8 +26,7 @@ const styles = {
     cursor: 'pointer',
     height: '3.5em',
     width: '3.5em',
-    border: '0.2em solid rgb(205, 205, 195)',
-    borderRadius: '50%'
+    marginTop: '0.5em'
   }
 }
 
@@ -58,23 +52,34 @@ class ColorPicker extends React.Component {
   };
 
   render() {
+    const boxStyle = Object.assign(
+      {},
+      styles.box,
+      {
+        backgroundImage: this.props.topBear ?
+          'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg)' :
+          'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
+        top: this.props.topBear ?
+          '70%' :
+          '-190%',
+        paddingTop: this.props.topBear ?
+          '3em' :
+          '1.5em'
+      }
+    )
     return (
       <div
         className='colorPicker'
-        style={ styles.box }
+        style={ boxStyle }
       >
         { colors.map( ( color, key ) => {
-          const colorStyle = Object.assign(
-            {},
-            styles.color,
-            { backgroundColor: color }
-          )
           return (
-            <div
+            <img
               className={ 'color' + color }
+              src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
               key={ key }
               onClick={ () => this.props.handleBearColorChange( color ) }
-              style={ colorStyle }
+              style={ styles.color }
             />
           )
         }) }
@@ -84,7 +89,7 @@ class ColorPicker extends React.Component {
         >
           <img
             className='deleteBear'
-            src={ C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
+            src={ C.SRC_TO_IMAGES.ICONS.WRONG }
             onClick={ this.props.handleDeleteBear }
             style={ styles.deleteBearImg }
           />
@@ -97,7 +102,8 @@ class ColorPicker extends React.Component {
 ColorPicker.props = {
   handleClickOutside: PropTypes.func.isRequired,
   handleBearColorChange: PropTypes.func.isRequired,
-  handleDeleteBear: PropTypes.func.isRequired
+  handleDeleteBear: PropTypes.func.isRequired,
+  topBear: PropTypes.bool.isRequired
 }
 
 export default listensToClickOutside( ColorPicker )
