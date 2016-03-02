@@ -31,8 +31,8 @@ const styles = {
     transform: 'rotate(90deg)',
     flex: '0 1 auto',
     WebkitFlex: '0 1 auto',
-    maxHeight: '25%',
-    maxWidth: '25%'
+    maxHeight: '35%',
+    maxWidth: '35%'
   },
   sofa: {
     flex: '0 2 auto',
