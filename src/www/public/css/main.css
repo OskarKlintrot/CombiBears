@@ -24,9 +24,23 @@
   transition: opacity 150ms ease-in;
 }
 
-body {
+#backgroundImage {
   background: url(../../public/pics/background.jpg) no-repeat center bottom fixed;
   background-size: cover;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+#app {
+  z-index: 9999;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .saved-combinations-icon
