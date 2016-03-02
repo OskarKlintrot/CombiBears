@@ -18,13 +18,21 @@ const InitialState = () => {
       numberOfSeats: 2,
       bears: {
         0: {
+          color: C.COLORS_ENUM[firstBear],
           src: C.SRC_TO_IMAGES.BEARS[C.COLORS_ENUM[firstBear]]
         },
         1: {
+          color: C.COLORS_ENUM[secondBear],
           src: C.SRC_TO_IMAGES.BEARS[C.COLORS_ENUM[secondBear]]
         },
-        2: null,
-        3: null
+        2: {
+          color: C.COLORS.WHITE,
+          src: C.SRC_TO_IMAGES.BEARS.WHITE
+        },
+        3: {
+          color: C.COLORS.WHITE,
+          src: C.SRC_TO_IMAGES.BEARS.WHITE
+        }
       },
       correctCombinations: null
     },
