@@ -1,4 +1,6 @@
 import ActionTypes from "./actionTypes"
+import { shuffleArray } from "./helpers/gameActionHelpers"
+import C from '../../constants'
 
 const {
   RESET_PERMUTATION,
@@ -6,7 +8,9 @@ const {
   ADD_BEAR_TO_START,
   REMOVE_BEAR_FROM_SOFA,
   REMOVE_BEAR_FROM_START,
-  SAVE_PERMUTATION
+  SAVE_PERMUTATION,
+  INIT_BEARS,
+  INIT_SOFA
 } = ActionTypes
 
 const GameActions = {
@@ -17,7 +21,6 @@ const GameActions = {
       })
     }
   },
-
   addBearToSofa: ( color, position ) => {
     return ( dispatch ) => {
       dispatch({
@@ -27,7 +30,6 @@ const GameActions = {
       })
     }
   },
-
   addBearToStart: ( color, position ) => {
     return ( dispatch ) => {
       dispatch({
@@ -37,7 +39,6 @@ const GameActions = {
       })
     }
   },
-
   removeBearFromSofa: ( position ) => {
     return ( dispatch ) => {
       dispatch({
@@ -46,7 +47,6 @@ const GameActions = {
       })
     }
   },
-
   removeBearFromStart: ( position ) => {
     return ( dispatch ) => {
       dispatch({
@@ -55,12 +55,32 @@ const GameActions = {
       })
     }
   },
-
   savePermutation: ( permutation ) => {
     return ( dispatch ) => {
       dispatch({
         type: SAVE_PERMUTATION,
         permutation: permutation
+      })
+    }
+  },
+  initBears: () => {
+    return ( dispatch, getState ) => {
+      const bears = []
+      for ( const bear in getState().settings.bears ) {
+        if ( getState().settings.bears[bear].color !== C.COLORS.WHITE )
+          bears.push( bear )
+      }
+      dispatch({
+        type: INIT_BEARS,
+        bearsOnStart: shuffleArray( bears )
+      })
+    }
+  },
+  initSofa: () => {
+    return ( dispatch, getState ) => {
+      dispatch({
+        type: INIT_SOFA,
+        numberOfSeats: getState().settings.numberOfSeats
       })
     }
   }

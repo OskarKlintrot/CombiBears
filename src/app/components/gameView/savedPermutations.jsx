@@ -17,21 +17,7 @@ const styles = {
 }
 
 const SavedPermutations = ( props ) => {
-  const bearsOnSofaArray = []
-  if ( props.savedPermutations !== null ) {
-    let iInLoop = 0
-    for ( iInLoop; iInLoop < props.savedPermutations.length; iInLoop += 1 ) {
-      const bearsOnSofa = []
-      for ( let jInLoop = 0; jInLoop < props.savedPermutations[iInLoop].length; jInLoop += 1 )
-        bearsOnSofa.push( props.savedPermutations[iInLoop] )
-      bearsOnSofa.id = iInLoop
-      bearsOnSofaArray.push( bearsOnSofa )
-    }
-  } else {
-    return (
-      <div style={ styles.savedPermutations }></div>
-    )
-  }
+
   const renderSofa = ( bearsOnSofa ) => {
     return (
       <BasicSofa
@@ -43,16 +29,21 @@ const SavedPermutations = ( props ) => {
     )
   }
 
-
+  if ( props.savedPermutations !== null ) {
+    return (
+      <div style={ styles.savedPermutations }>
+        {
+          props.savedPermutations.map( ( bearsOnSofa ) =>
+            renderSofa( bearsOnSofa )
+            )
+          }
+      </div>
+    )
+  }
   return (
-    <div style={ styles.savedPermutations }>
-      {
-        bearsOnSofaArray.map( ( bearsOnSofa ) =>
-          renderSofa( bearsOnSofa )
-        )
-      }
-    </div>
+    <div style={ styles.savedPermutations }></div>
   )
+
 }
 
 SavedPermutations.propTypes = {

@@ -17,8 +17,10 @@ const styles = {
   },
   infoButton: {
     position: 'fixed',
+    height: '100px',
     bottom: '70px',
-    right: '70px'
+    right: '70px',
+    cursor: 'pointer'
   },
   startButton: {
     // position: 'relative',
@@ -60,70 +62,82 @@ class StartView extends React.Component {
 
   render() {
     return (
-      <div className='row'>
-        <div className='medium-12 columns'>
-          <div style={ styles.center }>
-            <img
-              className='medium-12 columns'
-              style={ styles.logotype }
-              id='Logotyp'
-              alt='Logotyp'
-              src={ C.SRC_TO_IMAGES.LOGOTYPE }
-              width='600px'
-            ></img>
+      <div className='startView'>
+        <div className='row'>
+          <div className='medium-12 columns'>
+            <div style={ styles.center }>
+              <img
+                className='medium-12 columns'
+                style={ styles.logotype }
+                id='Logotyp'
+                alt='Logotyp'
+                src={ C.SRC_TO_IMAGES.LOGOTYPE }
+                width='600px'
+              ></img>
+            </div>
           </div>
         </div>
-        <div className='medium-6 columns'>
-          <div style={ styles.center }>
-            <Option>
-              <SofaOptions
-                selected={ this.props.numberOfSeats }
-                handleIncreaseNumberOfSeats={
-                  this.props.increaseNumberOfSeats
-                }
-                handleDecreaseNumberOfSeats={
-                  this.props.decreaseNumberOfSeats
-                }
-              />
-            </Option>
+        <div className='row'>
+          <div className='small-6 columns'>
+            <div style={ styles.center }>
+              <Option>
+                <SofaOptions
+                  selected={ this.props.numberOfSeats }
+                  handleIncreaseNumberOfSeats={
+                    this.props.increaseNumberOfSeats
+                  }
+                  handleDecreaseNumberOfSeats={
+                    this.props.decreaseNumberOfSeats
+                  }
+                />
+              </Option>
+            </div>
+          </div>
+          <div className='small-6 columns'>
+            <div style={ styles.center }>
+              <Option>
+                <BearOptions
+                  bears={ this.props.bears }
+                  updateBear={ this.props.updateBear }
+                  deleteBear={ this.props.deleteBear }
+                />
+              </Option>
+            </div>
           </div>
         </div>
-        <div className='medium-6 columns'>
-          <div style={ styles.center }>
-            <Option>
-              <BearOptions
-                bears={ this.props.bears }
-                updateBear={ this.props.updateBear }
-                deleteBear={ this.props.deleteBear }
-              />
-            </Option>
+        <div className='row'>
+          <div className='medium-12 columns'>
+            <div style={ Object.assign({}, styles.center, styles.startButton ) }>
+              { /* <Link
+                to={ '/start' }
+              > */ }
+              <img
+                id='StartButton'
+                alt='StartButton'
+                src={ C.SRC_TO_IMAGES.ICONS.START }
+                height='50px'
+                width='150px'
+                style={ { cursor: 'pointer' } }
+                onClick={ () => {
+                  this.props.startGame()
+                  this.props.initBears()
+                  this.props.initSofa()
+                } }
+              ></img>
+              { /* </Link> */ }
+            </div>
           </div>
         </div>
-        <div className='medium-12 columns'>
-          <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-            { /* <Link
-              to={ '/start' }
-            > */ }
-            <img
-              id='StartButton'
-              alt='StartButton'
-              src={ C.SRC_TO_IMAGES.ICONS.START }
-              height='50px'
-              width='150px'
-              style={ { cursor: 'pointer' } }
-              onClick={ () => this.props.startGame() }
-            ></img>
-            { /* </Link> */ }
+        <div className='row'>
+          <div className='medium-12 columns'>
+            <InfoFlash
+              style={ styles.infoButton }
+              handleOpenModal={ this.onOpenModal }
+              handleCloseModal={ this.onCloseModal }
+              handleModalCloseRequest={ this.onModalCloseRequest }
+              open={ this.state.modalIsOpen }
+            />
           </div>
-        </div>
-        <div className='medium-12 columns'>
-          <InfoFlash
-            style={ styles.infoButton }
-            handleOpenModal={ this.onOpenModal }
-            handleCloseModal={ this.onCloseModal }
-            handleModalCloseRequest={ this.onModalCloseRequest }
-            open={ this.state.modalIsOpen }
-          />
         </div>
       </div>
     )
@@ -157,6 +171,12 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     startGame: () => {
       dispatch( Actions.startGame() )
+    },
+    initBears: () => {
+      dispatch( Actions.initBears() )
+    },
+    initSofa: () => {
+      dispatch( Actions.initSofa() )
     }
   }
 }
