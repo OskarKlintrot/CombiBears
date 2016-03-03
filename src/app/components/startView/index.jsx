@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import MediaQuery from 'react-responsive'
 // import { Link } from 'react-router'
 import C from '../../constants'
 import SofaOptions from './sofaOptions'
@@ -21,6 +22,12 @@ const styles = {
     bottom: '70px',
     right: '70px',
     cursor: 'pointer'
+  },
+  infoButtonTiny: {
+    height: '100px',
+    cursor: 'pointer',
+    display: 'block',
+    margin: '1em auto'
   },
   startButton: {
     // position: 'relative',
@@ -78,7 +85,7 @@ class StartView extends React.Component {
           </div>
         </div>
         <div className='row'>
-          <div className='small-6 columns'>
+          <div className='small-12 large-6 columns'>
             <div style={ styles.center }>
               <Option>
                 <SofaOptions
@@ -93,7 +100,7 @@ class StartView extends React.Component {
               </Option>
             </div>
           </div>
-          <div className='small-6 columns'>
+          <div className='small-12 large-6 columns'>
             <div style={ styles.center }>
               <Option>
                 <BearOptions
@@ -129,17 +136,24 @@ class StartView extends React.Component {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='medium-12 columns'>
-            <InfoFlash
-              style={ styles.infoButton }
-              handleOpenModal={ this.onOpenModal }
-              handleCloseModal={ this.onCloseModal }
-              handleModalCloseRequest={ this.onModalCloseRequest }
-              open={ this.state.modalIsOpen }
-            />
-          </div>
-        </div>
+        <MediaQuery query='(min-width: 1024px)'>
+          <InfoFlash
+            style={ styles.infoButton }
+            handleOpenModal={ this.onOpenModal }
+            handleCloseModal={ this.onCloseModal }
+            handleModalCloseRequest={ this.onModalCloseRequest }
+            open={ this.state.modalIsOpen }
+          />
+        </MediaQuery>
+        <MediaQuery query='(max-width: 1023px)'>
+          <InfoFlash
+            style={ styles.infoButtonTiny }
+            handleOpenModal={ this.onOpenModal }
+            handleCloseModal={ this.onCloseModal }
+            handleModalCloseRequest={ this.onModalCloseRequest }
+            open={ this.state.modalIsOpen }
+          />
+        </MediaQuery>
       </div>
     )
   }

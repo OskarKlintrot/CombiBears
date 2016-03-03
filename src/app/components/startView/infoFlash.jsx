@@ -25,7 +25,6 @@ const InfoFlash = ( props ) => {
   return (
     <div>
       <img
-        className='float-right'
         src={ C.SRC_TO_IMAGES.ICONS.INFO }
         style={ style }
         onClick={ handleOpenModal }
