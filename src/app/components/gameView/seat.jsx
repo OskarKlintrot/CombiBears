@@ -7,8 +7,7 @@ const seatTarget = {
 
     return {
       containerTypeName: props.containerTypeName,
-      index: props.index,
-      canDrop: props.canDrop
+      index: props.index
     }
   }
 }
@@ -45,7 +44,6 @@ const Seat = ( props ) => {
 }
 
 Seat.propTypes = {
-  canDrop: PropTypes.bool.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 }
