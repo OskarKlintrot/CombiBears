@@ -54,7 +54,7 @@ class ColorPicker extends React.Component {
         length += 1
     }
     return length
-  }
+  };
 
   render() {
     const boxStyle = Object.assign(
