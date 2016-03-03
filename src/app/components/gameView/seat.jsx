@@ -33,11 +33,23 @@ const Seat = ( props ) => {
       border: '1px solid #f00',
       textAlign: 'center',
       verticalAlign: 'top'
+    },
+    startingAreaSeat: {
+      background: 'url(' + C.SRC_TO_IMAGES.SEATS.STOOL + ') no-repeat bottom'
     }
   }
 
+  const getCurrentStyles = () => {
+
+    // If its a starting area, we need the special styles.
+    if ( props.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      return Object.assign({}, styles.seat, styles.startingAreaSeat )
+
+    return styles.seat
+  }
+
   return connectDropTarget(
-    <div style={ styles.seat } >
+    <div style={ getCurrentStyles() } >
     { props.children }
     </div>
   )

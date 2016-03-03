@@ -6,7 +6,7 @@ const Sofa = ( props ) => {
   return (
     <div
       className={ C.COMPONENT_NAMES.SOFA }
-      style={ Sofa.mergedStyles( styles, scale, numberOfSeats ) }
+      style={ Sofa.mergeStyles( styles, scale, numberOfSeats ) }
     >
       <div style={ Sofa.genericStyles( scale ).seatContainer }>
         { props.children }
@@ -62,7 +62,7 @@ Sofa.genericStyles = ( scale ) => {
 }
 
 // Merge styles: genericStyles, prop.styles, and sofaStyles
-Sofa.mergedStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
+Sofa.mergeStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
 
 Sofa.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
