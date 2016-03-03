@@ -19,6 +19,9 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
 
+    const bg = document.getElementById( 'backgroundImage' )
+    bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
+
     this.state = {}
 
   }
@@ -164,7 +167,7 @@ class GameView extends React.Component {
   render() {
     const styles = {
       sofa: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: '80px',
         margin: '0 auto',
         left: '0',

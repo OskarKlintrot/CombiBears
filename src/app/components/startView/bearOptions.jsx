@@ -26,6 +26,7 @@ const BearOptions = ( props ) => {
         <Bear
           key={ item }
           bear={ bears[item] || placeholder }
+          bears={ bears }
           updateBear={ updateBear }
           deleteBear={ deleteBear }
           style={ style.bear }

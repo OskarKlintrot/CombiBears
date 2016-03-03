@@ -62,6 +62,7 @@ class Bear extends React.Component {
           handleBearColorChange={ this.onHandleBearColorChange }
           handleDeleteBear={ this.onHandleDeleteBear }
           topBear={ this.props.bearID < 2 }
+          bears={ this.props.bears }
         /> :
         null
       }
@@ -72,6 +73,8 @@ class Bear extends React.Component {
 
 Bear.propTypes = {
   bearID: PropTypes.number.isRequired,
+  bear: PropTypes.object.isRequired,
+  bears: PropTypes.object.isRequired,
   color: PropTypes.string,
   style: PropTypes.object.isRequired,
   updateBear: PropTypes.func.isRequired,

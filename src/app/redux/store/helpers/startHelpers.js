@@ -31,7 +31,7 @@ export const deleteBear = ( bears, bearId ) => {
 
   const bearsLength = getObjectKeyLength( bears )
   for ( let bear = 0; bear < bearsLength; bear += 1 ) {
-    if ( bears[bear] !== null )
+    if ( bears[bear].color !== C.BEAR_TO_IGNORE )
       numberOfBears += 1
   }
 
