@@ -83,16 +83,17 @@ class GameView extends React.Component {
       // Make sure the source is the sofa
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
-        // Get index of first free seat in bearsOnStart array
-        const freeSeatIndex = this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
-
         // Remove bear from sofa seat
         this.props.removeBearFromSofa( event.from.index )
 
         // Add bear to new Starting area seat
-        this.props.addBearToStart( event.bearKey, freeSeatIndex )
+        this.props.addBearToStart( event.bearKey, this.getFreeStartSeatIndex() )
       }
     }
+  }
+
+  getFreeStartSeatIndex() {
+    return this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
   }
 
   getTotalNumberOfBears() {
@@ -104,8 +105,8 @@ class GameView extends React.Component {
     return bearsCount.length
   }
 
-  getNumberOfBearsInSofa() {
-    return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null ).length
+  getBearsFromSofa() {
+    return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null )
   }
 
   savePermutation() {
@@ -116,25 +117,23 @@ class GameView extends React.Component {
     // Check that this permutation does not already exists
     if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
-      const numberOfBearsInSofa = this.getNumberOfBearsInSofa()
+      const numberOfBearsInSofa = this.getBearsFromSofa().length
 
       // Check that there are enough bears in sofa
       if (
         numberOfBearsInSofa === this.props.game.bearsOnSofa.length ||
         numberOfBearsInSofa === this.getTotalNumberOfBears()
-      )
+      ) {
 
         this.props.savePermutation( bearsToSave )
+        this.props.resetPermutation()
+      }
 
     } else {
 
       // TODO: The permutation already exists. Visual feedback?
 
     }
-  }
-
-  resetPermutation() {
-    this.props.resetPermutation()
   }
 
   renderSeat( bearKey, seatIndex, containerTypeName ) {
@@ -177,7 +176,7 @@ class GameView extends React.Component {
     }
 
     // Bind 'this' to GameView on passed methods
-    const resetPermutation = this.resetPermutation.bind( this )
+    const resetPermutation = this.props.resetPermutation.bind( this )
     const savePermutation = this.savePermutation.bind( this )
 
     return (
