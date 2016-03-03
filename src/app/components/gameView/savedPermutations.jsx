@@ -20,9 +20,9 @@ const styles = {
 
 const SavedPermutations = ( props ) => {
 
-  const renderSofa = ( bearsOnSofa ) => {
+  const renderSofa = ( bearsOnSofa, index ) => {
     return (
-      <li>
+      <li key={ index }>
         <BasicSofa
           scale={ 0.7 }
           numberOfSeats={ props.settings.numberOfSeats }
@@ -38,8 +38,8 @@ const SavedPermutations = ( props ) => {
       <div style={ styles.savedPermutations }>
         <ul style={ styles.ulSofas }>
           {
-            props.savedPermutations.map( ( bearsOnSofa ) =>
-              renderSofa( bearsOnSofa )
+            props.savedPermutations.map( ( bearsOnSofa, index ) =>
+              renderSofa( bearsOnSofa, index )
               )
             }
         </ul>

@@ -67,7 +67,7 @@
     "no-labels": 2,
     "no-lone-blocks": 2,
     "no-loop-func": 1,
-    "no-magic-numbers": 1,
+    "no-magic-numbers": [1, {"ignore": [0, 1, 2, 3, 4] }],
     "no-multi-spaces": 1,
     "no-multi-str": 2,
     "no-native-reassign": 2,
