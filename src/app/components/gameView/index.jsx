@@ -26,6 +26,7 @@ class GameView extends React.Component {
 
   }
 
+  // This method is triggered on every drop event.
   handleDrop( event ) {
 
     /* The following values are passed in the event object
@@ -34,28 +35,24 @@ class GameView extends React.Component {
       event.from.index
       event.to.containerTypeName
       event.to.index
-      event.to.canDrop
     */
 
     // If the bear is dropped on the same seat. Abort
     if ( JSON.stringify( event.from ) === JSON.stringify( event.to ) )
       return
 
-    // Abort if cannot drop on target
-    if ( !event.to.canDrop )
-      return
-
     // When dropped on Sofa
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
-      // Remove bear from previous seat
+      // Remove bear from previous Starting area seat
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
-        // From Starting area
         this.props.removeBearFromStart( event.from.index )
 
+      // Or Remove bear from previous Sofa seat
       else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
-        // From Sofa
         this.props.removeBearFromSofa( event.from.index )
+
+      this.swapTargetSeatBearIfNeeded( event )
 
       // Add bear to new sofa seat
       this.props.addBearToSofa( event.bearKey, event.to.index )
@@ -64,14 +61,15 @@ class GameView extends React.Component {
     // When dropped on Starting Area
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
-      // Remove bear from previous seat
+      // Remove bear from previous Starting area seat
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
-        // From Starting Area seat
         this.props.removeBearFromStart( event.from.index )
 
+      // Or Remove bear from previous Sofa seat
       else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
-        // From Sofa Seat
         this.props.removeBearFromSofa( event.from.index )
+
+      this.swapTargetSeatBearIfNeeded( event )
 
       // Add bear to new Starting Area seat
       this.props.addBearToStart( event.bearKey, event.to.index )
@@ -80,15 +78,49 @@ class GameView extends React.Component {
     // When dropped on Game Scene (outside of starting area and sofa)
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.GAME_SCENE ) {
 
-      // Make sure the source is the sofa
+      // Only when source is the Sofa
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
-        // Remove bear from sofa seat
+        // Remove bear from Sofa seat
         this.props.removeBearFromSofa( event.from.index )
 
         // Add bear to new Starting area seat
         this.props.addBearToStart( event.bearKey, this.getFreeStartSeatIndex() )
       }
+    }
+  }
+
+  bearExistsOnSeat( contarinerTypeName, index ) {
+
+    return this.getBearKeyForSeat( contarinerTypeName, index ) !== null
+  }
+
+  getBearKeyForSeat( contarinerTypeName, index ) {
+
+    if ( contarinerTypeName === C.COMPONENT_NAMES.SOFA )
+
+      return this.props.game.bearsOnSofa[index]
+
+    else if ( contarinerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+
+      return this.props.game.bearsOnStart[index]
+  }
+
+  swapTargetSeatBearIfNeeded( event ) {
+
+    // Check if bear exists on target seat, if it does, move that bear to source seat
+    if ( this.bearExistsOnSeat( event.to.containerTypeName, event.to.index ) ) {
+
+      // Get bearKey from taget seat
+      const bearKeyOnTargetSeat = this.getBearKeyForSeat( event.to.containerTypeName, event.to.index )
+
+      // Move to Start area seat
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
+        this.props.addBearToSofa( bearKeyOnTargetSeat, event.from.index )
+
+      // Move to Sofa seat
+      else if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+        this.props.addBearToStart( bearKeyOnTargetSeat, event.from.index )
     }
   }
 
@@ -125,6 +157,7 @@ class GameView extends React.Component {
         numberOfBearsInSofa === this.getTotalNumberOfBears()
       ) {
 
+        // Save and reset
         this.props.savePermutation( bearsToSave )
         this.props.resetPermutation()
       }
@@ -156,7 +189,6 @@ class GameView extends React.Component {
       <Seat
         key={ seatIndex }
         index={ seatIndex }
-        canDrop={ bear === null }
         containerTypeName={ containerTypeName }
       >
         { bear }
