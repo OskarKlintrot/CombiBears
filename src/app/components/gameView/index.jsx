@@ -110,11 +110,16 @@ class GameView extends React.Component {
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
-    // Check that permutation does not already exists
+    // Check that this permutation does not already exists
     if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
-      // Check that all bears are in sofa
-      if ( this.getNumberOfBearsInSofa() === this.getTotalNumberOfBears() )
+      const numberOfBearsInSofa = this.getNumberOfBearsInSofa()
+
+      // Check that there are enough bears in sofa
+      if (
+        numberOfBearsInSofa === this.props.game.bearsOnSofa.length ||
+        numberOfBearsInSofa === this.getTotalNumberOfBears()
+      )
 
         this.props.savePermutation( bearsToSave )
 
