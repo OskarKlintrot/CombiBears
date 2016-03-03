@@ -6,10 +6,13 @@ const style = {
   box: {
     position: 'relative',
     top: '50%',
-    transform: 'translateY(-55%)'
+    left: '50%',
+    transform: 'translate(-50%,-50%)'
   },
   bear: {
     position: 'relative',
+    minWidth: '8em',
+    maxWidth: '12em',
     WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
   }
 }

@@ -3,8 +3,9 @@ import MediaQuery from 'react-responsive'
 
 const styles = {
   optionElement: {
-    height: '25em',
-    maxWidth: '25em',
+    minHeight: '30em',
+    maxWidth: '45em',
+    maxHeight: '45em',
     width: '100%',
     padding: '0 5em 0 5em',
     borderRadius: '50%',
@@ -12,13 +13,15 @@ const styles = {
     border: '0.5em solid rgb(250, 250, 240)'
   },
   optionElementTiny: {
-    minWidth: '25em',
-    minHeight: '25em',
+    minWidth: '20em',
+    minHeight: '20em',
+    maxWidth: '30em',
+    maxHeight: '30em',
     padding: '0 5em 0 5em',
     borderRadius: '50%',
     backgroundColor: 'rgba(240, 240, 230, 0.8)',
     border: '0.5em solid rgb(250, 250, 240)',
-    margin: '1em 0'
+    margin: '1em auto'
   }
 }
 

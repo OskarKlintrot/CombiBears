@@ -17,14 +17,11 @@ const styles = {
     marginTop: '12px'
   },
   infoButton: {
-    position: 'fixed',
-    height: '100px',
-    bottom: '70px',
-    right: '70px',
+    width: '150px',
     cursor: 'pointer'
   },
   infoButtonTiny: {
-    height: '100px',
+    width: '100px',
     cursor: 'pointer',
     display: 'block',
     margin: '1em auto'
@@ -113,7 +110,7 @@ class StartView extends React.Component {
           </div>
         </div>
         <div className='row'>
-          <div className='medium-12 columns'>
+          <div className='small-12 large-8 large-offset-2 columns'>
             <div style={ Object.assign({}, styles.center, styles.startButton ) }>
               { /* <Link
                 to={ '/start' }
@@ -135,16 +132,18 @@ class StartView extends React.Component {
               { /* </Link> */ }
             </div>
           </div>
+          <MediaQuery query='(min-width: 1024px)'>
+            <div className='large-2 columns'>
+              <InfoFlash
+                style={ styles.infoButton }
+                handleOpenModal={ this.onOpenModal }
+                handleCloseModal={ this.onCloseModal }
+                handleModalCloseRequest={ this.onModalCloseRequest }
+                open={ this.state.modalIsOpen }
+              />
+            </div>
+          </MediaQuery>
         </div>
-        <MediaQuery query='(min-width: 1024px)'>
-          <InfoFlash
-            style={ styles.infoButton }
-            handleOpenModal={ this.onOpenModal }
-            handleCloseModal={ this.onCloseModal }
-            handleModalCloseRequest={ this.onModalCloseRequest }
-            open={ this.state.modalIsOpen }
-          />
-        </MediaQuery>
         <MediaQuery query='(max-width: 1023px)'>
           <InfoFlash
             style={ styles.infoButtonTiny }
