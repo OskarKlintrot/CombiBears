@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
 import BasicSofa from '../shared/basicSofa-v2'
-import { Link } from 'react-router'
 
 const styles = {
+  icon: {
+    width: '80px'
+  },
+
   savedPermutations: {
     width: '20%',
     height: window.innerHeight + 'px',
@@ -14,7 +17,8 @@ const styles = {
 
   ulSofas: {
     listStyleType: 'none',
-    marginLeft: '0px'
+    margin: 'auto',
+    padding: '15px'
   }
 }
 
@@ -36,6 +40,16 @@ const SavedPermutations = ( props ) => {
   if ( props.savedPermutations !== null ) {
     return (
       <div style={ styles.savedPermutations }>
+        <div style={ styles.iconReturn }>
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+            alt='Icon for expanding saved permutations list'
+            style={ styles.icon }
+            onClick={ () => {
+              console.log( 'Test av onclick på pil' )
+            } }
+          />
+        </div>
         <ul style={ styles.ulSofas }>
           {
             props.savedPermutations.map( ( bearsOnSofa, index ) =>
