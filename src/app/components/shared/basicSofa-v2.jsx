@@ -91,7 +91,6 @@ const BasicSofa = ( props ) => {
 }
 
 BasicSofa.propTypes = {
-  scale: PropTypes.number.isRequired,
   bearsOnSofa: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired
 }
