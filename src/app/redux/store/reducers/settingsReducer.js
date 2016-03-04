@@ -1,10 +1,11 @@
 import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
+import C from '../../../constants.js'
 import { ActionTypesSettings } from '../../actions/actionTypes'
 import { updateBear, deleteBear } from '../helpers/startHelpers'
 
 const getBearsFromObject = ( obj, seats ) => {
-  const filtered = Object.keys( obj ).filter( ( key ) => obj[key] )
+  const filtered = Object.keys( obj ).filter( ( key ) => obj[key].color !== C.BEAR_TO_IGNORE )
   const fill = seats - filtered.length > 0 ? Array(
     ...Array( seats - filtered.length )
   ).map( () => null ) : []
