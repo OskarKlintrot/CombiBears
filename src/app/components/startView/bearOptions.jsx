@@ -4,12 +4,21 @@ import Bear from './bear'
 
 const style = {
   box: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingTop: '12%'
+  },
+  innerBox: {
     position: 'relative',
-    top: '50%',
-    transform: 'translateY(-55%)'
+    display: 'inline-block',
+    margin: '3% 6.25%',
+    width: '25%'
   },
   bear: {
-    position: 'relative',
+    width: '100%',
     WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
   }
 }
@@ -23,15 +32,17 @@ const BearOptions = ( props ) => {
   for ( const item in bears ) {
     if ( bears.hasOwnProperty( item ) ) {
       bearsToRender.push(
-        <Bear
-          key={ item }
-          bear={ bears[item] || placeholder }
-          bears={ bears }
-          updateBear={ updateBear }
-          deleteBear={ deleteBear }
-          style={ style.bear }
-          bearID={ parseInt( item ) }
-        />
+        <div style={ style.innerBox }>
+          <Bear
+            key={ item }
+            bear={ bears[item] || placeholder }
+            bears={ bears }
+            updateBear={ updateBear }
+            deleteBear={ deleteBear }
+            style={ style.bear }
+            bearID={ parseInt( item ) }
+          />
+        </div>
       )
     }
   }
@@ -41,14 +52,10 @@ const BearOptions = ( props ) => {
       className='bears'
       style={ style.box }
     >
-      <div className='row'>
-        { bearsToRender[0] }
-        { bearsToRender[1] }
-      </div>
-      <div className='row'>
-        { bearsToRender[2] }
-        { bearsToRender[3] }
-      </div>
+      { bearsToRender[0] }
+      { bearsToRender[1] }
+      { bearsToRender[2] }
+      { bearsToRender[3] }
     </div>
   )
 }

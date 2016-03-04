@@ -5,10 +5,7 @@ import C from '../../constants'
 
 const styles = {
   div: {
-    width: '50%',
-    display: 'inline-block',
-    cursor: 'pointer',
-    position: 'relative'
+    cursor: 'pointer'
   }
 }
 
@@ -49,12 +46,11 @@ class Bear extends React.Component {
     return (
       <div
         style={ styles.div }
+        onClick={ this.handleToggleColorPicker }
       >
         <BasicBear
-          className='big-6 columns'
           bear={ this.props.bear }
           style={ this.props.style }
-          onClick={ this.handleToggleColorPicker }
         />
       { this.state.showColorPicker ?
         <ColorPicker
