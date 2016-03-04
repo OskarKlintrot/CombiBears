@@ -82,7 +82,7 @@ class StartView extends React.Component {
           </div>
         </div>
         <div className='row'>
-          <div className='small-12 medium-6 columns'>
+          <div className='small-12 medium-10 medium-offset-1 large-6 large-offset-0 columns'>
             <div style={ styles.center }>
               <Option>
                 <SofaOptions
@@ -97,7 +97,7 @@ class StartView extends React.Component {
               </Option>
             </div>
           </div>
-          <div className='small-12 medium-6 columns'>
+          <div className='small-12 medium-10 medium-offset-1 large-6 large-offset-0 columns'>
             <div style={ styles.center }>
               <Option>
                 <BearOptions
