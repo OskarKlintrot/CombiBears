@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import C from '../../constants'
 import BasicSofa from '../shared/basicSofa-v2'
 import SavedPermutationsFlash from './savedPermutationsFlash'
 
@@ -31,7 +32,7 @@ const styles = {
     float: 'right',
     background: '#FFF'
   },
-  
+
   ulSofas: {
     listStyleType: 'none',
     margin: 'auto',
@@ -40,11 +41,9 @@ const styles = {
 }
 
 class SavedPermutations extends React.Component {
+
   constructor( props ) {
     super( props )
-    /* One way of using this.setState() when using ES2015 classes
-     * is to either bind this here in the constructor...
-     */
     this.onCloseModal = this.onCloseModal.bind( this )
     this.onModalCloseRequest = this.onModalCloseRequest.bind( this )
     this.state = {
@@ -66,6 +65,21 @@ class SavedPermutations extends React.Component {
 
   render() {
     if ( this.props.savedPermutations.length > 0 ) {
+      const correctAnswers = []
+      const md1 = this.props.settings.correctCombinations
+      const md2 = this.props.savedPermutations
+      for ( let iInLoop = 0; iInLoop < md1.length; iInLoop += 1 ) {
+        for ( let jInLoop = 0; jInLoop < md2.length; jInLoop += 1 ) {
+          if ( md1[iInLoop][0] === md2[jInLoop][0] && md1[iInLoop][1] === md2[jInLoop][1] &&
+               md1[iInLoop][2] === md2[jInLoop][2] && md1[iInLoop][3] === md2[jInLoop][3] ) {
+            const correctAnswer = 'correct'
+            correctAnswers.push( correctAnswer )
+          }
+        }
+      }
+
+      if ( correctAnswers.length === this.props.settings.correctCombinations.length )
+        window.location = C.ROUTES.RESULTS
 
       const renderSofa = ( bearsOnSofa, index ) => {
         return (
@@ -107,7 +121,6 @@ class SavedPermutations extends React.Component {
       <div style={ styles.savedPermutations }>
       </div>
     )
-
   }
 }
 
