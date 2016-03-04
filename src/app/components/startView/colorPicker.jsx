@@ -7,10 +7,11 @@ const styles = {
     width: '18em',
     height: '16.5em',
     backgroundSize: '100%',
-    zIndex: 2,
-    position: 'absolute',
-    left: '-120%',
-    cursor: 'auto'
+    zIndex: 999,
+    position: 'relative',
+    marginRight: '15em',
+    cursor: 'auto',
+    display: 'block'
   },
   color: {
     width: '3.5em',
@@ -65,8 +66,8 @@ class ColorPicker extends React.Component {
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg)' :
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
         top: this.props.topBear ?
-          '70%' :
-          '-190%',
+          '43%' :
+          '0',
         paddingTop: this.props.topBear ?
           '3em' :
           '1.5em'
