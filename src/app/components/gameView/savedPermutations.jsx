@@ -8,16 +8,14 @@ const styles = {
     width: '20%',
     height: window.innerHeight + 'px',
     overflow: 'auto',
-    float: 'right',
-    background: 'transparent'
+    float: 'right'
   },
 
   arrowDiv: {
     width: '17%',
     height: window.innerHeight + 'px',
     overflow: 'auto',
-    float: 'left',
-    background: 'transparent'
+    float: 'left'
   },
 
   arrowButton: {
@@ -125,6 +123,8 @@ class SavedPermutations extends React.Component {
     }
     return (
       <div style={ styles.savedPermutations }>
+        <div style={ styles.sofaList }>
+        </div>
       </div>
     )
   }

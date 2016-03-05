@@ -6,19 +6,9 @@ import BasicSofa from '../shared/basicSofa-v2'
 const modalStyles = {
   content: {
     position: 'absolute',
-    top: '0',
-    left: '0',
-    right: '0',
-    bottom: '0',
-    backgroundColor: '#FFF'
-  },
-
-  sofaList: {
-    width: '100%',
-    height: window.innerHeight + 'px',
-    overflow: 'auto',
-    float: 'right',
-    background: '#FFF'
+    width: '75%',
+    margin: '0 auto',
+    overflow: 'auto'
   },
 
   ulSofas: {
@@ -26,7 +16,6 @@ const modalStyles = {
     margin: 'auto',
     padding: '15px'
   }
-
 }
 
 const SavedPermutationsFlash = ( props ) => {
@@ -42,7 +31,9 @@ const SavedPermutationsFlash = ( props ) => {
 
   const renderSofa = ( bearsOnSofa, index ) => {
     return (
-      <li key={ index }>
+      <li className='large-4 medium-4 small-6 columns'
+        key={ index }
+      >
         <BasicSofa
           settings={ settings }
           bearsOnSofa={ bearsOnSofa }
@@ -72,8 +63,11 @@ const SavedPermutationsFlash = ( props ) => {
         >
           <span aria-hidden='true'>&times;</span>
         </button>
-        <div style={ modalStyles.sofaList }>
-          <ul style={ modalStyles.ulSofas }>
+        <div>
+          <ul
+            className='large-12 medium-12 small-12 row'
+            style={ modalStyles.ulSofas }
+          >
             {
               savedPermutations.map( ( bearsOnSofa, index ) =>
                 renderSofa( bearsOnSofa, index )
