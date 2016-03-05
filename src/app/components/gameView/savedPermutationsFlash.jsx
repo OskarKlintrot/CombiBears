@@ -54,7 +54,7 @@ const SavedPermutationsFlash = ( props ) => {
   return (
     <div>
       <img
-        className='float-left'
+        className=''
         src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
         style={ style }
         onClick={ handleOpenModal }

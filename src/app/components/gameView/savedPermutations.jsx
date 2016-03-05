@@ -5,7 +5,7 @@ import SavedPermutationsFlash from './savedPermutationsFlash'
 
 const styles = {
   savedPermutations: {
-    width: '30%',
+    width: '20%',
     height: window.innerHeight + 'px',
     overflow: 'auto',
     float: 'right',
@@ -13,7 +13,7 @@ const styles = {
   },
 
   arrowDiv: {
-    width: '10%',
+    width: '17%',
     height: window.innerHeight + 'px',
     overflow: 'auto',
     float: 'left',
@@ -21,16 +21,22 @@ const styles = {
   },
 
   arrowButton: {
-    width: '100%',
-    cursor: 'pointer'
+    width: '7%',
+    cursor: 'pointer',
+    position: 'fixed',
+    top: '45%'
   },
 
   sofaList: {
-    width: '90%',
+    width: '83%',
     height: window.innerHeight + 'px',
     overflow: 'auto',
     float: 'right',
-    background: '#FFF'
+    background: 'rgba(240, 240, 230, 0.8)',
+    border: 'solid',
+    borderWidth: '0px',
+    borderLeftWidth: '0.5em',
+    borderColor: 'rgb(250, 250, 240)'
   },
 
   ulSofas: {
