@@ -98,7 +98,7 @@ class SavedPermutations extends React.Component {
       } else {
         const renderSofa = ( bearsOnSofa, index ) => {
           let sofaListElementStyle = styles.sofaListElements
-          if ( this.props.savedPermutations.length - 1 === index )
+          if ( index === 0 )
             sofaListElementStyle = styles.sofaListElementLast
           return (
             <li
