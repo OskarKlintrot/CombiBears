@@ -149,7 +149,7 @@ class GameView extends React.Component {
 
     // Check that this permutation does not already exists
 
-    const index = !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) // GET INDEX INSTEAD
+    // const index = !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) // GET INDEX INSTEAD
 
     if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
