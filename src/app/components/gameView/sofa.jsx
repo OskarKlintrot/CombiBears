@@ -23,21 +23,18 @@ Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
   const sofaStyles = {
     twoSeats: {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ') top no-repeat',
-      width: Sofa.applyScale( '450', 'px', scale ),
-      height: Sofa.applyScale( '240', 'px', scale ),
-      padding: `${ Sofa.applyScale( '20', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+      width: '50%',
+      padding: '1% 1% 1% 1%'
     },
     threeSeats: {
-      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
-      width: Sofa.applyScale( '500', 'px', scale ),
-      height: Sofa.applyScale( '270', 'px', scale ),
-      padding: `${ Sofa.applyScale( '40', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ') top no-repeat',
+      width: '50%',
+      padding: '5% 7% 8% 7%'
     },
     fourSeats: {
-      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
-      width: Sofa.applyScale( '600', 'px', scale ),
-      height: Sofa.applyScale( '300', 'px', scale ),
-      padding: `${ Sofa.applyScale( '70', 'px', scale ) } ${ Sofa.applyScale( '75', 'px', scale ) } 0 ${ Sofa.applyScale( '85', 'px', scale ) }`
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ') top no-repeat',
+      width: '50%',
+      padding: '5% 7% 8% 7%'
     }
   }
 
@@ -53,10 +50,13 @@ Sofa.genericStyles = ( scale ) => {
   return ({
     sofa: {
       backgroundSize: 'contain',
-      textAlign: 'center'
+      textAlign: 'center',
+      border: '1px solid #f0f',
+      margin: '0 auto'
     },
     seatContainer: {
-      height: Sofa.applyScale( '150', 'px', scale )
+      display: 'flex',
+      alignItems: 'stretch'
     }
   })
 }

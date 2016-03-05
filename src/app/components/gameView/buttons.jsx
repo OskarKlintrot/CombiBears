@@ -15,21 +15,31 @@ class Buttons extends React.Component {
       icon: {
         height: '100px'
       },
-
       iconRight: {
         height: '100px',
         float: 'right',
         cursor: 'pointer'
       },
-
-      iconRestart: {
-        bottom: '0',
-        right: '0',
-        position: 'fixed',
-        height: '80px',
+      resetIcon: {
+        width: '25%',
+        cursor: 'pointer',
+        marginRight: '5%'
+      },
+      saveIcon: {
+        width: '70%',
         cursor: 'pointer'
+      },
+      bottomIconsArea: {
+        bottom: '0',
+        right: '21%',
+        position: 'fixed',
+        width: '20%',
+        border: '1xp solid #0f0'
       }
     }
+
+
+
 
     return (
 
@@ -44,12 +54,6 @@ class Buttons extends React.Component {
             style={ styles.icon }
           />
         </Link>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
-          alt='Icon for saving permutation'
-          style={ styles.iconRight }
-          onClick={ () => this.props.onSave() }
-        />
         <Link
           to={ C.ROUTES.RESULTS }
           onClick={ this.handleBlurBackground }
@@ -60,14 +64,20 @@ class Buttons extends React.Component {
             style={ styles.iconRight }
           />
         </Link>
-
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.RESTART }
-          alt='Icon for putting bears back in startingArea'
-          style={ styles.iconRestart }
-          onClick={ () => this.props.onRestart() }
-        />
-
+        <div style={ styles.bottomIconsArea }>
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.RESTART }
+            alt='Icon for putting bears back in startingArea'
+            style={ styles.resetIcon }
+            onClick={ () => this.props.onRestart() }
+          />
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
+            alt='Icon for saving permutation'
+            style={ styles.saveIcon }
+            onClick={ () => this.props.onSave() }
+          />
+        </div>
       </div>
     )
   }

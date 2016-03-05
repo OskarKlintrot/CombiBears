@@ -1,15 +1,15 @@
-import React, { PropTypes } from 'react'
-import Seat from './seat'
+import React from 'react'
 import C from '../../constants'
 
 const styles = {
   startingArea: {
+    display: 'flex',
+    alignItems: 'stretch',
     bottom: '10px',
     margin: '0 auto',
     left: '10px',
     position: 'fixed',
-    width: '500px',
-    height: '180px'
+    width: '50%'
   }
 }
 

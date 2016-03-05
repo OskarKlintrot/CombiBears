@@ -148,6 +148,9 @@ class GameView extends React.Component {
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
     // Check that this permutation does not already exists
+
+    const index = !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) // GET INDEX INSTEAD
+
     if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
       const numberOfBearsInSofa = this.getBearsFromSofa().length
@@ -247,7 +250,7 @@ class GameView extends React.Component {
         <SavedPermutations
           savedPermutations={ this.props.game.savedPermutations }
           settings={ this.props.settings }
-          triedToSaveDuplicatePermutation={ this.state.triedToSaveDuplicatePermutation }
+          triedToSaveDuplicatePermutationIndex={ this.state.triedToSaveDuplicatePermutation }
         />
 
         <DraggedBear

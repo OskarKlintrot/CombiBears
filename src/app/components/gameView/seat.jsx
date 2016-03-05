@@ -25,14 +25,13 @@ const Seat = ( props ) => {
 
   const styles = {
     seat: {
-      display: 'inline-block',
       width: '25%',
-      height: '100%',
       zIndex: 1,
       opacity: 1,
       border: '1px solid #f00',
       textAlign: 'center',
-      verticalAlign: 'top'
+      verticalAlign: 'top',
+      paddingBottom: '5%'
     },
     startingAreaSeat: {
       background: 'url(' + C.SRC_TO_IMAGES.SEATS.STOOL + ') no-repeat bottom'
