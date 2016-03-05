@@ -22,8 +22,9 @@ class GameView extends React.Component {
     const bg = document.getElementById( 'backgroundImage' )
     bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
 
-    this.state = {}
-
+    this.state = {
+      triedToSaveDuplicatePermutation: []
+    }
   }
 
   // This method is triggered on every drop event.
@@ -166,6 +167,9 @@ class GameView extends React.Component {
 
       // TODO: The permutation already exists. Visual feedback?
 
+      this.setState({
+        triedToSaveDuplicatePermutation: bearsToSave
+      })
     }
   }
 
@@ -243,6 +247,7 @@ class GameView extends React.Component {
         <SavedPermutations
           savedPermutations={ this.props.game.savedPermutations }
           settings={ this.props.settings }
+          triedToSaveDuplicatePermutation={ this.state.triedToSaveDuplicatePermutation }
         />
 
         <DraggedBear

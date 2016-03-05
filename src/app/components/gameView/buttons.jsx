@@ -22,13 +22,6 @@ class Buttons extends React.Component {
         cursor: 'pointer'
       },
 
-      arrowDiv: {
-        position: 'fixed',
-        right: '0',
-        top: '50%',
-        marginTop: '-50px'
-      },
-
       iconRestart: {
         bottom: '0',
         right: '0',
@@ -74,19 +67,6 @@ class Buttons extends React.Component {
           style={ styles.iconRestart }
           onClick={ () => this.props.onRestart() }
         />
-
-        <div style={ styles.arrowDiv }>
-          <Link
-            to={ C.ROUTES.SAVED }
-            onClick={ this.handleBlurBackground }
-          >
-            <img
-              src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-              alt='Icon for maximizing saved permutations-list'
-              style={ styles.icon }
-            />
-          </Link>
-        </div>
 
       </div>
     )
