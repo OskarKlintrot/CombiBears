@@ -50,6 +50,13 @@ const styles = {
     paddingTop: '15px'
   },
 
+  sofaListElementSaved: {
+    // transform: 'scale(1.1, 1.1)',
+    backgroundColor: '#b93e3e',
+    borderRadius: '10px',
+    paddingTop: '15px'
+  },
+
   sofaListElements: {
 
   }
@@ -93,53 +100,56 @@ class SavedPermutations extends React.Component {
         }
       }
 
-      if ( correctAnswers.length === this.props.settings.correctCombinations.length ) {
-        window.location = C.ROUTES.RESULTS
-      } else {
-        const renderSofa = ( bearsOnSofa, index ) => {
-          let sofaListElementStyle = styles.sofaListElements
-          if ( index === 0 )
-            sofaListElementStyle = styles.sofaListElementLast
-          return (
-            <li
-              key={ index }
-              style={ sofaListElementStyle }
-            >
-              <BasicSofa
-                settings={ this.props.settings }
-                bearsOnSofa={ bearsOnSofa }
-              />
-            </li>
-          )
-        }
+      if ( correctAnswers.length === this.props.settings.correctCombinations.length )
+        console.log( 'Alla permutationer hittade' )
+
+      const renderSofa = ( bearsOnSofa, index ) => {
+        let sofaListElementStyle = styles.sofaListElements
+        // TODO: Ändra till property som kommer in från index
+        if ( index === 3 )
+          sofaListElementStyle = styles.sofaListElementSaved
+        else if ( index === 0 )
+          sofaListElementStyle = styles.sofaListElementLast
 
         return (
-          <div style={ styles.savedPermutations }>
-            <div style={ styles.arrowDiv }>
-              <SavedPermutationsFlash
-                style={ styles.arrowButton }
-                handleOpenModal={ this.onOpenModal }
-                handleCloseModal={ this.onCloseModal }
-                handleModalCloseRequest={ this.onModalCloseRequest }
-                open={ this.state.modalIsOpen }
-                savedPermutations={ this.props.savedPermutations }
-                settings={ this.props.settings }
-              />
-            </div>
-            <div style={ styles.sofaList }>
-              <ul
-                style={ styles.ulSofas }
-              >
-                {
-                  this.props.savedPermutations.map( ( bearsOnSofa, index ) =>
-                    renderSofa( bearsOnSofa, index )
-                  )
-                }
-              </ul>
-            </div>
-          </div>
+          <li
+            key={ index }
+            style={ sofaListElementStyle }
+          >
+            <BasicSofa
+              settings={ this.props.settings }
+              bearsOnSofa={ bearsOnSofa }
+            />
+          </li>
         )
       }
+
+      return (
+        <div style={ styles.savedPermutations }>
+          <div style={ styles.arrowDiv }>
+            <SavedPermutationsFlash
+              style={ styles.arrowButton }
+              handleOpenModal={ this.onOpenModal }
+              handleCloseModal={ this.onCloseModal }
+              handleModalCloseRequest={ this.onModalCloseRequest }
+              open={ this.state.modalIsOpen }
+              savedPermutations={ this.props.savedPermutations }
+              settings={ this.props.settings }
+            />
+          </div>
+          <div style={ styles.sofaList }>
+            <ul
+              style={ styles.ulSofas }
+            >
+              {
+                this.props.savedPermutations.map( ( bearsOnSofa, index ) =>
+                  renderSofa( bearsOnSofa, index )
+                )
+              }
+            </ul>
+          </div>
+        </div>
+      )
     }
     return (
       <div style={ styles.savedPermutations }>
