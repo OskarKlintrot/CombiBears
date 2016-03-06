@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import Modal from 'react-modal'
 import C from '../../constants'
+import Radium from 'radium'
 
 const modalStyles = {
   content: {
@@ -12,6 +13,26 @@ const modalStyles = {
     transform: 'translate(-50%, -50%)'
   }
 }
+
+const styles = {
+  infoButton: {
+    position: 'fixed',
+    height: '100px',
+    bottom: '20px',
+    right: '20px',
+    cursor: 'pointer',
+    '@media (max-width: 1023px)': {
+      position: 'absolute',
+      bottom: '8px',
+      right: '25px',
+      height: '80px',
+      cursor: 'pointer',
+      display: 'block',
+      margin: '1em auto'
+    }
+  }
+}
+
 
 const InfoFlash = ( props ) => {
   const {
@@ -26,7 +47,7 @@ const InfoFlash = ( props ) => {
     <div>
       <img
         src={ C.SRC_TO_IMAGES.ICONS.INFO }
-        style={ style }
+        style={ Object.assign({}, styles.infoButton, style ) }
         onClick={ handleOpenModal }
       />
       <Modal
@@ -57,4 +78,4 @@ InfoFlash.propTypes = {
   style: PropTypes.object
 }
 
-export default InfoFlash
+export default Radium( InfoFlash )
