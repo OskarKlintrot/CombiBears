@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import MediaQuery from 'react-responsive'
-// import { Link } from 'react-router'
+import Radium from 'radium'
 import C from '../../constants'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
@@ -14,17 +13,11 @@ const styles = {
     textAlign: 'center'
   },
   logotype: {
-    marginTop: '12px'
-  },
-  infoButton: {
-    width: '150px',
-    cursor: 'pointer'
-  },
-  infoButtonTiny: {
-    width: '100px',
-    cursor: 'pointer',
-    display: 'block',
-    margin: '1em auto'
+    marginTop: '12px',
+    width: '600px',
+    '@media (max-width: 1023px)': {
+      width: '450px'
+    }
   },
   startButton: {
     // position: 'relative',
@@ -33,6 +26,7 @@ const styles = {
   }
 }
 
+@Radium
 class StartView extends React.Component {
   constructor( props ) {
     super( props )
@@ -76,13 +70,12 @@ class StartView extends React.Component {
                 id='Logotyp'
                 alt='Logotyp'
                 src={ C.SRC_TO_IMAGES.LOGOTYPE }
-                width='600px'
               ></img>
             </div>
           </div>
         </div>
         <div className='row'>
-          <div className='small-12 medium-10 medium-offset-1 large-6 large-offset-0 columns'>
+          <div className='small-12 medium-5 medium-offset-1 large-6 large-offset-0 columns'>
             <div style={ styles.center }>
               <Option>
                 <SofaOptions
@@ -97,7 +90,7 @@ class StartView extends React.Component {
               </Option>
             </div>
           </div>
-          <div className='small-12 medium-10 medium-offset-1 large-6 large-offset-0 columns'>
+          <div className='small-12 medium-5 medium-offset-0 large-6 large-offset-0 columns'>
             <div style={ styles.center }>
               <Option>
                 <BearOptions
@@ -112,16 +105,17 @@ class StartView extends React.Component {
         <div className='row'>
           <div className='small-12 large-8 large-offset-2 columns'>
             <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-              { /* <Link
-                to={ '/start' }
-              > */ }
               <img
                 id='StartButton'
                 alt='StartButton'
                 src={ C.SRC_TO_IMAGES.ICONS.START }
-                height='50px'
-                width='150px'
-                style={ { cursor: 'pointer' } }
+                style={ {
+                  width: '150px',
+                  '@media (max-width: 1023px)': {
+                    width: '120px'
+                  },
+                  cursor: 'pointer'
+                } }
                 onClick={ () => {
                   this.props.startGame()
                   this.props.resetGame()
@@ -129,30 +123,17 @@ class StartView extends React.Component {
                   this.props.initSofa()
                 } }
               ></img>
-              { /* </Link> */ }
             </div>
           </div>
-          <MediaQuery query='(min-width: 1024px)'>
-            <div className='large-2 columns'>
-              <InfoFlash
-                style={ styles.infoButton }
-                handleOpenModal={ this.onOpenModal }
-                handleCloseModal={ this.onCloseModal }
-                handleModalCloseRequest={ this.onModalCloseRequest }
-                open={ this.state.modalIsOpen }
-              />
-            </div>
-          </MediaQuery>
+          <div className='large-2 columns'>
+            <InfoFlash
+              handleOpenModal={ this.onOpenModal }
+              handleCloseModal={ this.onCloseModal }
+              handleModalCloseRequest={ this.onModalCloseRequest }
+              open={ this.state.modalIsOpen }
+            />
+          </div>
         </div>
-        <MediaQuery query='(max-width: 1023px)'>
-          <InfoFlash
-            style={ styles.infoButtonTiny }
-            handleOpenModal={ this.onOpenModal }
-            handleCloseModal={ this.onCloseModal }
-            handleModalCloseRequest={ this.onModalCloseRequest }
-            open={ this.state.modalIsOpen }
-          />
-        </MediaQuery>
       </div>
     )
   }
