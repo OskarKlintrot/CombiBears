@@ -65,6 +65,7 @@ class Buttons extends React.Component {
             src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
             alt='Icon for showing result'
             style={ styles.iconRight }
+            onClick={ () => this.props.onSave() }
           />
         </Link>
 
