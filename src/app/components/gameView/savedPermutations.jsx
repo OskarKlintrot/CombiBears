@@ -84,7 +84,7 @@ class SavedPermutations extends React.Component {
   onModalCloseRequest() {
     this.setState({ modalIsOpen: false })
   }
-
+  
   render() {
     if ( this.props.savedPermutations.length > 0 ) {
       const correctAnswers = []
@@ -105,16 +105,19 @@ class SavedPermutations extends React.Component {
 
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
+        let sofaLiId = ''
         // TODO: Ändra till property som kommer in från index
-        if ( index === 3 )
+        if ( index === 3 ) {
           sofaListElementStyle = styles.sofaListElementSaved
-        else if ( index === 0 )
+          sofaLiId = 'alreadySaved'
+        } else if ( index === 0 ) {
           sofaListElementStyle = styles.sofaListElementLast
-
+        }
         return (
           <li
             key={ index }
             style={ sofaListElementStyle }
+            id={ sofaLiId }
           >
             <BasicSofa
               settings={ this.props.settings }
@@ -137,7 +140,10 @@ class SavedPermutations extends React.Component {
               settings={ this.props.settings }
             />
           </div>
-          <div style={ styles.sofaList }>
+          <div
+            id={ 'sofaList' }
+            style={ styles.sofaList }
+          >
             <ul
               style={ styles.ulSofas }
             >
