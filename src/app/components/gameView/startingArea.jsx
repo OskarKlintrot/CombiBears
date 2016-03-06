@@ -4,14 +4,12 @@ import C from '../../constants'
 
 const styles = {
   startingArea: {
-    border: '1px solid #f0f',
     bottom: '10px',
     margin: '0 auto',
     left: '10px',
-    // right: '0',
-    position: 'absolute',
+    position: 'fixed',
     width: '500px',
-    height: '150px'
+    height: '180px'
   }
 }
 

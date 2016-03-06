@@ -6,6 +6,11 @@ CONSTANTS.SRC_TO_IMAGES = {
     3: 'public/pics/sofas/three.svg',
     4: 'public/pics/sofas/four.svg'
   },
+  SEATS: {
+    PILLOW: 'public/pics/seats/pillow.svg',
+    PILLOW_DETAILS: 'public/pics/seats/pillow-details.svg',
+    STOOL: 'public/pics/seats/stool.svg'
+  },
   ICONS: {
     ARROW_LEFT: 'public/pics/icons/arrow-left.svg',
     ARROW_RIGHT: 'public/pics/icons/arrow-right.svg',

@@ -4,6 +4,10 @@ import { Link } from 'react-router'
 
 class Buttons extends React.Component {
 
+  handleBlurBackground() {
+    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: blur(10px) grayscale(0.3)' )
+  }
+
   render() {
 
     const styles = {
@@ -19,7 +23,7 @@ class Buttons extends React.Component {
       },
 
       arrowDiv: {
-        position: 'absolute',
+        position: 'fixed',
         right: '0',
         top: '50%',
         marginTop: '-50px'
@@ -28,7 +32,7 @@ class Buttons extends React.Component {
       iconRestart: {
         bottom: '0',
         right: '0',
-        position: 'absolute',
+        position: 'fixed',
         height: '80px',
         cursor: 'pointer'
       }
@@ -37,7 +41,10 @@ class Buttons extends React.Component {
     return (
 
       <div>
-        <Link to={ C.ROUTES.START }>
+        <Link
+          to={ C.ROUTES.START }
+          onClick={ this.handleBlurBackground }
+        >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
             alt='Icon for new sofa'
@@ -50,7 +57,10 @@ class Buttons extends React.Component {
           style={ styles.iconRight }
           onClick={ () => this.props.onSave() }
         />
-        <Link to={ C.ROUTES.RESULTS }>
+        <Link
+          to={ C.ROUTES.RESULTS }
+          onClick={ this.handleBlurBackground }
+        >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
             alt='Icon for showing result'
@@ -66,7 +76,10 @@ class Buttons extends React.Component {
         />
 
         <div style={ styles.arrowDiv }>
-          <Link to={ C.ROUTES.SAVED }>
+          <Link
+            to={ C.ROUTES.SAVED }
+            onClick={ this.handleBlurBackground }
+          >
             <img
               src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
               alt='Icon for maximizing saved permutations-list'

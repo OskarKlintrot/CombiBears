@@ -7,10 +7,11 @@ const styles = {
     width: '18em',
     height: '16.5em',
     backgroundSize: '100%',
-    zIndex: 2,
+    zIndex: 999,
     position: 'absolute',
-    left: '-120%',
-    cursor: 'auto'
+    right: '-14%',
+    cursor: 'auto',
+    display: 'block'
   },
   color: {
     width: '3.5em',
@@ -47,6 +48,15 @@ class ColorPicker extends React.Component {
     this.props.handleClickOutside()
   };
 
+  getObjectKeyLength = ( obj ) => {
+    let length = 0
+    for ( const key in obj ) {
+      if ( obj.hasOwnProperty( key ) )
+        length += 1
+    }
+    return length
+  };
+
   render() {
     const boxStyle = Object.assign(
       {},
@@ -57,10 +67,20 @@ class ColorPicker extends React.Component {
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
         top: this.props.topBear ?
           '70%' :
-          '-190%',
+          '-170%',
         paddingTop: this.props.topBear ?
           '3em' :
           '1.5em'
+      }
+    )
+
+    const noColor = Object.assign(
+      {},
+      styles.color,
+      {
+        opacity: 0.3,
+        WebkitFilter: 'grayscale(1) brightness(1.3)',
+        cursor: 'default'
       }
     )
     return (
@@ -70,18 +90,20 @@ class ColorPicker extends React.Component {
       >
         { colors.map( ( color, key ) => {
           if ( color !== C.BEAR_TO_IGNORE ) {
-            const colorStyle = Object.assign(
-              {},
-              styles.color,
-              { backgroundColor: color }
-            )
+            let showColor = true
+            for ( let bear = 0; bear < this.getObjectKeyLength( this.props.bears ); bear += 1 ) {
+              if ( this.props.bears[bear].color === color ) {
+                showColor = false
+                break
+              }
+            }
             return (
               <img
                 className={ 'color' + color }
                 src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
                 key={ key }
-                onClick={ () => this.props.handleBearColorChange( color ) }
-                style={ styles.color }
+                onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
+                style={ showColor ? styles.color : noColor }
               />
             )
           }
@@ -106,7 +128,8 @@ ColorPicker.props = {
   handleClickOutside: PropTypes.func.isRequired,
   handleBearColorChange: PropTypes.func.isRequired,
   handleDeleteBear: PropTypes.func.isRequired,
-  topBear: PropTypes.bool.isRequired
+  topBear: PropTypes.bool.isRequired,
+  bears: PropTypes.object.isRequired
 }
 
 export default listensToClickOutside( ColorPicker )

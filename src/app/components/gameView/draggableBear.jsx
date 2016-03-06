@@ -26,7 +26,8 @@ const draggableBearSource = {
           },
           to: {
             containerTypeName: dropTargetResult.containerTypeName,
-            index: dropTargetResult.index
+            index: dropTargetResult.index,
+            canDrop: dropTargetResult.canDrop
           }
         }
       )

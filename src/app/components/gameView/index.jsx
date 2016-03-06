@@ -19,10 +19,14 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
 
+    const bg = document.getElementById( 'backgroundImage' )
+    bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
+
     this.state = {}
 
   }
 
+  // This method is triggered on every drop event.
   handleDrop( event ) {
 
     /* The following values are passed in the event object
@@ -33,55 +37,108 @@ class GameView extends React.Component {
       event.to.index
     */
 
+    // If the bear is dropped on the same seat. Abort
+    if ( JSON.stringify( event.from ) === JSON.stringify( event.to ) )
+      return
 
     // When dropped on Sofa
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
-      // Add bear to new sofa seat
-      this.props.addBearToSofa( event.bearKey, event.to.index )
-
-      // Remove bear from previous seat
+      // Remove bear from previous Starting area seat
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
-        // From Starting area
         this.props.removeBearFromStart( event.from.index )
 
+      // Or Remove bear from previous Sofa seat
       else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
-        // From Sofa
         this.props.removeBearFromSofa( event.from.index )
 
+      this.swapTargetSeatBearIfNeeded( event )
+
+      // Add bear to new sofa seat
+      this.props.addBearToSofa( event.bearKey, event.to.index )
     }
 
     // When dropped on Starting Area
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA ) {
 
-      // Add bear to new Starting area seat
-      this.props.addBearToStart( event.bearKey, event.to.index )
-
-      // Remove bear from previous seat
+      // Remove bear from previous Starting area seat
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
-        // From Starting area seat
         this.props.removeBearFromStart( event.from.index )
 
+      // Or Remove bear from previous Sofa seat
       else if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
-        // From sofa seat
         this.props.removeBearFromSofa( event.from.index )
+
+      this.swapTargetSeatBearIfNeeded( event )
+
+      // Add bear to new Starting Area seat
+      this.props.addBearToStart( event.bearKey, event.to.index )
     }
 
     // When dropped on Game Scene (outside of starting area and sofa)
     if ( event.to.containerTypeName === C.COMPONENT_NAMES.GAME_SCENE ) {
 
+      // Only when source is the Sofa
       if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA ) {
 
-        // Get index of first free seat in bearsOnStart array
-        const freeSeatIndex = this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
+        // Remove bear from Sofa seat
+        this.props.removeBearFromSofa( event.from.index )
 
         // Add bear to new Starting area seat
-        this.props.addBearToStart( event.bearKey, freeSeatIndex )
-
-        // Remove bear from sofa seat
-        this.props.removeBearFromSofa( event.from.index )
+        this.props.addBearToStart( event.bearKey, this.getFreeStartSeatIndex() )
       }
     }
+  }
+
+  bearExistsOnSeat( contarinerTypeName, index ) {
+
+    return this.getBearKeyForSeat( contarinerTypeName, index ) !== null
+  }
+
+  getBearKeyForSeat( contarinerTypeName, index ) {
+
+    if ( contarinerTypeName === C.COMPONENT_NAMES.SOFA )
+
+      return this.props.game.bearsOnSofa[index]
+
+    else if ( contarinerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+
+      return this.props.game.bearsOnStart[index]
+  }
+
+  swapTargetSeatBearIfNeeded( event ) {
+
+    // Check if bear exists on target seat, if it does, move that bear to source seat
+    if ( this.bearExistsOnSeat( event.to.containerTypeName, event.to.index ) ) {
+
+      // Get bearKey from taget seat
+      const bearKeyOnTargetSeat = this.getBearKeyForSeat( event.to.containerTypeName, event.to.index )
+
+      // Move to Start area seat
+      if ( event.from.containerTypeName === C.COMPONENT_NAMES.SOFA )
+        this.props.addBearToSofa( bearKeyOnTargetSeat, event.from.index )
+
+      // Move to Sofa seat
+      else if ( event.from.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+        this.props.addBearToStart( bearKeyOnTargetSeat, event.from.index )
+    }
+  }
+
+  getFreeStartSeatIndex() {
+    return this.props.game.bearsOnStart.findIndex( ( elem ) => elem === null )
+  }
+
+  getTotalNumberOfBears() {
+
+    const combinedSeats = this.props.game.bearsOnSofa.concat( this.props.game.bearsOnStart )
+
+    const bearsCount = combinedSeats.filter( ( seat ) => seat !== null )
+
+    return bearsCount.length
+  }
+
+  getBearsFromSofa() {
+    return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null )
   }
 
   savePermutation() {
@@ -89,11 +146,46 @@ class GameView extends React.Component {
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
-    this.props.savePermutation( bearsToSave )
-  }
+    // Check that this permutation does not already exists
+    if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
-  resetPermutation() {
-    this.props.resetPermutation()
+      const numberOfBearsInSofa = this.getBearsFromSofa().length
+
+      // Check that there are enough bears in sofa
+      if (
+        numberOfBearsInSofa === this.props.game.bearsOnSofa.length ||
+        numberOfBearsInSofa === this.getTotalNumberOfBears()
+      ) {
+
+        // Save and reset
+        this.props.savePermutation( bearsToSave )
+        this.props.resetPermutation()
+      }
+
+      // Till Johnny: Vi har lagt till härifrån...
+      const correctAnswers = []
+      const md1 = this.props.settings.correctCombinations
+      const md2 = this.props.game.savedPermutations
+      for ( let iInLoop = 0; iInLoop < md1.length; iInLoop += 1 ) {
+        for ( let jInLoop = 0; jInLoop < md2.length; jInLoop += 1 ) {
+          if ( md1[iInLoop][0] === md2[jInLoop][0] && md1[iInLoop][1] === md2[jInLoop][1] &&
+               md1[iInLoop][2] === md2[jInLoop][2] && md1[iInLoop][3] === md2[jInLoop][3] ) {
+            const correctAnswer = 'correct'
+            correctAnswers.push( correctAnswer )
+          }
+        }
+      }
+
+      if ( correctAnswers.length === this.props.settings.correctCombinations.length )
+        this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+
+      // Till Johnny: ... till hit
+
+    } else {
+
+      // TODO: The permutation already exists. Visual feedback?
+
+    }
   }
 
   renderSeat( bearKey, seatIndex, containerTypeName ) {
@@ -116,7 +208,6 @@ class GameView extends React.Component {
       <Seat
         key={ seatIndex }
         index={ seatIndex }
-        canDrop={ bear === null }
         containerTypeName={ containerTypeName }
       >
         { bear }
@@ -126,14 +217,8 @@ class GameView extends React.Component {
 
   render() {
     const styles = {
-      gameScene: {
-        height: window.innerHeight + 'px',
-        width: '80%',
-        float: 'left'
-      },
-
       sofa: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: '80px',
         margin: '0 auto',
         left: '0',
@@ -142,7 +227,7 @@ class GameView extends React.Component {
     }
 
     // Bind 'this' to GameView on passed methods
-    const resetPermutation = this.resetPermutation.bind( this )
+    const resetPermutation = this.props.resetPermutation.bind( this )
     const savePermutation = this.savePermutation.bind( this )
 
     return (
@@ -198,7 +283,8 @@ GameView.propTypes = {
   addBearToStart: PropTypes.func.isRequired,
   removeBearFromStart: PropTypes.func.isRequired,
   resetPermutation: PropTypes.func.isRequired,
-  savePermutation: PropTypes.func.isRequired
+  savePermutation: PropTypes.func.isRequired,
+  redirectToResultView: PropTypes.func.isRequired // Till Johnny: Lägg till!
 }
 
 const mapStateToProps = ( state ) => {
@@ -227,6 +313,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
+    },
+    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Till Johnny: Lägg till!
+      dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
     }
   }
 }

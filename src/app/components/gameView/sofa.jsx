@@ -6,7 +6,7 @@ const Sofa = ( props ) => {
   return (
     <div
       className={ C.COMPONENT_NAMES.SOFA }
-      style={ Sofa.mergedStyles( styles, scale, numberOfSeats ) }
+      style={ Sofa.mergeStyles( styles, scale, numberOfSeats ) }
     >
       <div style={ Sofa.genericStyles( scale ).seatContainer }>
         { props.children }
@@ -22,7 +22,7 @@ Sofa.applyScale = ( value, unit, scale ) => {
 Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
   const sofaStyles = {
     twoSeats: {
-      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ') top no-repeat',
       width: Sofa.applyScale( '450', 'px', scale ),
       height: Sofa.applyScale( '240', 'px', scale ),
       padding: `${ Sofa.applyScale( '20', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
@@ -53,8 +53,6 @@ Sofa.genericStyles = ( scale ) => {
   return ({
     sofa: {
       backgroundSize: 'contain',
-      backgroundPosition: 'top',
-      backgroundRepeat: 'no-repeat',
       textAlign: 'center'
     },
     seatContainer: {
@@ -64,7 +62,7 @@ Sofa.genericStyles = ( scale ) => {
 }
 
 // Merge styles: genericStyles, prop.styles, and sofaStyles
-Sofa.mergedStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
+Sofa.mergeStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
 
 Sofa.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,

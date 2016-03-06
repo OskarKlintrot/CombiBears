@@ -5,12 +5,9 @@ import { DropTarget } from 'react-dnd'
 const seatTarget = {
   drop( props, monitor ) {
 
-    if ( props.canDrop ) {
-
-      return {
-        containerTypeName: props.containerTypeName,
-        index: props.index
-      }
+    return {
+      containerTypeName: props.containerTypeName,
+      index: props.index
     }
   }
 }
@@ -36,18 +33,29 @@ const Seat = ( props ) => {
       border: '1px solid #f00',
       textAlign: 'center',
       verticalAlign: 'top'
+    },
+    startingAreaSeat: {
+      background: 'url(' + C.SRC_TO_IMAGES.SEATS.STOOL + ') no-repeat bottom'
     }
   }
 
+  const getCurrentStyles = () => {
+
+    // If its a starting area, we need the special styles.
+    if ( props.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      return Object.assign({}, styles.seat, styles.startingAreaSeat )
+
+    return styles.seat
+  }
+
   return connectDropTarget(
-    <div style={ styles.seat } >
+    <div style={ getCurrentStyles() } >
     { props.children }
     </div>
   )
 }
 
 Seat.propTypes = {
-  canDrop: PropTypes.bool.isRequired,
   containerTypeName: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 }
