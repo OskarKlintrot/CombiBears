@@ -162,7 +162,7 @@ class GameView extends React.Component {
         this.props.resetPermutation()
       }
 
-      // Vi har lagt till härifrån...
+      // Till Johnny: Vi har lagt till härifrån...
       const correctAnswers = []
       const md1 = this.props.settings.correctCombinations
       const md2 = this.props.game.savedPermutations
@@ -179,7 +179,7 @@ class GameView extends React.Component {
       if ( correctAnswers.length === this.props.settings.correctCombinations.length )
         this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
 
-      // ... till hit
+      // Till Johnny: ... till hit
 
     } else {
 
@@ -284,7 +284,7 @@ GameView.propTypes = {
   removeBearFromStart: PropTypes.func.isRequired,
   resetPermutation: PropTypes.func.isRequired,
   savePermutation: PropTypes.func.isRequired,
-  redirectToResultView: PropTypes.func.isRequired // Lägg till!
+  redirectToResultView: PropTypes.func.isRequired // Till Johnny: Lägg till!
 }
 
 const mapStateToProps = ( state ) => {
@@ -314,7 +314,7 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Lägg till!
+    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Till Johnny: Lägg till!
       dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
     }
   }
