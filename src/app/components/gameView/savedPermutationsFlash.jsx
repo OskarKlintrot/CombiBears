@@ -6,7 +6,7 @@ import BasicSofa from '../shared/basicSofa-v2'
 const modalStyles = {
   content: {
     position: 'absolute',
-    width: '75%',
+    width: '90%',
     margin: '0 auto',
     overflow: 'auto'
   },
@@ -31,7 +31,7 @@ const SavedPermutationsFlash = ( props ) => {
 
   const renderSofa = ( bearsOnSofa, index ) => {
     return (
-      <li className='large-4 medium-4 small-6 columns'
+      <li className='large-3 medium-3 small-6 columns'
         key={ index }
       >
         <BasicSofa
