@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import MediaQuery from 'react-responsive'
-// import { Link } from 'react-router'
 import C from '../../constants'
 import SofaOptions from './sofaOptions'
 import BearOptions from './bearOptions'
@@ -17,11 +16,17 @@ const styles = {
     marginTop: '12px'
   },
   infoButton: {
-    width: '150px',
+    position: 'fixed',
+    height: '100px',
+    bottom: '20px',
+    right: '20px',
     cursor: 'pointer'
   },
   infoButtonTiny: {
-    width: '100px',
+    position: 'absolute',
+    bottom: '8px',
+    right: '25px',
+    height: '80px',
     cursor: 'pointer',
     display: 'block',
     margin: '1em auto'
@@ -112,9 +117,6 @@ class StartView extends React.Component {
         <div className='row'>
           <div className='small-12 large-8 large-offset-2 columns'>
             <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-              { /* <Link
-                to={ '/start' }
-              > */ }
               <img
                 id='StartButton'
                 alt='StartButton'
@@ -129,7 +131,6 @@ class StartView extends React.Component {
                   this.props.initSofa()
                 } }
               ></img>
-              { /* </Link> */ }
             </div>
           </div>
           <MediaQuery query='(min-width: 1024px)'>
