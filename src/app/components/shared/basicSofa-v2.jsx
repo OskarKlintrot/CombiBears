@@ -6,6 +6,7 @@ import BasicBear from './basicBear'
 class BasicSofa extends React.Component {
   constructor( props ) {
     super( props )
+
   }
 
   componentDidMount = () => {
