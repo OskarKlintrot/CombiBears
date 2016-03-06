@@ -23,7 +23,7 @@ class GameView extends React.Component {
     bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
 
     this.state = {
-      triedToSaveDuplicatePermutation: []
+      triedToSaveDuplicatePermutation: null
     }
   }
 
@@ -142,15 +142,38 @@ class GameView extends React.Component {
     return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null )
   }
 
+  redirectIfGotAllCorrectAnswers() {
+
+    // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
+    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length )
+
+    // Then redirect to results view
+      this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+  }
+
+  getNumberOfCorrectAnswers() {
+
+    let correctAnswerCount = 0
+    const md1 = this.props.settings.correctCombinations
+    const md2 = this.props.game.savedPermutations
+    for ( let iInLoop = 0; iInLoop < md1.length; iInLoop += 1 ) {
+      for ( let jInLoop = 0; jInLoop < md2.length; jInLoop += 1 ) {
+        if ( md1[iInLoop][0] === md2[jInLoop][0] && md1[iInLoop][1] === md2[jInLoop][1] &&
+          md1[iInLoop][2] === md2[jInLoop][2] && md1[iInLoop][3] === md2[jInLoop][3] )
+
+          correctAnswerCount += 1
+      }
+    }
+
+    return correctAnswerCount
+  }
+
   savePermutation() {
 
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
     // Check that this permutation does not already exists
-
-    // const index = !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) // GET INDEX INSTEAD
-
     if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
 
       const numberOfBearsInSofa = this.getBearsFromSofa().length
@@ -164,31 +187,14 @@ class GameView extends React.Component {
         // Save and reset
         this.props.savePermutation( bearsToSave )
         this.props.resetPermutation()
+
+        // Redirect to results view if we got all correct answers
+        this.redirectIfGotAllCorrectAnswers()
       }
-
-      // Till Johnny: Vi har lagt till härifrån...
-      const correctAnswers = []
-      const md1 = this.props.settings.correctCombinations
-      const md2 = this.props.game.savedPermutations
-      for ( let iInLoop = 0; iInLoop < md1.length; iInLoop += 1 ) {
-        for ( let jInLoop = 0; jInLoop < md2.length; jInLoop += 1 ) {
-          if ( md1[iInLoop][0] === md2[jInLoop][0] && md1[iInLoop][1] === md2[jInLoop][1] &&
-               md1[iInLoop][2] === md2[jInLoop][2] && md1[iInLoop][3] === md2[jInLoop][3] ) {
-            const correctAnswer = 'correct'
-            correctAnswers.push( correctAnswer )
-          }
-        }
-      }
-
-      if ( correctAnswers.length === this.props.settings.correctCombinations.length )
-        this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
-
-      // Till Johnny: ... till hit
 
     } else {
 
-      // TODO: The permutation already exists. Visual feedback?
-
+      // The permutation already exists.
       this.setState({
         triedToSaveDuplicatePermutation: bearsToSave
       })
