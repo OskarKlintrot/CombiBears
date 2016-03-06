@@ -13,7 +13,11 @@ const styles = {
     textAlign: 'center'
   },
   logotype: {
-    marginTop: '12px'
+    marginTop: '12px',
+    width: '600px',
+    '@media (max-width: 1023px)': {
+      width: '450px'
+    }
   },
   startButton: {
     // position: 'relative',
@@ -66,7 +70,6 @@ class StartView extends React.Component {
                 id='Logotyp'
                 alt='Logotyp'
                 src={ C.SRC_TO_IMAGES.LOGOTYPE }
-                width='600px'
               ></img>
             </div>
           </div>
@@ -106,9 +109,11 @@ class StartView extends React.Component {
                 id='StartButton'
                 alt='StartButton'
                 src={ C.SRC_TO_IMAGES.ICONS.START }
-                height='50px'
-                width='150px'
                 style={ {
+                  width: '150px',
+                  '@media (max-width: 1023px)': {
+                    width: '120px'
+                  },
                   cursor: 'pointer'
                 } }
                 onClick={ () => {
