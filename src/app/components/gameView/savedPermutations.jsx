@@ -84,25 +84,9 @@ class SavedPermutations extends React.Component {
   onModalCloseRequest() {
     this.setState({ modalIsOpen: false })
   }
-  
+
   render() {
     if ( this.props.savedPermutations.length > 0 ) {
-      const correctAnswers = []
-      const md1 = this.props.settings.correctCombinations
-      const md2 = this.props.savedPermutations
-      for ( let iInLoop = 0; iInLoop < md1.length; iInLoop += 1 ) {
-        for ( let jInLoop = 0; jInLoop < md2.length; jInLoop += 1 ) {
-          if ( md1[iInLoop][0] === md2[jInLoop][0] && md1[iInLoop][1] === md2[jInLoop][1] &&
-               md1[iInLoop][2] === md2[jInLoop][2] && md1[iInLoop][3] === md2[jInLoop][3] ) {
-            const correctAnswer = 'correct'
-            correctAnswers.push( correctAnswer )
-          }
-        }
-      }
-
-      if ( correctAnswers.length === this.props.settings.correctCombinations.length )
-        console.log( 'Alla permutationer hittade' )
-
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''

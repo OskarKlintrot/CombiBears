@@ -162,6 +162,25 @@ class GameView extends React.Component {
         this.props.resetPermutation()
       }
 
+      // Vi har lagt till härifrån...
+      const correctAnswers = []
+      const md1 = this.props.settings.correctCombinations
+      const md2 = this.props.game.savedPermutations
+      for ( let iInLoop = 0; iInLoop < md1.length; iInLoop += 1 ) {
+        for ( let jInLoop = 0; jInLoop < md2.length; jInLoop += 1 ) {
+          if ( md1[iInLoop][0] === md2[jInLoop][0] && md1[iInLoop][1] === md2[jInLoop][1] &&
+               md1[iInLoop][2] === md2[jInLoop][2] && md1[iInLoop][3] === md2[jInLoop][3] ) {
+            const correctAnswer = 'correct'
+            correctAnswers.push( correctAnswer )
+          }
+        }
+      }
+
+      if ( correctAnswers.length === this.props.settings.correctCombinations.length )
+        this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+
+      // ... till hit
+
     } else {
 
       // TODO: The permutation already exists. Visual feedback?
@@ -264,7 +283,8 @@ GameView.propTypes = {
   addBearToStart: PropTypes.func.isRequired,
   removeBearFromStart: PropTypes.func.isRequired,
   resetPermutation: PropTypes.func.isRequired,
-  savePermutation: PropTypes.func.isRequired
+  savePermutation: PropTypes.func.isRequired,
+  redirectToResultView: PropTypes.func.isRequired // Lägg till!
 }
 
 const mapStateToProps = ( state ) => {
@@ -293,6 +313,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
+    },
+    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Lägg till!
+      dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
     }
   }
 }
