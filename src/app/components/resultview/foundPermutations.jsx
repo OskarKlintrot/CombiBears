@@ -81,7 +81,7 @@ const FoundPermutations = ( props ) => {
     if ( rows.length > NewArray )
       numers++
     else
-      rows.push( props.settings.correctCombinations[NewArray] )
+      rows.push( [0,0] )
   }
 
   if ( rows.length > 0 ) {
