@@ -51,7 +51,7 @@ class FounList extends React.Component {
     this.state =
     {
       selectedIndex: <FoundPermutations savedPermutations={ this.props.game.savedPermutations } settings={ this.props.settings }/>,
-      button: <div style={ styles.iconSolution }> <button onClick = { this.handleClick } ><img src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION } alt='Icon for new sofa' style={ styles.icon } /></button> </div>
+      button: <div style={ styles.iconSolution }> <button onClick = { this.handleClick } ><img src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION } draggable='false' alt='Icon for new sofa' style={ styles.icon } /></button> </div>
     }
 
   }

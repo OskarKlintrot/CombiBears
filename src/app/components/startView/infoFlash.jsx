@@ -49,6 +49,7 @@ const InfoFlash = ( props ) => {
         src={ C.SRC_TO_IMAGES.ICONS.INFO }
         style={ Object.assign({}, styles.infoButton, style ) }
         onClick={ handleOpenModal }
+        draggable='false'
       />
       <Modal
         isOpen={ open }

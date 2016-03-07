@@ -60,6 +60,7 @@ const SavedCombinationsView = ( props ) => {
             src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
             alt='Icon for new sofa'
             style={ styles.icon }
+            draggable='false'
           />
         </Link>
         <Link
@@ -69,6 +70,7 @@ const SavedCombinationsView = ( props ) => {
             src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
             alt='Icon for showing result'
             style={ styles.iconRight }
+            draggable='false'
           />
         </Link>
       </div>
@@ -80,6 +82,7 @@ const SavedCombinationsView = ( props ) => {
             src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
             alt='Icon for returning to game view'
             style={ styles.icon }
+            draggable='false'
           />
         </Link>
       </div>

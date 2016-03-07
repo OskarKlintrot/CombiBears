@@ -70,6 +70,7 @@ class StartView extends React.Component {
                 id='Logotyp'
                 alt='Logotyp'
                 src={ C.SRC_TO_IMAGES.LOGOTYPE }
+                draggable='false'
               ></img>
             </div>
           </div>
@@ -122,6 +123,7 @@ class StartView extends React.Component {
                   this.props.initBears()
                   this.props.initSofa()
                 } }
+                draggable='false'
               ></img>
             </div>
           </div>
