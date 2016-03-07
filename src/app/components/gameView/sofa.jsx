@@ -1,43 +1,74 @@
 import React, { PropTypes } from 'react'
+import Seat from './seat'
+import DraggableBear from './draggableBear'
+import BearPlaceHolder from './bearPlaceHolder'
 import C from '../../constants'
 
 const Sofa = ( props ) => {
-  const { scale, styles, numberOfSeats } = props
+  const { styles, numberOfSeats } = props
+
+  const renderSeat = ( bearKey, seatIndex, containerTypeName ) => {
+
+    const bear = bearKey !== null ?
+      <DraggableBear
+        key={ seatIndex }
+        index={ seatIndex }
+        bearKey={ bearKey }
+        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+        containerTypeName={ containerTypeName }
+        onDrop={ props.onDrop }
+      /> :
+      <BearPlaceHolder
+        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+      />
+
+    return (
+      <Seat
+        key={ seatIndex }
+        index={ seatIndex }
+        containerTypeName={ containerTypeName }
+        numberOfSeats={ props.numberOfSeats }
+      >
+        { bear }
+      </Seat>
+    )
+  }
+
   return (
     <div
       className={ C.COMPONENT_NAMES.SOFA }
-      style={ Sofa.mergeStyles( styles, scale, numberOfSeats ) }
+      style={ Sofa.mergeStyles( styles, numberOfSeats ) }
     >
-      <div style={ Sofa.genericStyles( scale ).seatContainer }>
-        { props.children }
+      <div style={ Sofa.genericStyles.seatContainer }>
+
+        {
+          // Render prop.bearsOnSofa with function prop.renderSeat, both passed from parent
+          props.bearsOnSofa ? props.bearsOnSofa.map( ( bearKey, index ) =>
+            renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
+            ) : null
+        }
+
       </div>
     </div>
   )
 }
 
-Sofa.applyScale = ( value, unit, scale ) => {
-  return ( scale * Number( value ) ).toString() + unit
-}
-
-Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
+Sofa.getSofaStyles = ( numberOfSeats ) => {
   const sofaStyles = {
     twoSeats: {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ') top no-repeat',
-      width: Sofa.applyScale( '450', 'px', scale ),
-      height: Sofa.applyScale( '240', 'px', scale ),
-      padding: `${ Sofa.applyScale( '20', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+      width: '50%',
+      padding: '0% 7% 8% 7%'
     },
     threeSeats: {
-      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
-      width: Sofa.applyScale( '500', 'px', scale ),
-      height: Sofa.applyScale( '270', 'px', scale ),
-      padding: `${ Sofa.applyScale( '40', 'px', scale ) } ${ Sofa.applyScale( '8', 'px', scale ) } 0 ${ Sofa.applyScale( '12', 'px', scale ) }`
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ') top no-repeat',
+      width: '50%',
+      padding: '3% 7% 8% 7%'
     },
     fourSeats: {
-      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
-      width: Sofa.applyScale( '600', 'px', scale ),
-      height: Sofa.applyScale( '300', 'px', scale ),
-      padding: `${ Sofa.applyScale( '70', 'px', scale ) } ${ Sofa.applyScale( '75', 'px', scale ) } 0 ${ Sofa.applyScale( '85', 'px', scale ) }`
+      background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ') top no-repeat',
+      width: '50%',
+      padding: '5% 7% 8% 7%'
     }
   }
 
@@ -49,24 +80,27 @@ Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
   }
 }
 
-Sofa.genericStyles = ( scale ) => {
-  return ({
-    sofa: {
-      backgroundSize: 'contain',
-      textAlign: 'center'
-    },
-    seatContainer: {
-      height: Sofa.applyScale( '150', 'px', scale )
-    }
-  })
+Sofa.genericStyles = {
+
+  sofa: {
+    backgroundSize: 'contain',
+    textAlign: 'center',
+    margin: '0 auto'
+  },
+  seatContainer: {
+    display: 'flex',
+    alignItems: 'stretch'
+  }
 }
 
 // Merge styles: genericStyles, prop.styles, and sofaStyles
-Sofa.mergeStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
+Sofa.mergeStyles = ( styles, numberOfSeats ) => Object.assign({}, Sofa.genericStyles.sofa, styles, Sofa.getSofaStyles( numberOfSeats ) )
 
 Sofa.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
-  scale: PropTypes.number.isRequired
+  bearsOnSofa: PropTypes.array.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  bearsSettings: PropTypes.object.isRequired
 }
 
 export default Sofa

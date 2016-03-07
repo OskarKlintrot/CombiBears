@@ -12,7 +12,7 @@ const {
   SAVE_PERMUTATION,
   INIT_BEARS,
   INIT_SOFA,
-  REDIRECT_TO_RESULT_VIEW // Till Johnny: Lägg till!
+  REDIRECT_TO_RESULT_VIEW
 } = ActionTypes
 
 const GameActions = {
@@ -93,8 +93,6 @@ const GameActions = {
       })
     }
   },
-
-  // Till Johnny: Vi har lagt till härifrån...
   redirectToResultView: () => {
     return ( dispatch ) => {
       dispatch({

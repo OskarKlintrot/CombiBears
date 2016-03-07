@@ -12,81 +12,85 @@ class Buttons extends React.Component {
 
     const styles = {
 
-      icon: {
-        height: '100px'
+      iconToStart: {
+        width: '50%',
+        cursor: 'pointer',
+        zIndex: 10
       },
-
-      iconRight: {
-        height: '100px',
-        float: 'right',
-        cursor: 'pointer'
+      iconToShowResults: {
+        width: '50%',
+        cursor: 'pointer',
+        zIndex: 10
       },
-
-      arrowDiv: {
+      resetIcon: {
+        width: '25%',
+        cursor: 'pointer',
+        marginRight: '5%',
+        zIndex: 10
+      },
+      saveIcon: {
+        width: '70%',
+        cursor: 'pointer',
+        zIndex: 10
+      },
+      topIconsArea: {
+        top: '0',
+        left: '0',
         position: 'fixed',
-        right: '0',
-        top: '50%',
-        marginTop: '-50px'
+        width: '26%',
+        zIndex: 10
       },
-
-      iconRestart: {
+      bottomIconsArea: {
         bottom: '0',
-        right: '0',
+        right: '21%',
         position: 'fixed',
-        height: '80px',
-        cursor: 'pointer'
+        width: '20%',
+        zIndex: 10
       }
     }
 
     return (
 
       <div>
-        <Link
-          to={ C.ROUTES.START }
-          onClick={ this.handleBlurBackground }
-        >
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
-            alt='Icon for new sofa'
-            style={ styles.icon }
-          />
-        </Link>
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
-          alt='Icon for saving permutation'
-          style={ styles.iconRight }
-          onClick={ () => this.props.onSave() }
-        />
-        <Link
-          to={ C.ROUTES.RESULTS }
-          onClick={ this.handleBlurBackground }
-        >
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
-            alt='Icon for showing result'
-            style={ styles.iconRight }
-            onClick={ () => this.props.onSave() }
-          />
-        </Link>
+        <div style={ styles.topIconsArea }>
 
-        <img
-          src={ C.SRC_TO_IMAGES.ICONS.RESTART }
-          alt='Icon for putting bears back in startingArea'
-          style={ styles.iconRestart }
-          onClick={ () => this.props.onRestart() }
-        />
-
-        <div style={ styles.arrowDiv }>
           <Link
-            to={ C.ROUTES.SAVED }
+            to={ C.ROUTES.START }
             onClick={ this.handleBlurBackground }
           >
             <img
-              src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-              alt='Icon for maximizing saved permutations-list'
-              style={ styles.icon }
+              src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
+              alt='Icon for new sofa'
+              style={ styles.iconToStart }
             />
           </Link>
+          <Link
+            to={ C.ROUTES.RESULTS }
+            onClick={ this.handleBlurBackground }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
+              alt='Icon for showing result'
+              style={ styles.iconToShowResults }
+            />
+          </Link>
+
+        </div>
+
+        <div style={ styles.bottomIconsArea }>
+
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.RESTART }
+            alt='Icon for putting bears back in startingArea'
+            style={ styles.resetIcon }
+            onClick={ () => this.props.onRestart() }
+          />
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
+            alt='Icon for saving permutation'
+            style={ styles.saveIcon }
+            onClick={ () => this.props.onSave() }
+          />
         </div>
 
       </div>
