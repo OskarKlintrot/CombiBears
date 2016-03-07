@@ -3,11 +3,9 @@ import C from '../../constants'
 import Sofa from './sofa'
 import DraggedBear from './draggedBear'
 import StartingArea from './startingArea'
-import Seat from './seat'
 import Buttons from './buttons'
 import GameScene from './gameScene'
 import SavedPermutations from './savedPermutations'
-import DraggableBear from './draggableBear.jsx'
 import { connect } from 'react-redux'
 import Actions from '../../redux/actions/'
 
@@ -23,7 +21,7 @@ class GameView extends React.Component {
     bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
 
     this.state = {
-      triedToSaveDuplicatePermutation: null
+      triedToSaveDuplicatePermutationIndex: null
     }
   }
 
@@ -91,18 +89,18 @@ class GameView extends React.Component {
     }
   }
 
-  bearExistsOnSeat( contarinerTypeName, index ) {
+  bearExistsOnSeat( containerTypeName, index ) {
 
-    return this.getBearKeyForSeat( contarinerTypeName, index ) !== null
+    return this.getBearKeyForSeat( containerTypeName, index ) !== null
   }
 
-  getBearKeyForSeat( contarinerTypeName, index ) {
+  getBearKeyForSeat( containerTypeName, index ) {
 
-    if ( contarinerTypeName === C.COMPONENT_NAMES.SOFA )
+    if ( containerTypeName === C.COMPONENT_NAMES.SOFA )
 
       return this.props.game.bearsOnSofa[index]
 
-    else if ( contarinerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+    else if ( containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
 
       return this.props.game.bearsOnStart[index]
   }
@@ -168,6 +166,27 @@ class GameView extends React.Component {
     return correctAnswerCount
   }
 
+  triedToSaveDuplicatePermutation( triedToSave ) {
+
+    let index = null
+
+    if ( triedToSave ) {
+
+      // Get index of duplicate permutation
+      index = this.props.game.savedPermutations.findIndex( ( permutation ) => {
+        return JSON.stringify( permutation ) === JSON.stringify( this.props.game.bearsOnSofa )
+      })
+    }
+
+    // Only set state if its a new value
+    if ( this.state.triedToSaveDuplicatePermutationIndex !== index ) {
+
+      this.setState({
+        triedToSaveDuplicatePermutationIndex: index
+      })
+    }
+  }
+
   savePermutation() {
 
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
@@ -192,40 +211,13 @@ class GameView extends React.Component {
         this.redirectIfGotAllCorrectAnswers()
       }
 
+      this.triedToSaveDuplicatePermutation( false )
+
     } else {
 
       // The permutation already exists.
-      this.setState({
-        triedToSaveDuplicatePermutation: bearsToSave
-      })
+      this.triedToSaveDuplicatePermutation( true )
     }
-  }
-
-  renderSeat( bearKey, seatIndex, containerTypeName ) {
-
-    // Bind 'this' to GameView on passed methods
-    const handleDrop = this.handleDrop.bind( this )
-
-    const bear = bearKey !== null ?
-      <DraggableBear
-        key={ seatIndex }
-        index={ seatIndex }
-        bearKey={ bearKey }
-        bearsSettings={ this.props.settings.bears } // Pass the bears settings from redux (contains bear keys mapped to image files)
-        containerTypeName={ containerTypeName }
-        onDrop={ handleDrop }
-      /> :
-      null
-
-    return (
-      <Seat
-        key={ seatIndex }
-        index={ seatIndex }
-        containerTypeName={ containerTypeName }
-      >
-        { bear }
-      </Seat>
-    )
   }
 
   render() {
@@ -242,6 +234,7 @@ class GameView extends React.Component {
     // Bind 'this' to GameView on passed methods
     const resetPermutation = this.props.resetPermutation.bind( this )
     const savePermutation = this.savePermutation.bind( this )
+    const handleDrop = this.handleDrop.bind( this )
 
     return (
       <div>
@@ -252,30 +245,26 @@ class GameView extends React.Component {
           />
 
           <Sofa
-            scale={ 1 }
-            numberOfSeats={ this.props.settings.numberOfSeats }
             styles={ styles.sofa }
-          >
-            {
-              this.props.game.bearsOnSofa ? this.props.game.bearsOnSofa.map( ( bearKey, index ) =>
-                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
-                ) : null
-              }
-          </Sofa>
+            bearsOnSofa={ this.props.game.bearsOnSofa }
+            onDrop={ handleDrop }
+            bearsSettings={ this.props.settings.bears }
+            numberOfSeats={ this.props.settings.numberOfSeats }
+          />
 
-          <StartingArea>
-            {
-              this.props.game.bearsOnStart ? this.props.game.bearsOnStart.map( ( bearKey, index ) =>
-                this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA ) ) : null
-              }
-          </StartingArea>
+          <StartingArea
+            bearsOnStart={ this.props.game.bearsOnStart }
+            onDrop={ handleDrop }
+            bearsSettings={ this.props.settings.bears }
+            numberOfSeats={ this.props.settings.numberOfSeats }
+          />
 
         </GameScene>
 
         <SavedPermutations
           savedPermutations={ this.props.game.savedPermutations }
           settings={ this.props.settings }
-          triedToSaveDuplicatePermutationIndex={ this.state.triedToSaveDuplicatePermutation }
+          triedToSaveDuplicatePermutationIndex={ this.state.triedToSaveDuplicatePermutationIndex }
         />
 
         <DraggedBear
@@ -298,7 +287,7 @@ GameView.propTypes = {
   removeBearFromStart: PropTypes.func.isRequired,
   resetPermutation: PropTypes.func.isRequired,
   savePermutation: PropTypes.func.isRequired,
-  redirectToResultView: PropTypes.func.isRequired // Till Johnny: Lägg till!
+  redirectToResultView: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => {

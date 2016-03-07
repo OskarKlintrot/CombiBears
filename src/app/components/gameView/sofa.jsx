@@ -1,25 +1,56 @@
 import React, { PropTypes } from 'react'
+import Seat from './seat'
+import DraggableBear from './draggableBear.jsx'
 import C from '../../constants'
 
 const Sofa = ( props ) => {
-  const { scale, styles, numberOfSeats } = props
+  const { styles, numberOfSeats } = props
+
+  const renderSeat = ( bearKey, seatIndex, containerTypeName ) => {
+
+    const bear = bearKey !== null ?
+      <DraggableBear
+        key={ seatIndex }
+        index={ seatIndex }
+        bearKey={ bearKey }
+        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+        containerTypeName={ containerTypeName }
+        onDrop={ props.onDrop }
+      /> :
+      null
+
+    return (
+      <Seat
+        key={ seatIndex }
+        index={ seatIndex }
+        containerTypeName={ containerTypeName }
+        numberOfSeats={ props.numberOfSeats }
+      >
+        { bear }
+      </Seat>
+    )
+  }
+
   return (
     <div
       className={ C.COMPONENT_NAMES.SOFA }
-      style={ Sofa.mergeStyles( styles, scale, numberOfSeats ) }
+      style={ Sofa.mergeStyles( styles, numberOfSeats ) }
     >
-      <div style={ Sofa.genericStyles( scale ).seatContainer }>
-        { props.children }
+      <div style={ Sofa.genericStyles.seatContainer }>
+
+        {
+          // Render prop.bearsOnSofa with function prop.renderSeat, both passed from parent
+          props.bearsOnSofa ? props.bearsOnSofa.map( ( bearKey, index ) =>
+            renderSeat( bearKey, index, C.COMPONENT_NAMES.SOFA )
+            ) : null
+        }
+
       </div>
     </div>
   )
 }
 
-Sofa.applyScale = ( value, unit, scale ) => {
-  return ( scale * Number( value ) ).toString() + unit
-}
-
-Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
+Sofa.getSofaStyles = ( numberOfSeats ) => {
   const sofaStyles = {
     twoSeats: {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ') top no-repeat',
@@ -46,27 +77,28 @@ Sofa.getSofaStyles = ( scale, numberOfSeats ) => {
   }
 }
 
-Sofa.genericStyles = ( scale ) => {
-  return ({
-    sofa: {
-      backgroundSize: 'contain',
-      textAlign: 'center',
-      border: '1px solid #f0f',
-      margin: '0 auto'
-    },
-    seatContainer: {
-      display: 'flex',
-      alignItems: 'stretch'
-    }
-  })
+Sofa.genericStyles = {
+
+  sofa: {
+    backgroundSize: 'contain',
+    textAlign: 'center',
+    border: '1px solid #f0f',
+    margin: '0 auto'
+  },
+  seatContainer: {
+    display: 'flex',
+    alignItems: 'stretch'
+  }
 }
 
 // Merge styles: genericStyles, prop.styles, and sofaStyles
-Sofa.mergeStyles = ( styles, scale, numberOfSeats ) => Object.assign({}, Sofa.genericStyles().sofa, styles, Sofa.getSofaStyles( scale, numberOfSeats ) )
+Sofa.mergeStyles = ( styles, numberOfSeats ) => Object.assign({}, Sofa.genericStyles.sofa, styles, Sofa.getSofaStyles( numberOfSeats ) )
 
 Sofa.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
-  scale: PropTypes.number.isRequired
+  bearsOnSofa: PropTypes.array.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  bearsSettings: PropTypes.object.isRequired
 }
 
 export default Sofa

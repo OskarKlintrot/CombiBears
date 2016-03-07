@@ -13,28 +13,33 @@ class Buttons extends React.Component {
     const styles = {
 
       icon: {
-        height: '100px'
+        height: '100px',
+        zIndex: 10
       },
       iconRight: {
         height: '100px',
         float: 'right',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        zIndex: 10
       },
       resetIcon: {
         width: '25%',
         cursor: 'pointer',
-        marginRight: '5%'
+        marginRight: '5%',
+        zIndex: 10
       },
       saveIcon: {
         width: '70%',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        zIndex: 10
       },
       bottomIconsArea: {
         bottom: '0',
         right: '21%',
         position: 'fixed',
         width: '20%',
-        border: '1xp solid #0f0'
+        border: '1xp solid #0f0',
+        zIndex: 10
       }
     }
 
