@@ -30,15 +30,12 @@ const styles = {
 
 }
 
-export default class Box extends React.Component {
-  render()
-  {
-
-
-    if( this.props.list.found === 1 )
-      return ( <div style = { styles.selected } > { this.props.list.id } </div> )
-
-
-    return ( <div style = { styles.notselected } > { this.props.list.id } </div> )
-  }
+const Box = ( props ) => {
+  const { list } = props
+  return (
+    <div style={ list.found === 1 ? styles.selected : styles.notselected } >
+      { list.id }
+    </div>
+  )
 }
+export default Box
