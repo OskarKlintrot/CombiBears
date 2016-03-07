@@ -1,29 +1,23 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
-import C from '../../constants'
 import ResultList from './resultlist'
 import FoundList from './foundlist'
 import Buttons from './buttons'
 
-class resultview extends React.Component {
-
-  constructor( props ) {
-    super( props )
-
-    this.state = {}
-  }
-
-  render()
-  {
-    return (
-      <div>
-        <Buttons/>
-        <ResultList NumberOfBearsFound = { this.props.game.savedPermutations } CorrectAnswers = { this.props.settings.correctCombinations } />
-        <FoundList  savedPermutations={ this.props.game.savedPermutations } settings={ this.props.settings }/>
-      </div>
-        )
-  }
+const ResultView = ( props ) => {
+  return (
+    <div>
+      <Buttons/>
+      <ResultList
+        NumberOfBearsFound={ props.game.savedPermutations }
+        CorrectAnswers={ props.settings.correctCombinations }
+      />
+      <FoundList
+        savedPermutations={ props.game.savedPermutations }
+        settings={ props.settings }
+      />
+    </div>
+  )
 }
 
 const mapStateToProps = ( state ) => {
@@ -33,4 +27,4 @@ const mapStateToProps = ( state ) => {
   }
 }
 
-export default connect( mapStateToProps )( resultview )
+export default connect( mapStateToProps )( ResultView )
