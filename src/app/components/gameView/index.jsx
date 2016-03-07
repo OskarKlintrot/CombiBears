@@ -21,7 +21,7 @@ class GameView extends React.Component {
     bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
 
     this.state = {
-      triedToSaveDuplicatePermutationIndex: null
+      triedToSaveDuplicatePermutationIndex: -1
     }
   }
 
@@ -168,7 +168,7 @@ class GameView extends React.Component {
 
   triedToSaveDuplicatePermutation( triedToSave ) {
 
-    let index = null
+    let index = -1
 
     if ( triedToSave ) {
 

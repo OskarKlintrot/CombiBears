@@ -40,8 +40,6 @@ class Buttons extends React.Component {
         width: '26%',
         zIndex: 10
       },
-
-      
       bottomIconsArea: {
         bottom: '0',
         right: '21%',
@@ -50,9 +48,6 @@ class Buttons extends React.Component {
         zIndex: 10
       }
     }
-
-
-
 
     return (
 
