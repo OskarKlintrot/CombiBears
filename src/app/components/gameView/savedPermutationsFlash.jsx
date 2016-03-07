@@ -49,6 +49,7 @@ const SavedPermutationsFlash = ( props ) => {
         src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
         style={ style }
         onClick={ handleOpenModal }
+        draggable='false'
       />
       <Modal
         isOpen={ open }
