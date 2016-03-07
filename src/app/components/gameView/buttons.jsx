@@ -12,13 +12,13 @@ class Buttons extends React.Component {
 
     const styles = {
 
-      icon: {
-        height: '100px',
+      iconToStart: {
+        width: '50%',
+        cursor: 'pointer',
         zIndex: 10
       },
-      iconRight: {
-        height: '100px',
-        float: 'right',
+      iconToShowResults: {
+        width: '50%',
         cursor: 'pointer',
         zIndex: 10
       },
@@ -33,12 +33,20 @@ class Buttons extends React.Component {
         cursor: 'pointer',
         zIndex: 10
       },
+      topIconsArea: {
+        top: '0',
+        left: '0',
+        position: 'fixed',
+        width: '26%',
+        zIndex: 10
+      },
+
+      
       bottomIconsArea: {
         bottom: '0',
         right: '21%',
         position: 'fixed',
         width: '20%',
-        border: '1xp solid #0f0',
         zIndex: 10
       }
     }
@@ -49,27 +57,33 @@ class Buttons extends React.Component {
     return (
 
       <div>
-        <Link
-          to={ C.ROUTES.START }
-          onClick={ this.handleBlurBackground }
-        >
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
-            alt='Icon for new sofa'
-            style={ styles.icon }
-          />
-        </Link>
-        <Link
-          to={ C.ROUTES.RESULTS }
-          onClick={ this.handleBlurBackground }
-        >
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
-            alt='Icon for showing result'
-            style={ styles.iconRight }
-          />
-        </Link>
+        <div style={ styles.topIconsArea }>
+
+          <Link
+            to={ C.ROUTES.START }
+            onClick={ this.handleBlurBackground }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
+              alt='Icon for new sofa'
+              style={ styles.iconToStart }
+            />
+          </Link>
+          <Link
+            to={ C.ROUTES.RESULTS }
+            onClick={ this.handleBlurBackground }
+          >
+            <img
+              src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
+              alt='Icon for showing result'
+              style={ styles.iconToShowResults }
+            />
+          </Link>
+
+        </div>
+
         <div style={ styles.bottomIconsArea }>
+
           <img
             src={ C.SRC_TO_IMAGES.ICONS.RESTART }
             alt='Icon for putting bears back in startingArea'
@@ -83,6 +97,7 @@ class Buttons extends React.Component {
             onClick={ () => this.props.onSave() }
           />
         </div>
+
       </div>
     )
   }

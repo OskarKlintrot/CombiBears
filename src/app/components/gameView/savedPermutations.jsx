@@ -91,7 +91,7 @@ class SavedPermutations extends React.Component {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''
         // TODO: Ändra till property som kommer in från index
-        if ( index === 3 ) {
+        if ( index === this.props.triedToSaveDuplicatePermutationIndex ) {
           sofaListElementStyle = styles.sofaListElementSaved
           sofaLiId = 'alreadySaved'
         } else if ( index === 0 ) {
@@ -152,7 +152,8 @@ class SavedPermutations extends React.Component {
 
 SavedPermutations.propTypes = {
   savedPermutations: PropTypes.array.isRequired,
-  settings: PropTypes.object.isRequired
+  settings: PropTypes.object.isRequired,
+  triedToSaveDuplicatePermutationIndex: PropTypes.number.isRequired
 }
 
 export default SavedPermutations

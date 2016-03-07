@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import Seat from './seat'
-import DraggableBear from './draggableBear.jsx'
+import DraggableBear from './draggableBear'
+import BearPlaceHolder from './bearPlaceHolder'
 import C from '../../constants'
 
 const Sofa = ( props ) => {
@@ -17,7 +18,9 @@ const Sofa = ( props ) => {
         containerTypeName={ containerTypeName }
         onDrop={ props.onDrop }
       /> :
-      null
+      <BearPlaceHolder
+        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+      />
 
     return (
       <Seat
@@ -55,12 +58,12 @@ Sofa.getSofaStyles = ( numberOfSeats ) => {
     twoSeats: {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ') top no-repeat',
       width: '50%',
-      padding: '1% 1% 1% 1%'
+      padding: '0% 7% 8% 7%'
     },
     threeSeats: {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ') top no-repeat',
       width: '50%',
-      padding: '5% 7% 8% 7%'
+      padding: '3% 7% 8% 7%'
     },
     fourSeats: {
       background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ') top no-repeat',
@@ -82,7 +85,6 @@ Sofa.genericStyles = {
   sofa: {
     backgroundSize: 'contain',
     textAlign: 'center',
-    border: '1px solid #f0f',
     margin: '0 auto'
   },
   seatContainer: {

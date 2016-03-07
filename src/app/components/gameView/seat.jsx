@@ -23,12 +23,28 @@ const collect = ( connect, monitor ) => {
 const Seat = ( props ) => {
   const { connectDropTarget, isOver } = props
 
+  const getWidth = () => {
+
+    const hundredPercent = 100
+    return Math.round( hundredPercent / props.numberOfSeats ) + '%'
+  }
+
+  const getPadding = () => {
+
+    let returnValue = '0'
+
+    if ( props.numberOfSeats === 2 )
+      returnValue = '10%'
+
+    return returnValue
+  }
+
   const styles = {
     seat: {
-      width: '25%',
+      width: getWidth(),
+      padding: getPadding(),
       zIndex: 1,
       opacity: 1,
-      border: '1px solid #f00',
       textAlign: 'center',
       verticalAlign: 'top',
       paddingBottom: '5%'
@@ -56,7 +72,8 @@ const Seat = ( props ) => {
 
 Seat.propTypes = {
   containerTypeName: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  numberOfSeats: PropTypes.number.isRequired
 }
 
 export default DropTarget( C.COMPONENT_NAMES.BEAR, seatTarget, collect )( Seat )

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import Seat from './seat'
-import DraggableBear from './draggableBear.jsx'
+import DraggableBear from './draggableBear'
+import BearPlaceHolder from './bearPlaceHolder'
 import C from '../../constants'
 
 const styles = {
@@ -28,14 +29,16 @@ const StartingArea = ( props ) => {
         containerTypeName={ containerTypeName }
         onDrop={ props.onDrop }
       /> :
-      null
+      <BearPlaceHolder
+        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+      />
 
     return (
       <Seat
         key={ seatIndex }
         index={ seatIndex }
         containerTypeName={ containerTypeName }
-        numberOfSeats={ props.numberOfSeats }
+        numberOfSeats={ 4 }
       >
         { bear }
       </Seat>
