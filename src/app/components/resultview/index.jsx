@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ResultList from './resultlist'
+import ResultList from './resultList'
 import FoundList from './foundlist'
 import Buttons from './buttons'
 
