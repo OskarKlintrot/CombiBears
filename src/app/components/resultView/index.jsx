@@ -15,7 +15,7 @@ class ResultView extends React.Component {
 
   onShowSolutions = () => {
     this.setState({ showSolutions: true })
-  }
+  };
 
   render() {
     return (
