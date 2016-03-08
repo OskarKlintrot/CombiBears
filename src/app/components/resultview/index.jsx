@@ -5,17 +5,20 @@ import FoundList from './foundlist'
 import Buttons from './buttons'
 
 const ResultView = ( props ) => {
+  const { game, settings } = props
   return (
     <div>
       <Buttons/>
       <ResultList
-        NumberOfBearsFound={ props.game.savedPermutations }
-        CorrectAnswers={ props.settings.correctCombinations }
+        numberOfFoundPermutations={ game.savedPermutations.length }
+        numberOfCorrectPermutations={ settings.correctCombinations.length }
+        NumberOfBearsFound={ game.savedPermutations }
+        CorrectAnswers={ settings.correctCombinations }
       />
       <FoundList
-        savedPermutations={ props.game.savedPermutations }
-        settings={ props.settings }
-        game={ props.game }
+        savedPermutations={ game.savedPermutations }
+        settings={ settings }
+        game={ game }
       />
     </div>
   )
