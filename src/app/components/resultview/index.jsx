@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ResultList from './resultList'
-import FoundList from './foundlist'
+import FoundList from './foundList'
 import Buttons from './buttons'
 
 const ResultView = ( props ) => {
