@@ -3,30 +3,30 @@ import BasicSofa from '../shared/basicSofa-v2'
 
 const styles = {
   savedPermutations: {
-    margin: '361px 0px 0px 157px',
-    position: 'fixed',
-    width: '57%',
-    height: '627px',
     overflow: 'auto',
-    background: '#FFF',
-    border: '6px solid black',
-    borderRadius: '8px'
+    backgroundColor: 'rgba(240, 240, 230, 0.8)',
+    border: '0.5em solid rgb(250, 250, 240)',
+    borderRadius: '0.3em',
+    marginTop: '2em',
+    paddingTop: '1em'
   },
   ulSofas: {
-    margin: '33px -40px 40px 69px'
+    margin: 0
   },
-  NotFoundPermutations: {
-    opacity: '0.1',
-    display: 'inline',
-    float: 'left',
-    width: '30%'
-  },
-  FoundPermutations: {
+  permutation: {
     display: 'inline',
     float: 'left',
     width: '30%'
   }
 }
+
+const notFoundPermutationsStyle = Object.assign(
+  {},
+  styles.permutation,
+  {
+    opacity: '0.1'
+  }
+)
 
 const FoundPermutations = ( props ) => {
   const rows = []
@@ -47,14 +47,22 @@ const FoundPermutations = ( props ) => {
   }
   if ( rows.length > 0 ) {
     return (
-      <div style={ styles.savedPermutations }>
-        <ul style={ styles.ulSofas }>
-          {
-            rows.map( ( bearsOnSofa, index ) =>
-              FoundPermutations.renderSofa( bearsOnSofa, index, numbers, props )
-            )
-          }
-        </ul>
+      <div className='row'>
+        <div
+          className='small-12 columns'
+          style={ styles.savedPermutations }
+        >
+          <ul
+            className='row'
+            style={ styles.ulSofas }
+          >
+            {
+              rows.map( ( bearsOnSofa, index ) =>
+                FoundPermutations.renderSofa( bearsOnSofa, index, numbers, props )
+              )
+            }
+          </ul>
+        </div>
       </div>
     )
   }
@@ -66,8 +74,9 @@ const FoundPermutations = ( props ) => {
 FoundPermutations.renderSofa = ( bearsOnSofa, index, numbers, props ) => {
   return (
     <li
+      className='small-6 medium-4 large-3 columns'
       key={ index }
-      style={ index < numbers ? styles.FoundPermutations : styles.NotFoundPermutations }
+      style={ index < numbers ? styles.permutation : notFoundPermutationsStyle }
     >
       <BasicSofa
         numberOfSeats={ props.settings.numberOfSeats }

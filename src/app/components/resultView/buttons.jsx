@@ -4,7 +4,9 @@ import { Link } from 'react-router'
 
 const styles = {
   button: {
-    height: '100px'
+    height: '100px',
+    display: 'inline-block',
+    cursor: 'pointer'
   }
 }
 
