@@ -15,11 +15,11 @@ const BoxInfo = ( props ) => {
   return (
     <div style={ styles.boards }>
       {
-        rows.map( ( Box1 ) => {
+        rows.map( ( item ) => {
           return (
             <Box
-              list={ Box1 }
-              key={ Box1.id }
+              list={ item }
+              key={ item.id }
             />
           )
         })
