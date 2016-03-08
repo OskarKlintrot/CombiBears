@@ -1,55 +1,45 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import C from '../../constants'
 import { Link } from 'react-router'
 
 const styles = {
-  icon: {
+  button: {
     height: '100px'
-  },
-  iconRight: {
-    height: '100px',
-    float: 'right',
-    cursor: 'pointer'
-  },
-  arrowDiv: {
-    position: 'fixed',
-    right: '0',
-    top: '50%',
-    marginTop: '-50px'
-  },
-  iconRestart: {
-    position: 'fixed',
-    margin: '60px 0px 0px 749px',
-    cursor: 'pointer'
-  },
-  iconReturn: {
-    position: 'fixed',
-    margin: '60px 0px 0px 273px'
   }
 }
 
 const Buttons = () => {
   return (
-    <div>
-      <div style={ styles.iconReturn }>
-        <Link
-          to={ C.ROUTES.GAME }
-        >
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-            alt='Icon for returning to game view'
-            style={ styles.icon }
-          />
-        </Link>
-      </div>
-      <div style={ styles.iconRestart }>
+    <div className='row'>
+      <div className='small-4 medium-6 large-8 columns'>
         <Link
           to={ C.ROUTES.START }
         >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
             alt='Icon for new sofa'
-            style={ styles.icon }
+            draggable='false'
+            style={ styles.button }
+          />
+        </Link>
+      </div>
+      <div className='small-4 medium-3 large-2 columns'>
+        <img
+          src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION }
+          alt='Icon for new sofa'
+          draggable='false'
+          style={ styles.button }
+        />
+      </div>
+      <div className='small-4 medium-3 large-2 columns'>
+        <Link
+          to={ C.ROUTES.GAME }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+            alt='Icon for returning to game view'
+            draggable='false'
+            style={ styles.button }
           />
         </Link>
       </div>
