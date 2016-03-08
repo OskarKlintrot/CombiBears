@@ -1,8 +1,5 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import React from 'react'
 import C from '../../constants'
-
 import FoundPermutations from './foundPermutations'
 import ShowAllPremutations from './showAll'
 
@@ -42,44 +39,47 @@ const styles = {
   }
 }
 
-class FounList extends React.Component {
-
-  constructor( props )
-  {
-    super ( props )
-    this.handleClick = this.handleClick.bind ( this )
-    this.state =
-    {
-      selectedIndex: <FoundPermutations savedPermutations={ this.props.game.savedPermutations } settings={ this.props.settings }/>,
-      button: <div style={ styles.iconSolution }> <button onClick = { this.handleClick } ><img src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION } draggable='false' alt='Icon for new sofa' style={ styles.icon } /></button> </div>
-    }
-
+class FoundList extends React.Component {
+  constructor( props ) {
+    super( props )
+    this.handleClick = this.handleClick.bind( this )
+    this.state = { showSolutions: false }
   }
 
-  handleClick()
-  {
-    this.setState({ selectedIndex: <ShowAllPremutations savedPermutations={ this.props.game.savedPermutations } settings={ this.props.settings }/>, button: <p> </p> })
+  handleClick() {
+    this.setState({ showSolutions: true })
   }
 
-  render()
-  {
-
+  render() {
     return (
       <div>
-        { this.state.button }
-        { this.state.selectedIndex }
-        <div id = 'position_of_button'>
-
+        <div style={ styles.iconSolution }>
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION }
+            draggable='false'
+            alt='Icon for new sofa'
+            style={ styles.icon }
+            onClick={ this.handleClick }
+            hidden={ this.state.showSolutions }
+          />
         </div>
-      </div> )
+
+        <div hidden={ this.state.showSolutions }>
+          <FoundPermutations
+            savedPermutations={ this.props.game.savedPermutations }
+            settings={ this.props.settings }
+          />
+        </div>
+
+        <div hidden={ !this.state.showSolutions }>
+          <ShowAllPremutations
+            savedPermutations={ this.props.game.savedPermutations }
+            settings={ this.props.settings }
+          />
+        </div>
+      </div>
+    )
   }
 }
 
-const mapStateToProps = ( state ) => {
-  return {
-    game: state.game,
-    settings: state.settings
-  }
-}
-
-export default connect( mapStateToProps )( FounList )
+export default FoundList

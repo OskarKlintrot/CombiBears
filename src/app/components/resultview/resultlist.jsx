@@ -1,5 +1,4 @@
 import React from 'react'
-
 import BoxInfo from './boxinfo'
 
 const styles = {
@@ -41,9 +40,7 @@ const styles = {
 
 export default class ResultList extends React.Component {
   render() {
-
     let rows = []
-
     for ( let FoundLoop = 0; FoundLoop < this.props.NumberOfBearsFound.length; FoundLoop++ )
     {
       for ( let AnswersLoop = 0; AnswersLoop < this.props.CorrectAnswers.length; AnswersLoop++ )
@@ -55,12 +52,9 @@ export default class ResultList extends React.Component {
           obj.found = 1
           rows.push( obj )
         }
-
       }
     }
-
     let num = 1
-
     for ( let newarray = 0; newarray < this.props.CorrectAnswers.length; newarray++ )
     {
       if ( rows.length > newarray )
@@ -72,15 +66,12 @@ export default class ResultList extends React.Component {
         rows.push( obj )
         //alert("test");
       }
-
       if ( num < 10 )
         rows[newarray].id = "0"+num
       else
         rows[newarray].id = num
-
       num+=1
     }
-
     return (
       <div style={ styles.iconList }>
         <BoxInfo rows = { rows } />
