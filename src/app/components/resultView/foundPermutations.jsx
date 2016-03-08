@@ -12,7 +12,6 @@ const styles = {
     border: '6px solid black',
     borderRadius: '8px'
   },
-
   ulSofas: {
     margin: '33px -40px 40px 69px'
   },
@@ -31,7 +30,6 @@ const styles = {
 
 const FoundPermutations = ( props ) => {
   const rows = []
-
   for ( let FoundLoop = 0; FoundLoop < props.savedPermutations.length; FoundLoop += 1 ) {
     for ( let AnswersLoop = 0; AnswersLoop < props.settings.correctCombinations.length; AnswersLoop += 1 ) {
       const test = JSON.stringify( props.savedPermutations[FoundLoop] ) === JSON.stringify( props.settings.correctCombinations[AnswersLoop] )
@@ -40,7 +38,6 @@ const FoundPermutations = ( props ) => {
         rows.push( props.savedPermutations[FoundLoop] )
     }
   }
-
   let numbers = 0
   for ( let NewArray = 0; NewArray < props.settings.correctCombinations.length; NewArray += 1 ) {
     if ( rows.length > NewArray )
@@ -48,7 +45,6 @@ const FoundPermutations = ( props ) => {
     else
       rows.push( [0, 0] )
   }
-
   if ( rows.length > 0 ) {
     return (
       <div style={ styles.savedPermutations }>
@@ -65,7 +61,6 @@ const FoundPermutations = ( props ) => {
   return (
     <div style={ styles.savedPermutations }> <h1>error in foundPermutations</h1></div>
   )
-
 }
 
 FoundPermutations.renderSofa = ( bearsOnSofa, index, numbers, props ) => {
