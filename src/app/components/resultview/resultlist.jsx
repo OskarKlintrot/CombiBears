@@ -1,26 +1,21 @@
 import React from 'react'
-
 import BoxInfo from './boxinfo'
 
 const styles = {
-
   icon: {
     height: '100px'
   },
-
   iconRight: {
     height: '100px',
     float: 'right',
     cursor: 'pointer'
   },
-
   arrowDiv: {
     position: 'fixed',
     right: '0',
     top: '50%',
     marginTop: '-50px'
   },
-
   iconRestart: {
     bottom: '0',
     right: '0',
@@ -41,51 +36,38 @@ const styles = {
 
 export default class ResultList extends React.Component {
   render() {
+    const rows = []
 
-    let rows = []
-
-    for ( let FoundLoop = 0; FoundLoop < this.props.NumberOfBearsFound.length; FoundLoop++ )
-    {
-      for ( let AnswersLoop = 0; AnswersLoop < this.props.CorrectAnswers.length; AnswersLoop++ )
-      {
-        let test = JSON.stringify( this.props.NumberOfBearsFound[FoundLoop] ) === JSON.stringify( this.props.CorrectAnswers[AnswersLoop] )
-        if ( test )
-        {
-          let obj = { found: 0, id: 0 }
+    for ( let FoundLoop = 0; FoundLoop < this.props.NumberOfBearsFound.length; FoundLoop += 1 ) {
+      for ( let AnswersLoop = 0; AnswersLoop < this.props.CorrectAnswers.length; AnswersLoop += 1 ) {
+        const test = JSON.stringify( this.props.NumberOfBearsFound[FoundLoop] ) === JSON.stringify( this.props.CorrectAnswers[AnswersLoop] )
+        if ( test ) {
+          const obj = { found: 0, id: 0 }
           obj.found = 1
           rows.push( obj )
         }
-
       }
     }
 
     let num = 1
 
-    for ( let newarray = 0; newarray < this.props.CorrectAnswers.length; newarray++ )
-    {
-      if ( rows.length > newarray )
-      {
-      }
-      else
-      {
-        let obj = { found: 0, id: 0 }
+    for ( let newarray = 0; newarray < this.props.CorrectAnswers.length; newarray += 1 ) {
+      if ( rows.length <= newarray ) {
+        const obj = { found: 0, id: 0 }
         rows.push( obj )
-        //alert("test");
       }
 
       if ( num < 10 )
-        rows[newarray].id = "0"+num
+        rows[newarray].id = '0' + num
       else
         rows[newarray].id = num
 
-      num+=1
+      num += 1
     }
 
     return (
       <div style={ styles.iconList }>
-        <BoxInfo rows = { rows } />
+        <BoxInfo rows={ rows } />
       </div> )
   }
 }
-
-
