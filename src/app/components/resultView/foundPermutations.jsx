@@ -38,7 +38,6 @@ const FoundPermutations = ( props ) => {
 
       if ( test )
         rows.push( props.savedPermutations[FoundLoop] )
-
     }
   }
 

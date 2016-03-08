@@ -24,14 +24,13 @@ const styles = {
     borderRadius: '4px',
     textsShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
   }
-
 }
 
 const Box = ( props ) => {
   const { item } = props
   return (
     <div style={ item.found === true ? styles.selected : styles.notselected } >
-      { item.id }
+    { item.id < 10 ? '0' + item.id.toString() : item.id }
     </div>
   )
 }
