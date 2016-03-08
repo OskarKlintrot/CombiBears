@@ -39,7 +39,7 @@ const Sofa = ( props ) => {
       className={ C.COMPONENT_NAMES.SOFA }
       style={ Sofa.mergeStyles( styles, numberOfSeats ) }
     >
-      <div style={ Sofa.genericStyles.seatContainer }>
+      <div className='flex-seat-container'>
 
         {
           // Render prop.bearsOnSofa with function prop.renderSeat, both passed from parent
@@ -86,10 +86,6 @@ Sofa.genericStyles = {
     backgroundSize: 'contain',
     textAlign: 'center',
     margin: '0 auto'
-  },
-  seatContainer: {
-    display: 'flex',
-    alignItems: 'stretch'
   }
 }
 

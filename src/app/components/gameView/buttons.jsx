@@ -62,6 +62,7 @@ class Buttons extends React.Component {
               src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
               alt='Icon for new sofa'
               style={ styles.iconToStart }
+              draggable='false'
             />
           </Link>
           <Link
@@ -72,6 +73,7 @@ class Buttons extends React.Component {
               src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
               alt='Icon for showing result'
               style={ styles.iconToShowResults }
+              draggable='false'
             />
           </Link>
 
@@ -84,12 +86,14 @@ class Buttons extends React.Component {
             alt='Icon for putting bears back in startingArea'
             style={ styles.resetIcon }
             onClick={ () => this.props.onRestart() }
+            draggable='false'
           />
           <img
             src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
             alt='Icon for saving permutation'
             style={ styles.saveIcon }
             onClick={ () => this.props.onSave() }
+            draggable='false'
           />
         </div>
 
