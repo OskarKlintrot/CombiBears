@@ -15,6 +15,7 @@ const ResultView = ( props ) => {
       <FoundList
         savedPermutations={ props.game.savedPermutations }
         settings={ props.settings }
+        game={ props.game }
       />
     </div>
   )

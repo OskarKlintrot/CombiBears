@@ -48,7 +48,6 @@ export default class ResultList extends React.Component {
         }
       }
     }
-
     let num = 1
 
     for ( let newarray = 0; newarray < this.props.CorrectAnswers.length; newarray += 1 ) {
@@ -56,7 +55,6 @@ export default class ResultList extends React.Component {
         const obj = { found: 0, id: 0 }
         rows.push( obj )
       }
-
       if ( num < 10 )
         rows[newarray].id = '0' + num
       else
@@ -64,7 +62,6 @@ export default class ResultList extends React.Component {
 
       num += 1
     }
-
     return (
       <div style={ styles.iconList }>
         <BoxInfo rows={ rows } />

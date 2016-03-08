@@ -63,9 +63,8 @@ const FoundPermutations = ( props ) => {
       </div>
     )
   }
-
   return (
-    <div style={ styles.savedPermutations }> <h1>error i foundPremutatuions</h1></div>
+    <div style={ styles.savedPermutations }> <h1>error in foundPermutations</h1></div>
   )
 
 }
