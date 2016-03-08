@@ -155,8 +155,8 @@ class GameView extends React.Component {
     // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
     if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length )
 
-    // Then redirect to results view
-      this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+    // Then redirect to results view //Ändra här
+      this.props.redirectToResultView( )
   }
 
   getNumberOfCorrectAnswers() {
@@ -327,8 +327,8 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Till Johnny: Lägg till!
-      dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
+    redirectToResultView: ( ) => { // Till Johnny: Ändra här
+      dispatch( Actions.redirectToResultView( ) )  // Till Johnny: Ändra här
     }
   }
 }
