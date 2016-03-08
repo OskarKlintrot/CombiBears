@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import _ from 'lodash'
 import Seat from './seat'
 import DraggableBear from './draggableBear'
 import BearPlaceHolder from './bearPlaceHolder'
@@ -94,7 +95,7 @@ Sofa.genericStyles = {
 }
 
 // Merge styles: genericStyles, prop.styles, and sofaStyles
-Sofa.mergeStyles = ( styles, numberOfSeats ) => Object.assign({}, Sofa.genericStyles.sofa, styles, Sofa.getSofaStyles( numberOfSeats ) )
+Sofa.mergeStyles = ( styles, numberOfSeats ) => _.assign({}, Sofa.genericStyles.sofa, styles, Sofa.getSofaStyles( numberOfSeats ) )
 
 Sofa.propTypes = {
   numberOfSeats: PropTypes.number.isRequired,
