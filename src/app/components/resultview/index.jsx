@@ -12,8 +12,6 @@ const ResultView = ( props ) => {
       <ResultList
         numberOfFoundPermutations={ game.savedPermutations.length }
         numberOfCorrectPermutations={ settings.correctCombinations.length }
-        NumberOfBearsFound={ game.savedPermutations }
-        CorrectAnswers={ settings.correctCombinations }
       />
       <FoundList
         savedPermutations={ game.savedPermutations }
