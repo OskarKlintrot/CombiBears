@@ -65,7 +65,6 @@ CONSTANTS.COLORS = {
 CONSTANTS.ROUTES = {
   START: '/',
   GAME: '/game',
-  SAVED: '/saved',
   RESULTS: '/results'
 }
 
