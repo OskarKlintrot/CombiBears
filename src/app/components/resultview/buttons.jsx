@@ -57,9 +57,4 @@ const Buttons = () => {
   )
 }
 
-Buttons.propTypes = {
-  onRestart: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired
-}
-
 export default Buttons
