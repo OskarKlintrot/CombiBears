@@ -25,6 +25,16 @@ class GameView extends React.Component {
     }
   }
 
+  //Lägg till här
+  componentDidUpdate = () => {
+    if ( document.getElementById( 'alreadySaved' ) !== null ) {
+      const alreadySaved = document.getElementById( 'alreadySaved' )
+      const topPos = alreadySaved.offsetTop
+      document.getElementById( 'sofaList' ).scrollTop = topPos
+      alreadySaved.removeAttribute( 'id' )
+    }
+  };
+
   // This method is triggered on every drop event.
   handleDrop( event ) {
 
