@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import _ from 'lodash'
 import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
@@ -59,7 +58,7 @@ const Seat = ( props ) => {
 
     // If its a starting area, we need the special styles.
     if ( props.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
-      return _.assign({}, styles.seat, styles.startingAreaSeat )
+      return Object.assign({}, styles.seat, styles.startingAreaSeat )
 
     return styles.seat
   }
