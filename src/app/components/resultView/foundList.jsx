@@ -1,37 +1,32 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import FoundPermutations from './foundPermutations'
 import ShowAllPremutations from './showAll'
 
-class FoundList extends React.Component {
-  constructor( props ) {
-    super( props )
-    this.handleClick = this.handleClick.bind( this )
-    this.state = { showSolutions: false }
-  }
-
-  handleClick() {
-    this.setState({ showSolutions: true })
-  }
-
-  render() {
-    return (
-      <div>
-        <div hidden={ this.state.showSolutions }>
-          <FoundPermutations
-            savedPermutations={ this.props.game.savedPermutations }
-            settings={ this.props.settings }
-          />
-        </div>
-
-        <div hidden={ !this.state.showSolutions }>
-          <ShowAllPremutations
-            savedPermutations={ this.props.game.savedPermutations }
-            settings={ this.props.settings }
-          />
-        </div>
+const FoundList = ( props ) => {
+  const { showSolutions, savedPermutations, settings } = props
+  return (
+    <div>
+      <div hidden={ showSolutions }>
+        <FoundPermutations
+          savedPermutations={ savedPermutations }
+          settings={ settings }
+        />
       </div>
-    )
-  }
+
+      <div hidden={ !showSolutions }>
+        <ShowAllPremutations
+          savedPermutations={ savedPermutations }
+          settings={ settings }
+        />
+      </div>
+    </div>
+  )
+}
+
+FoundList.propTypes = {
+  showSolutions: PropTypes.bool.isRequired,
+  savedPermutations: PropTypes.array.isRequired,
+  settings: PropTypes.object.isRequired
 }
 
 export default FoundList

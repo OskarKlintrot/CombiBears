@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import C from '../../constants'
 import { Link } from 'react-router'
 
@@ -10,7 +10,8 @@ const styles = {
   }
 }
 
-const Buttons = () => {
+const Buttons = ( props ) => {
+  const { handleClick } = props
   return (
     <div className='row'>
       <div className='small-4 medium-6 large-8 columns'>
@@ -31,6 +32,7 @@ const Buttons = () => {
           alt='Icon for new sofa'
           draggable='false'
           style={ styles.button }
+          onClick={ handleClick }
         />
       </div>
       <div className='small-4 medium-3 large-2 columns'>
@@ -47,6 +49,10 @@ const Buttons = () => {
       </div>
     </div>
   )
+}
+
+Buttons.propTypes = {
+  handleClick: PropTypes.func.isRequired
 }
 
 export default Buttons
