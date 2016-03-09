@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import C from '../../constants'
 import BasicSofa from '../shared/basicSofa-v2'
 import SavedPermutationsFlash from './savedPermutationsFlash'
 
@@ -44,21 +43,19 @@ const styles = {
   },
 
   sofaListElementLast: {
-    // transform: 'scale(1.1, 1.1)',
     backgroundColor: '#59b585',
     borderRadius: '10px',
     paddingTop: '15px'
   },
 
   sofaListElementSaved: {
-    // transform: 'scale(1.1, 1.1)',
     backgroundColor: '#b93e3e',
     borderRadius: '10px',
     paddingTop: '15px'
   },
 
   sofaListElements: {
-
+    paddingTop: '15px'
   }
 }
 
@@ -90,11 +87,13 @@ class SavedPermutations extends React.Component {
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''
+        if ( index === 0 && this.props.triedToSaveDuplicatePermutationIndex === -1 ) {
+          sofaListElementStyle = styles.sofaListElementLast
+          sofaLiId = 'lastSaved'
+        }
         if ( index === this.props.triedToSaveDuplicatePermutationIndex ) {
           sofaListElementStyle = styles.sofaListElementSaved
           sofaLiId = 'alreadySaved'
-        } else if ( index === 0 ) {
-          sofaListElementStyle = styles.sofaListElementLast
         }
         return (
           <li

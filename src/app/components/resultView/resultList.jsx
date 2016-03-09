@@ -5,6 +5,10 @@ import Box from './box'
 const styles = {
   container: {
     marginTop: '2em'
+  },
+  list: {
+    margin: 'auto',
+    maxWidth: '740px'
   }
 }
 
@@ -15,7 +19,10 @@ const ResultList = ( props ) => {
       className='row'
       style={ styles.container }
     >
-      <div className='small-10 small-offset-1 columns'>
+      <div
+        className='small-12 columns'
+        style={ styles.list }
+      >
         { _.times( numberOfCorrectPermutations, Number ).map( ( item ) => {
           const found = item < numberOfFoundPermutations
           const statusOfCurrentPermutation = { id: item + 1, found: found }

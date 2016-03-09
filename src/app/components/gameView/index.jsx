@@ -30,6 +30,15 @@ class GameView extends React.Component {
     this.redirectIfGotAllCorrectAnswers( C.ROUTES.START )
   }
 
+  componentDidUpdate = () => {
+    if ( document.getElementById( 'alreadySaved' ) !== null ) {
+      const alreadySaved = document.getElementById( 'alreadySaved' )
+      const topPos = alreadySaved.offsetTop
+      document.getElementById( 'sofaList' ).scrollTop = topPos
+      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
+    }
+  };
+
   // This method is triggered on every drop event.
   handleDrop( event ) {
 
@@ -153,11 +162,11 @@ class GameView extends React.Component {
       if ( toViewName === C.ROUTES.RESULTS )
 
         // Redirect to results view
-        this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+        this.props.redirectToResultView( )
       else if ( toViewName === C.ROUTES.START )
 
         // Redirect to start view
-        this.props.redirectToStartView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+        this.props.redirectToStartView( )
     }
   }
 
@@ -343,8 +352,8 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( savedPermutations, correctCombinations ) => { // TODO: Check that we really need these two arguments?
-      dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
+    redirectToResultView: ( ) => {
+      dispatch( Actions.redirectToResultView( ) )
     },
     redirectToStartView: ( ) => {
       dispatch( Actions.redirectToStartView( ) )
