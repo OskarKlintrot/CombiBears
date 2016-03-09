@@ -26,7 +26,7 @@
 }
 
 #backgroundImage {
-  background: url(../../public/pics/background.jpg) no-repeat center bottom fixed;
+  background: url(../../public/pics/background.svg) no-repeat center fixed;
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -113,3 +113,10 @@
 
 
 /*TODO: Dummy-placeringar, ska fixas*/
+
+.flex-seat-container {
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  -webkit-align-items: stretch; /* Safari */
+  align-items: stretch;
+}

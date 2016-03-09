@@ -6,8 +6,7 @@ const styles = {
   position: 'fixed',
   pointerEvents: 'none',
   zIndex: 100,
-  width: 120,
-  height: 140,
+  width: '12%',
   left: 0,
   top: 0
 }
@@ -15,7 +14,7 @@ const styles = {
 const collect = ( monitor ) => {
 
   // Get source item, where the dragged item came from.
-  const sourceItem =  monitor.getItem()
+  const sourceItem = monitor.getItem()
 
   // Get bearKey from source item if possible
   const bearKey = sourceItem ? sourceItem.props.bearKey : null

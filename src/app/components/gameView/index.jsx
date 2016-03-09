@@ -14,6 +14,7 @@ import { DragDropContext } from 'react-dnd'
 import touchBackend from 'react-dnd-touch-backend'
 
 class GameView extends React.Component {
+
   constructor( props ) {
     super( props )
 
@@ -25,7 +26,10 @@ class GameView extends React.Component {
     }
   }
 
-  // Lägg till här
+  componentWillMount() {
+    this.redirectIfGotAllCorrectAnswers()
+  }
+
   componentDidUpdate = () => {
     if ( document.getElementById( 'alreadySaved' ) !== null ) {
       const alreadySaved = document.getElementById( 'alreadySaved' )
@@ -34,7 +38,7 @@ class GameView extends React.Component {
       alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
     }
   };
-
+  
   // This method is triggered on every drop event.
   handleDrop( event ) {
 
@@ -197,21 +201,33 @@ class GameView extends React.Component {
     }
   }
 
+  canRestart() {
+    return this.getBearsFromSofa().length > 0
+  }
+
+  canSave() {
+
+    // Check that there are enough bears in sofa
+    const numberOfBearsInSofa = this.getBearsFromSofa().length
+
+    return numberOfBearsInSofa === this.props.game.bearsOnSofa.length || numberOfBearsInSofa === this.getTotalNumberOfBears()
+  }
+
+  doesPermutationExists( permutationToCompare ) {
+
+    return this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare ) )
+
+  }
+
   savePermutation() {
 
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
     // Check that this permutation does not already exists
-    if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
+    if ( !this.doesPermutationExists( bearsToSave ) ) {
 
-      const numberOfBearsInSofa = this.getBearsFromSofa().length
-
-      // Check that there are enough bears in sofa
-      if (
-        numberOfBearsInSofa === this.props.game.bearsOnSofa.length ||
-        numberOfBearsInSofa === this.getTotalNumberOfBears()
-      ) {
+      if ( this.canSave() ) {
 
         // Save and reset
         this.props.savePermutation( bearsToSave )
@@ -252,6 +268,8 @@ class GameView extends React.Component {
           <Buttons
             onRestart={ resetPermutation }
             onSave={ savePermutation }
+            canRestart={ this.canRestart() }
+            canSave={ this.canSave() }
           />
 
           <Sofa

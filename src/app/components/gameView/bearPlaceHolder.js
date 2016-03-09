@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import C from '../../constants'
 import BasicBear from '../shared/basicBear'
 
 const BearPlaceHolder = ( props ) => {

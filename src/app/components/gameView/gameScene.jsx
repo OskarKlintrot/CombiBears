@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
 const dropTarget = {
-  drop( props, monitor, component ) {
+  drop( ) { // Available arguments: props, monitor, component
 
     return {
       containerTypeName: C.COMPONENT_NAMES.GAME_SCENE,
@@ -23,7 +23,7 @@ const collect = ( connect, monitor ) => {
 }
 
 const GameScene = ( props ) => {
-  const { connectDropTarget, isOver } = props
+  const { connectDropTarget } = props // Available in props: isOver
 
   const styles = {
     gameScene: {

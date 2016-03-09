@@ -1,36 +1,38 @@
 import React from 'react'
 
-const styles = {
-  selected: {
-    float: 'left',
-    font: '700 53px HelveticaNeue, Helvetica, Arial',
-    marginRight: '3px',
-    marginTop: '3px',
-    padding: '3px',
-    color: 'white',
-    background: 'rgb(242, 133, 36)',
-    border: '4px solid black',
-    borderRadius: '4px'
-  },
-  notselected: {
-    float: 'left',
-    font: '700 53px HelveticaNeue, Helvetica, Arial',
-    marginRight: '3px',
-    marginTop: '3px',
-    padding: '3px',
-    background: '#A75710',
-    color: 'white',
-    border: '4px solid black',
-    borderRadius: '4px',
-    textsShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
-  }
+const boxStyle = {
+  display: 'inline-block',
+  font: '3.4em HelveticaNeue, Helvetica, Arial, sans-serif',
+  margin: '0.1em 0.1em 0 0',
+  padding: '0.1em',
+  color: 'white',
+  border: '0.1em solid #000000',
+  borderRadius: '0.1em',
+  cursor: 'default'
 }
+
+const selectedBoxStyle = Object.assign(
+  {},
+  boxStyle,
+  {
+    background: 'rgb(242, 133, 36)'
+  }
+)
+
+const notSelectedBoxStyle = Object.assign(
+  {},
+  boxStyle,
+  {
+    background: '#A75710',
+    textShadow: '-0.025em -0.025em 0 #000, 0.025em -0.025em 0 #000, -0.025em 0.025em 0 #000, 0.025em 0.025em 0 #000'
+  }
+)
 
 const Box = ( props ) => {
   const { item } = props
   return (
-    <div style={ item.found === true ? styles.selected : styles.notselected } >
-    { item.id < 10 ? '0' + item.id.toString() : item.id }
+    <div style={ item.found === true ? selectedBoxStyle : notSelectedBoxStyle } >
+      { item.id < 10 ? '0' + item.id.toString() : item.id }
     </div>
   )
 }
