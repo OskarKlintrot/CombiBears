@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import C from '../../constants'
 import { Link } from 'react-router'
 
-
 const Buttons = ( props ) => {
 
   const disabledOpacity = 0.5
