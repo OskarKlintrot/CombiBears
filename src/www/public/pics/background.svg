@@ -1795,9 +1795,6 @@
 		<stop  offset="1" style="stop-color:#3F423C"/>
 	</radialGradient>
 	<circle fill="url(#SVGID_5_)" enable-background="new    " cx="891.954" cy="747.732" r="90.068"/>
-	<circle cx="892.85" cy="747.655" r="7.931"/>
-	<polygon points="900.163,691.632 892.709,745.767 885.255,691.632 892.709,664.519 	"/>
-	<polygon points="932.214,755.108 892.288,747.655 932.214,740.201 952.212,747.655 	"/>
 	<g>
 		<g>
 			<path d="M927.992,693.276v-1.185c0.662-0.077,1.215-0.164,1.656-0.261s0.795-0.198,1.059-0.299
@@ -1989,6 +1986,35 @@
 				/>
 		</g>
 	</g>
+	<polygon fill="#131314" points="900.163,691.632 892.709,745.767 885.255,691.632 892.709,664.519 	">
+
+	<animateTransform
+        attributeName="transform"
+        begin="0s"
+        dur="60s"
+        type="rotate"
+        from="0 892.85 747.655"
+        to="360 892.85 747.655"
+        repeatCount="indefinite"
+    />
+
+	</polygon>
+
+	<polygon fill="#131314" points="900.303,708.266 892.85,748.191 885.396,708.266 892.85,688.268 	">
+
+	<animateTransform
+        attributeName="transform"
+        begin="0s"
+        dur="720s"
+        type="rotate"
+        from="0 892.85 747.655"
+        to="360 892.85 747.655"
+        repeatCount="indefinite"
+    />
+
+	</polygon>
+
+	<circle cx="892.85" cy="747.655" r="7.931"/>
 </g>
 <polygon fill="#DD763F" points="577.275,682.166 239.783,682.166 209.567,651.488 607.831,651.488 "/>
 <polygon fill="#EE9E82" points="240.582,949.929 579.438,949.929 609.654,980.607 210.027,980.607 "/>
