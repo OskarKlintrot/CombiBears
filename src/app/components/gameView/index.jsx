@@ -25,13 +25,20 @@ class GameView extends React.Component {
     }
   }
 
-  //Lägg till här
+  // Lägg till här
   componentDidUpdate = () => {
     if ( document.getElementById( 'alreadySaved' ) !== null ) {
       const alreadySaved = document.getElementById( 'alreadySaved' )
       const topPos = alreadySaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
       alreadySaved.removeAttribute( 'id' )
+    }
+
+    if ( document.getElementById( 'lastSaved' ) !== null ) {
+      const lastSaved = document.getElementById( 'lastSaved' )
+      const topPos = lastSaved.offsetTop
+      document.getElementById( 'sofaList' ).scrollTop = topPos
+      lastSaved.removeAttribute( 'id' )
     }
   };
 

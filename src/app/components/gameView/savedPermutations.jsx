@@ -95,6 +95,7 @@ class SavedPermutations extends React.Component {
           sofaLiId = 'alreadySaved'
         } else if ( index === 0 ) {
           sofaListElementStyle = styles.sofaListElementLast
+          sofaLiId = 'lastSaved'
         }
         return (
           <li
