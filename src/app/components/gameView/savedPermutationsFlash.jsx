@@ -6,9 +6,13 @@ import BasicSofa from '../shared/basicSofa-v2'
 const modalStyles = {
   content: {
     position: 'absolute',
-    width: '90%',
+    width: '93%',
     margin: '0 auto',
-    overflow: 'auto'
+    overflow: 'auto',
+    background: 'rgb(240, 240, 230)',
+    border: 'solid',
+    borderWidth: '0.5em',
+    borderColor: 'rgb(250, 250, 250)'
   },
 
   ulSofas: {
@@ -46,7 +50,7 @@ const SavedPermutationsFlash = ( props ) => {
     <div>
       <img
         className=''
-        src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+        src={ C.SRC_TO_IMAGES.ICONS.VIEW_SAVED_PERMUTATIONS }
         style={ style }
         onClick={ handleOpenModal }
         draggable='false'
