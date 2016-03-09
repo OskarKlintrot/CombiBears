@@ -31,16 +31,11 @@ class GameView extends React.Component {
       const alreadySaved = document.getElementById( 'alreadySaved' )
       const topPos = alreadySaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
+      if ( document.getElementById( 'lastSaved' ) !== null )
+        document.getElementById( 'lastSaved' ).removeAttribute( 'style' )
       alreadySaved.removeAttribute( 'id' )
     }
-
-    if ( document.getElementById( 'lastSaved' ) !== null ) {
-      const lastSaved = document.getElementById( 'lastSaved' )
-      const topPos = lastSaved.offsetTop
-      document.getElementById( 'sofaList' ).scrollTop = topPos
-      lastSaved.removeAttribute( 'id' )
-    }
-  };
+  }
 
   // This method is triggered on every drop event.
   handleDrop( event ) {

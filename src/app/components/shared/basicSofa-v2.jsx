@@ -10,12 +10,16 @@ class BasicSofa extends React.Component {
   }
 
   componentDidMount = () => {
-    if ( document.getElementById( 'alreadySaved' ) !== null ) {
-      const alreadySaved = document.getElementById( 'alreadySaved' )
-      const topPos = alreadySaved.offsetTop
+    if ( document.getElementById( 'lastSaved' ) !== null ) {
+      document.getElementById( 'lastSaved' ).setAttribute( 'style', 'background-color: #59b585; border-radius:10px; padding-top:15px;' )
+      const lastSaved = document.getElementById( 'lastSaved' )
+      const topPos = lastSaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
     }
-  };
+
+    if ( document.getElementById( 'alreadySaved' ) !== null )
+      document.getElementById( 'alreadySaved' ).setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px;' )
+  }
 
   render() {
     const getSofaStyles = () => {
