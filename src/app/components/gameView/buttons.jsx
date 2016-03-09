@@ -32,13 +32,17 @@ const Buttons = ( props ) => {
       cursor: props.canRestart ? 'pointer' : 'auto',
       marginRight: '2%',
       zIndex: 10,
-      opacity: props.canRestart ? enabledOpacity : disabledOpacity
+      opacity: props.canRestart ? enabledOpacity : disabledOpacity,
+      filter: props.canRestart ? 'none' : 'grayscale(1) brightness(1.3)',
+      WebkitFilter: props.canRestart ? 'none' : 'grayscale(1) brightness(1.4)'
     },
     saveIcon: {
       width: '49%',
       cursor: props.canSave ? 'pointer' : 'auto',
       zIndex: 10,
-      opacity: props.canSave ? enabledOpacity : disabledOpacity
+      opacity: props.canSave ? enabledOpacity : disabledOpacity,
+      filter: props.canSave ? 'none' : 'grayscale(100%) brightness(1.3)',
+      WebkitFilter: props.canSave ? 'none' : 'grayscale(100%) brightness(1.4)'
     },
     topIconsArea: {
       top: '0',
