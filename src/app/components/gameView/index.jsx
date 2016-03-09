@@ -30,6 +30,15 @@ class GameView extends React.Component {
     this.redirectIfGotAllCorrectAnswers()
   }
 
+  componentDidUpdate = () => {
+    if ( document.getElementById( 'alreadySaved' ) !== null ) {
+      const alreadySaved = document.getElementById( 'alreadySaved' )
+      const topPos = alreadySaved.offsetTop
+      document.getElementById( 'sofaList' ).scrollTop = topPos
+      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
+    }
+  };
+  
   // This method is triggered on every drop event.
   handleDrop( event ) {
 
@@ -150,8 +159,8 @@ class GameView extends React.Component {
     // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
     if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length )
 
-    // Then redirect to results view
-      this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+    // Then redirect to results view //Ändra här
+      this.props.redirectToResultView( )
   }
 
   getNumberOfCorrectAnswers() {
@@ -336,8 +345,8 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Till Johnny: Lägg till!
-      dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
+    redirectToResultView: ( ) => { // Till Johnny: Ändra här
+      dispatch( Actions.redirectToResultView( ) )  // Till Johnny: Ändra här
     }
   }
 }
