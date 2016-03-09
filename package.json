@@ -12,7 +12,6 @@
     "test": "true"
   },
   "devDependencies": {
-    "appcache-nanny": "^1.0.3",
     "babel-core": "^6.2.1",
     "babel-eslint": "^4.0.5",
     "babel-loader": "^6.2.0",
