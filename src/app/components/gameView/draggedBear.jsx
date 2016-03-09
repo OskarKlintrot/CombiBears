@@ -6,8 +6,7 @@ const styles = {
   position: 'fixed',
   pointerEvents: 'none',
   zIndex: 100,
-  width: 120,
-  height: 140,
+  width: '12%',
   left: 0,
   top: 0
 }
