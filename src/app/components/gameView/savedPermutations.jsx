@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import C from '../../constants'
 import BasicSofa from '../shared/basicSofa-v2'
 import SavedPermutationsFlash from './savedPermutationsFlash'
 
@@ -44,21 +43,19 @@ const styles = {
   },
 
   sofaListElementLast: {
-    // transform: 'scale(1.1, 1.1)',
     backgroundColor: '#59b585',
     borderRadius: '10px',
     paddingTop: '15px'
   },
 
   sofaListElementSaved: {
-    // transform: 'scale(1.1, 1.1)',
     backgroundColor: '#b93e3e',
     borderRadius: '10px',
     paddingTop: '15px'
   },
 
   sofaListElements: {
-
+    paddingTop: '15px'
   }
 }
 
