@@ -23,28 +23,31 @@ class Buttons extends React.Component {
         zIndex: 10
       },
       resetIcon: {
-        width: '25%',
+        width: '49%',
         cursor: 'pointer',
-        marginRight: '5%',
+        marginRight: '2%',
         zIndex: 10
       },
       saveIcon: {
-        width: '70%',
+        width: '49%',
         cursor: 'pointer',
         zIndex: 10
       },
       topIconsArea: {
-        top: '0',
-        left: '0',
+        top: '1%',
+        margin: '0 auto',
+        left: '0px',
+        right: '0px',
         position: 'fixed',
-        width: '26%',
+        width: '23%',
         zIndex: 10
+
       },
       bottomIconsArea: {
-        bottom: '0',
+        bottom: '1%',
         right: '21%',
         position: 'fixed',
-        width: '20%',
+        width: '23%',
         zIndex: 10
       }
     }
@@ -89,7 +92,7 @@ class Buttons extends React.Component {
             draggable='false'
           />
           <img
-            src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
+            src={ C.SRC_TO_IMAGES.ICONS.SCREENSHOT }
             alt='Icon for saving permutation'
             style={ styles.saveIcon }
             onClick={ () => this.props.onSave() }
