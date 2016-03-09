@@ -27,7 +27,7 @@ class GameView extends React.Component {
   }
 
   componentWillMount() {
-    this.redirectIfGotAllCorrectAnswers()
+    this.redirectIfGotAllCorrectAnswers( C.ROUTES.START )
   }
 
   componentDidUpdate = () => {
@@ -154,13 +154,20 @@ class GameView extends React.Component {
     return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null )
   }
 
-  redirectIfGotAllCorrectAnswers() {
+  redirectIfGotAllCorrectAnswers( toViewName ) {
 
     // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
-    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length )
+    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length ) {
 
-    // Then redirect to results view //Ändra här
-      this.props.redirectToResultView( )
+      if ( toViewName === C.ROUTES.RESULTS )
+
+        // Redirect to results view
+        this.props.redirectToResultView( )
+      else if ( toViewName === C.ROUTES.START )
+
+        // Redirect to start view
+        this.props.redirectToStartView( )
+    }
   }
 
   getNumberOfCorrectAnswers() {
@@ -234,7 +241,7 @@ class GameView extends React.Component {
         this.props.resetPermutation()
 
         // Redirect to results view if we got all correct answers
-        this.redirectIfGotAllCorrectAnswers()
+        this.redirectIfGotAllCorrectAnswers( C.ROUTES.RESULTS )
       }
 
       this.triedToSaveDuplicatePermutation( false )
@@ -345,8 +352,11 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( ) => { // Till Johnny: Ändra här
-      dispatch( Actions.redirectToResultView( ) )  // Till Johnny: Ändra här
+    redirectToResultView: ( ) => {
+      dispatch( Actions.redirectToResultView( ) )
+    },
+    redirectToStartView: ( ) => {
+      dispatch( Actions.redirectToStartView( ) )
     }
   }
 }

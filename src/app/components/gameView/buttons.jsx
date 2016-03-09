@@ -11,48 +11,40 @@ const Buttons = ( props ) => {
     document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: blur(10px) grayscale(0.3)' )
   }
 
-  const getResetIconOpacity = () => {
-
-    return props.canRestart ? enabledOpacity : disabledOpacity
-  }
-
-  const getSaveIconOpacity = () => {
-
-    return props.canSave ? enabledOpacity : disabledOpacity
-  }
-
   const styles = {
 
     iconToStart: {
-      width: '50%',
+      width: '15%',
       cursor: 'pointer',
-      zIndex: 10
+      zIndex: 10,
+      float: 'left',
+      margin: '1% 0 0 4%'
     },
     iconToShowResults: {
-      width: '50%',
+      width: '15%',
       cursor: 'pointer',
-      zIndex: 10
+      zIndex: 10,
+      float: 'right',
+      margin: '1% 2% 0 0'
     },
     resetIcon: {
       width: '49%',
-      cursor: 'pointer',
+      cursor: props.canRestart ? 'pointer' : 'auto',
       marginRight: '2%',
       zIndex: 10,
-      opacity: getResetIconOpacity()
+      opacity: props.canRestart ? enabledOpacity : disabledOpacity
     },
     saveIcon: {
       width: '49%',
-      cursor: 'pointer',
+      cursor: props.canSave ? 'pointer' : 'auto',
       zIndex: 10,
-      opacity: getSaveIconOpacity()
+      opacity: props.canSave ? enabledOpacity : disabledOpacity
     },
     topIconsArea: {
-      top: '1%',
-      margin: '0 auto',
-      left: '0px',
-      right: '0px',
+      top: '0',
+      left: '0',
       position: 'fixed',
-      width: '23%',
+      width: '80%',
       zIndex: 10
 
     },
