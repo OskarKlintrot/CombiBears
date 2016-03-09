@@ -14,6 +14,7 @@ import { DragDropContext } from 'react-dnd'
 import touchBackend from 'react-dnd-touch-backend'
 
 class GameView extends React.Component {
+
   constructor( props ) {
     super( props )
 
@@ -23,6 +24,10 @@ class GameView extends React.Component {
     this.state = {
       triedToSaveDuplicatePermutationIndex: -1
     }
+  }
+
+  componentWillMount() {
+    this.redirectIfGotAllCorrectAnswers()
   }
 
   // This method is triggered on every drop event.

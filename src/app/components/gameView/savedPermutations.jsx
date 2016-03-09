@@ -90,7 +90,6 @@ class SavedPermutations extends React.Component {
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''
-        // TODO: Ändra till property som kommer in från index
         if ( index === this.props.triedToSaveDuplicatePermutationIndex ) {
           sofaListElementStyle = styles.sofaListElementSaved
           sofaLiId = 'alreadySaved'
