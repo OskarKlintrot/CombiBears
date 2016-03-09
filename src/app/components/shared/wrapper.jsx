@@ -1,5 +1,5 @@
 import React from 'react'
-import Radium, { Style, StyleRoot, PrintStyleSheet } from 'radium'
+import { StyleRoot } from 'radium'
 
 const Wrapper = ( props ) => {
   const { children } = props
