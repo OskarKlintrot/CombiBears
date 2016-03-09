@@ -27,7 +27,7 @@ class GameView extends React.Component {
   }
 
   componentWillMount() {
-    this.redirectIfGotAllCorrectAnswers()
+    this.redirectIfGotAllCorrectAnswers( C.ROUTES.START )
   }
 
   // This method is triggered on every drop event.
@@ -145,13 +145,20 @@ class GameView extends React.Component {
     return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null )
   }
 
-  redirectIfGotAllCorrectAnswers() {
+  redirectIfGotAllCorrectAnswers( toViewName ) {
 
     // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
-    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length )
+    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length ) {
 
-    // Then redirect to results view
-      this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+      if ( toViewName === C.ROUTES.RESULTS )
+
+        // Redirect to results view
+        this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+      else if ( toViewName === C.ROUTES.START )
+
+        // Redirect to start view
+        this.props.redirectToStartView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+    }
   }
 
   getNumberOfCorrectAnswers() {
@@ -225,7 +232,7 @@ class GameView extends React.Component {
         this.props.resetPermutation()
 
         // Redirect to results view if we got all correct answers
-        this.redirectIfGotAllCorrectAnswers()
+        this.redirectIfGotAllCorrectAnswers( C.ROUTES.RESULTS )
       }
 
       this.triedToSaveDuplicatePermutation( false )
@@ -336,8 +343,11 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Till Johnny: Lägg till!
+    redirectToResultView: ( savedPermutations, correctCombinations ) => { // TODO: Check that we really need these two arguments?
       dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
+    },
+    redirectToStartView: ( ) => {
+      dispatch( Actions.redirectToStartView( ) )
     }
   }
 }
