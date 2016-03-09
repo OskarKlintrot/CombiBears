@@ -1,4 +1,5 @@
-﻿/public/css/foundation.min.css
+﻿# 9977fd447e8ca74d0124a6fe06c25193
+/public/css/foundation.min.css
 /public/css/main.css
 /public/pics/background.jpg
 /public/pics/background.svg
