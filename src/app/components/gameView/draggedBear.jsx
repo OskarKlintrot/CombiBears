@@ -14,7 +14,7 @@ const styles = {
 const collect = ( monitor ) => {
 
   // Get source item, where the dragged item came from.
-  const sourceItem =  monitor.getItem()
+  const sourceItem = monitor.getItem()
 
   // Get bearKey from source item if possible
   const bearKey = sourceItem ? sourceItem.props.bearKey : null
