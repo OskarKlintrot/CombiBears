@@ -201,9 +201,9 @@ class GameView extends React.Component {
 
   doesPermutationExists( permutationToCompare ) {
 
-    return this.props.game.savedPermutations.some(
-      ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare )
-    )
+    console.log( this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare ) ) )
+
+    return this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare ) )
 
   }
 
@@ -213,7 +213,7 @@ class GameView extends React.Component {
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
     // Check that this permutation does not already exists
-    if ( !this.doesPermutationExists() ) {
+    if ( !this.doesPermutationExists( bearsToSave ) ) {
 
       if ( this.canSave() ) {
 
