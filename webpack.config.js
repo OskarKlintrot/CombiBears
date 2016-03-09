@@ -90,6 +90,20 @@ if (production) {
         'process.env.NODE_ENV': '"production"'
     })
   ].concat(config.plugins)
+
+  // appcache-serviceworker-generator
+  var createManifest = require('appcache-serviceworker-generator')
+  var fs = require('fs')
+
+  // give it a version (important for appcache)
+  var manifest = createManifest({version: '123'})
+
+  // manifest.cache('/some/image.png')
+  manifest.cache('/src/app/*')
+  // manifest.fallback('/somepath.html /somefallback.html')
+
+  // console.log(manifest.toAppCache())
+  console.log(manifest.toServiceWorker())
 }
 
 module.exports = config
