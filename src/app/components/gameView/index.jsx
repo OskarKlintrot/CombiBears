@@ -201,8 +201,6 @@ class GameView extends React.Component {
 
   doesPermutationExists( permutationToCompare ) {
 
-    console.log( this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare ) ) )
-
     return this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare ) )
 
   }
