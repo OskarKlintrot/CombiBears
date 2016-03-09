@@ -38,7 +38,7 @@ class GameView extends React.Component {
       alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
     }
   };
-  
+
   // This method is triggered on every drop event.
   handleDrop( event ) {
 

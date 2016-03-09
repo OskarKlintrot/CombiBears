@@ -87,12 +87,13 @@ class SavedPermutations extends React.Component {
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''
+        if ( index === 0 && this.props.triedToSaveDuplicatePermutationIndex === -1 ) {
+          sofaListElementStyle = styles.sofaListElementLast
+          sofaLiId = 'lastSaved'
+        }
         if ( index === this.props.triedToSaveDuplicatePermutationIndex ) {
           sofaListElementStyle = styles.sofaListElementSaved
           sofaLiId = 'alreadySaved'
-        } else if ( index === 0 ) {
-          sofaListElementStyle = styles.sofaListElementLast
-          sofaLiId = 'lastSaved'
         }
         return (
           <li
