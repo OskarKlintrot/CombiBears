@@ -25,7 +25,7 @@ $hash + [Environment]::NewLine | Out-File -Append -Encoding utf8 $pathToManifest
 # All resources being cached
 'CACHE:' | Out-File -Append -Encoding utf8 $pathToManifest
 Get-ChildItem -Path ..\src\www\public -Recurse -File | % { $_.FullName.ToString() -replace($pathToRemoveString, '') -replace('\\', '/') | Out-File -Append -Encoding utf8 $pathToManifest }
-"../scripts/boundle.min.js" + [Environment]::NewLine | Out-File -Append -Encoding utf8 $pathToManifest
+"scripts/boundle.min.js" + [Environment]::NewLine | Out-File -Append -Encoding utf8 $pathToManifest
 
 # Allow network trafic
 'NETWORK:' | Out-File -Append -Encoding utf8 $pathToManifest
