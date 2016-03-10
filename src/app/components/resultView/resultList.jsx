@@ -3,17 +3,18 @@ import React, { PropTypes } from 'react'
 const styles = {
   container: {
     textAlign: 'center',
-    verticalAlign: 'middle',
-    height: '100%',
-    lineHeight: '5em'
+    fontSize: '3.4em',
+    color: '#E26B00',
+    fontFamily: '"jollygood_sansbasic", "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif'
   }
 }
 
 const ResultList = ( props ) => {
   const { numberOfFoundPermutations, numberOfCorrectPermutations } = props
+  const foundPermutations = numberOfFoundPermutations > 9 ? numberOfFoundPermutations : '0' + numberOfFoundPermutations
   return (
     <div style={ styles.container }>
-     { numberOfFoundPermutations + "/" + numberOfCorrectPermutations }
+     { foundPermutations + "/" + numberOfCorrectPermutations }
     </div>
   )
 }
