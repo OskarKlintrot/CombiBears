@@ -1,14 +1,28 @@
 import React, { PropTypes } from 'react'
 import BasicBear from '../shared/basicBear'
 import { DragLayer } from 'react-dnd'
+import Radium from 'radium'
 
 const styles = {
   position: 'fixed',
   pointerEvents: 'none',
   zIndex: 100,
-  width: '12%',
   left: 0,
-  top: 0
+  top: 0,
+  width: '121px',
+  '@media (min-width: 900px)': {
+    width: '142px'
+  },
+  '@media (min-width: 620px) and (max-width: 767px)': {
+    width: '95px'
+  },
+  '@media (min-width: 480px) and (max-width: 619px)': {
+    width: '71px'
+  },
+  '@media (max-width: 479px)': {
+    width: '21%'
+  }
+
 }
 
 const collect = ( monitor ) => {
@@ -46,7 +60,7 @@ const getItemStyles = ( props ) => {
   }
 }
 
-// Not using stateless function since DragLayer need to use refs
+@Radium
 class DraggedBear extends React.Component {
   render() {
     const { isDragging, bearKey, bearsSettings } = this.props
