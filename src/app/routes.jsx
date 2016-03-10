@@ -6,7 +6,7 @@ import Wrapper from './components/shared/wrapper.jsx'
 import NoMatch from './components/shared/noMatch.jsx'
 import StartView from './components/startView'
 import GameView from './components/gameView'
-import ResultsView from './components/resultview'
+import ResultView from './components/resultView'
 
 export default (
   <Route
@@ -22,7 +22,7 @@ export default (
     />
     <Route
       path={ C.ROUTES.RESULTS }
-      component={ ResultsView }
+      component={ ResultView }
     />
     <Route
       path='*'

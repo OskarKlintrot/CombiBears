@@ -9,12 +9,21 @@ const styles = {
   }
 }
 
+const zeroOrHero = ( number ) => {
+  if ( number > 9 )
+    return number
+  return '0' + number
+}
+
 const ResultList = ( props ) => {
   const { numberOfFoundPermutations, numberOfCorrectPermutations } = props
-  const foundPermutations = numberOfFoundPermutations > 9 ? numberOfFoundPermutations : '0' + numberOfFoundPermutations
   return (
     <div style={ styles.container }>
-     { foundPermutations + "/" + numberOfCorrectPermutations }
+     {
+        zeroOrHero( numberOfFoundPermutations ) +
+        '/' +
+        zeroOrHero( numberOfCorrectPermutations )
+      }
     </div>
   )
 }
