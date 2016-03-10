@@ -7,12 +7,10 @@ import Buttons from './buttons'
 class ResultView extends React.Component {
   constructor( props ) {
     super( props )
-
     this.state = {
       showSolutions: false
     }
   }
-
   onShowSolutions = () => {
     this.setState({ showSolutions: true })
   };
