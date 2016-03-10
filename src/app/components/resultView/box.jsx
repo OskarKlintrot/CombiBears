@@ -12,17 +12,11 @@ const boxStyle = {
 }
 
 const selectedBoxStyle = Object.assign(
-  {},
-  boxStyle,
-  {
-    background: 'rgb(242, 133, 36)'
-  }
+  {}, boxStyle, { background: 'rgb(242, 133, 36)' }
 )
 
 const notSelectedBoxStyle = Object.assign(
-  {},
-  boxStyle,
-  {
+  {}, boxStyle, {
     background: '#A75710',
     textShadow: '-0.025em -0.025em 0 #000, 0.025em -0.025em 0 #000, -0.025em 0.025em 0 #000, 0.025em 0.025em 0 #000'
   }
