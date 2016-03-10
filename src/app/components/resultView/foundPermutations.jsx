@@ -21,7 +21,9 @@ const styles = {
   }
 }
 
-const notFoundPermutationsStyle = Object.assign({}, styles.permutation, { opacity: '0.1' })
+const notFoundPermutationsStyle = Object.assign(
+  {}, styles.permutation, { opacity: '0.1' }
+)
 
 const ShowFoundPermutations = ( props ) => {
   const correctCombos = props.settings.correctCombinations.map( ( element ) => JSON.stringify( element ) )
