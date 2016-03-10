@@ -9,7 +9,7 @@ import Radium from 'radium'
 class Sofa extends React.Component {
 
   // Merge styles: genericStyles, prop.styles, and sofaStyles
-  mergeStyles = ( styles, numberOfSeats ) => Object.assign({}, styles, this.getSofaStyles( numberOfSeats ), this.getGenericStyles().sofa )
+  mergeStyles = ( styles, numberOfSeats ) => Object.assign({}, styles, this.getSofaStyles( numberOfSeats ), this.getGenericStyles().sofa );
 
   getGenericStyles() {
     return {
@@ -102,7 +102,7 @@ class Sofa extends React.Component {
     case 4: return sofaStyles.fourSeats
     default: return sofaStyles.fourSeats
     }
-  }
+  };
 
   renderSeat( bearKey, seatIndex, containerTypeName ) {
 

@@ -53,13 +53,13 @@ const Placeholder = ( props ) => {
       <h3>{ translation.saveSofaTitle }</h3>
       <p>{ translation.saveSofaSubtitle }</p>
       <img
-        src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
+        src={ C.SRC_TO_IMAGES.ICONS.SCREENSHOT }
         style={ styles.icon }
         draggable='false'
       />
       <p>{ translation.saveSofa }</p>
       <img
-        src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+        src={ C.SRC_TO_IMAGES.ICONS.VIEW_SAVED_PERMUTATIONS }
         style={ styles.icon }
         draggable='false'
       />
@@ -76,13 +76,6 @@ const Placeholder = ( props ) => {
       <p>{ translation.result }</p>
       <img
         src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
-        style={ styles.icon }
-        draggable='false'
-      />
-      <h3>{ translation.solutionTitle }</h3>
-      <p>{ translation.solution }</p>
-      <img
-        src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION }
         style={ styles.icon }
         draggable='false'
       />

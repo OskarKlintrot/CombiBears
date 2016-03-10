@@ -55,7 +55,7 @@ class StartingArea extends React.Component {
         { bear }
       </Seat>
     )
-  }
+  };
 
   render() {
     return (
