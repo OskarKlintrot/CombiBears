@@ -1,20 +1,22 @@
 import React, { PropTypes } from 'react'
 import Modal from 'react-modal'
-import C from '../../constants'
 import Radium from 'radium'
+import C from '../../constants'
+import Swedish from './languages/swedish'
+import English from './languages/english'
+import Placeholder from './languages/placeholder'
+import CommonStyling from './shared/commonStyling'
 
 const modalStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
+    position: 'absolute',
+    width: '90%',
+    margin: '0 auto',
+    overflow: 'auto'
   }
 }
 
-const styles = {
+const styles = Object.assign({}, CommonStyling, {
   infoButton: {
     position: 'fixed',
     height: '100px',
@@ -26,13 +28,11 @@ const styles = {
       bottom: '8px',
       right: '25px',
       height: '80px',
-      cursor: 'pointer',
       display: 'block',
       margin: '1em auto'
     }
   }
-}
-
+})
 
 const InfoFlash = ( props ) => {
   const {
@@ -49,6 +49,7 @@ const InfoFlash = ( props ) => {
         src={ C.SRC_TO_IMAGES.ICONS.INFO }
         style={ Object.assign({}, styles.infoButton, style ) }
         onClick={ handleOpenModal }
+        draggable='false'
       />
       <Modal
         isOpen={ open }
@@ -63,11 +64,24 @@ const InfoFlash = ( props ) => {
         >
           <span aria-hidden='true'>&times;</span>
         </button>
-        <h1>Info flash</h1>
-        <p>Some information for the teachers and parents.</p>
+        { InfoFlash.renderInfo( Swedish, English ) }
       </Modal>
     </div>
   )
+}
+
+InfoFlash.renderInfo = ( ...languages ) => {
+  const info = [...languages]
+  const render = []
+  for ( const item of info ) {
+    render.push(
+      <Placeholder
+        translation={ item }
+        key={ info.indexOf( item ) }
+      /> )
+  }
+
+  return render
 }
 
 InfoFlash.propTypes = {

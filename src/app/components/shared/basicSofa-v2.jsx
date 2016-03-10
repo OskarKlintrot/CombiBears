@@ -10,10 +10,17 @@ class BasicSofa extends React.Component {
   }
 
   componentDidMount = () => {
-    if ( document.getElementById( 'alreadySaved' ) !== null ) {
-      const alreadySaved = document.getElementById( 'alreadySaved' )
-      const topPos = alreadySaved.offsetTop
+    if ( document.getElementById( 'lastSaved' ) !== null ) {
+      const lastSaved = document.getElementById( 'lastSaved' )
+      const timeoutTime = 2000
+      const timeoutFunction = () => {
+        lastSaved.removeAttribute( 'style' )
+        lastSaved.setAttribute( 'style', 'margin-top:15px;' )
+      }
+      lastSaved.setAttribute( 'style', 'background-color: #59b585; border-radius:10px; padding-top:15px;' )
+      const topPos = lastSaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
+      setTimeout( timeoutFunction, timeoutTime )
     }
   };
 

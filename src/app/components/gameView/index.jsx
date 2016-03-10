@@ -14,6 +14,7 @@ import { DragDropContext } from 'react-dnd'
 import touchBackend from 'react-dnd-touch-backend'
 
 class GameView extends React.Component {
+
   constructor( props ) {
     super( props )
 
@@ -24,6 +25,19 @@ class GameView extends React.Component {
       triedToSaveDuplicatePermutationIndex: -1
     }
   }
+
+  componentWillMount() {
+    this.redirectIfGotAllCorrectAnswers( C.ROUTES.START )
+  }
+
+  componentDidUpdate = () => {
+    if ( document.getElementById( 'alreadySaved' ) !== null ) {
+      const alreadySaved = document.getElementById( 'alreadySaved' )
+      const topPos = alreadySaved.offsetTop
+      document.getElementById( 'sofaList' ).scrollTop = topPos
+      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
+    }
+  };
 
   // This method is triggered on every drop event.
   handleDrop( event ) {
@@ -140,13 +154,24 @@ class GameView extends React.Component {
     return this.props.game.bearsOnSofa.filter( ( seat ) => seat !== null )
   }
 
-  redirectIfGotAllCorrectAnswers() {
+  redirectIfGotAllCorrectAnswers( toViewName ) {
 
     // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
-    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length )
+    if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length ) {
 
     // Then redirect to results view
-      this.props.redirectToResultView( this.props.game.savedPermutations, this.props.settings.correctCombinations )
+      this.props.redirectToResultView( )
+
+      if ( toViewName === C.ROUTES.RESULTS )
+
+        // Redirect to results view
+        this.props.redirectToResultView( )
+      else if ( toViewName === C.ROUTES.START )
+
+        // Redirect to start view
+        this.props.redirectToStartView( )
+    }
+
   }
 
   getNumberOfCorrectAnswers() {
@@ -187,28 +212,40 @@ class GameView extends React.Component {
     }
   }
 
+  canRestart() {
+    return this.getBearsFromSofa().length > 0
+  }
+
+  canSave() {
+
+    // Check that there are enough bears in sofa
+    const numberOfBearsInSofa = this.getBearsFromSofa().length
+
+    return numberOfBearsInSofa === this.props.game.bearsOnSofa.length || numberOfBearsInSofa === this.getTotalNumberOfBears()
+  }
+
+  doesPermutationExists( permutationToCompare ) {
+
+    return this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( permutationToCompare ) )
+
+  }
+
   savePermutation() {
 
     // Clone array, or else it will keep reference and will update game.savedPermutations array as game.bearsOnSofa changes
     const bearsToSave = Array.from( this.props.game.bearsOnSofa )
 
     // Check that this permutation does not already exists
-    if ( !this.props.game.savedPermutations.some( ( permutation ) => JSON.stringify( permutation ) === JSON.stringify( bearsToSave ) ) ) {
+    if ( !this.doesPermutationExists( bearsToSave ) ) {
 
-      const numberOfBearsInSofa = this.getBearsFromSofa().length
-
-      // Check that there are enough bears in sofa
-      if (
-        numberOfBearsInSofa === this.props.game.bearsOnSofa.length ||
-        numberOfBearsInSofa === this.getTotalNumberOfBears()
-      ) {
+      if ( this.canSave() ) {
 
         // Save and reset
         this.props.savePermutation( bearsToSave )
         this.props.resetPermutation()
 
         // Redirect to results view if we got all correct answers
-        this.redirectIfGotAllCorrectAnswers()
+        this.redirectIfGotAllCorrectAnswers( C.ROUTES.RESULTS )
       }
 
       this.triedToSaveDuplicatePermutation( false )
@@ -224,7 +261,6 @@ class GameView extends React.Component {
     const styles = {
       sofa: {
         position: 'fixed',
-        bottom: '80px',
         margin: '0 auto',
         left: '0',
         right: '0'
@@ -242,6 +278,8 @@ class GameView extends React.Component {
           <Buttons
             onRestart={ resetPermutation }
             onSave={ savePermutation }
+            canRestart={ this.canRestart() }
+            canSave={ this.canSave() }
           />
 
           <Sofa
@@ -317,8 +355,11 @@ const mapDispatchToProps = ( dispatch ) => {
     savePermutation: ( combination ) => {
       dispatch( Actions.savePermutation( combination ) )
     },
-    redirectToResultView: ( savedPermutations, correctCombinations ) => { // Till Johnny: Lägg till!
-      dispatch( Actions.redirectToResultView( savedPermutations, correctCombinations ) )
+    redirectToResultView: ( ) => {
+      dispatch( Actions.redirectToResultView( ) )
+    },
+    redirectToStartView: ( ) => {
+      dispatch( Actions.redirectToStartView( ) )
     }
   }
 }

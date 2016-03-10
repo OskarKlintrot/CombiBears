@@ -104,6 +104,7 @@ class ColorPicker extends React.Component {
                 key={ key }
                 onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
                 style={ showColor ? styles.color : noColor }
+                draggable='false'
               />
             )
           }
@@ -117,6 +118,7 @@ class ColorPicker extends React.Component {
             src={ C.SRC_TO_IMAGES.ICONS.WRONG }
             onClick={ this.props.handleDeleteBear }
             style={ styles.deleteBearImg }
+            draggable='false'
           />
         </div>
       </div>
