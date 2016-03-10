@@ -1,21 +1,19 @@
 <!doctype html>
-<!-- TODO: Uncomment the following line to start Appcache: -->
-<!-- <html lang="en" manifest="public/manifest.appcache"> -->
-<html lang="en">
+<html lang="en" <% if (htmlWebpackPlugin.options.production){%>manifest="manifest.appcache"<% } %>>
 
 <head>
   <meta charset="utf-8">
-  <title>Bear Goes Where?</title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
   <meta name="description" content=".">
-  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="public/css/foundation.min.css">
   <link rel="stylesheet" type="text/css" href="public/css/main.css">
+  <link rel="stylesheet" type="text/css" href="public/css/fonts/fonts.css">
 </head>
 
 <body>
   <div id="backgroundImage"></div>
   <div id="app"></div>
-
   <script src="scripts/boundle.min.js"></script>
 </body>
 
