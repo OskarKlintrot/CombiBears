@@ -15,7 +15,7 @@ const ShowFoundPermutations = ( props ) => {
   const savedCombos = props.savedPermutations
       .map( ( element ) => JSON.stringify( element ) )
       .map( ( element ) => correctCombos.indexOf( element ) )
-  console.log( savedCombos )
+
   return (
     <div className='row'>
       <div
