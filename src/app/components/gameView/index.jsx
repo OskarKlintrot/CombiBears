@@ -159,6 +159,9 @@ class GameView extends React.Component {
     // Check if we have got all the correct answers (compare current correct answers count with the generated correct answers count)
     if ( this.getNumberOfCorrectAnswers() === this.props.settings.correctCombinations.length ) {
 
+    // Then redirect to results view
+      this.props.redirectToResultView( )
+
       if ( toViewName === C.ROUTES.RESULTS )
 
         // Redirect to results view
@@ -168,6 +171,7 @@ class GameView extends React.Component {
         // Redirect to start view
         this.props.redirectToStartView( )
     }
+
   }
 
   getNumberOfCorrectAnswers() {

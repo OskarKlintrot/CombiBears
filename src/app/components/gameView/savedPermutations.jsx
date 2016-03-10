@@ -6,14 +6,15 @@ const styles = {
   savedPermutations: {
     width: '20%',
     height: window.innerHeight + 'px',
-    overflow: 'auto',
-    float: 'right'
+    position: 'absolute',
+    top: '0',
+    bottom: '0',
+    right: '0'
   },
 
   arrowDiv: {
     width: '17%',
-    height: window.innerHeight + 'px',
-    overflow: 'auto',
+    minHeight: '100%',
     float: 'left'
   },
 
@@ -26,7 +27,7 @@ const styles = {
 
   sofaList: {
     width: '83%',
-    height: window.innerHeight + 'px',
+    minHeight: '100%',
     overflow: 'auto',
     float: 'right',
     background: 'rgba(240, 240, 230, 0.8)',
@@ -87,7 +88,7 @@ class SavedPermutations extends React.Component {
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''
-        if ( index === 0 && this.props.triedToSaveDuplicatePermutationIndex === -1 ) {
+        if ( index === 0 && this.props.triedToSaveDuplicatePermutationIndex < 0 ) {
           sofaListElementStyle = styles.sofaListElementLast
           sofaLiId = 'lastSaved'
         }
@@ -110,7 +111,7 @@ class SavedPermutations extends React.Component {
       }
 
       return (
-        <div style={ styles.savedPermutations }>
+        <div style={ styles.savedPermutations } >
           <div style={ styles.arrowDiv }>
             <SavedPermutationsFlash
               style={ styles.arrowButton }
