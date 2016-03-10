@@ -1,11 +1,9 @@
 <!doctype html>
-<!-- TODO: Uncomment the following line to start Appcache: -->
-<!-- <html lang="en" manifest="manifest.appcache"> -->
-<html lang="en">
+<html lang="en" <% if (htmlWebpackPlugin.options.production){%>manifest="manifest.appcache"<% } %>>
 
 <head>
   <meta charset="utf-8">
-  <title>CombiBears</title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
   <meta name="description" content=".">
   <meta name="viewport" content="width=device-width, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="public/css/foundation.min.css">
@@ -16,7 +14,6 @@
 <body>
   <div id="backgroundImage"></div>
   <div id="app"></div>
-
   <script src="scripts/boundle.min.js"></script>
 </body>
 

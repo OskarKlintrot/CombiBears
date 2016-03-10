@@ -21,6 +21,9 @@ npm run build
 
 # Deploy
 cd build
+RANDOMVAR=$(date | md5sum)
+SEEDVALUE="StringToBeReplacedAtDeployment"
+sed -i "s/$SEEDVALUE/$RANDOMVAR/" manifest.appcache
 ls
 
 git init
