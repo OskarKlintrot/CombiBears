@@ -42,36 +42,142 @@ const collect = ( monitor ) => {
   }
 }
 
-const getItemStyles = ( props ) => {
-  const { currentOffset } = props
-  if ( !currentOffset ) {
+@Radium
+class DraggedBear extends React.Component {
 
+  constructor( props ) {
+    super( props )
+
+    this.prevXPos = 0
+    this.prevYPos = 0
+    this.posFrameCount = 0
+    this.prevAngleInDegrees = 0
+  }
+
+  getClassName() {
+
+    const { currentOffset } = this.props
+
+    let className = ' '
+
+    if ( currentOffset ) {
+      if ( this.prevXPos < currentOffset.x )
+        className = 'bear-lean-right'
+      else if ( this.prevXPos > currentOffset.x )
+        className = 'bear-lean-left'
+
+      this.prevXPos = currentOffset.x
+      this.prevYPos = currentOffset.y
+    }
+
+    return className
+  }
+
+  getBearAnimationStyles() {
+
+    const { currentOffset } = this.props
+    const positionCatchFrameCount = 12 // We cannot catch every frame, animations gets too jerky.
+    let angleInDegrees = 0
+    let transition = 'transform 0.2s'
+    let transform = 'rotate(0 deg)'
+
+    if ( !currentOffset ) {
+      this.prevYPos = null
+      this.prevXPos = null
+      transition = ''
+
+    } else if ( !this.prevYPos ) {
+
+      this.prevXPos = currentOffset.x
+      this.prevYPos = currentOffset.y + 1
+
+    }
+
+    // If we are at the positionCatchFrameCount frame, and we got offset coordinates
+    if ( currentOffset && this.posFrameCount === positionCatchFrameCount ) {
+
+      const xPosDifference = currentOffset.x - this.prevXPos
+      const yPosDifference = currentOffset.y - this.prevYPos
+
+      const halfCircleDegrees = 180
+      const offsetDegrees = 90
+
+      // Get rotation angle
+      angleInDegrees = Math.atan2( yPosDifference, xPosDifference ) * ( halfCircleDegrees / Math.PI ) + offsetDegrees
+
+      // Apply rotation
+      transform = 'rotate(' + angleInDegrees + 'deg)'
+
+      // # Prevent css transition bug START
+      // The should be no transition when going from positive to negative values
+      // or the other way around. The rotate transition will go to the wrong direction,
+      // Therefore it's better with no animation at all. Could be improved by keeping
+      // track of laps.
+      if (
+        this.prevAngleInDegrees > halfCircleDegrees && angleInDegrees < 0 ||
+        this.prevAngleInDegrees < 0 && angleInDegrees > halfCircleDegrees
+      )
+        transition = ''
+
+      // # Prevent css transition bug END
+
+      // Assign historical values
+      this.prevXPos = currentOffset.x
+      this.prevYPos = currentOffset.y
+      this.prevAngleInDegrees = angleInDegrees
+    }
+
+    // Increase frame count
+    this.posFrameCount += 1
+
+    // Reset frame count if needed
+    if ( this.posFrameCount > positionCatchFrameCount )
+      this.posFrameCount = 0
+
+    // Return style with animation
     return {
-      display: 'none'
+      transition: transition,
+      transform: transform
     }
   }
 
-  const { x, y } = currentOffset
-  const transform = `translate(${x}px, ${y}px)`
+  getContainerStyles() {
 
-  return {
-    transform: transform,
-    WebkitTransform: transform
+    const { currentOffset } = this.props
+
+    if ( !currentOffset ) {
+
+      return {
+        display: 'none'
+      }
+    }
+
+    const { x, y } = currentOffset
+    const transform = `translate(${x}px, ${y}px)`
+
+    return {
+      transform: transform,
+      WebkitTransform: transform
+    }
   }
-}
 
-@Radium
-class DraggedBear extends React.Component {
   render() {
+
     const { isDragging, bearKey, bearsSettings } = this.props
 
     // Only render if its dragging
     if ( !isDragging ) return <div></div>
 
     return (
-      <div style={ styles }>
-        <div style={ getItemStyles( this.props ) }>
+      <div
+        style={ styles }
+      >
+        <div
+          style={ this.getContainerStyles( this.props ) }
+        >
           <BasicBear
+            style={ this.getBearAnimationStyles() }
+
             bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
             width='100'
             height='120'
