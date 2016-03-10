@@ -1,30 +1,29 @@
 import React, { PropTypes } from 'react'
-import _ from 'lodash'
-import Box from './box'
 
-const style = {
-  position: 'fixed',
-  margin: '175px 0px 0px 278px',
-  width: '650px',
-  height: '159px',
-  overflowX: 'hidden',
-  padding: '0px 10px 10px 13px'
+const styles = {
+  container: {
+    textAlign: 'center',
+    fontSize: '3.4em',
+    color: '#E26B00',
+    fontFamily: '"jollygood_sansbasic", "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif'
+  }
+}
+
+const zeroOrHero = ( number ) => {
+  if ( number > 9 )
+    return number
+  return '0' + number
 }
 
 const ResultList = ( props ) => {
   const { numberOfFoundPermutations, numberOfCorrectPermutations } = props
   return (
-    <div style={ style }>
-      { _.times( numberOfCorrectPermutations, Number ).map( ( item ) => {
-        const found = item < numberOfFoundPermutations
-        const statusOfCurrentPermutation = { id: item + 1, found: found }
-        return (
-          <Box
-            item={ statusOfCurrentPermutation }
-            key={ item }
-          />
-        )
-      }) }
+    <div style={ styles.container }>
+     {
+        zeroOrHero( numberOfFoundPermutations ) +
+        '/' +
+        zeroOrHero( numberOfCorrectPermutations )
+      }
     </div>
   )
 }

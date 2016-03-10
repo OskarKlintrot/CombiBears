@@ -12,7 +12,8 @@ const {
   SAVE_PERMUTATION,
   INIT_BEARS,
   INIT_SOFA,
-  REDIRECT_TO_RESULT_VIEW
+  REDIRECT_TO_RESULT_VIEW,
+  REDIRECT_TO_START_VIEW
 } = ActionTypes
 
 const GameActions = {
@@ -100,6 +101,18 @@ const GameActions = {
         meta: {
           transition: () => ({
             path: C.ROUTES.RESULTS
+          })
+        }
+      })
+    }
+  },
+  redirectToStartView: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: REDIRECT_TO_START_VIEW,
+        meta: {
+          transition: () => ({
+            path: C.ROUTES.START
           })
         }
       })

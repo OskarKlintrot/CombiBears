@@ -3,7 +3,7 @@ import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
-  drop( props, monitor ) {
+  drop( props ) { // Available arguments: monitor
 
     return {
       containerTypeName: props.containerTypeName,
@@ -21,7 +21,7 @@ const collect = ( connect, monitor ) => {
 }
 
 const Seat = ( props ) => {
-  const { connectDropTarget, isOver } = props
+  const { connectDropTarget } = props // Available in props: isOver
 
   const getWidth = () => {
 

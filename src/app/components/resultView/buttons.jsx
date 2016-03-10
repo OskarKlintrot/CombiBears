@@ -1,55 +1,62 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import C from '../../constants'
 import { Link } from 'react-router'
 
 const styles = {
-  icon: {
-    height: '100px'
+  container: {
+    height: '6.53em',
+    paddingTop: '2%'
   },
-  iconRight: {
-    height: '100px',
-    float: 'right',
+  children: {
+    height: '100%'
+  },
+  button: {
+    height: '100%',
+    display: 'inline-block',
     cursor: 'pointer'
-  },
-  arrowDiv: {
-    position: 'fixed',
-    right: '0',
-    top: '50%',
-    marginTop: '-50px'
-  },
-  iconRestart: {
-    position: 'fixed',
-    margin: '60px 0px 0px 749px',
-    cursor: 'pointer'
-  },
-  iconReturn: {
-    position: 'fixed',
-    margin: '60px 0px 0px 273px'
   }
 }
 
-const Buttons = () => {
+const Buttons = ( props ) => {
+  const { children } = props
   return (
-    <div>
-      <div style={ styles.iconReturn }>
-        <Link
-          to={ C.ROUTES.GAME }
-        >
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-            alt='Icon for returning to game view'
-            style={ styles.icon }
-          />
-        </Link>
-      </div>
-      <div style={ styles.iconRestart }>
+    <div
+      className='row'
+      style={ styles.container }
+    >
+      <div
+        className='small-4 medium-3 large-2 columns'
+        style={ styles.children }
+      >
         <Link
           to={ C.ROUTES.START }
         >
           <img
             src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
             alt='Icon for new sofa'
-            style={ styles.icon }
+            draggable='false'
+            style={ styles.button }
+          />
+        </Link>
+      </div>
+      <div
+        className='small-4 medium-6 large-8 columns'
+        style={ styles.children }
+      >
+        { children }
+      </div>
+      <div
+        className='small-4 medium-3 large-2 columns'
+        style={ styles.children }
+      >
+        <Link
+          to={ C.ROUTES.GAME }
+        >
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+            alt='Icon for returning to game view'
+            draggable='false'
+            style={ styles.button }
           />
         </Link>
       </div>

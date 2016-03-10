@@ -3,71 +3,61 @@ import BasicSofa from '../shared/basicSofa-v2'
 
 const styles = {
   savedPermutations: {
-    margin: '361px 0px 0px 157px',
-    position: 'fixed',
-    width: '57%',
-    height: '627px',
     overflow: 'auto',
-    background: '#FFF',
-    border: '6px solid black',
-    borderRadius: '8px'
+    backgroundColor: 'rgba(240, 240, 230, 0.8)',
+    border: '0.5em solid rgb(250, 250, 240)',
+    borderRadius: '0.5em',
+    marginTop: '2em',
+    paddingTop: '1em',
+    marginBottom: '1em'
   },
   ulSofas: {
-    margin: '33px -40px 40px 69px'
+    margin: 0
   },
-  NotFoundPermutations: {
-    opacity: '0.1',
-    display: 'inline',
-    float: 'left',
-    width: '30%'
-  },
-  FoundPermutations: {
+  permutation: {
     display: 'inline',
     float: 'left',
     width: '30%'
   }
 }
 
-const FoundPermutations = ( props ) => {
-  const rows = []
-  for ( let FoundLoop = 0; FoundLoop < props.savedPermutations.length; FoundLoop += 1 ) {
-    for ( let AnswersLoop = 0; AnswersLoop < props.settings.correctCombinations.length; AnswersLoop += 1 ) {
-      const test = JSON.stringify( props.savedPermutations[FoundLoop] ) === JSON.stringify( props.settings.correctCombinations[AnswersLoop] )
+const notFoundPermutationsStyle = Object.assign(
+  {}, styles.permutation, { opacity: '0.1' }
+)
 
-      if ( test )
-        rows.push( props.savedPermutations[FoundLoop] )
-    }
-  }
-  let numbers = 0
-  for ( let NewArray = 0; NewArray < props.settings.correctCombinations.length; NewArray += 1 ) {
-    if ( rows.length > NewArray )
-      numbers += 1
-    else
-      rows.push( [0, 0] )
-  }
-  if ( rows.length > 0 ) {
-    return (
-      <div style={ styles.savedPermutations }>
-        <ul style={ styles.ulSofas }>
-          {
-            rows.map( ( bearsOnSofa, index ) =>
-              FoundPermutations.renderSofa( bearsOnSofa, index, numbers, props )
-            )
-          }
+const ShowFoundPermutations = ( props ) => {
+  const correctCombos = props.settings.correctCombinations.map( ( element ) => JSON.stringify( element ) )
+  const savedCombos = props.savedPermutations
+      .map( ( element ) => JSON.stringify( element ) )
+      .map( ( element ) => correctCombos.indexOf( element ) )
+  return (
+    <div className='row'>
+      <div
+        className='small-12 columns'
+        style={ styles.savedPermutations }
+      >
+        <ul
+          className='row'
+          style={ styles.ulSofas }
+        >
+        {
+          props.settings.correctCombinations.map( ( bearsOnSofa, index ) => {
+            const found = savedCombos.indexOf( index ) >= 0
+            return ShowFoundPermutations.renderSofa( bearsOnSofa, index, found, props )
+          })
+        }
         </ul>
       </div>
-    )
-  }
-  return (
-    <div style={ styles.savedPermutations }> <h1>error in foundPermutations</h1></div>
+    </div>
   )
 }
 
-FoundPermutations.renderSofa = ( bearsOnSofa, index, numbers, props ) => {
+ShowFoundPermutations.renderSofa = ( bearsOnSofa, index, found, props ) => {
   return (
     <li
+      className='small-6 medium-4 large-3 columns'
       key={ index }
-      style={ index < numbers ? styles.FoundPermutations : styles.NotFoundPermutations }
+      style={ found ? styles.permutation : notFoundPermutationsStyle }
     >
       <BasicSofa
         numberOfSeats={ props.settings.numberOfSeats }
@@ -78,9 +68,9 @@ FoundPermutations.renderSofa = ( bearsOnSofa, index, numbers, props ) => {
   )
 }
 
-FoundPermutations.propTypes = {
+ShowFoundPermutations.propTypes = {
   savedPermutations: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired
 }
 
-export default FoundPermutations
+export default ShowFoundPermutations
