@@ -1,7 +1,7 @@
 ﻿CACHE MANIFEST
 
 # Hash from Powershell script:
-# d383b43bf2ceab840e39a2c7ca981871
+# bda13fd78caf736a6ef4a6cade884ec3
 
 # Hash from deployment:
 # StringToBeReplacedAtDeployment
@@ -84,7 +84,7 @@ public/pics/sofas/three.png
 public/pics/sofas/three.svg
 public/pics/sofas/two.png
 public/pics/sofas/two.svg
-../scripts/boundle.min.js
+scripts/boundle.min.js
 
 NETWORK:
 *
