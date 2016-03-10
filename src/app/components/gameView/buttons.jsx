@@ -50,7 +50,7 @@ class Buttons extends React.Component {
           width: '60px'
         },
         cursor: this.props.canRestart ? 'pointer' : 'auto',
-        marginRight: '2%',
+        marginRight: '1%',
         zIndex: 10,
         opacity: this.props.canRestart ? enabledOpacity : disabledOpacity,
         filter: this.props.canRestart ? 'none' : 'grayscale(1) brightness(1.3)',
@@ -74,13 +74,13 @@ class Buttons extends React.Component {
         left: '0',
         padding: '2%',
         position: 'fixed',
-        width: '80%',
+        width: '82%',
         zIndex: 10
 
       },
       bottomIconsArea: {
         bottom: '1%',
-        right: '21%',
+        right: '20%',
         position: 'fixed',
         zIndex: 10,
         textAlign: 'right',
@@ -88,8 +88,11 @@ class Buttons extends React.Component {
         '@media (max-height: 500px)': {
           width: '71px'
         },
-        '@media (min-width: 900px)': {
-          width: '110px'
+        '@media (min-width: 981px)': {
+          width: '210px'
+        },
+        '@media (max-width: 980px)': {
+          width: '130px'
         },
         '@media (max-width: 512px)': {
           width: '71px'
