@@ -3,8 +3,14 @@ import C from '../../constants'
 import { Link } from 'react-router'
 
 const styles = {
+  container: {
+    height: '5.25em'
+  },
+  children: {
+    height: '100%'
+  },
   button: {
-    height: '100px',
+    height: '100%',
     display: 'inline-block',
     cursor: 'pointer'
   }
@@ -13,8 +19,14 @@ const styles = {
 const Buttons = ( props ) => {
   const { children } = props
   return (
-    <div className='row'>
-      <div className='small-4 medium-3 large-2 columns'>
+    <div
+      className='row'
+      style={ styles.container }
+    >
+      <div
+        className='small-4 medium-3 large-2 columns'
+        style={ styles.children }
+      >
         <Link
           to={ C.ROUTES.START }
         >
@@ -26,10 +38,16 @@ const Buttons = ( props ) => {
           />
         </Link>
       </div>
-      <div className='small-4 medium-6 large-8 columns'>
+      <div
+        className='small-4 medium-6 large-8 columns'
+        style={ styles.children }
+      >
         { children }
       </div>
-      <div className='small-4 medium-3 large-2 columns'>
+      <div
+        className='small-4 medium-3 large-2 columns'
+        style={ styles.children }
+      >
         <Link
           to={ C.ROUTES.GAME }
         >

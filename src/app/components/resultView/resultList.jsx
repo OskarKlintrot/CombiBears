@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react'
-import _ from 'lodash'
-import Box from './box'
 
 const styles = {
   container: {
-    marginTop: '2em',
     textAlign: 'center',
     verticalAlign: 'middle',
-    margin: 'auto',
-    height: '100%'
+    height: '100%',
+    lineHeight: '5em'
   }
 }
 
