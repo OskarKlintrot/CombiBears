@@ -1,7 +1,7 @@
-﻿$pathToManifest = '..\src\www\public\manifest.appcache'
+﻿$pathToManifest = '..\src\www\manifest.appcache'
 
 $currentPath = $Pwd
-cd ..\src\www\public
+cd ..\src\www
 $pathToRemove = $Pwd
 $pathToRemoveString = $pathToRemove.ToString().Replace('\', '\\') + '\\'
 cd $currentPath
