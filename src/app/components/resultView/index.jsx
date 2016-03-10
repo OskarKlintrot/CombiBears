@@ -8,12 +8,12 @@ const ResultView = ( props ) => {
   const { game, settings } = props
   return (
     <div>
-      <Buttons />
-      <ResultList
-        className='small-12 medium-9 medium-offset-1 columns'
-        numberOfFoundPermutations={ game.savedPermutations.length }
-        numberOfCorrectPermutations={ settings.correctCombinations.length }
-      />
+      <Buttons>
+        <ResultList
+          numberOfFoundPermutations={ game.savedPermutations.length }
+          numberOfCorrectPermutations={ settings.correctCombinations.length }
+        />
+      </Buttons>
       <FoundPermutations
         className='small-12 medium-10 medium-offset-1 columns'
         savedPermutations={ game.savedPermutations }

@@ -10,10 +10,11 @@ const styles = {
   }
 }
 
-const Buttons = () => {
+const Buttons = ( props ) => {
+  const { children } = props
   return (
     <div className='row'>
-      <div className='small-6 medium-9 large-10 columns'>
+      <div className='small-4 medium-3 large-2 columns'>
         <Link
           to={ C.ROUTES.START }
         >
@@ -24,6 +25,9 @@ const Buttons = () => {
             style={ styles.button }
           />
         </Link>
+      </div>
+      <div className='small-4 medium-6 large-8 columns'>
+        { children }
       </div>
       <div className='small-4 medium-3 large-2 columns'>
         <Link
