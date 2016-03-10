@@ -10,55 +10,40 @@ const notFoundPermutationsStyle = Object.assign(
   }
 )
 
-const FoundPermutations = ( props ) => {
-  const rows = []
-  for ( let FoundLoop = 0; FoundLoop < props.savedPermutations.length; FoundLoop += 1 ) {
-    for ( let AnswersLoop = 0; AnswersLoop < props.settings.correctCombinations.length; AnswersLoop += 1 ) {
-      const test = JSON.stringify( props.savedPermutations[FoundLoop] ) === JSON.stringify( props.settings.correctCombinations[AnswersLoop] )
-
-      if ( test )
-        rows.push( props.savedPermutations[FoundLoop] )
-    }
-  }
-  let numbers = 0
-  for ( let NewArray = 0; NewArray < props.settings.correctCombinations.length; NewArray += 1 ) {
-    if ( rows.length > NewArray )
-      numbers += 1
-    else
-      rows.push( [0, 0] )
-  }
-  if ( rows.length > 0 ) {
-    return (
-      <div className='row'>
-        <div
-          className='small-12 columns'
-          style={ styles.savedPermutations }
-        >
-          <ul
-            className='row'
-            style={ styles.ulSofas }
-          >
-            {
-              rows.map( ( bearsOnSofa, index ) =>
-                FoundPermutations.renderSofa( bearsOnSofa, index, numbers, props )
-              )
-            }
-          </ul>
-        </div>
-      </div>
-    )
-  }
+const ShowFoundPermutations = ( props ) => {
+  const correctCombos = props.settings.correctCombinations.map( ( element ) => JSON.stringify( element ) )
+  const savedCombos = props.savedPermutations
+      .map( ( element ) => JSON.stringify( element ) )
+      .map( ( element ) => correctCombos.indexOf( element ) )
+  console.log( savedCombos )
   return (
-    <div style={ styles.savedPermutations }> <h1>error in foundPermutations</h1></div>
+    <div className='row'>
+      <div
+        className='small-12 columns'
+        style={ styles.savedPermutations }
+      >
+        <ul
+          className='row'
+          style={ styles.ulSofas }
+        >
+        {
+          props.settings.correctCombinations.map( ( bearsOnSofa, index ) => {
+            const found = savedCombos.indexOf( index ) >= 0
+            return ShowFoundPermutations.renderSofa( bearsOnSofa, index, found, props )
+          })
+        }
+        </ul>
+      </div>
+    </div>
   )
 }
 
-FoundPermutations.renderSofa = ( bearsOnSofa, index, numbers, props ) => {
+ShowFoundPermutations.renderSofa = ( bearsOnSofa, index, found, props ) => {
   return (
     <li
       className='small-6 medium-4 large-3 columns'
       key={ index }
-      style={ index < numbers ? styles.permutation : notFoundPermutationsStyle }
+      style={ found ? styles.permutation : notFoundPermutationsStyle }
     >
       <BasicSofa
         numberOfSeats={ props.settings.numberOfSeats }
@@ -69,9 +54,9 @@ FoundPermutations.renderSofa = ( bearsOnSofa, index, numbers, props ) => {
   )
 }
 
-FoundPermutations.propTypes = {
+ShowFoundPermutations.propTypes = {
   savedPermutations: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired
 }
 
-export default FoundPermutations
+export default ShowFoundPermutations
