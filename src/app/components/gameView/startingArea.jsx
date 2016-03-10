@@ -3,34 +3,46 @@ import Seat from './seat'
 import DraggableBear from './draggableBear'
 import BearPlaceHolder from './bearPlaceHolder'
 import C from '../../constants'
+import Radium from 'radium'
 
 const styles = {
   startingArea: {
-    display: 'flex',
-    alignItems: 'stretch',
     bottom: '10px',
     margin: '0 auto',
     left: '10px',
     position: 'fixed',
-    width: '50%'
+    width: '512px',
+    '@media (min-width: 900px)': {
+      width: '600px'
+    },
+    '@media (min-width: 620px) and (max-width: 767px)': {
+      width: '400px'
+    },
+    '@media (min-width: 480px) and (max-width: 619px)': {
+      width: '300px'
+    },
+    '@media (max-width: 479px)': {
+      width: '90%'
+    }
   }
 }
 
-const StartingArea = ( props ) => {
+@Radium
+class StartingArea extends React.Component {
 
-  const renderSeat = ( bearKey, seatIndex, containerTypeName ) => {
+  renderSeat = ( bearKey, seatIndex, containerTypeName ) => {
 
     const bear = bearKey !== null ?
       <DraggableBear
         key={ seatIndex }
         index={ seatIndex }
         bearKey={ bearKey }
-        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+        bearsSettings={ this.props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
         containerTypeName={ containerTypeName }
-        onDrop={ props.onDrop }
+        onDrop={ this.props.onDrop }
       /> :
       <BearPlaceHolder
-        bearsSettings={ props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
+        bearsSettings={ this.props.bearsSettings } // Pass the bears settings from redux (contains bear keys mapped to image files)
       />
 
     return (
@@ -43,20 +55,24 @@ const StartingArea = ( props ) => {
         { bear }
       </Seat>
     )
-  }
+  };
 
-  return (
-    <div
-      className={ C.COMPONENT_NAMES.STARTING_AREA }
-      style={ styles.startingArea }
-    >
-      {
-        // Render prop.bearsOnStart with function prop.renderSeat, both passed from parent
-        props.bearsOnStart ? props.bearsOnStart.map( ( bearKey, index ) =>
-          renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA ) ) : null
-      }
-    </div>
-  )
+  render() {
+    return (
+      <div
+        className={ 'flex-seat-container' }
+        style={ styles.startingArea }
+      >
+        <div className='flex-seat-container'>
+          {
+            // Render prop.bearsOnStart with function prop.renderSeat, both passed from parent
+            this.props.bearsOnStart ? this.props.bearsOnStart.map( ( bearKey, index ) =>
+              this.renderSeat( bearKey, index, C.COMPONENT_NAMES.STARTING_AREA ) ) : null
+            }
+        </div>
+      </div>
+    )
+  }
 }
 
 StartingArea.propTypes = {

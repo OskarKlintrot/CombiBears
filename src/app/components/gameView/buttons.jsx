@@ -1,51 +1,104 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
 import { Link } from 'react-router'
+import Radium from 'radium'
 
+@Radium
 class Buttons extends React.Component {
 
-  handleBlurBackground() {
-    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: blur(10px) grayscale(0.3)' )
-  }
-
   render() {
+
+    const disabledOpacity = 0.5
+    const enabledOpacity = 1
+
+    const handleBlurBackground = () => {
+      document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: blur(10px) grayscale(0.3)' )
+    }
 
     const styles = {
 
       iconToStart: {
-        width: '50%',
+        width: '100px',
+        '@media (max-width: 1023px)': {
+          width: '80px'
+        },
+        '@media (max-width: 400px)': {
+          width: '60px'
+        },
         cursor: 'pointer',
-        zIndex: 10
+        zIndex: 10,
+        float: 'left'
       },
       iconToShowResults: {
-        width: '50%',
+        width: '100px',
+        '@media (max-width: 1023px)': {
+          width: '80px'
+        },
+        '@media (max-width: 400px)': {
+          width: '60px'
+        },
         cursor: 'pointer',
-        zIndex: 10
+        zIndex: 10,
+        float: 'right'
       },
       resetIcon: {
-        width: '25%',
-        cursor: 'pointer',
-        marginRight: '5%',
-        zIndex: 10
+        width: '100px',
+        '@media (max-width: 1023px)': {
+          width: '80px'
+        },
+        '@media (max-width: 400px)': {
+          width: '60px'
+        },
+        cursor: this.props.canRestart ? 'pointer' : 'auto',
+        marginRight: '2%',
+        zIndex: 10,
+        opacity: this.props.canRestart ? enabledOpacity : disabledOpacity,
+        filter: this.props.canRestart ? 'none' : 'grayscale(1) brightness(1.3)',
+        WebkitFilter: this.props.canRestart ? 'none' : 'grayscale(1) brightness(1.4)'
       },
       saveIcon: {
-        width: '70%',
-        cursor: 'pointer',
-        zIndex: 10
+        width: '100px',
+        '@media (max-width: 1023px)': {
+          width: '80px'
+        },
+        '@media (max-width: 400px)': {
+          width: '60px'
+        },
+        cursor: this.props.canSave ? 'pointer' : 'auto',
+        zIndex: 10,
+        opacity: this.props.canSave ? enabledOpacity : disabledOpacity,
+        filter: this.props.canSave ? 'none' : 'grayscale(100%) brightness(1.3)',
+        WebkitFilter: this.props.canSave ? 'none' : 'grayscale(100%) brightness(1.4)'
       },
       topIconsArea: {
-        top: '0',
         left: '0',
+        padding: '2%',
         position: 'fixed',
-        width: '26%',
+        width: '80%',
         zIndex: 10
+
       },
       bottomIconsArea: {
-        bottom: '0',
+        bottom: '1%',
         right: '21%',
         position: 'fixed',
-        width: '20%',
-        zIndex: 10
+        zIndex: 10,
+        textAlign: 'right',
+        width: '80px',
+        '@media (max-height: 500px)': {
+          width: '71px'
+        },
+        '@media (min-width: 900px)': {
+          width: '110px'
+        },
+        '@media (max-width: 512px)': {
+          width: '71px'
+        },
+        '@media (max-width: 479px)': {
+          width: '130px',
+          bottom: 'auto',
+          top: '100px'
+        }
       }
     }
 
@@ -56,40 +109,43 @@ class Buttons extends React.Component {
 
           <Link
             to={ C.ROUTES.START }
-            onClick={ this.handleBlurBackground }
+            onClick={ handleBlurBackground }
           >
             <img
               src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
               alt='Icon for new sofa'
               style={ styles.iconToStart }
+              draggable='false'
             />
           </Link>
           <Link
             to={ C.ROUTES.RESULTS }
-            onClick={ this.handleBlurBackground }
+            onClick={ handleBlurBackground }
           >
             <img
               src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
               alt='Icon for showing result'
               style={ styles.iconToShowResults }
+              draggable='false'
             />
           </Link>
 
         </div>
 
         <div style={ styles.bottomIconsArea }>
-
           <img
             src={ C.SRC_TO_IMAGES.ICONS.RESTART }
             alt='Icon for putting bears back in startingArea'
             style={ styles.resetIcon }
             onClick={ () => this.props.onRestart() }
+            draggable='false'
           />
           <img
-            src={ C.SRC_TO_IMAGES.ICONS.SAVE_PERMUTATION }
+            src={ C.SRC_TO_IMAGES.ICONS.SCREENSHOT }
             alt='Icon for saving permutation'
             style={ styles.saveIcon }
             onClick={ () => this.props.onSave() }
+            draggable='false'
           />
         </div>
 
@@ -100,7 +156,9 @@ class Buttons extends React.Component {
 
 Buttons.propTypes = {
   onRestart: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired
+  onSave: PropTypes.func.isRequired,
+  canSave: PropTypes.bool.isRequired,
+  canRestart: PropTypes.bool.isRequired
 }
 
 export default Buttons
