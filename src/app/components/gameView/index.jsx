@@ -261,7 +261,6 @@ class GameView extends React.Component {
     const styles = {
       sofa: {
         position: 'fixed',
-        bottom: '80px',
         margin: '0 auto',
         left: '0',
         right: '0'
