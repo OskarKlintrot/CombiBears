@@ -22,7 +22,6 @@ const styles = {
   '@media (max-width: 479px)': {
     width: '21%'
   }
-
 }
 
 const collect = ( monitor ) => {
