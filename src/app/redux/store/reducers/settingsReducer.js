@@ -16,6 +16,8 @@ const {
   RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
+  INCREASE_NUMBER_OF_BEARS,
+  DECREASE_NUMBER_OF_BEARS,
   UPDATE_BEAR,
   DELETE_BEAR,
   START_GAME
@@ -23,6 +25,8 @@ const {
 
 const maxSeats = 4
 const minSeats = 2
+const maxBears = 4
+const minBears = 2
 
 const SettingsReducer = ( state, action ) => {
   switch ( action.type ) {
@@ -37,6 +41,16 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       numberOfSeats: state.numberOfSeats - 1 < minSeats ? maxSeats : state.numberOfSeats - 1
+    }
+  case INCREASE_NUMBER_OF_BEARS:
+    return {
+      ...state,
+      numberOfBears: state.numberOfBears + 1 > maxBears ? minBears : state.numberOfBears + 1
+    }
+  case DECREASE_NUMBER_OF_BEARS:
+    return {
+      ...state,
+      numberOfBears: state.numberOfBears - 1 < minBears ? maxBears : state.numberOfBears - 1
     }
   case UPDATE_BEAR:
     return {
