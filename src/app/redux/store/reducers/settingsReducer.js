@@ -2,7 +2,7 @@ import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
 import C from '../../../constants.js'
 import { ActionTypesSettings } from '../../actions/actionTypes'
-import { updateBear, deleteBear } from '../helpers/startHelpers'
+import { updateBear, deleteBear, randomizeMissingBear, removeBear } from '../helpers/startHelpers'
 
 const getBearsFromObject = ( obj, seats ) => {
   const filtered = Object.keys( obj ).filter( ( key ) => obj[key].color !== C.BEAR_TO_IGNORE )
@@ -45,12 +45,14 @@ const SettingsReducer = ( state, action ) => {
   case INCREASE_NUMBER_OF_BEARS:
     return {
       ...state,
-      numberOfBears: state.numberOfBears + 1 > maxBears ? minBears : state.numberOfBears + 1
+      numberOfBears: state.numberOfBears + 1 > maxBears ? minBears : state.numberOfBears + 1,
+      bears: Object.assign({}, randomizeMissingBear( state.bears, state.numberOfBears ) )
     }
   case DECREASE_NUMBER_OF_BEARS:
     return {
       ...state,
-      numberOfBears: state.numberOfBears - 1 < minBears ? maxBears : state.numberOfBears - 1
+      numberOfBears: state.numberOfBears - 1 < minBears ? maxBears : state.numberOfBears - 1,
+      bears: Object.assign({}, removeBear( state.bears, state.numberOfBears - 1 ) )
     }
   case UPDATE_BEAR:
     return {
@@ -66,7 +68,10 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       correctCombinations: Combinatorics.permutation(
-        getBearsFromObject( state.bears, state.numberOfSeats ),
+        getBearsFromObject(
+          state.bears,
+          state.numberOfSeats,
+        ),
         state.numberOfSeats
       )
       .toArray()

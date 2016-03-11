@@ -37,11 +37,6 @@ class Bear extends React.Component {
     this.handleToggleColorPicker()
   };
 
-  onHandleDeleteBear = () => {
-    this.props.deleteBear( this.props.bearID )
-    this.handleToggleColorPicker()
-  };
-
   render() {
     return (
       <div
@@ -56,7 +51,6 @@ class Bear extends React.Component {
         <ColorPicker
           handleClickOutside={ this.onHandleOnClickOutsideColorPicker }
           handleBearColorChange={ this.onHandleBearColorChange }
-          handleDeleteBear={ this.onHandleDeleteBear }
           topBear={ this.props.bearID < 2 }
           bears={ this.props.bears }
         /> :
@@ -73,8 +67,7 @@ Bear.propTypes = {
   bears: PropTypes.object.isRequired,
   color: PropTypes.string,
   style: PropTypes.object.isRequired,
-  updateBear: PropTypes.func.isRequired,
-  deleteBear: PropTypes.func.isRequired
+  updateBear: PropTypes.func.isRequired
 }
 
 export default Bear

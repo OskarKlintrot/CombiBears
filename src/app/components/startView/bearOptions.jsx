@@ -41,7 +41,6 @@ const BearOptions = ( props ) => {
   const {
     bears,
     updateBear,
-    deleteBear,
     numberOfBearsToDisplay,
     handleIncreaseNumberOfBears,
     handleDecreaseNumberOfBears
@@ -80,7 +79,6 @@ const BearOptions = ( props ) => {
               bear={ bears[item] }
               bears={ bears }
               updateBear={ updateBear }
-              deleteBear={ deleteBear }
               style={ styles.bear }
               bearID={ parseInt( item ) }
             />
