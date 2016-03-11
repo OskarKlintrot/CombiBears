@@ -9,16 +9,23 @@ const styles = {
     bottom: 0,
     left: 0,
     right: 0,
-    paddingTop: '12%'
+    paddingTop: '10%'
   },
   innerBox: {
     position: 'relative',
-    display: 'inline-block',
-    margin: '3% 6.25%',
-    width: '25%'
+    display: 'inline-block'
+  },
+  innerBearBox: {
+    position: 'relative',
+    display: 'block',
+    width: '100%',
+    height: '50%',
+    marginTop: '-10%',
+    zIndex: 1
   },
   bear: {
-    width: '100%',
+    width: '50%',
+    margin: '0 auto',
     WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
   },
   arrow: {
@@ -55,7 +62,8 @@ const BearOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: numberOfBearsToDisplay >= maxNumberOfBears ? 'none' : 'block'
+      display: numberOfBearsToDisplay >= maxNumberOfBears ? 'none' : 'block',
+      zIndex: 2
     }
   )
 
@@ -63,7 +71,8 @@ const BearOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: numberOfBearsToDisplay <= minNumberOfBears ? 'none' : 'block'
+      display: numberOfBearsToDisplay <= minNumberOfBears ? 'none' : 'block',
+      marginTop: '10%'
     }
   )
 
@@ -73,7 +82,10 @@ const BearOptions = ( props ) => {
     if ( bears.hasOwnProperty( item ) ) {
       if ( currentBear <= numberOfBearsToDisplay ) {
         bearsToRender.push(
-          <div style={ styles.innerBox }>
+          <div
+            className='small-6 columns'
+            style={ styles.innerBox }
+          >
             <Bear
               key={ item }
               bear={ bears[item] }
@@ -99,11 +111,18 @@ const BearOptions = ( props ) => {
           draggable='false'
         />
       </div>
-      <div className='bears'>
-       { bearsToRender[0] }
-       { bearsToRender[1] }
-       { bearsToRender[2] }
-       { bearsToRender[3] }
+      <div
+        className='bears'
+        style={ styles.innerBearBox }
+      >
+        <div className='row'>
+          { bearsToRender[0] }
+          { bearsToRender[1] }
+        </div>
+        <div className='row'>
+          { bearsToRender[2] }
+          { bearsToRender[3] }
+        </div>
       </div>
       <div style={ styles.innerArrowBox }>
         <img

@@ -3,12 +3,6 @@ import ColorPicker from './colorPicker'
 import BasicBear from '../shared/basicBear'
 import C from '../../constants'
 
-const styles = {
-  div: {
-    cursor: 'pointer'
-  }
-}
-
 class Bear extends React.Component {
   constructor( props ) {
     super( props )
@@ -38,14 +32,20 @@ class Bear extends React.Component {
   };
 
   render() {
+    const bearStyle = Object.assign(
+      {},
+      this.props.style,
+      {
+        cursor: 'pointer'
+      }
+    )
+
     return (
-      <div
-        style={ styles.div }
-        onClick={ this.handleToggleColorPicker }
-      >
+      <div>
         <BasicBear
           bear={ this.props.bear }
-          style={ this.props.style }
+          style={ bearStyle }
+          onClick={ this.handleToggleColorPicker }
         />
       { this.state.showColorPicker ?
         <ColorPicker

@@ -9,14 +9,14 @@ const styles = {
     backgroundSize: '100%',
     zIndex: 999,
     position: 'absolute',
-    right: '-14%',
+    right: '20%',
     cursor: 'auto',
     display: 'block'
   },
   color: {
     width: '3.5em',
     height: '3.5em',
-    margin: '0.25em',
+    margin: '1.25em 0.25em',
     display: 'inline-block',
     cursor: 'pointer'
   }
