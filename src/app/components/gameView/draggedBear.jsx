@@ -48,83 +48,56 @@ class DraggedBear extends React.Component {
   constructor( props ) {
     super( props )
 
-    this.prevXPos = 0
-    this.prevYPos = 0
+    this.prevXPos = null
     this.posFrameCount = 0
     this.prevAngleInDegrees = 0
   }
 
-  getClassName() {
+  getBearLeanStyles() {
 
     const { currentOffset } = this.props
-
-    let className = ' '
-
-    if ( currentOffset ) {
-      if ( this.prevXPos < currentOffset.x )
-        className = 'bear-lean-right'
-      else if ( this.prevXPos > currentOffset.x )
-        className = 'bear-lean-left'
-
-      this.prevXPos = currentOffset.x
-      this.prevYPos = currentOffset.y
-    }
-
-    return className
-  }
-
-  getBearAnimationStyles() {
-
-    const { currentOffset } = this.props
-    const positionCatchFrameCount = 12 // We cannot catch every frame, animations gets too jerky.
+    const positionCatchFrameCount = 12 // We cannot catch every frame, animation gets too jerky.
+    const maxAngle = 30
+    const minAngle = -30
     let angleInDegrees = 0
-    let transition = 'transform 0.2s'
-    let transform = 'rotate(0 deg)'
+    const returnTransition = 'transform 0.2s'
+    let returnTransform = 'rotate(0 deg)'
 
+    // If there is no coordinate data, apply mockup data
     if ( !currentOffset ) {
-      this.prevYPos = null
-      this.prevXPos = null
-      transition = ''
+      this.prevXPos = 0
+      this.prevAngleInDegrees = 0
 
-    } else if ( !this.prevYPos ) {
+    } else if ( !this.prevXPos ) {
 
       this.prevXPos = currentOffset.x
-      this.prevYPos = currentOffset.y + 1
-
     }
 
     // If we are at the positionCatchFrameCount frame, and we got offset coordinates
     if ( currentOffset && this.posFrameCount === positionCatchFrameCount ) {
 
+      // Get distance travelled
       const xPosDifference = currentOffset.x - this.prevXPos
-      const yPosDifference = currentOffset.y - this.prevYPos
 
-      const halfCircleDegrees = 180
-      const offsetDegrees = 90
+      // Calculate angle
+      angleInDegrees = xPosDifference / 2
 
-      // Get rotation angle
-      angleInDegrees = Math.atan2( yPosDifference, xPosDifference ) * ( halfCircleDegrees / Math.PI ) + offsetDegrees
+      // Apply max and min to angle
+      if ( angleInDegrees > maxAngle )
+        angleInDegrees = maxAngle
+      if ( angleInDegrees < minAngle )
+        angleInDegrees = minAngle
 
       // Apply rotation
-      transform = 'rotate(' + angleInDegrees + 'deg)'
-
-      // # Prevent css transition bug START
-      // The should be no transition when going from positive to negative values
-      // or the other way around. The rotate transition will go to the wrong direction,
-      // Therefore it's better with no animation at all. Could be improved by keeping
-      // track of laps.
-      if (
-        this.prevAngleInDegrees > halfCircleDegrees && angleInDegrees < 0 ||
-        this.prevAngleInDegrees < 0 && angleInDegrees > halfCircleDegrees
-      )
-        transition = ''
-
-      // # Prevent css transition bug END
+      returnTransform = 'rotate(' + angleInDegrees + 'deg)'
 
       // Assign historical values
       this.prevXPos = currentOffset.x
-      this.prevYPos = currentOffset.y
       this.prevAngleInDegrees = angleInDegrees
+
+    } else {
+      // This is not the right catch frame or there is no coordinate data, apply last known rotation
+      returnTransform = 'rotate(' + this.prevAngleInDegrees + 'deg)'
     }
 
     // Increase frame count
@@ -136,8 +109,8 @@ class DraggedBear extends React.Component {
 
     // Return style with animation
     return {
-      transition: transition,
-      transform: transform
+      transition: returnTransition,
+      transform: returnTransform
     }
   }
 
@@ -176,8 +149,7 @@ class DraggedBear extends React.Component {
           style={ this.getContainerStyles( this.props ) }
         >
           <BasicBear
-            style={ this.getBearAnimationStyles() }
-
+            style={ this.getBearLeanStyles() }
             bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
             width='100'
             height='120'
