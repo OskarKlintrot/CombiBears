@@ -1,0 +1,53 @@
+.sprite-view-saved-permutations {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -10px -10px;
+	width: 340px;
+	height: 277px;
+}
+
+.sprite-help {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -371px -13px;
+	width: 338px;
+	height: 277px;
+}
+
+.sprite-new-sofa {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -731px -13px;
+	width: 335px;
+	height: 274px;
+}
+
+.sprite-screenshot {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -1092px -14px;
+	width: 336px;
+	height: 275px;
+}
+
+.sprite-start {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -1452px -14px;
+	width: 336px;
+	height: 276px;
+}
+
+.sprite-arrow-left {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -11px -312px;
+	width: 341px;
+	height: 279px;
+}
+
+.sprite-arrow-right {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -369px -312px;
+	width: 341px;
+	height: 279px;
+}
+
+.sprite-restart {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -730px -312px;
+	width: 338px;
+	height: 277px;
+}
+
+.sprite-show-result {
+	background: url('imgs/spritesheet-icons.svg') no-repeat -1090px -312px;
+	width: 337px;
+	height: 275px;
+}
