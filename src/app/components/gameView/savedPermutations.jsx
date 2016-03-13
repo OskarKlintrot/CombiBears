@@ -2,64 +2,6 @@ import React, { PropTypes } from 'react'
 import BasicSofa from '../shared/basicSofa-v2'
 import SavedPermutationsFlash from './savedPermutationsFlash'
 
-const styles = {
-  savedPermutations: {
-    width: '20%',
-    height: window.innerHeight + 'px',
-    position: 'absolute',
-    top: '0',
-    bottom: '0',
-    right: '0'
-  },
-
-  arrowDiv: {
-    width: '17%',
-    minHeight: '100%',
-    float: 'left'
-  },
-
-  arrowButton: {
-    width: '7%',
-    cursor: 'pointer',
-    position: 'fixed',
-    top: '45%'
-  },
-
-  sofaList: {
-    width: '83%',
-    minHeight: '100%',
-    overflow: 'auto',
-    float: 'right',
-    background: 'rgba(240, 240, 230, 0.8)',
-    border: 'solid',
-    borderWidth: '0px',
-    borderLeftWidth: '0.5em',
-    borderColor: 'rgb(250, 250, 240)'
-  },
-
-  ulSofas: {
-    listStyleType: 'none',
-    margin: 'auto',
-    padding: '15px'
-  },
-
-  sofaListElementLast: {
-    backgroundColor: '#59b585',
-    borderRadius: '10px',
-    paddingTop: '15px'
-  },
-
-  sofaListElementSaved: {
-    backgroundColor: '#b93e3e',
-    borderRadius: '10px',
-    paddingTop: '15px'
-  },
-
-  sofaListElements: {
-    paddingTop: '15px'
-  }
-}
-
 class SavedPermutations extends React.Component {
 
   constructor( props ) {
@@ -84,6 +26,66 @@ class SavedPermutations extends React.Component {
   }
 
   render() {
+
+    const styles = {
+      savedPermutations: {
+        width: '20%',
+        height: this.props.height,
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        right: '0'
+      },
+
+      arrowDiv: {
+        width: '17%',
+        minHeight: '100%',
+        float: 'left'
+      },
+
+      arrowButton: {
+        width: '7%',
+        cursor: 'pointer',
+        position: 'fixed',
+        top: '45%'
+      },
+
+      sofaList: {
+        width: '83%',
+        height: this.props.height,
+        minHeight: '100%',
+        overflow: 'auto',
+        float: 'right',
+        background: 'rgba(240, 240, 230, 0.8)',
+        border: 'solid',
+        borderWidth: '0px',
+        borderLeftWidth: '0.5em',
+        borderColor: 'rgb(250, 250, 240)'
+      },
+
+      ulSofas: {
+        listStyleType: 'none',
+        margin: 'auto',
+        padding: '15px'
+      },
+
+      sofaListElementLast: {
+        backgroundColor: '#59b585',
+        borderRadius: '10px',
+        paddingTop: '15px'
+      },
+
+      sofaListElementSaved: {
+        backgroundColor: '#b93e3e',
+        borderRadius: '10px',
+        paddingTop: '15px'
+      },
+
+      sofaListElements: {
+        paddingTop: '15px'
+      }
+    }
+
     if ( this.props.savedPermutations.length > 0 ) {
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
@@ -152,7 +154,8 @@ class SavedPermutations extends React.Component {
 SavedPermutations.propTypes = {
   savedPermutations: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired,
-  triedToSaveDuplicatePermutationIndex: PropTypes.number.isRequired
+  triedToSaveDuplicatePermutationIndex: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
 }
 
 export default SavedPermutations

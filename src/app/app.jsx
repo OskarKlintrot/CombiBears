@@ -14,6 +14,9 @@ import InitialState from './redux/store/initialState'
 const history = useQueries( createHistory )()
 const Store = configureStore( new InitialState(), history )
 
+// Remove 300ms delay on touch devices
+import 'react-fastclick'
+
 // Needed for React Developer Tools
 window.React = React
 
