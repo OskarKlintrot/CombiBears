@@ -131,12 +131,6 @@
 
 /* Animations START */
 
-.animated-background-color {
-
-  transition: background-color 500ms linear;
-
-}
-
 .animated.bounceIn {
   -webkit-animation-duration: .25s;
   animation-duration: .25s;
