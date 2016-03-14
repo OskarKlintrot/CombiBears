@@ -59,7 +59,7 @@ const DraggableBear = ( props ) => {
   return connectDragSource(
     <div>
       <BasicBear
-        className="bounceIn animated"
+        className='bounceIn animated'
         bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
         width='100'
         height='120'

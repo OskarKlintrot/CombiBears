@@ -136,7 +136,7 @@
     "max-nested-callbacks": 0,
     "max-params": 0,
     "max-statements": 0,
-    "new-cap": 1,
+    "new-cap": 0,
     "new-parens": 1,
     "newline-after-var": 0,
     "no-array-constructor": 1,
