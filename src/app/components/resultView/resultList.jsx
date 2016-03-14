@@ -4,13 +4,14 @@ const styles = {
   container: {
     textAlign: 'center',
     fontSize: '3.4em',
-    color: '#E26B00',
-    fontFamily: '"jollygood_sansbasic", "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif'
+    fontFamily: '"comic sans ms",Arial,sans-serif'
   }
 }
 
+const nine = 9
+
 const zeroOrHero = ( number ) => {
-  if ( number > 9 )
+  if ( number > nine )
     return number
   return '0' + number
 }
