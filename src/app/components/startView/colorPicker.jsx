@@ -9,25 +9,16 @@ const styles = {
     backgroundSize: '100%',
     zIndex: 999,
     position: 'absolute',
-    right: '-14%',
+    right: '20%',
     cursor: 'auto',
     display: 'block'
   },
   color: {
     width: '3.5em',
     height: '3.5em',
-    margin: '0.25em',
+    margin: '1.25em 0.25em',
     display: 'inline-block',
     cursor: 'pointer'
-  },
-  deleteBearBox: {
-    width: '100%'
-  },
-  deleteBearImg: {
-    cursor: 'pointer',
-    height: '3.5em',
-    width: '3.5em',
-    marginTop: '0.5em'
   }
 }
 
@@ -109,18 +100,6 @@ class ColorPicker extends React.Component {
             )
           }
         }) }
-        <div
-          className='deleteBearBox'
-          style={ styles.deleteBearBox }
-        >
-          <img
-            className='deleteBear'
-            src={ C.SRC_TO_IMAGES.ICONS.WRONG }
-            onClick={ this.props.handleDeleteBear }
-            style={ styles.deleteBearImg }
-            draggable='false'
-          />
-        </div>
       </div>
     )
   }
@@ -129,7 +108,6 @@ class ColorPicker extends React.Component {
 ColorPicker.props = {
   handleClickOutside: PropTypes.func.isRequired,
   handleBearColorChange: PropTypes.func.isRequired,
-  handleDeleteBear: PropTypes.func.isRequired,
   topBear: PropTypes.bool.isRequired,
   bears: PropTypes.object.isRequired
 }

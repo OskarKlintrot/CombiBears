@@ -26,7 +26,7 @@
 }
 
 #backgroundImage {
-  background: url(../../public/pics/background.svg) no-repeat center fixed;
+  background: url(../../public/pics/background.jpg) no-repeat center fixed;
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -120,3 +120,85 @@
   -webkit-align-items: stretch; /* Safari */
   align-items: stretch;
 }
+
+/* Mobile browser specific fixes START */
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Mobile browser specific fixes END */
+
+/* Animations START */
+
+.animated.bounceIn {
+  -webkit-animation-duration: .25s;
+  animation-duration: .25s;
+}
+
+@-webkit-keyframes bounceIn {
+  from, 20%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.120, 1.120, 1.120);
+    transform: scale3d(1.120, 1.120, 1.120);
+  }
+
+  20% {
+    opacity: 1;
+    -webkit-transform: scale3d(.95, .95, .95);
+    transform: scale3d(.95, .95, .95);
+  }
+
+  80% {
+    -webkit-transform: scale3d(1.010, 1.010, 1.010);
+    transform: scale3d(1.010, 1.010, 1.010);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bounceIn {
+  from, 20%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.120, 1.120, 1.120);
+    transform: scale3d(1.120, 1.120, 1.120);
+  }
+
+  20% {
+    opacity: 1;
+    -webkit-transform: scale3d(.95, .95, .95);
+    transform: scale3d(.95, .95, .95);
+  }
+
+  80% {
+    -webkit-transform: scale3d(1.010, 1.010, 1.010);
+    transform: scale3d(1.010, 1.010, 1.010);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
+
+/* Animations END */

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
@@ -23,11 +23,12 @@ const collect = ( connect, monitor ) => {
 }
 
 const GameScene = ( props ) => {
+
   const { connectDropTarget } = props // Available in props: isOver
 
   const styles = {
     gameScene: {
-      height: window.innerHeight + 'px',
+      height: props.height + 'px',
       width: '80%',
       float: 'left'
     }
@@ -41,7 +42,7 @@ const GameScene = ( props ) => {
 }
 
 GameScene.propTypes = {
-
+  height: PropTypes.number.isRequired
 }
 
 export default DropTarget( C.COMPONENT_NAMES.BEAR, dropTarget, collect )( GameScene )

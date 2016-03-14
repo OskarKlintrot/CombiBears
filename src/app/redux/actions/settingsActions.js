@@ -6,6 +6,8 @@ const {
 	RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
+	INCREASE_NUMBER_OF_BEARS,
+	DECREASE_NUMBER_OF_BEARS,
 	UPDATE_BEAR,
 	DELETE_BEAR,
   START_GAME
@@ -30,6 +32,20 @@ const SettingsActions = {
     return ( dispatch ) => {
       dispatch({
         type: DECREASE_NUMBER_OF_SEATS
+      })
+    }
+  },
+  increaseNumberOfBears: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: INCREASE_NUMBER_OF_BEARS
+      })
+    }
+  },
+  decreaseNumberOfBears: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: DECREASE_NUMBER_OF_BEARS
       })
     }
   },

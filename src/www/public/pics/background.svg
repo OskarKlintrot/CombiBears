@@ -1991,7 +1991,7 @@
 	<animateTransform
         attributeName="transform"
         begin="0s"
-        dur="60s"
+        dur="3600s"
         type="rotate"
         from="0 892.85 747.655"
         to="360 892.85 747.655"
@@ -2005,7 +2005,7 @@
 	<animateTransform
         attributeName="transform"
         begin="0s"
-        dur="720s"
+        dur="43200s"
         type="rotate"
         from="0 892.85 747.655"
         to="360 892.85 747.655"

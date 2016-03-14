@@ -44,3 +44,41 @@ export const deleteBear = ( bears, bearId ) => {
 
   return bears
 }
+
+export const randomizeMissingBear = ( bears, newBearId ) => {
+  const randomBearNumber = () => {
+    const maxBear = Object.keys( C.COLORS_ENUM ).length - 1
+    let random
+    let foundUnique = true
+    const bearsLength = getObjectKeyLength( bears )
+    do {
+      random = Math.floor( ( Math.random() * maxBear ) + 0 )
+      foundUnique = true
+      for ( let counter = 0; counter < bearsLength; counter += 1 ) {
+        if ( C.COLORS_ENUM[random] === bears[counter].color ) {
+          foundUnique = false
+          break
+        }
+      }
+    } while ( !foundUnique )
+    return random
+  }
+
+  const bearColor = randomBearNumber()
+
+  bears[newBearId] = {
+    color: C.COLORS_ENUM[bearColor],
+    src: C.SRC_TO_IMAGES.BEARS[C.COLORS_ENUM[bearColor]]
+  }
+
+  return bears
+}
+
+export const removeBear = ( bears, removeBearId ) => {
+  bears[removeBearId] = {
+    color: C.BEAR_TO_IGNORE,
+    src: C.SRC_TO_IMAGES.BEARS[C.BEAR_TO_IGNORE]
+  }
+
+  return bears
+}
