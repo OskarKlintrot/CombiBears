@@ -21,7 +21,7 @@ export default function configureStore( initialState, history ) {
     storeEnhancer( history ),
     DevTools.instrument(),
     persistState( getDebugSessionKey() ),
-    persistStateLocalstorage( null, { key: 'BearGoesWhereDev' })
+    persistStateLocalstorage( null, { key: 'CombiBearsDev' })
   )( ( createStore ) )
 
   const store = finaleCreateStore( CombinedReducers, initialState )
