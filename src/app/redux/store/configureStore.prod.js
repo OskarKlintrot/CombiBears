@@ -8,7 +8,7 @@ export default function configureStore( initialState, history ) {
   const finaleCreateStore = compose(
     applyMiddleware( thunk ),
     storeEnhancer( history ),
-    persistStateLocalstorage( null, { key: 'BearGoesWhere' })
+    persistStateLocalstorage( null, { key: 'CombiBears' })
   )( ( createStore ) )
 
   return finaleCreateStore( CombinedReducers, initialState )
