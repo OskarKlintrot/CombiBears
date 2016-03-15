@@ -129,6 +129,12 @@ class StartView extends React.Component {
                   this.props.initBears()
                   this.props.initSofa()
                 } }
+                onTouchStart={ () => {
+                  this.props.startGame()
+                  this.props.resetGame()
+                  this.props.initBears()
+                  this.props.initSofa()
+                } }
                 draggable='false'
               ></img>
             </div>

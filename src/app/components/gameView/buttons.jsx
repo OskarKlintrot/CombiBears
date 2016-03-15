@@ -113,6 +113,7 @@ class Buttons extends React.Component {
           <Link
             to={ C.ROUTES.START }
             onClick={ handleBlurBackground }
+            onTouchStart={ handleBlurBackground }
           >
             <img
               src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
@@ -124,6 +125,7 @@ class Buttons extends React.Component {
           <Link
             to={ C.ROUTES.RESULTS }
             onClick={ handleBlurBackground }
+            onTouchStart={ handleBlurBackground }
           >
             <img
               src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
@@ -141,6 +143,7 @@ class Buttons extends React.Component {
             alt='Icon for putting bears back in startingArea'
             style={ styles.resetIcon }
             onClick={ () => this.props.onRestart() }
+            onTouchStart={ () => this.props.onRestart() }
             draggable='false'
           />
           <img
@@ -148,6 +151,7 @@ class Buttons extends React.Component {
             alt='Icon for saving permutation'
             style={ styles.saveIcon }
             onClick={ () => this.props.onSave() }
+            onTouchStart={ () => this.props.onSave() }
             draggable='false'
           />
         </div>

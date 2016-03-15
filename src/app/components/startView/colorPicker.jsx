@@ -5,14 +5,16 @@ import C from '../../constants'
 const styles = {
   box: {
     width: '18em',
-    height: '16.5em',
+    // height: '18em',
     backgroundSize: '100%',
+    backgroundRepeat: 'no-repeat',
     zIndex: 999,
     position: 'absolute',
     right: '20%',
     cursor: 'auto',
     display: 'block'
   },
+
   color: {
     width: '3.5em',
     height: '3.5em',
@@ -56,12 +58,15 @@ class ColorPicker extends React.Component {
         backgroundImage: this.props.topBear ?
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg)' :
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
+        backgroundPosition: this.props.topBear ?
+          'bottom' :
+          'top',
         top: this.props.topBear ?
-          '70%' :
+          '22%' :
           '-170%',
-        paddingTop: this.props.topBear ?
-          '3em' :
-          '1.5em'
+        padding: this.props.topBear ?
+          '7em 0 1.5em 0' :
+          '1.5em 0 7em 0'
       }
     )
 
@@ -94,6 +99,7 @@ class ColorPicker extends React.Component {
                 src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
                 key={ key }
                 onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
+                onTouchStart={ showColor ? () => this.props.handleBearColorChange( color ) : null }
                 style={ showColor ? styles.color : noColor }
                 draggable='false'
               />

@@ -30,7 +30,7 @@ body {
 }
 
 #backgroundImage {
-  background: url(../../public/pics/background.jpg) no-repeat center fixed;
+  background: url(../../public/pics/background.jpg) no-repeat bottom fixed;
   background-size: cover;
   height: 100vh;
   width: 100%;
