@@ -14,12 +14,10 @@ class Bear extends React.Component {
   }
 
   handleToggleColorPicker = () => {
-    console.log( 'handleToggleColorPicker' )
     this.setState({ showColorPicker: !this.state.showColorPicker })
   };
 
   onHandleOnClickOutsideColorPicker = () => {
-    console.log( 'onHandleOnClickOutsideColorPicker' )
     this.setState({ showColorPicker: false })
   };
 
@@ -47,7 +45,8 @@ class Bear extends React.Component {
         <BasicBear
           bear={ this.props.bear }
           style={ bearStyle }
-          onTouchStart={ this.handleToggleColorPicker }
+          onClick={ this.handleToggleColorPicker }
+          onTouchEnd={ this.handleToggleColorPicker }
         />
       { this.state.showColorPicker ?
         <ColorPicker

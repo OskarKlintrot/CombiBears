@@ -5,16 +5,14 @@ import C from '../../constants'
 const styles = {
   box: {
     width: '18em',
-    // height: '18em',
+    height: '16.5em',
     backgroundSize: '100%',
-    backgroundRepeat: 'no-repeat',
     zIndex: 999,
     position: 'absolute',
     right: '20%',
     cursor: 'auto',
     display: 'block'
   },
-
   color: {
     width: '3.5em',
     height: '3.5em',
@@ -58,17 +56,27 @@ class ColorPicker extends React.Component {
         backgroundImage: this.props.topBear ?
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg)' :
           'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
-        backgroundPosition: this.props.topBear ?
-          'bottom' :
-          'top',
         top: this.props.topBear ?
-          '22%' :
+          '70%' :
           '-170%',
-        padding: this.props.topBear ?
-          '7em 0 1.5em 0' :
-          '1.5em 0 7em 0'
+        paddingTop: this.props.topBear ?
+          '3em' :
+          '1.5em'
       }
     )
+
+    const bearOverlayStyle = {
+      position: 'absolute',
+      top: this.props.topBear ?
+        '-25%' :
+        '',
+      bottom: this.props.topBear ?
+        '' :
+        '-35%',
+      right: '5%',
+      width: '40%',
+      height: '40%'
+    }
 
     const noColor = Object.assign(
       {},
@@ -84,6 +92,7 @@ class ColorPicker extends React.Component {
         className='colorPicker'
         style={ boxStyle }
       >
+        <div style={ bearOverlayStyle } className='bearOverlay'></div>
         { colors.map( ( color, key ) => {
           if ( color !== C.BEAR_TO_IGNORE ) {
             let showColor = true
