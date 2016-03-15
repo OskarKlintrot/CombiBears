@@ -6,12 +6,6 @@
 CACHE:
 public/css/foundation.min.css
 public/css/main.css
-public/css/fonts/fonts.css
-public/css/fonts/JollyGoodSans-Basic-webfont.eot
-public/css/fonts/JollyGoodSans-Basic-webfont.svg
-public/css/fonts/JollyGoodSans-Basic-webfont.ttf
-public/css/fonts/JollyGoodSans-Basic-webfont.woff
-public/css/fonts/JollyGoodSans-Basic-webfont.woff2
 public/pics/background.jpg
 public/pics/background.svg
 public/pics/logotype.png
@@ -89,7 +83,7 @@ NETWORK:
 *
 
 # Hash from Powershell script:
-# d03f2098234ae456162d5275a3ed7e33
+# 8fba4407dc7c102ef57a34195550d845
 
 # Hash from deployment:
 # StringToBeReplacedAtDeployment
