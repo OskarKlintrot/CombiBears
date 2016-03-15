@@ -25,8 +25,7 @@ const styles = {
   },
   bear: {
     width: '50%',
-    margin: '0 auto',
-    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
+    margin: '0 auto'
   },
   arrow: {
     cursor: 'pointer',

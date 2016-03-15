@@ -24,8 +24,7 @@ const styles = {
   },
   sofa: {
     width: '75%',
-    paddingTop: '2.5%',
-    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
+    paddingTop: '2.5%'
   },
   arrow: {
     cursor: 'pointer',
