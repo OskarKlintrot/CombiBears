@@ -106,6 +106,7 @@ const BearOptions = ( props ) => {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
           onClick={ handleIncreaseNumberOfBears }
+          onTouchStart={ handleIncreaseNumberOfBears }
           style={ topArrowStyle }
           draggable='false'
         />
@@ -127,6 +128,7 @@ const BearOptions = ( props ) => {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
           onClick={ handleDecreaseNumberOfBears }
+          onTouchStart={ handleDecreaseNumberOfBears }
           style={ bottomArrowStyle }
           draggable='false'
         />

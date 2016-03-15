@@ -68,6 +68,7 @@ const SofaOptions = ( props ) => {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
           onClick={ handleIncreaseNumberOfSeats }
+          onTouchStart={ handleIncreaseNumberOfSeats }
           style={ topArrowStyle }
           draggable='false'
         ></img>
@@ -83,6 +84,7 @@ const SofaOptions = ( props ) => {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
           onClick={ handleDecreaseNumberOfSeats }
+          onTouchStart={ handleDecreaseNumberOfSeats }
           style={ bottomArrowStyle }
           draggable='false'
         ></img>

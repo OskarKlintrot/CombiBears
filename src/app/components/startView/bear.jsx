@@ -46,6 +46,7 @@ class Bear extends React.Component {
           bear={ this.props.bear }
           style={ bearStyle }
           onClick={ this.handleToggleColorPicker }
+          onTouchEnd={ this.handleToggleColorPicker }
         />
       { this.state.showColorPicker ?
         <ColorPicker

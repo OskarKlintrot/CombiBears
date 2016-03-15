@@ -49,6 +49,7 @@ const InfoFlash = ( props ) => {
         src={ C.SRC_TO_IMAGES.ICONS.HELP }
         style={ Object.assign({}, styles.infoButton, style ) }
         onClick={ handleOpenModal }
+        onTouchStart={ handleOpenModal }
         draggable='false'
       />
       <Modal
@@ -61,6 +62,7 @@ const InfoFlash = ( props ) => {
           aria-label='Close alert'
           type='button'
           onClick={ handleCloseModal }
+          onTouchStart={ handleCloseModal }
         >
           <span aria-hidden='true'>&times;</span>
         </button>
