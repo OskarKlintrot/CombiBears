@@ -65,6 +65,19 @@ class ColorPicker extends React.Component {
       }
     )
 
+    const bearOverlayStyle = {
+      position: 'absolute',
+      top: this.props.topBear ?
+        '-25%' :
+        '',
+      bottom: this.props.topBear ?
+        '' :
+        '-35%',
+      right: '5%',
+      width: '40%',
+      height: '40%'
+    }
+
     const noColor = Object.assign(
       {},
       styles.color,
@@ -79,6 +92,7 @@ class ColorPicker extends React.Component {
         className='colorPicker'
         style={ boxStyle }
       >
+        <div style={ bearOverlayStyle } className='bearOverlay'></div>
         { colors.map( ( color, key ) => {
           if ( color !== C.BEAR_TO_IGNORE ) {
             let showColor = true
@@ -94,6 +108,7 @@ class ColorPicker extends React.Component {
                 src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
                 key={ key }
                 onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
+                onTouchStart={ showColor ? () => this.props.handleBearColorChange( color ) : null }
                 style={ showColor ? styles.color : noColor }
                 draggable='false'
               />
