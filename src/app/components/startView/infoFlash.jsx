@@ -34,44 +34,69 @@ const styles = Object.assign({}, CommonStyling, {
   }
 })
 
-const InfoFlash = ( props ) => {
-  const {
-    open,
-    handleOpenModal,
-    handleCloseModal,
-    handleModalCloseRequest,
-    style
-  } = props
+class InfoFlash extends React.Component {
+  constructor( props ) {
+    super( props )
+    this.state = {
+      SwedishChosen: true
+    }
+  }
 
-  return (
-    <div>
-      <img
-        src={ C.SRC_TO_IMAGES.ICONS.HELP }
-        style={ Object.assign({}, styles.infoButton, style ) }
-        onClick={ handleOpenModal }
-        draggable='false'
-      />
-      <Modal
-        isOpen={ open }
-        onRequestClose={ handleModalCloseRequest }
-        style={ modalStyles }
-      >
-        <button
-          className='close-button'
-          aria-label='Close alert'
-          type='button'
-          onClick={ handleCloseModal }
+  handleOnFlagClick = () => {
+    this.setState({ SwedishChosen: false })
+  };
+
+  render() {
+    const {
+      open,
+      handleOpenModal,
+      handleCloseModal,
+      handleModalCloseRequest,
+      style
+    } = this.props
+
+    return (
+      <div>
+        <img
+          src={ C.SRC_TO_IMAGES.ICONS.HELP }
+          style={ Object.assign({}, styles.infoButton, style ) }
+          onClick={ handleOpenModal }
+          draggable='false'
+        />
+        <Modal
+          isOpen={ open }
+          onRequestClose={ handleModalCloseRequest }
+          style={ modalStyles }
         >
-          <span aria-hidden='true'>&times;</span>
-        </button>
-        { InfoFlash.renderInfo( Swedish, English ) }
-      </Modal>
-    </div>
-  )
+          <button
+            className='close-button'
+            aria-label='Close alert'
+            type='button'
+            onClick={ handleCloseModal }
+          >
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          <img
+            src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION }
+            style={ Object.assign({}, styles.infoButton, style ) }
+            onClick={ this.handleOnFlagClick }
+            draggable='false'
+          />
+          { InfoFlash.renderInfo( this.state.SwedishChosen ) }
+        </Modal>
+      </div>
+    )
+  }
 }
 
-InfoFlash.renderInfo = ( ...languages ) => {
-  const info = [...languages]
+InfoFlash.renderInfo = ( swedishChosen ) => {
+  console.log( swedishChosen )
+  let info = null
+  if ( swedishChosen === true )
+    info = [Swedish]
+  else
+    info = [English]
+
   const render = []
   for ( const item of info ) {
     render.push(
