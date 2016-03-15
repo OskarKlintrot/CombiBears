@@ -31,6 +31,14 @@ const styles = Object.assign({}, CommonStyling, {
       display: 'block',
       margin: '1em auto'
     }
+  },
+
+  flagButton: {
+    height: '100px',
+    width: '100px',
+    marginRight: '10px',
+    backgroundColor: '#F7D117',
+    border: '5px solid black'
   }
 })
 
@@ -42,7 +50,11 @@ class InfoFlash extends React.Component {
     }
   }
 
-  handleOnFlagClick = () => {
+  handleSweFlagClick = () => {
+    this.setState({ SwedishChosen: true })
+  };
+
+  handleEngFlagClick = () => {
     this.setState({ SwedishChosen: false })
   };
 
@@ -60,7 +72,10 @@ class InfoFlash extends React.Component {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.HELP }
           style={ Object.assign({}, styles.infoButton, style ) }
-          onClick={ handleOpenModal }
+          onClick={ () => {
+            handleOpenModal()
+            this.handleSweFlagClick()
+          } }
           draggable='false'
         />
         <Modal
@@ -76,12 +91,20 @@ class InfoFlash extends React.Component {
           >
             <span aria-hidden='true'>&times;</span>
           </button>
-          <img
-            src={ C.SRC_TO_IMAGES.ICONS.SHOW_SOLUTION }
-            style={ Object.assign({}, styles.infoButton, style ) }
-            onClick={ this.handleOnFlagClick }
+          <button
+            style={ Object.assign({}, styles.flagButton, style ) }
+            type='button'
+            onClick={ this.handleSweFlagClick }
             draggable='false'
-          />
+          >SV
+          </button>
+          <button
+            style={ Object.assign({}, styles.flagButton, style ) }
+            type='button'
+            onClick={ this.handleEngFlagClick }
+            draggable='false'
+          >EN
+          </button>
           { InfoFlash.renderInfo( this.state.SwedishChosen ) }
         </Modal>
       </div>
@@ -90,7 +113,6 @@ class InfoFlash extends React.Component {
 }
 
 InfoFlash.renderInfo = ( swedishChosen ) => {
-  console.log( swedishChosen )
   let info = null
   if ( swedishChosen === true )
     info = [Swedish]

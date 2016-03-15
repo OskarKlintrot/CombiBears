@@ -23,16 +23,16 @@ const Placeholder = ( props ) => {
       <h3>{ translation.chooseBearsTitle }</h3>
       <p>{ translation.chooseBearsSubtitle }</p>
       <img
-        src={ C.SRC_TO_IMAGES.BEARS.PLACEHOLDER }
-        style={ styles.icon }
+        src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
+        style={ styles.arrowButton }
+        draggable='false'
+      />
+      <img
+        src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
+        style={ styles.arrowButton }
         draggable='false'
       />
       <p>{ translation.chooseBears }</p>
-      <img
-        src={ C.SRC_TO_IMAGES.ICONS.WRONG }
-        style={ styles.icon }
-        draggable='false'
-      />
       <h3>{ translation.startGameTitle }</h3>
       <p>{ translation.startGame }</p>
       <img
