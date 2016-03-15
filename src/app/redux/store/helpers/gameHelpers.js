@@ -16,7 +16,7 @@ export const removeBear = ( array, position ) => {
 
 export const savePermutation = ( savedPermutations, permutation ) => {
 
-  savedPermutations.push( permutation )
+  savedPermutations.unshift( permutation )
 
   return savedPermutations
 }
@@ -30,5 +30,3 @@ export const moveAllBearsToStart = ( bearsOnSofa, bearsOnStart ) => {
   // Return combined array
   return bearsOnStart.concat( bearsOnSofa )
 }
-
-

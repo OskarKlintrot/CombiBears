@@ -6,15 +6,27 @@ import Wrapper from './components/shared/wrapper.jsx'
 import NoMatch from './components/shared/noMatch.jsx'
 import StartView from './components/startView'
 import GameView from './components/gameView'
-import SavedCombinationsView from './components/savedCombinationsView'
-import ResultsView from './components/resultview'
+import ResultView from './components/resultView'
 
 export default (
-  <Route path={ C.ROUTES.START } component={ Wrapper } >
-    <IndexRoute component={ StartView } />
-    <Route path={ C.ROUTES.GAME } component={ GameView } />
-    <Route path={ C.ROUTES.SAVED } component={ SavedCombinationsView } />
-    <Route path={ C.ROUTES.RESULTS } component={ ResultsView } />
-    <Route path='*' component={ NoMatch } />
+  <Route
+    path={ C.ROUTES.START }
+    component={ Wrapper }
+  >
+    <IndexRoute
+      component={ StartView }
+    />
+    <Route
+      path={ C.ROUTES.GAME }
+      component={ GameView }
+    />
+    <Route
+      path={ C.ROUTES.RESULTS }
+      component={ ResultView }
+    />
+    <Route
+      path='*'
+      component={ NoMatch }
+    />
   </Route>
 )

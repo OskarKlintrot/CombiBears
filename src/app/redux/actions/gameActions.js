@@ -11,7 +11,9 @@ const {
   REMOVE_BEAR_FROM_START,
   SAVE_PERMUTATION,
   INIT_BEARS,
-  INIT_SOFA
+  INIT_SOFA,
+  REDIRECT_TO_RESULT_VIEW,
+  REDIRECT_TO_START_VIEW
 } = ActionTypes
 
 const GameActions = {
@@ -89,6 +91,30 @@ const GameActions = {
       dispatch({
         type: INIT_SOFA,
         numberOfSeats: getState().settings.numberOfSeats
+      })
+    }
+  },
+  redirectToResultView: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: REDIRECT_TO_RESULT_VIEW,
+        meta: {
+          transition: () => ({
+            path: C.ROUTES.RESULTS
+          })
+        }
+      })
+    }
+  },
+  redirectToStartView: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: REDIRECT_TO_START_VIEW,
+        meta: {
+          transition: () => ({
+            path: C.ROUTES.START
+          })
+        }
       })
     }
   }

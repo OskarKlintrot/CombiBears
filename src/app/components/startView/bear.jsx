@@ -3,12 +3,6 @@ import ColorPicker from './colorPicker'
 import BasicBear from '../shared/basicBear'
 import C from '../../constants'
 
-const styles = {
-  div: {
-    cursor: 'pointer'
-  }
-}
-
 class Bear extends React.Component {
   constructor( props ) {
     super( props )
@@ -37,26 +31,26 @@ class Bear extends React.Component {
     this.handleToggleColorPicker()
   };
 
-  onHandleDeleteBear = () => {
-    this.props.deleteBear( this.props.bearID )
-    this.handleToggleColorPicker()
-  };
-
   render() {
+    const bearStyle = Object.assign(
+      {},
+      this.props.style,
+      {
+        cursor: 'pointer'
+      }
+    )
+
     return (
-      <div
-        style={ styles.div }
-        onClick={ this.handleToggleColorPicker }
-      >
+      <div>
         <BasicBear
           bear={ this.props.bear }
-          style={ this.props.style }
+          style={ bearStyle }
+          onClick={ this.handleToggleColorPicker }
         />
       { this.state.showColorPicker ?
         <ColorPicker
           handleClickOutside={ this.onHandleOnClickOutsideColorPicker }
           handleBearColorChange={ this.onHandleBearColorChange }
-          handleDeleteBear={ this.onHandleDeleteBear }
           topBear={ this.props.bearID < 2 }
           bears={ this.props.bears }
         /> :
@@ -73,8 +67,7 @@ Bear.propTypes = {
   bears: PropTypes.object.isRequired,
   color: PropTypes.string,
   style: PropTypes.object.isRequired,
-  updateBear: PropTypes.func.isRequired,
-  deleteBear: PropTypes.func.isRequired
+  updateBear: PropTypes.func.isRequired
 }
 
 export default Bear

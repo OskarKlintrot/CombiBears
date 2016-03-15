@@ -16,6 +16,7 @@ const InitialState = () => {
   return {
     settings: {
       numberOfSeats: 2,
+      numberOfBears: 2,
       bears: {
         0: {
           color: C.COLORS_ENUM[firstBear],

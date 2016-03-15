@@ -3,7 +3,7 @@ import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
 const dropTarget = {
-  drop( props, monitor, component ) {
+  drop( ) { // Available arguments: props, monitor, component
 
     return {
       containerTypeName: C.COMPONENT_NAMES.GAME_SCENE,
@@ -23,11 +23,12 @@ const collect = ( connect, monitor ) => {
 }
 
 const GameScene = ( props ) => {
-  const { connectDropTarget, isOver } = props
+
+  const { connectDropTarget } = props // Available in props: isOver
 
   const styles = {
     gameScene: {
-      height: window.innerHeight + 'px',
+      height: props.height + 'px',
       width: '80%',
       float: 'left'
     }
@@ -41,7 +42,7 @@ const GameScene = ( props ) => {
 }
 
 GameScene.propTypes = {
-
+  height: PropTypes.number.isRequired
 }
 
 export default DropTarget( C.COMPONENT_NAMES.BEAR, dropTarget, collect )( GameScene )

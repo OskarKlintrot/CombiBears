@@ -1,10 +1,11 @@
 import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
+import C from '../../../constants.js'
 import { ActionTypesSettings } from '../../actions/actionTypes'
-import { updateBear, deleteBear } from '../helpers/startHelpers'
+import { updateBear, deleteBear, randomizeMissingBear, removeBear } from '../helpers/startHelpers'
 
 const getBearsFromObject = ( obj, seats ) => {
-  const filtered = Object.keys( obj ).filter( ( key ) => obj[key] )
+  const filtered = Object.keys( obj ).filter( ( key ) => obj[key].color !== C.BEAR_TO_IGNORE )
   const fill = seats - filtered.length > 0 ? Array(
     ...Array( seats - filtered.length )
   ).map( () => null ) : []
@@ -15,6 +16,8 @@ const {
   RESET_SETTINGS,
   INCREASE_NUMBER_OF_SEATS,
   DECREASE_NUMBER_OF_SEATS,
+  INCREASE_NUMBER_OF_BEARS,
+  DECREASE_NUMBER_OF_BEARS,
   UPDATE_BEAR,
   DELETE_BEAR,
   START_GAME
@@ -22,6 +25,8 @@ const {
 
 const maxSeats = 4
 const minSeats = 2
+const maxBears = 4
+const minBears = 2
 
 const SettingsReducer = ( state, action ) => {
   switch ( action.type ) {
@@ -37,6 +42,18 @@ const SettingsReducer = ( state, action ) => {
       ...state,
       numberOfSeats: state.numberOfSeats - 1 < minSeats ? maxSeats : state.numberOfSeats - 1
     }
+  case INCREASE_NUMBER_OF_BEARS:
+    return {
+      ...state,
+      numberOfBears: state.numberOfBears + 1 > maxBears ? minBears : state.numberOfBears + 1,
+      bears: Object.assign({}, randomizeMissingBear( state.bears, state.numberOfBears ) )
+    }
+  case DECREASE_NUMBER_OF_BEARS:
+    return {
+      ...state,
+      numberOfBears: state.numberOfBears - 1 < minBears ? maxBears : state.numberOfBears - 1,
+      bears: Object.assign({}, removeBear( state.bears, state.numberOfBears - 1 ) )
+    }
   case UPDATE_BEAR:
     return {
       ...state,
@@ -51,7 +68,10 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       correctCombinations: Combinatorics.permutation(
-        getBearsFromObject( state.bears, state.numberOfSeats ),
+        getBearsFromObject(
+          state.bears,
+          state.numberOfSeats,
+        ),
         state.numberOfSeats
       )
       .toArray()

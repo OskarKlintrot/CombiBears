@@ -17,6 +17,7 @@ const BasicBear = ( props ) => {
       <img
         src={ bear.src }
         alt='Image of a bear'
+        draggable='false'
       ></img>
     </div>
   )

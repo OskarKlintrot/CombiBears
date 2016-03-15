@@ -6,11 +6,16 @@ CONSTANTS.SRC_TO_IMAGES = {
     3: 'public/pics/sofas/three.svg',
     4: 'public/pics/sofas/four.svg'
   },
+  SEATS: {
+    PILLOW: 'public/pics/seats/pillow.svg',
+    PILLOW_DETAILS: 'public/pics/seats/pillow-details.svg',
+    STOOL: 'public/pics/seats/stool.svg'
+  },
   ICONS: {
     ARROW_LEFT: 'public/pics/icons/arrow-left.svg',
     ARROW_RIGHT: 'public/pics/icons/arrow-right.svg',
     CONTINUE: 'public/pics/icons/continue.svg',
-    INFO: 'public/pics/icons/info.svg',
+    HELP: 'public/pics/icons/help.svg',
     NEW_SOFA: 'public/pics/icons/new-sofa.svg',
     RESTART: 'public/pics/icons/restart.svg',
     SAVE_PERMUTATION: 'public/pics/icons/save-permutation.svg',
@@ -18,7 +23,8 @@ CONSTANTS.SRC_TO_IMAGES = {
     SHOW_RESULT: 'public/pics/icons/show-result.svg',
     SHOW_SOLUTION: 'public/pics/icons/show-solution.svg',
     START: 'public/pics/icons/start.svg',
-    WRONG: 'public/pics/icons/wrong.svg'
+    WRONG: 'public/pics/icons/wrong.svg',
+    VIEW_SAVED_PERMUTATIONS: 'public/pics/icons/view-saved-permutations.svg'
   },
   BEARS: {
     BLUE: 'public/pics/bears/blue.png',
@@ -60,7 +66,6 @@ CONSTANTS.COLORS = {
 CONSTANTS.ROUTES = {
   START: '/',
   GAME: '/game',
-  SAVED: '/saved',
   RESULTS: '/results'
 }
 

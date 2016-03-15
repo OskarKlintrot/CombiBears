@@ -4,6 +4,7 @@ var buildPath = path.resolve(__dirname, 'build')
 var sourcePath = path.resolve(__dirname, 'src')
 var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 var TransferWebpackPlugin = require('transfer-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const production = process.argv.find((element) => element === '--production') ? true : false
 
@@ -18,8 +19,7 @@ const jsEntry = production ? jsBaseEntry.concat([
 
 var config = {
   entry: {
-    js: jsEntry,
-    html: './src/www/index.html'
+    js: jsEntry
   },
   devServer:{
     contentBase: 'src/www',
@@ -40,6 +40,12 @@ var config = {
     ], sourcePath),
     new webpack.DefinePlugin({
         PRODUCTION: production
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/www/index.template',
+      production: production,
+      title: 'CombiBears',
+      inject: false
     })
   ],
   module: {
@@ -58,14 +64,15 @@ var config = {
         loaders: [
             'react-hot',
             'babel?' + JSON.stringify({
+                plugins: ["transform-decorators-legacy"],
                 presets: ["react", "es2015", "stage-1"]
             })
         ]
       },
       {
         test: /\.html$/,
-        loader: "file?name=[name].[ext]"
-      }
+        loader: "file?name=[name].[ext]",
+      },
     ]
   },
   resolve: {
@@ -84,6 +91,9 @@ if (production) {
       compress: {
         warnings: false
       }
+    }),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"'
     })
   ].concat(config.plugins)
 }

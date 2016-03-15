@@ -51,13 +51,15 @@ const DraggableBear = ( props ) => {
     bear: {
       width: '95%',
       margin: 'auto',
-      opacity: isDragging ? transparency : 1
+      opacity: isDragging ? transparency : 1,
+      transition: '0.1s ease-in'
     }
   }
 
   return connectDragSource(
     <div>
       <BasicBear
+        className='bounceIn animated'
         bear={ bearsSettings[bearKey] } // Get bear object from '(redux state).settings.bears' with key
         width='100'
         height='120'

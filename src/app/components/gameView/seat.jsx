@@ -3,12 +3,11 @@ import C from '../../constants'
 import { DropTarget } from 'react-dnd'
 
 const seatTarget = {
-  drop( props, monitor ) {
+  drop( props ) { // Available arguments: monitor
 
     return {
       containerTypeName: props.containerTypeName,
-      index: props.index,
-      canDrop: props.canDrop
+      index: props.index
     }
   }
 }
@@ -22,32 +21,59 @@ const collect = ( connect, monitor ) => {
 }
 
 const Seat = ( props ) => {
-  const { connectDropTarget, isOver } = props
+  const { connectDropTarget } = props // Available in props: isOver
+
+  const getWidth = () => {
+
+    const hundredPercent = 100
+    return Math.round( hundredPercent / props.numberOfSeats ) + '%'
+  }
+
+  const getPadding = () => {
+
+    let returnValue = '0'
+
+    if ( props.numberOfSeats === 2 )
+      returnValue = '10%'
+
+    return returnValue
+  }
 
   const styles = {
     seat: {
-      display: 'inline-block',
-      width: '25%',
-      height: '100%',
+      width: getWidth(),
+      padding: getPadding(),
       zIndex: 1,
       opacity: 1,
-      border: '1px solid #f00',
       textAlign: 'center',
-      verticalAlign: 'top'
+      verticalAlign: 'top',
+      paddingBottom: '5%'
+    },
+    startingAreaSeat: {
+      background: 'url(' + C.SRC_TO_IMAGES.SEATS.STOOL + ') no-repeat bottom'
     }
   }
 
+  const getCurrentStyles = () => {
+
+    // If its a starting area, we need the special styles.
+    if ( props.containerTypeName === C.COMPONENT_NAMES.STARTING_AREA )
+      return Object.assign({}, styles.seat, styles.startingAreaSeat )
+
+    return styles.seat
+  }
+
   return connectDropTarget(
-    <div style={ styles.seat } >
+    <div style={ getCurrentStyles() } >
     { props.children }
     </div>
   )
 }
 
 Seat.propTypes = {
-  canDrop: PropTypes.bool.isRequired,
   containerTypeName: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  numberOfSeats: PropTypes.number.isRequired
 }
 
 export default DropTarget( C.COMPONENT_NAMES.BEAR, seatTarget, collect )( Seat )
