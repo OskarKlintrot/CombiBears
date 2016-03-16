@@ -57,6 +57,7 @@ class InfoFlash extends React.Component {
     this.setState({ SwedishChosen: true })
   };
 
+<<<<<<< HEAD
   handleEngClick = () => {
     this.setState({ SwedishChosen: false })
   };
@@ -82,6 +83,27 @@ class InfoFlash extends React.Component {
           isOpen={ open }
           onRequestClose={ handleModalCloseRequest }
           style={ modalStyles }
+=======
+  return (
+    <div>
+      <img
+        src={ C.SRC_TO_IMAGES.ICONS.HELP }
+        style={ Object.assign({}, styles.infoButton, style ) }
+        onClick={ handleOpenModal }
+        onTouchStart={ handleOpenModal }
+        draggable='false'
+      />
+      <Modal
+        isOpen={ open }
+        onRequestClose={ handleModalCloseRequest }
+        style={ modalStyles }
+      >
+        <button
+          className='close-button'
+          aria-label='Close alert'
+          type='button'
+          onClick={ handleCloseModal }
+>>>>>>> dev
         >
           <button
             className='close-button'

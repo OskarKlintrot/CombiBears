@@ -8,36 +8,37 @@ import InfoFlash from './infoFlash'
 import Option from './option'
 import Actions from '../../redux/actions/'
 
-const styles = {
-  center: {
-    textAlign: 'center'
-  },
-  logotype: {
-    marginTop: '12px',
-    width: '600px',
-    '@media (max-width: 1023px)': {
-      width: '450px'
-    }
-  },
-  startButton: {
-    // position: 'relative',
-    // bottom: '70px'
-    // right: '50%'
-  }
-}
-
 @Radium
 class StartView extends React.Component {
   constructor( props ) {
     super( props )
+
     /* One way of using this.setState() when using ES2015 classes
      * is to either bind this here in the constructor...
      */
     this.onCloseModal = this.onCloseModal.bind( this )
     this.onModalCloseRequest = this.onModalCloseRequest.bind( this )
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      windowHeight: window.innerHeight
     }
+
+    // Apply background filters
+    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: ' + C.BG_FILTER )
+  }
+
+  componentDidMount() {
+    // Bind 'this' to passed methods
+    const handleOrientationChange = this.handleOrientationChange.bind( this )
+
+    // When orientation is changed between landscape and portrait mode.
+    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+  }
+
+  handleOrientationChange() {
+    this.setState({
+      windowHeight: window.innerHeight
+    })
   }
 
   /* ...or binding this here using an arrow function. I don't know if there
@@ -59,8 +60,30 @@ class StartView extends React.Component {
   }
 
   render() {
+
+    const styles = {
+      center: {
+        textAlign: 'center'
+      },
+      logotype: {
+        marginTop: '12px',
+        width: '600px',
+        '@media (max-width: 1023px)': {
+          width: '450px'
+        }
+      },
+      startButton: {
+        // position: 'relative',
+        // bottom: '70px'
+        // right: '50%'
+      },
+      startView: {
+        height: this.state.windowHeight + 'px'
+      }
+    }
+
     return (
-      <div className='startView'>
+      <div className='startView' style={ styles.startView }>
         <div className='row'>
           <div className='medium-12 columns'>
             <div style={ styles.center }>
@@ -117,7 +140,7 @@ class StartView extends React.Component {
                 alt='StartButton'
                 src={ C.SRC_TO_IMAGES.ICONS.START }
                 style={ {
-                  width: '150px',
+                  width: '145px',
                   '@media (max-width: 1023px)': {
                     width: '120px'
                   },

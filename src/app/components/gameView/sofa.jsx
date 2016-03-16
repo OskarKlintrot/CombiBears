@@ -36,8 +36,13 @@ class Sofa extends React.Component {
       twoSeats: {
         backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ')',
         padding: '0px 72px 74px 64px',
-        '@media (min-width: 900px)': {
+        '@media (min-width: 1400px)': {
+          width: '800px',
+          padding: '0px 121px 113px 114px'
+        },
+        '@media (min-width: 900px) and (max-width: 1399px)': {
           width: '600px',
+          height: '305px',
           padding: '0px 87px 88px 85px'
         },
         '@media (min-width: 620px) and (max-width: 767px)': {
@@ -56,7 +61,11 @@ class Sofa extends React.Component {
       threeSeats: {
         backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ')',
         padding: '22px 68px 75px 73px',
-        '@media (min-width: 900px)': {
+        '@media (min-width: 1400px)': {
+          width: '800px',
+          padding: '45px 118px 119px 129px'
+        },
+        '@media (min-width: 900px) and (max-width: 1399px)': {
           width: '600px',
           padding: '24px 81px 88px 85px'
         },
@@ -77,7 +86,11 @@ class Sofa extends React.Component {
       fourSeats: {
         backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ')',
         padding: '58px 68px 78px  73px',
-        '@media (min-width: 900px)': {
+        '@media (min-width: 1400px)': {
+          width: '800px',
+          padding: '85px 108px 125px 116px'
+        },
+        '@media (min-width: 900px) and (max-width: 1399px)': {
           width: '600px',
           padding: '66px 81px 88px 85px'
         },

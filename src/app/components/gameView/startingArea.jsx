@@ -12,7 +12,10 @@ const styles = {
     left: '10px',
     position: 'fixed',
     width: '512px',
-    '@media (min-width: 900px)': {
+    '@media (min-width: 1400px)': {
+      width: '800px'
+    },
+    '@media (min-width: 900px) and (max-width: 1399px)': {
       width: '600px'
     },
     '@media (min-width: 620px) and (max-width: 767px)': {
