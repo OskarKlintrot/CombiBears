@@ -35,7 +35,10 @@ const GameScene = ( props ) => {
   }
 
   return connectDropTarget(
-    <div style={ styles.gameScene } >
+    <div
+      className='gameScene'
+      style={ styles.gameScene }
+    >
       { props.children }
     </div>
   )

@@ -25,8 +25,7 @@ const styles = {
   },
   bear: {
     width: '50%',
-    margin: '0 auto',
-    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
+    margin: '0 auto'
   },
   arrow: {
     cursor: 'pointer',
@@ -107,7 +106,6 @@ const BearOptions = ( props ) => {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
           onClick={ handleIncreaseNumberOfBears }
-          onTouchStart={ handleIncreaseNumberOfBears }
           style={ topArrowStyle }
           draggable='false'
         />
@@ -129,7 +127,6 @@ const BearOptions = ( props ) => {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
           onClick={ handleDecreaseNumberOfBears }
-          onTouchStart={ handleDecreaseNumberOfBears }
           style={ bottomArrowStyle }
           draggable='false'
         />

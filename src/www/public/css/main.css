@@ -30,7 +30,7 @@ body {
 }
 
 #backgroundImage {
-  background: url(../../public/pics/background.jpg) no-repeat bottom fixed;
+  background: url(../../public/pics/background.jpg) no-repeat center fixed;
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -39,7 +39,7 @@ body {
   top: 0;
   left: 0;
   display: block;
-  -webkit-filter: blur(10px) grayscale(0.3);
+  -webkit-filter: blur(3px) grayscale(0.3) brightness(0.8);
 }
 
 #app {

@@ -100,6 +100,7 @@ class SavedPermutations extends React.Component {
         }
         return (
           <li
+            className='allowTouchMove'
             key={ index }
             style={ sofaListElementStyle }
             id={ sofaLiId }
@@ -113,7 +114,7 @@ class SavedPermutations extends React.Component {
       }
 
       return (
-        <div style={ styles.savedPermutations } >
+        <div style={ styles.savedPermutations }>
           <div style={ styles.arrowDiv }>
             <SavedPermutationsFlash
               style={ styles.arrowButton }
@@ -131,6 +132,7 @@ class SavedPermutations extends React.Component {
           >
             <ul
               style={ styles.ulSofas }
+              className='allowTouchMove'
             >
               {
                 this.props.savedPermutations.map( ( bearsOnSofa, index ) =>

@@ -62,7 +62,6 @@ const InfoFlash = ( props ) => {
           aria-label='Close alert'
           type='button'
           onClick={ handleCloseModal }
-          onTouchStart={ handleCloseModal }
         >
           <span aria-hidden='true'>&times;</span>
         </button>
