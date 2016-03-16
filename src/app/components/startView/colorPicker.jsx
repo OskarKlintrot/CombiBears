@@ -11,7 +11,6 @@ const styles = {
     paddingTop: '115%',
     zIndex: 999,
     position: 'absolute',
-    right: '20%',
     cursor: 'auto'
   },
   colors: {
@@ -59,12 +58,13 @@ class ColorPicker extends React.Component {
       {},
       styles.box,
       {
-        backgroundImage: this.props.topBear ?
-          'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg)' :
-          'url(public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg)',
+        backgroundImage: 'url(' + C.SRC_TO_IMAGES.SPEECHBUBBLES[this.props.bearID + 1] + ')',
         top: this.props.topBear ?
           '70%' :
-          '-170%'
+          '-145%',
+        right: this.props.bearID % 2 === 1 ?
+          '25%' :
+          '-25%'
       }
     )
     const bearOverlayStyle = {
@@ -105,13 +105,13 @@ class ColorPicker extends React.Component {
         style={ boxStyle }
       >
         <div
+          className='bearOverlay'
+          style={ bearOverlayStyle }
+        />
+        <div
           className='colors'
           style={ styles.colors }
         >
-          <div
-            className='bearOverlay'
-            style={ bearOverlayStyle }
-          />
           { colors.map( ( color, key ) => {
             if ( color !== C.BEAR_TO_IGNORE ) {
               let showColor = true
@@ -120,18 +120,18 @@ class ColorPicker extends React.Component {
                   showColor = false
                   break
                 }
-                return (
-                  <img
-                    className={ 'color' + color }
-                    src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
-                    key={ key }
-                    onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
-                    onTouchStart={ showColor ? () => this.props.handleBearColorChange( color ) : null }
-                    style={ showColor ? styles.color : noColor }
-                    draggable='false'
-                  />
-                )
               }
+              return (
+                <img
+                  className={ 'color' + color }
+                  src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
+                  key={ key }
+                  onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
+                  onTouchStart={ showColor ? () => this.props.handleBearColorChange( color ) : null }
+                  style={ showColor ? colorStyle : noColor }
+                  draggable='false'
+                />
+              )
             }
           }) }
         </div>
@@ -144,7 +144,8 @@ ColorPicker.props = {
   handleClickOutside: PropTypes.func.isRequired,
   handleBearColorChange: PropTypes.func.isRequired,
   topBear: PropTypes.bool.isRequired,
-  bears: PropTypes.object.isRequired
+  bears: PropTypes.object.isRequired,
+  bearID: PropTypes.number.isRequired
 }
 
 export default listensToClickOutside( ColorPicker )
