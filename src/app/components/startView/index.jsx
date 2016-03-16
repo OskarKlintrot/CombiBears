@@ -133,7 +133,7 @@ class StartView extends React.Component {
           </div>
         </div>
         <div className='row'>
-          <div className='small-12 large-8 large-offset-2 columns'>
+          <div className='small-12 columns'>
             <div style={ Object.assign({}, styles.center, styles.startButton ) }>
               <img
                 id='StartButton'
