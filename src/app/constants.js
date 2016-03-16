@@ -96,4 +96,6 @@ CONSTANTS.COLORS_ENUM = {
 
 CONSTANTS.BEAR_TO_IGNORE = CONSTANTS.COLORS.PLACEHOLDER
 
+CONSTANTS.BG_FILTER = 'blur(1px) grayscale(0.2) brightness(0.9)'
+
 export default Object.freeze( CONSTANTS )

@@ -42,6 +42,7 @@ class Sofa extends React.Component {
         },
         '@media (min-width: 900px) and (max-width: 1399px)': {
           width: '600px',
+          height: '305px',
           padding: '0px 87px 88px 85px'
         },
         '@media (min-width: 620px) and (max-width: 767px)': {

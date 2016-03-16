@@ -1,26 +1,68 @@
 import React from 'react'
+import C from '../../constants'
 import { connect } from 'react-redux'
 import ResultList from './resultList'
 import Buttons from './buttons'
 import FoundPermutations from './foundPermutations'
 
-const ResultView = ( props ) => {
-  const { game, settings } = props
-  return (
-    <div>
-      <Buttons>
-        <ResultList
-          numberOfFoundPermutations={ game.savedPermutations.length }
-          numberOfCorrectPermutations={ settings.correctCombinations.length }
+class ResultView extends React.Component {
+
+  constructor( props ) {
+    super( props )
+
+    // Apply background filters
+    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: ' + C.BG_FILTER )
+
+    this.state = {
+      windowHeight: window.innerHeight
+    }
+  }
+
+  componentDidMount() {
+    // Bind 'this' to passed methods
+    const handleOrientationChange = this.handleOrientationChange.bind( this )
+
+    // When orientation is changed between landscape and portrait mode.
+    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+  }
+
+  handleOrientationChange() {
+    this.setState({
+      windowHeight: window.innerHeight
+    })
+  }
+
+  render() {
+
+    const { game, settings } = this.props
+
+    const styles = {
+      container: {
+        height: this.state.windowHeight + 'px'
+      }
+    }
+
+    const buttonsHeight = 170
+
+    const foundPermutationsHeight = this.state.windowHeight - buttonsHeight
+
+    return (
+      <div style={ styles.container }>
+        <Buttons>
+          <ResultList
+            numberOfFoundPermutations={ game.savedPermutations.length }
+            numberOfCorrectPermutations={ settings.correctCombinations.length }
+          />
+        </Buttons>
+        <FoundPermutations
+          height={ foundPermutationsHeight }
+          className='small-12 medium-10 medium-offset-1 columns'
+          savedPermutations={ game.savedPermutations }
+          settings={ settings }
         />
-      </Buttons>
-      <FoundPermutations
-        className='small-12 medium-10 medium-offset-1 columns'
-        savedPermutations={ game.savedPermutations }
-        settings={ settings }
-      />
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = ( state ) => {
