@@ -27,7 +27,6 @@ const styles = {
     paddingTop: '2.5%'
   },
   arrow: {
-    cursor: 'pointer',
     WebkitTransform: 'rotate(90deg)',
     transform: 'rotate(90deg)',
     display: 'block',
@@ -50,7 +49,9 @@ const SofaOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: selected >= maxNumberOfSeats ? 'none' : 'block'
+      opacity: selected >= maxNumberOfSeats ? '0.3' : '1',
+      WebkitFilter: selected >= maxNumberOfSeats ? 'grayscale(1) brightness(1.3)' : '',
+      cursor: selected >= maxNumberOfSeats ? 'default' : 'pointer'
     }
   )
 
@@ -58,7 +59,9 @@ const SofaOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: selected <= minNumberOfSeats ? 'none' : 'block'
+      opacity: selected <= minNumberOfSeats ? '0.3' : '1',
+      WebkitFilter: selected <= minNumberOfSeats ? 'grayscale(1) brightness(1.3)' : '',
+      cursor: selected <= minNumberOfSeats ? 'default' : 'pointer'
     }
   )
 
@@ -67,7 +70,7 @@ const SofaOptions = ( props ) => {
       <div style={ styles.innerArrowBox }>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-          onClick={ handleIncreaseNumberOfSeats }
+          onClick={ selected >= maxNumberOfSeats ? null : handleIncreaseNumberOfSeats }
           style={ topArrowStyle }
           draggable='false'
         ></img>
@@ -82,7 +85,7 @@ const SofaOptions = ( props ) => {
       <div style={ styles.innerArrowBox }>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
-          onClick={ handleDecreaseNumberOfSeats }
+          onClick={ selected <= minNumberOfSeats ? null : handleDecreaseNumberOfSeats }
           style={ bottomArrowStyle }
           draggable='false'
         ></img>

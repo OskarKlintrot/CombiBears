@@ -63,7 +63,9 @@ const BearOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: numberOfBearsToDisplay >= maxNumberOfBears ? 'none' : 'block',
+      opacity: numberOfBearsToDisplay >= maxNumberOfBears ? '0.3' : '1',
+      WebkitFilter: numberOfBearsToDisplay >= maxNumberOfBears ? 'grayscale(1) brightness(1.3)' : '',
+      cursor: numberOfBearsToDisplay >= maxNumberOfBears ? 'default' : 'pointer',
       zIndex: 2
     }
   )
@@ -72,7 +74,9 @@ const BearOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: numberOfBearsToDisplay <= minNumberOfBears ? 'none' : 'block',
+      opacity: numberOfBearsToDisplay <= minNumberOfBears ? '0.3' : '1',
+      WebkitFilter: numberOfBearsToDisplay <= minNumberOfBears ? 'grayscale(1) brightness(1.3)' : '',
+      cursor: numberOfBearsToDisplay <= minNumberOfBears ? 'default' : 'pointer',
       marginTop: '10%'
     }
   )
@@ -111,7 +115,7 @@ const BearOptions = ( props ) => {
       <div style={ styles.innerArrowBox }>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-          onClick={ handleIncreaseNumberOfBears }
+          onClick={ numberOfBearsToDisplay >= maxNumberOfBears ? null : handleIncreaseNumberOfBears }
           style={ topArrowStyle }
           draggable='false'
         />
@@ -132,7 +136,7 @@ const BearOptions = ( props ) => {
       <div style={ styles.innerArrowBox }>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
-          onClick={ handleDecreaseNumberOfBears }
+          onClick={ numberOfBearsToDisplay <= minNumberOfBears ? null : handleDecreaseNumberOfBears }
           style={ bottomArrowStyle }
           draggable='false'
         />
