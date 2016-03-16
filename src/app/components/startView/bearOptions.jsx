@@ -19,12 +19,12 @@ const styles = {
     position: 'relative',
     display: 'block',
     width: '100%',
-    height: '50%',
-    marginTop: '-10%',
+    height: '45%',
+    marginTop: '-5%',
     zIndex: 1
   },
   bear: {
-    width: '50%',
+    width: '55%',
     margin: '0 auto'
   },
   arrow: {
@@ -82,7 +82,11 @@ const BearOptions = ( props ) => {
       if ( currentBear <= numberOfBearsToDisplay ) {
         bearsToRender.push(
           <div
-            className='small-6 columns'
+            className={
+              parseInt( item ) % 2 === 1 ?
+             'small-5 columns' :
+             'small-5 small-offset-1 columns'
+            }
             style={ styles.innerBox }
           >
             <Bear

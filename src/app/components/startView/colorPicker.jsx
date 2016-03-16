@@ -4,11 +4,11 @@ import C from '../../constants'
 
 const styles = {
   box: {
-    width: '100%',
+    width: '120%',
     height: 0,
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    paddingTop: '115%',
+    paddingTop: '135%',
     zIndex: 999,
     position: 'absolute',
     cursor: 'auto'
@@ -61,23 +61,28 @@ class ColorPicker extends React.Component {
         backgroundImage: 'url(' + C.SRC_TO_IMAGES.SPEECHBUBBLES[this.props.bearID + 1] + ')',
         top: this.props.topBear ?
           '70%' :
-          '-145%',
+          '-165%',
         right: this.props.bearID % 2 === 1 ?
-          '25%' :
-          '-25%'
+          '20%' :
+          '-38%'
       }
     )
     const bearOverlayStyle = {
       position: 'absolute',
       top: this.props.topBear ?
-        '-25%' :
+        '-35%' :
         '',
       bottom: this.props.topBear ?
         '' :
         '-35%',
-      right: '5%',
+      left: this.props.bearID % 2 === 1 ?
+        '' :
+        '7%',
+      right: this.props.bearID % 2 === 1 ?
+        '5%' :
+        '',
       width: '40%',
-      height: '40%'
+      height: '50%'
     }
 
     const colorStyle = Object.assign(
