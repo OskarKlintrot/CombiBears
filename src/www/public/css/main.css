@@ -145,6 +145,10 @@ body {
     transform: scale3d(1.120, 1.120, 1.120);
   }
 
+  2.5% {
+    transform: scale3d(0.90, 0.90, 0.90);
+  }
+
   5% {
     transform: scale3d(1, 1, 1);
   }
@@ -157,6 +161,10 @@ body {
 @-webkit-keyframes startViewBounce{
   0% {
     -webkit-transform: scale3d(1.120, 1.120, 1.120);
+  }
+
+  2.5% {
+    -webkit-transform: scale3d(0.90, 0.90, 0.90);
   }
 
   5% {
