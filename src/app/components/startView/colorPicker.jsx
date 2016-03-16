@@ -108,7 +108,6 @@ class ColorPicker extends React.Component {
                 src={ C.SRC_TO_IMAGES.ACCESSORIES[color] }
                 key={ key }
                 onClick={ showColor ? () => this.props.handleBearColorChange( color ) : null }
-                onTouchStart={ showColor ? () => this.props.handleBearColorChange( color ) : null }
                 style={ showColor ? styles.color : noColor }
                 draggable='false'
               />

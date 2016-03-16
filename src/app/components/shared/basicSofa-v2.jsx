@@ -95,7 +95,7 @@ class BasicSofa extends React.Component {
 
     return (
       <div
-        className={ C.COMPONENT_NAMES.SOFA }
+        className={ C.COMPONENT_NAMES.SOFA + ' allowTouchMove' }
         style={ mergedStyles }
       >
         <div style={ genericStyles.seatContainer }>
