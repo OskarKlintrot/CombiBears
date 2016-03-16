@@ -37,11 +37,17 @@ class ResultView extends React.Component {
     const { game, settings } = this.props
 
     const styles = {
-      height: this.state.windowHeight + 'px'
+      container: {
+        height: this.state.windowHeight + 'px'
+      }
     }
 
+    const buttonsHeight = 170
+
+    const foundPermutationsHeight = this.state.windowHeight - buttonsHeight
+
     return (
-      <div style={ styles }>
+      <div style={ styles.container }>
         <Buttons>
           <ResultList
             numberOfFoundPermutations={ game.savedPermutations.length }
@@ -49,6 +55,7 @@ class ResultView extends React.Component {
           />
         </Buttons>
         <FoundPermutations
+          height={ foundPermutationsHeight }
           className='small-12 medium-10 medium-offset-1 columns'
           savedPermutations={ game.savedPermutations }
           settings={ settings }
