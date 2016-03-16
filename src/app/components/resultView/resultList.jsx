@@ -4,15 +4,8 @@ const styles = {
   container: {
     textAlign: 'center',
     fontSize: '3.4em',
-    color: '#E26B00',
-    fontFamily: '"jollygood_sansbasic", "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif'
+    fontFamily: '"comic sans ms",Arial,sans-serif'
   }
-}
-
-const zeroOrHero = ( number ) => {
-  if ( number > 9 )
-    return number
-  return '0' + number
 }
 
 const ResultList = ( props ) => {
@@ -20,9 +13,9 @@ const ResultList = ( props ) => {
   return (
     <div style={ styles.container }>
      {
-        zeroOrHero( numberOfFoundPermutations ) +
+        numberOfFoundPermutations +
         '/' +
-        zeroOrHero( numberOfCorrectPermutations )
+        numberOfCorrectPermutations
       }
     </div>
   )

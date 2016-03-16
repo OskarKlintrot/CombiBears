@@ -14,7 +14,7 @@ const Root = ( props ) => {
           routes={ routes }
           history={ history }
         />
-        <DevTools />
+        { !window.devToolsExtension ? <DevTools /> : null }
       </div>
     </Provider>
   )

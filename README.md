@@ -1,4 +1,4 @@
-# TeddySofa
+# CombiBears
 An iOS app based on web technology.
 
 ## Technology used in this project

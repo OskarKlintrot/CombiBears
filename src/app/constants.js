@@ -15,7 +15,7 @@ CONSTANTS.SRC_TO_IMAGES = {
     ARROW_LEFT: 'public/pics/icons/arrow-left.svg',
     ARROW_RIGHT: 'public/pics/icons/arrow-right.svg',
     CONTINUE: 'public/pics/icons/continue.svg',
-    INFO: 'public/pics/icons/info.svg',
+    HELP: 'public/pics/icons/help.svg',
     NEW_SOFA: 'public/pics/icons/new-sofa.svg',
     RESTART: 'public/pics/icons/restart.svg',
     SAVE_PERMUTATION: 'public/pics/icons/save-permutation.svg',
@@ -89,5 +89,7 @@ CONSTANTS.COLORS_ENUM = {
 }
 
 CONSTANTS.BEAR_TO_IGNORE = CONSTANTS.COLORS.PLACEHOLDER
+
+CONSTANTS.BG_FILTER = 'blur(1px) grayscale(0.2) brightness(0.9)'
 
 export default Object.freeze( CONSTANTS )

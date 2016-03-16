@@ -19,9 +19,9 @@ export default function configureStore( initialState, history ) {
   const finaleCreateStore = compose(
     applyMiddleware( thunk ),
     storeEnhancer( history ),
-    DevTools.instrument(),
+    window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
     persistState( getDebugSessionKey() ),
-    persistStateLocalstorage( null, { key: 'BearGoesWhereDev' })
+    persistStateLocalstorage( null, { key: 'CombiBearsDev' })
   )( ( createStore ) )
 
   const store = finaleCreateStore( CombinedReducers, initialState )

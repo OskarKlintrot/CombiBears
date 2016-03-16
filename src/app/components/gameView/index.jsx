@@ -18,11 +18,12 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
 
-    const bg = document.getElementById( 'backgroundImage' )
-    bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
+    // Apply background filters
+    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: none' )
 
     this.state = {
-      triedToSaveDuplicatePermutationIndex: -1
+      triedToSaveDuplicatePermutationIndex: -1,
+      windowHeight: window.innerHeight
     }
   }
 
@@ -30,14 +31,33 @@ class GameView extends React.Component {
     this.redirectIfGotAllCorrectAnswers( C.ROUTES.START )
   }
 
-  componentDidUpdate = () => {
+  componentDidMount() {
+
+    // Bind 'this' to passed methods
+    const handleOrientationChange = this.handleOrientationChange.bind( this )
+
+    // When orientation is changed between landscape and portrait mode.
+    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+  }
+
+  componentDidUpdate() {
+
+    // TODO: Could this be handled locally in savedPermutations instead?
+    // Scrolls to game view 'already saved' element and sets styles on in.
     if ( document.getElementById( 'alreadySaved' ) !== null ) {
       const alreadySaved = document.getElementById( 'alreadySaved' )
       const topPos = alreadySaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
       alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
     }
-  };
+  }
+
+  handleOrientationChange() {
+
+    this.setState({
+      windowHeight: window.innerHeight
+    })
+  }
 
   // This method is triggered on every drop event.
   handleDrop( event ) {
@@ -124,7 +144,7 @@ class GameView extends React.Component {
     // Check if bear exists on target seat, if it does, move that bear to source seat
     if ( this.bearExistsOnSeat( event.to.containerTypeName, event.to.index ) ) {
 
-      // Get bearKey from taget seat
+      // Get bearKey from target seat
       const bearKeyOnTargetSeat = this.getBearKeyForSeat( event.to.containerTypeName, event.to.index )
 
       // Move to Start area seat
@@ -273,8 +293,15 @@ class GameView extends React.Component {
     const handleDrop = this.handleDrop.bind( this )
 
     return (
-      <div>
-        <GameScene>
+      <div
+        // Prevent iOS rubber banding / over scroll
+        onTouchMove={ ( event ) => {
+          if ( !event.target.classList.contains( 'allowTouchMove' ) ) event.preventDefault()
+        } }
+      >
+        <GameScene
+          height={ this.state.windowHeight }
+        >
           <Buttons
             onRestart={ resetPermutation }
             onSave={ savePermutation }
@@ -300,6 +327,7 @@ class GameView extends React.Component {
         </GameScene>
 
         <SavedPermutations
+          height={ this.state.windowHeight }
           savedPermutations={ this.props.game.savedPermutations }
           settings={ this.props.settings }
           triedToSaveDuplicatePermutationIndex={ this.state.triedToSaveDuplicatePermutationIndex }
