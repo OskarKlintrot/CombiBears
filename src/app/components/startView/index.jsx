@@ -73,9 +73,13 @@ class StartView extends React.Component {
         }
       },
       startButton: {
-        // position: 'relative',
-        // bottom: '70px'
-        // right: '50%'
+        position: 'relative',
+        bottom: '70px',
+        width: '145px',
+        '@media (max-width: 1023px)': {
+          width: '120px'
+        },
+        cursor: 'pointer'
       },
       startView: {
         height: this.state.windowHeight + 'px'
@@ -132,38 +136,28 @@ class StartView extends React.Component {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='small-12 columns'>
-            <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-              <img
-                id='StartButton'
-                alt='StartButton'
-                src={ C.SRC_TO_IMAGES.ICONS.START }
-                style={ {
-                  width: '145px',
-                  '@media (max-width: 1023px)': {
-                    width: '120px'
-                  },
-                  cursor: 'pointer'
-                } }
-                onClick={ () => {
-                  this.props.startGame()
-                  this.props.resetGame()
-                  this.props.initBears()
-                  this.props.initSofa()
-                } }
-                draggable='false'
-              ></img>
-            </div>
-          </div>
-          <div className='large-2 columns'>
-            <InfoFlash
-              handleOpenModal={ this.onOpenModal }
-              handleCloseModal={ this.onCloseModal }
-              handleModalCloseRequest={ this.onModalCloseRequest }
-              open={ this.state.modalIsOpen }
-            />
-          </div>
+        <div style={ Object.assign({}, styles.center ) }>
+          <img
+            id='StartButton'
+            alt='StartButton'
+            src={ C.SRC_TO_IMAGES.ICONS.START }
+            onClick={ () => {
+              this.props.startGame()
+              this.props.resetGame()
+              this.props.initBears()
+              this.props.initSofa()
+            } }
+            style={ styles.startButton }
+            draggable='false'
+          ></img>
+        </div>
+        <div>
+          <InfoFlash
+            handleOpenModal={ this.onOpenModal }
+            handleCloseModal={ this.onCloseModal }
+            handleModalCloseRequest={ this.onModalCloseRequest }
+            open={ this.state.modalIsOpen }
+          />
         </div>
       </div>
     )
