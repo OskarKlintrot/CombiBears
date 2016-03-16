@@ -34,11 +34,14 @@ const styles = Object.assign({}, CommonStyling, {
   },
 
   flagButton: {
-    height: '100px',
-    width: '100px',
+    height: '75px',
+    width: '75px',
     marginRight: '10px',
     backgroundColor: '#F7D117',
-    border: '5px solid black'
+    border: '3px solid black',
+    borderRadius: '10px',
+    fontSize: 'xx-large',
+    fontWeight: 'bold'
   }
 })
 
@@ -50,11 +53,11 @@ class InfoFlash extends React.Component {
     }
   }
 
-  handleSweFlagClick = () => {
+  handleSweClick = () => {
     this.setState({ SwedishChosen: true })
   };
 
-  handleEngFlagClick = () => {
+  handleEngClick = () => {
     this.setState({ SwedishChosen: false })
   };
 
@@ -72,10 +75,7 @@ class InfoFlash extends React.Component {
         <img
           src={ C.SRC_TO_IMAGES.ICONS.HELP }
           style={ Object.assign({}, styles.infoButton, style ) }
-          onClick={ () => {
-            handleOpenModal()
-            this.handleSweFlagClick()
-          } }
+          onClick={ handleOpenModal }
           draggable='false'
         />
         <Modal
@@ -94,14 +94,14 @@ class InfoFlash extends React.Component {
           <button
             style={ Object.assign({}, styles.flagButton, style ) }
             type='button'
-            onClick={ this.handleSweFlagClick }
+            onClick={ this.handleSweClick }
             draggable='false'
           >SV
           </button>
           <button
             style={ Object.assign({}, styles.flagButton, style ) }
             type='button'
-            onClick={ this.handleEngFlagClick }
+            onClick={ this.handleEngClick }
             draggable='false'
           >EN
           </button>

@@ -1,4 +1,7 @@
 const Swedish = {
+  aboutTitle: 'Om CombiBears',
+  about: 'Målet med spelet är att placera ut björnar i en soffa och att hitta alla olika sätt som man kan placera ut björnarna på (alla möjliga permutationer). Tanken bakom spelet är att det ska hjälpa barn i åldersgruppen 6-9 år att lära sig om kombinatorik. CombiBears utvecklades 2016 av studenter som läser till webbprogrammerare på Linnéuniversitetet, på uppdrag av Jorryt van Bommel vid Karlstads Universitet. ',
+  developers: 'Utvecklare: Ingela Bladh, Oskar Klintrot, Micael Persson, Johnny Pesola, Carolina Skov Pedersen, Daniel Vedin, Marco Villegas Tello, Lisa Westlund',
   instructions: 'Instruktioner',
   startMenu: 'Startmenyn',
   chooseSofaTitle: 'Välja soffa',
@@ -9,8 +12,6 @@ const Swedish = {
   startGameTitle: 'Starta spelet',
   startGame: 'Klicka på Spela-knappen.',
   theGameMainTitle: 'Spelplanen',
-  goalTitle: 'Vad spelet går ut på',
-  goal: 'Målet med spelet är att placera ut björnar i soffan och att hitta alla olika sätt som man kan placera ut björnarna på (alla möjliga permutationer). Tanken bakom spelet är att det ska hjälpa barn i åldersgruppen 6-9 år att lära sig om kombinatorik.',
   placeBearTitle: 'Placera björnar i soffan',
   placeBear: 'Dra björnen från sin pall till soffan och släpp den. Om du vill byta plats på två nallar i soffan kan du släppa den ena nallen på den andra. Om du vill flytta ner alla björnar till sina pallar på en gång kan du trycka på Börja om-knappen.',
   saveSofaTitle: 'Spara en soffa med nallar',

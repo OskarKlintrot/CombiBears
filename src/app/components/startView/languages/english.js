@@ -1,4 +1,7 @@
 const English = {
+  aboutTitle: 'About CombiBears',
+  about: 'The goal of the game is to place bears on a sofa and to find all the different ways in which the bears can be placed on the sofa (all possible permutations). The game is meant to help children aged 6 to 9 to learn about combinatorics. CombiBears was developed in 2016 by web developer students at Linneaus University, as an assignment from Jorryt van Bommel at Karlstad University. ',
+  developers: 'Developers: Ingela Bladh, Oskar Klintrot, Micael Persson, Johnny Pesola, Carolina Skov Pedersen, Daniel Vedin, Marco Villegas Tello, Lisa Westlund',
   instructions: 'Instructions',
   startMenu: 'Start menu',
   chooseSofaTitle: 'Choose a sofa',
@@ -9,8 +12,6 @@ const English = {
   startGameTitle: 'Start the game',
   startGame: 'Click the Play button.',
   theGameMainTitle: 'The game',
-  goalTitle: 'The goal of the game',
-  goal: 'The goal of the game is to place the bears on the sofa and to find all the different ways in which the bears can be placed on the sofa (all possible permutations). The game is meant to help children aged 6 to 9 to learn about combinatorics.',
   placeBearTitle: 'Place bears on the sofa',
   placeBear: 'Drag the bear from its stool to the sofa and drop it. If you want to switch the position of two bears on the sofa you can drop one of the bears on the other one. If you want to move all of the bears back to their stools at once you can click the Restart button.',
   saveSofaTitle: 'Save a sofa with bears',
