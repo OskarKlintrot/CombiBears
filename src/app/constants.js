@@ -48,6 +48,12 @@ CONSTANTS.SRC_TO_IMAGES = {
     RED: 'public/pics/accessories/hat.svg',
     YELLOW: 'public/pics/accessories/crown.svg'
   },
+  SPEECHBUBBLES: {
+    1: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-1.svg',
+    2: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-2.svg',
+    3: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-3.svg',
+    4: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-4.svg'
+  },
   LOGOTYPE: 'public/pics/logotype.png'
 }
 
