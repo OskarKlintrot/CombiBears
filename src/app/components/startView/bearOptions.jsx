@@ -25,7 +25,9 @@ const styles = {
   },
   bear: {
     width: '55%',
-    margin: '0 auto'
+    margin: '0 auto',
+    animation: 'startViewBounce 5s ease-in 0s infinite alternate',
+    webkitAnimation: 'startViewBounce 5s ease-in 0s infinite alternate'
   },
   arrow: {
     cursor: 'pointer',
