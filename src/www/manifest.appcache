@@ -41,8 +41,10 @@ public/pics/bears/yellow.png
 public/pics/bears/yellow.svg
 public/pics/icons/arrow-left.svg
 public/pics/icons/arrow-right.svg
-public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-upside-down.svg
-public/pics/icons/colorpicker-bkgr-outlined-talk-bubble.svg
+public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-1.svg
+public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-2.svg
+public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-3.svg
+public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-4.svg
 public/pics/icons/colorpicker-bkgr-outlined.svg
 public/pics/icons/continue.svg
 public/pics/icons/css-sprites-icons.txt
@@ -83,7 +85,7 @@ NETWORK:
 *
 
 # Hash from Powershell script:
-# 8fba4407dc7c102ef57a34195550d845
+# e55e3ebac741ff7b7a0c5314f47fd5c0
 
 # Hash from deployment:
 # StringToBeReplacedAtDeployment
