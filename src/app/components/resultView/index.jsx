@@ -20,10 +20,16 @@ class ResultView extends React.Component {
 
   componentDidMount() {
     // Bind 'this' to passed methods
-    const handleOrientationChange = this.handleOrientationChange.bind( this )
+    this.boundHandleOrientationChange = this.handleOrientationChange.bind( this )
 
     // When orientation is changed between landscape and portrait mode.
-    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+    window.addEventListener( 'orientationchange', this.boundHandleOrientationChange, false )
+    window.addEventListener( 'resize', this.boundHandleOrientationChange, false )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener( 'orientationchange', this.boundHandleOrientationChange )
+    window.removeEventListener( 'resize', this.boundHandleOrientationChange )
   }
 
   handleOrientationChange() {
@@ -37,11 +43,17 @@ class ResultView extends React.Component {
     const { game, settings } = this.props
 
     const styles = {
-      height: this.state.windowHeight + 'px'
+      container: {
+        height: this.state.windowHeight + 'px'
+      }
     }
 
+    const buttonsHeight = 170
+
+    const foundPermutationsHeight = this.state.windowHeight - buttonsHeight
+
     return (
-      <div style={ styles }>
+      <div style={ styles.container }>
         <Buttons>
           <ResultList
             numberOfFoundPermutations={ game.savedPermutations.length }
@@ -49,6 +61,7 @@ class ResultView extends React.Component {
           />
         </Buttons>
         <FoundPermutations
+          height={ foundPermutationsHeight }
           className='small-12 medium-10 medium-offset-1 columns'
           savedPermutations={ game.savedPermutations }
           settings={ settings }

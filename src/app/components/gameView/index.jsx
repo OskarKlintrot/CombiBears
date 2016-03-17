@@ -32,12 +32,12 @@ class GameView extends React.Component {
   }
 
   componentDidMount() {
-
     // Bind 'this' to passed methods
-    const handleOrientationChange = this.handleOrientationChange.bind( this )
+    this.boundHandleOrientationChange = this.handleOrientationChange.bind( this )
 
     // When orientation is changed between landscape and portrait mode.
-    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+    window.addEventListener( 'orientationchange', this.boundHandleOrientationChange, false )
+    window.addEventListener( 'resize', this.boundHandleOrientationChange, false )
   }
 
   componentDidUpdate() {
@@ -50,6 +50,11 @@ class GameView extends React.Component {
       document.getElementById( 'sofaList' ).scrollTop = topPos
       alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener( 'orientationchange', this.boundHandleOrientationChange )
+    window.removeEventListener( 'resize', this.boundHandleOrientationChange )
   }
 
   handleOrientationChange() {

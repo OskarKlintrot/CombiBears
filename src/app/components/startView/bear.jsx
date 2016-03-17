@@ -53,6 +53,7 @@ class Bear extends React.Component {
           handleBearColorChange={ this.onHandleBearColorChange }
           topBear={ this.props.bearID < 2 }
           bears={ this.props.bears }
+          bearID={ this.props.bearID }
         /> :
         null
       }
