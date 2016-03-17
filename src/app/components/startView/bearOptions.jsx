@@ -68,7 +68,7 @@ const BearOptions = ( props ) => {
     styles.bear,
     {
       animation: bounceBears ? currentAnimation : 'none',
-      webkitAnimation: bounceBears ? currentAnimation : 'none'
+      WebkitAnimation: bounceBears ? currentAnimation : 'none'
     }
   )
 

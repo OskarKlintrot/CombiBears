@@ -35,12 +35,14 @@ const SettingsReducer = ( state, action ) => {
   case INCREASE_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: state.numberOfSeats + 1 > maxSeats ? state.numberOfSeats : state.numberOfSeats + 1
+      numberOfSeats: state.numberOfSeats + 1 > maxSeats ? state.numberOfSeats : state.numberOfSeats + 1,
+      bounceSofaAnimation1: !state.bounceSofaAnimation1
     }
   case DECREASE_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: state.numberOfSeats - 1 < minSeats ? state.numberOfSeats : state.numberOfSeats - 1
+      numberOfSeats: state.numberOfSeats - 1 < minSeats ? state.numberOfSeats : state.numberOfSeats - 1,
+      bounceSofaAnimation1: !state.bounceSofaAnimation1
     }
   case INCREASE_NUMBER_OF_BEARS:
     return {
