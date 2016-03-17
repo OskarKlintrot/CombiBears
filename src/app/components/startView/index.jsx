@@ -87,7 +87,9 @@ class StartView extends React.Component {
     }
 
     return (
-      <div className='startView' style={ styles.startView }>
+      <div className='startView'
+        style={ styles.startView }
+      >
         <div className='row'>
           <div className='medium-12 columns'>
             <div style={ styles.center }>
