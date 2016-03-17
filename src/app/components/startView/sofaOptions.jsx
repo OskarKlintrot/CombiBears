@@ -39,11 +39,25 @@ const SofaOptions = ( props ) => {
   const {
     selected,
     handleIncreaseNumberOfSeats,
-    handleDecreaseNumberOfSeats
+    handleDecreaseNumberOfSeats,
+    bounceSofaAnimation1
   } = props
 
   const maxNumberOfSeats = 4
   const minNumberOfSeats = 2
+
+  const sofaStyle = Object.assign(
+    {},
+    styles.sofa,
+    {
+      animation: bounceSofaAnimation1 ?
+      'startViewBounce1 2s ease-in 0s 1 alternate' :
+      'startViewBounce2 2s ease-in 0s 1 alternate',
+      WebkitAnimation: bounceSofaAnimation1 ?
+      'startViewBounce1 2s ease-in 0s 1 alternate' :
+      'startViewBounce2 2s ease-in 0s 1 alternate'
+    }
+  )
 
   const topArrowStyle = Object.assign(
     {},
@@ -78,7 +92,7 @@ const SofaOptions = ( props ) => {
       <div style={ styles.innerSofaBox }>
         <img
           src={ C.SRC_TO_IMAGES.SOFAS[selected] }
-          style={ styles.sofa }
+          style={ sofaStyle }
           draggable='false'
         ></img>
       </div>

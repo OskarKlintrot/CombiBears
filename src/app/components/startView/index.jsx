@@ -123,6 +123,7 @@ class StartView extends React.Component {
                   handleDecreaseNumberOfSeats={
                     this.props.decreaseNumberOfSeats
                   }
+                  bounceSofaAnimation1={ this.props.bounceSofaAnimation1 }
                 />
               </Option>
             </div>
@@ -140,6 +141,8 @@ class StartView extends React.Component {
                   handleDecreaseNumberOfBears={
                     this.props.decreaseNumberOfBears
                   }
+                  bounceBears={ this.props.bounceBears }
+                  bounceBearsAnimation1={ this.props.bounceBearsAnimation1 }
                 />
               </Option>
             </div>
@@ -181,7 +184,10 @@ StartView.propTypes = {
   decreaseNumberOfSeats: PropTypes.func.isRequired,
   increaseNumberOfBears: PropTypes.func.isRequired,
   decreaseNumberOfBears: PropTypes.func.isRequired,
-  updateBear: PropTypes.func.isRequired
+  updateBear: PropTypes.func.isRequired,
+  bounceBears: PropTypes.bool.isRequired,
+  bounceBearsAnimation1: PropTypes.bool.isRequired,
+  bounceSofaAnimation1: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ( state ) => state.settings
