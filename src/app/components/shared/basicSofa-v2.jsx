@@ -15,9 +15,9 @@ class BasicSofa extends React.Component {
       const timeoutTime = 2000
       const timeoutFunction = () => {
         lastSaved.removeAttribute( 'style' )
-        lastSaved.setAttribute( 'style', 'margin-top:15px;' )
+        lastSaved.setAttribute( 'style', 'padding: 4% 5% 0 5%;' )
       }
-      lastSaved.setAttribute( 'style', 'background-color: #59b585; border-radius:10px; padding-top:15px;' )
+      lastSaved.setAttribute( 'style', 'background-color: #59b585; padding: 4% 5% 0 5%;' )
       const topPos = lastSaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
       setTimeout( timeoutFunction, timeoutTime )
