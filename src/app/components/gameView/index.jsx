@@ -48,7 +48,7 @@ class GameView extends React.Component {
       const alreadySaved = document.getElementById( 'alreadySaved' )
       const topPos = alreadySaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
-      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
+      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; padding: 5% 5% 0 5%;' )
     }
   }
 
