@@ -35,29 +35,34 @@ const SettingsReducer = ( state, action ) => {
   case INCREASE_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: state.numberOfSeats + 1 > maxSeats ? state.numberOfSeats : state.numberOfSeats + 1
+      numberOfSeats: state.numberOfSeats + 1 > maxSeats ? state.numberOfSeats : state.numberOfSeats + 1,
+      bounceSofaAnimation1: !state.bounceSofaAnimation1
     }
   case DECREASE_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: state.numberOfSeats - 1 < minSeats ? state.numberOfSeats : state.numberOfSeats - 1
+      numberOfSeats: state.numberOfSeats - 1 < minSeats ? state.numberOfSeats : state.numberOfSeats - 1,
+      bounceSofaAnimation1: !state.bounceSofaAnimation1
     }
   case INCREASE_NUMBER_OF_BEARS:
     return {
       ...state,
       numberOfBears: state.numberOfBears + 1 > maxBears ? state.numberOfBears : state.numberOfBears + 1,
-      bears: Object.assign({}, randomizeMissingBear( state.bears, state.numberOfBears ) )
+      bears: Object.assign({}, randomizeMissingBear( state.bears, state.numberOfBears ) ),
+      bounceBearsAnimation1: !state.bounceBearsAnimation1
     }
   case DECREASE_NUMBER_OF_BEARS:
     return {
       ...state,
       numberOfBears: state.numberOfBears - 1 < minBears ? state.numberOfBears : state.numberOfBears - 1,
-      bears: Object.assign({}, removeBear( state.bears, state.numberOfBears - 1 ) )
+      bears: Object.assign({}, removeBear( state.bears, state.numberOfBears - 1 ) ),
+      bounceBearsAnimation1: !state.bounceBearsAnimation1
     }
   case UPDATE_BEAR:
     return {
       ...state,
-      bears: Object.assign({}, updateBear( state.bears, action.bear ) )
+      bears: Object.assign({}, updateBear( state.bears, action.bear ) ),
+      bounceBears: false
     }
   case DELETE_BEAR:
     return {
@@ -67,6 +72,7 @@ const SettingsReducer = ( state, action ) => {
   case START_GAME:
     return {
       ...state,
+      bounceBears: true,
       correctCombinations: Combinatorics.permutation(
         getBearsFromObject(
           state.bears,

@@ -25,9 +25,7 @@ const styles = {
   },
   bear: {
     width: '55%',
-    margin: '0 auto',
-    animation: 'startViewBounce 5s ease-in 0s infinite alternate',
-    WebkitAnimation: 'startViewBounce 5s ease-in 0s infinite alternate'
+    margin: '0 auto'
   },
   arrow: {
     cursor: 'pointer',
@@ -51,13 +49,28 @@ const BearOptions = ( props ) => {
     updateBear,
     numberOfBearsToDisplay,
     handleIncreaseNumberOfBears,
-    handleDecreaseNumberOfBears
+    handleDecreaseNumberOfBears,
+    bounceBears,
+    bounceBearsAnimation1
   } = props
 
   const maxNumberOfBears = 4
   const minNumberOfBears = 2
 
   const bearsToRender = []
+
+  const currentAnimation = bounceBearsAnimation1 ?
+  'startViewBounce1 2s ease-in 0s infinite alternate' :
+  'startViewBounce2 2s ease-in 0s infinite alternate'
+
+  const bearStyle = Object.assign(
+    {},
+    styles.bear,
+    {
+      animation: bounceBears ? currentAnimation : 'none',
+      WebkitAnimation: bounceBears ? currentAnimation : 'none'
+    }
+  )
 
   const topArrowStyle = Object.assign(
     {},
@@ -100,7 +113,7 @@ const BearOptions = ( props ) => {
               bear={ bears[item] }
               bears={ bears }
               updateBear={ updateBear }
-              style={ styles.bear }
+              style={ bearStyle }
               bearID={ parseInt( item ) }
             />
           </div>

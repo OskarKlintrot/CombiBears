@@ -65,24 +65,22 @@ class SavedPermutations extends React.Component {
 
       ulSofas: {
         listStyleType: 'none',
-        margin: 'auto',
-        padding: '15px'
+        margin: 'auto'
       },
 
       sofaListElementLast: {
         backgroundColor: '#59b585',
-        borderRadius: '10px',
-        paddingTop: '15px'
+        padding: '4% 5% 0 5%'
       },
 
       sofaListElementSaved: {
         backgroundColor: '#b93e3e',
-        borderRadius: '10px',
-        paddingTop: '15px'
+        padding: '4% 5% 0 5%',
+        marginTop: '2%'
       },
 
       sofaListElements: {
-        paddingTop: '15px'
+        padding: '4% 5% 0 5%'
       }
     }
 
