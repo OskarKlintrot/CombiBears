@@ -19,14 +19,15 @@ const styles = {
     position: 'relative',
     display: 'block',
     width: '100%',
-    height: '50%',
-    marginTop: '-10%',
+    height: '45%',
+    marginTop: '-5%',
     zIndex: 1
   },
   bear: {
-    width: '50%',
+    width: '55%',
     margin: '0 auto',
-    WebkitFilter: 'drop-shadow(0 0 0.25em rgba(140, 140, 130, 1))'
+    animation: 'startViewBounce 5s ease-in 0s infinite alternate',
+    WebkitAnimation: 'startViewBounce 5s ease-in 0s infinite alternate'
   },
   arrow: {
     cursor: 'pointer',
@@ -62,7 +63,9 @@ const BearOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: numberOfBearsToDisplay >= maxNumberOfBears ? 'none' : 'block',
+      opacity: numberOfBearsToDisplay >= maxNumberOfBears ? '0.3' : '1',
+      WebkitFilter: numberOfBearsToDisplay >= maxNumberOfBears ? 'grayscale(1) brightness(1.3)' : '',
+      cursor: numberOfBearsToDisplay >= maxNumberOfBears ? 'default' : 'pointer',
       zIndex: 2
     }
   )
@@ -71,7 +74,9 @@ const BearOptions = ( props ) => {
     {},
     styles.arrow,
     {
-      display: numberOfBearsToDisplay <= minNumberOfBears ? 'none' : 'block',
+      opacity: numberOfBearsToDisplay <= minNumberOfBears ? '0.3' : '1',
+      WebkitFilter: numberOfBearsToDisplay <= minNumberOfBears ? 'grayscale(1) brightness(1.3)' : '',
+      cursor: numberOfBearsToDisplay <= minNumberOfBears ? 'default' : 'pointer',
       marginTop: '10%'
     }
   )
@@ -83,7 +88,11 @@ const BearOptions = ( props ) => {
       if ( currentBear <= numberOfBearsToDisplay ) {
         bearsToRender.push(
           <div
-            className='small-6 columns'
+            className={
+              parseInt( item ) % 2 === 1 ?
+             'small-5 columns' :
+             'small-5 small-offset-1 columns'
+            }
             style={ styles.innerBox }
           >
             <Bear
@@ -106,7 +115,7 @@ const BearOptions = ( props ) => {
       <div style={ styles.innerArrowBox }>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_LEFT }
-          onClick={ handleIncreaseNumberOfBears }
+          onClick={ numberOfBearsToDisplay >= maxNumberOfBears ? null : handleIncreaseNumberOfBears }
           style={ topArrowStyle }
           draggable='false'
         />
@@ -127,7 +136,7 @@ const BearOptions = ( props ) => {
       <div style={ styles.innerArrowBox }>
         <img
           src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
-          onClick={ handleDecreaseNumberOfBears }
+          onClick={ numberOfBearsToDisplay <= minNumberOfBears ? null : handleDecreaseNumberOfBears }
           style={ bottomArrowStyle }
           draggable='false'
         />

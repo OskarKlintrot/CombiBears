@@ -10,7 +10,10 @@ const styles = {
   left: 0,
   top: 0,
   width: '121px',
-  '@media (min-width: 900px)': {
+  '@media (min-width: 1400px)': {
+    width: '190px'
+  },
+  '@media (min-width: 900px) and (max-width: 1399px)': {
     width: '142px'
   },
   '@media (min-width: 620px) and (max-width: 767px)': {

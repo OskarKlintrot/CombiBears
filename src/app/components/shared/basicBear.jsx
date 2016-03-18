@@ -15,6 +15,7 @@ const BasicBear = ( props ) => {
       style={ mergedStyle }
     >
       <img
+        className='allowTouchMove'
         src={ bear.src }
         alt='Image of a bear'
         draggable='false'

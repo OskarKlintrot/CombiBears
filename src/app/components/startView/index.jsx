@@ -8,36 +8,43 @@ import InfoFlash from './infoFlash'
 import Option from './option'
 import Actions from '../../redux/actions/'
 
-const styles = {
-  center: {
-    textAlign: 'center'
-  },
-  logotype: {
-    marginTop: '12px',
-    width: '600px',
-    '@media (max-width: 1023px)': {
-      width: '450px'
-    }
-  },
-  startButton: {
-    // position: 'relative',
-    // bottom: '70px'
-    // right: '50%'
-  }
-}
-
 @Radium
 class StartView extends React.Component {
   constructor( props ) {
     super( props )
+
     /* One way of using this.setState() when using ES2015 classes
      * is to either bind this here in the constructor...
      */
     this.onCloseModal = this.onCloseModal.bind( this )
     this.onModalCloseRequest = this.onModalCloseRequest.bind( this )
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      windowHeight: window.innerHeight
     }
+
+    // Apply background filters
+    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: ' + C.BG_FILTER )
+  }
+
+  componentDidMount() {
+    // Bind 'this' to passed methods
+    this.boundHandleOrientationChange = this.handleOrientationChange.bind( this )
+
+    // When orientation is changed between landscape and portrait mode.
+    window.addEventListener( 'orientationchange', this.boundHandleOrientationChange, false )
+    window.addEventListener( 'resize', this.boundHandleOrientationChange, false )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener( 'orientationchange', this.boundHandleOrientationChange )
+    window.removeEventListener( 'resize', this.boundHandleOrientationChange )
+  }
+
+  handleOrientationChange() {
+    this.setState({
+      windowHeight: window.innerHeight
+    })
   }
 
   /* ...or binding this here using an arrow function. I don't know if there
@@ -59,8 +66,37 @@ class StartView extends React.Component {
   }
 
   render() {
+
+    const styles = {
+      center: {
+        textAlign: 'center'
+      },
+      logotype: {
+        marginTop: '12px',
+        width: '600px',
+        '@media (max-width: 1023px)': {
+          width: '450px'
+        }
+      },
+      startButton: {
+        position: 'relative',
+        bottom: '70px',
+        width: '145px',
+        '@media (max-width: 1023px)': {
+          width: '120px'
+        },
+        cursor: 'pointer'
+      },
+      startView: {
+        height: this.state.windowHeight + 'px'
+      }
+    }
+
     return (
-      <div className='startView'>
+      <div
+        className='startView'
+        style={ styles.startView }
+      >
         <div className='row'>
           <div className='medium-12 columns'>
             <div style={ styles.center }>
@@ -109,38 +145,28 @@ class StartView extends React.Component {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='small-12 large-8 large-offset-2 columns'>
-            <div style={ Object.assign({}, styles.center, styles.startButton ) }>
-              <img
-                id='StartButton'
-                alt='StartButton'
-                src={ C.SRC_TO_IMAGES.ICONS.START }
-                style={ {
-                  width: '150px',
-                  '@media (max-width: 1023px)': {
-                    width: '120px'
-                  },
-                  cursor: 'pointer'
-                } }
-                onClick={ () => {
-                  this.props.startGame()
-                  this.props.resetGame()
-                  this.props.initBears()
-                  this.props.initSofa()
-                } }
-                draggable='false'
-              ></img>
-            </div>
-          </div>
-          <div className='large-2 columns'>
-            <InfoFlash
-              handleOpenModal={ this.onOpenModal }
-              handleCloseModal={ this.onCloseModal }
-              handleModalCloseRequest={ this.onModalCloseRequest }
-              open={ this.state.modalIsOpen }
-            />
-          </div>
+        <div style={ Object.assign({}, styles.center ) }>
+          <img
+            id='StartButton'
+            alt='StartButton'
+            src={ C.SRC_TO_IMAGES.ICONS.START }
+            onClick={ () => {
+              this.props.startGame()
+              this.props.resetGame()
+              this.props.initBears()
+              this.props.initSofa()
+            } }
+            style={ styles.startButton }
+            draggable='false'
+          ></img>
+        </div>
+        <div>
+          <InfoFlash
+            handleOpenModal={ this.onOpenModal }
+            handleCloseModal={ this.onCloseModal }
+            handleModalCloseRequest={ this.onModalCloseRequest }
+            open={ this.state.modalIsOpen }
+          />
         </div>
       </div>
     )

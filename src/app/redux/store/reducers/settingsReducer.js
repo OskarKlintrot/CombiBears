@@ -35,23 +35,23 @@ const SettingsReducer = ( state, action ) => {
   case INCREASE_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: state.numberOfSeats + 1 > maxSeats ? minSeats : state.numberOfSeats + 1
+      numberOfSeats: state.numberOfSeats + 1 > maxSeats ? state.numberOfSeats : state.numberOfSeats + 1
     }
   case DECREASE_NUMBER_OF_SEATS:
     return {
       ...state,
-      numberOfSeats: state.numberOfSeats - 1 < minSeats ? maxSeats : state.numberOfSeats - 1
+      numberOfSeats: state.numberOfSeats - 1 < minSeats ? state.numberOfSeats : state.numberOfSeats - 1
     }
   case INCREASE_NUMBER_OF_BEARS:
     return {
       ...state,
-      numberOfBears: state.numberOfBears + 1 > maxBears ? minBears : state.numberOfBears + 1,
+      numberOfBears: state.numberOfBears + 1 > maxBears ? state.numberOfBears : state.numberOfBears + 1,
       bears: Object.assign({}, randomizeMissingBear( state.bears, state.numberOfBears ) )
     }
   case DECREASE_NUMBER_OF_BEARS:
     return {
       ...state,
-      numberOfBears: state.numberOfBears - 1 < minBears ? maxBears : state.numberOfBears - 1,
+      numberOfBears: state.numberOfBears - 1 < minBears ? state.numberOfBears : state.numberOfBears - 1,
       bears: Object.assign({}, removeBear( state.bears, state.numberOfBears - 1 ) )
     }
   case UPDATE_BEAR:

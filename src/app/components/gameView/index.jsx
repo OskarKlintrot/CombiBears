@@ -18,8 +18,8 @@ class GameView extends React.Component {
   constructor( props ) {
     super( props )
 
-    const bg = document.getElementById( 'backgroundImage' )
-    bg.setAttribute( 'style', '-webkit-filter: blur(0) grayscale(0)' )
+    // Apply background filters
+    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: none' )
 
     this.state = {
       triedToSaveDuplicatePermutationIndex: -1,
@@ -32,17 +32,17 @@ class GameView extends React.Component {
   }
 
   componentDidMount() {
-
     // Bind 'this' to passed methods
-    const handleOrientationChange = this.handleOrientationChange.bind( this )
+    this.boundHandleOrientationChange = this.handleOrientationChange.bind( this )
 
     // When orientation is changed between landscape and portrait mode.
-    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+    window.addEventListener( 'orientationchange', this.boundHandleOrientationChange, false )
+    window.addEventListener( 'resize', this.boundHandleOrientationChange, false )
   }
 
-  // TODO: Could this be handled locally in savedPermutations instead? :-|
   componentDidUpdate() {
 
+    // TODO: Could this be handled locally in savedPermutations instead?
     // Scrolls to game view 'already saved' element and sets styles on in.
     if ( document.getElementById( 'alreadySaved' ) !== null ) {
       const alreadySaved = document.getElementById( 'alreadySaved' )
@@ -50,6 +50,11 @@ class GameView extends React.Component {
       document.getElementById( 'sofaList' ).scrollTop = topPos
       alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener( 'orientationchange', this.boundHandleOrientationChange )
+    window.removeEventListener( 'resize', this.boundHandleOrientationChange )
   }
 
   handleOrientationChange() {
@@ -293,7 +298,12 @@ class GameView extends React.Component {
     const handleDrop = this.handleDrop.bind( this )
 
     return (
-      <div>
+      <div
+        // Prevent iOS rubber banding / over scroll
+        onTouchMove={ ( event ) => {
+          if ( !event.target.classList.contains( 'allowTouchMove' ) ) event.preventDefault()
+        } }
+      >
         <GameScene
           height={ this.state.windowHeight }
         >

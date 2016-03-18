@@ -31,47 +31,94 @@ const styles = Object.assign({}, CommonStyling, {
       display: 'block',
       margin: '1em auto'
     }
+  },
+
+  flagButton: {
+    height: '75px',
+    width: '75px',
+    marginRight: '10px',
+    backgroundColor: '#F7D117',
+    border: '3px solid black',
+    borderRadius: '10px',
+    fontSize: 'xx-large',
+    fontWeight: 'bold'
   }
 })
 
-const InfoFlash = ( props ) => {
-  const {
-    open,
-    handleOpenModal,
-    handleCloseModal,
-    handleModalCloseRequest,
-    style
-  } = props
+class InfoFlash extends React.Component {
+  constructor( props ) {
+    super( props )
+    this.state = {
+      SwedishChosen: true
+    }
+  }
 
-  return (
-    <div>
-      <img
-        src={ C.SRC_TO_IMAGES.ICONS.HELP }
-        style={ Object.assign({}, styles.infoButton, style ) }
-        onClick={ handleOpenModal }
-        draggable='false'
-      />
-      <Modal
-        isOpen={ open }
-        onRequestClose={ handleModalCloseRequest }
-        style={ modalStyles }
-      >
-        <button
-          className='close-button'
-          aria-label='Close alert'
-          type='button'
-          onClick={ handleCloseModal }
+  handleSweClick = () => {
+    this.setState({ SwedishChosen: true })
+  };
+
+  handleEngClick = () => {
+    this.setState({ SwedishChosen: false })
+  };
+
+  render() {
+    const {
+      open,
+      handleOpenModal,
+      handleCloseModal,
+      handleModalCloseRequest,
+      style
+    } = this.props
+
+    return (
+      <div>
+        <img
+          src={ C.SRC_TO_IMAGES.ICONS.HELP }
+          style={ Object.assign({}, styles.infoButton, style ) }
+          onClick={ handleOpenModal }
+          draggable='false'
+        />
+        <Modal
+          isOpen={ open }
+          onRequestClose={ handleModalCloseRequest }
+          style={ modalStyles }
         >
-          <span aria-hidden='true'>&times;</span>
-        </button>
-        { InfoFlash.renderInfo( Swedish, English ) }
-      </Modal>
-    </div>
-  )
+          <button
+            className='close-button'
+            aria-label='Close alert'
+            type='button'
+            onClick={ handleCloseModal }
+          >
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          <button
+            style={ Object.assign({}, styles.flagButton, style ) }
+            type='button'
+            onClick={ this.handleSweClick }
+            draggable='false'
+          >SV
+          </button>
+          <button
+            style={ Object.assign({}, styles.flagButton, style ) }
+            type='button'
+            onClick={ this.handleEngClick }
+            draggable='false'
+          >EN
+          </button>
+          { InfoFlash.renderInfo( this.state.SwedishChosen ) }
+        </Modal>
+      </div>
+    )
+  }
 }
 
-InfoFlash.renderInfo = ( ...languages ) => {
-  const info = [...languages]
+InfoFlash.renderInfo = ( swedishChosen ) => {
+  let info = null
+  if ( swedishChosen === true )
+    info = [Swedish]
+  else
+    info = [English]
+
   const render = []
   for ( const item of info ) {
     render.push(
