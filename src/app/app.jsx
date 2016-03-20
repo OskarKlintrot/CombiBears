@@ -8,10 +8,11 @@ import Root from './components/root'
 import configureStore from './redux/store'
 
 import createHistory from 'history/lib/createHashHistory'
-import { useQueries } from 'history'
+// import { useQueries } from 'history'
 import InitialState from './redux/store/initialState'
 
-const history = useQueries( createHistory )()
+// const history = useQueries( createHistory )()
+const history = createHistory({ queryKey: false })
 const Store = configureStore( new InitialState(), history )
 
 // Needed for React Developer Tools
