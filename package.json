@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress --colors --production && echo 'Build completed!'",
+    "build": "webpack --progress --colors --production && cp -rf build build3 && echo 'Build completed!'",
     "test": "true"
   },
   "devDependencies": {
