@@ -32,7 +32,7 @@ const ShowFoundPermutations = ( props ) => {
     {}, styles.permutation, { opacity: '0.1' }
   )
 
-  const renderSofa = ( bearsOnSofa, index, found, props ) => {
+  const renderSofa = ( bearsOnSofa, index, found ) => {
     return (
       <li
         className='small-6 medium-4 large-3 columns'

@@ -29,10 +29,16 @@ class StartView extends React.Component {
 
   componentDidMount() {
     // Bind 'this' to passed methods
-    const handleOrientationChange = this.handleOrientationChange.bind( this )
+    this.boundHandleOrientationChange = this.handleOrientationChange.bind( this )
 
     // When orientation is changed between landscape and portrait mode.
-    window.addEventListener( 'orientationchange', handleOrientationChange, false )
+    window.addEventListener( 'orientationchange', this.boundHandleOrientationChange, false )
+    window.addEventListener( 'resize', this.boundHandleOrientationChange, false )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener( 'orientationchange', this.boundHandleOrientationChange )
+    window.removeEventListener( 'resize', this.boundHandleOrientationChange )
   }
 
   handleOrientationChange() {
@@ -87,7 +93,8 @@ class StartView extends React.Component {
     }
 
     return (
-      <div className='startView'
+      <div
+        className='startView'
         style={ styles.startView }
       >
         <div className='row'>
