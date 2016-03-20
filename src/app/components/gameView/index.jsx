@@ -312,6 +312,7 @@ class GameView extends React.Component {
             onSave={ savePermutation }
             canRestart={ this.canRestart() }
             canSave={ this.canSave() }
+            saveLastSettings={ this.props.saveLastSettings }
           />
 
           <Sofa
@@ -358,7 +359,8 @@ GameView.propTypes = {
   removeBearFromStart: PropTypes.func.isRequired,
   resetPermutation: PropTypes.func.isRequired,
   savePermutation: PropTypes.func.isRequired,
-  redirectToResultView: PropTypes.func.isRequired
+  redirectToResultView: PropTypes.func.isRequired,
+  saveLastSettings: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => {
@@ -393,6 +395,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     redirectToStartView: ( ) => {
       dispatch( Actions.redirectToStartView( ) )
+    },
+    saveLastSettings: ( ) => {
+      dispatch( Actions.saveLastSettings( ) )
     }
   }
 }

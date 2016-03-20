@@ -10,7 +10,9 @@ const {
 	DECREASE_NUMBER_OF_BEARS,
 	UPDATE_BEAR,
 	DELETE_BEAR,
-  START_GAME
+  START_GAME,
+	BACK_TO_GAME,
+	SAVE_LAST_SETTINGS
 } = ActionTypes
 
 const SettingsActions = {
@@ -77,6 +79,25 @@ const SettingsActions = {
           }
         })
       }
+    }
+  },
+  backToGame: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: BACK_TO_GAME,
+        meta: {
+          transition: () => ({
+            path: C.ROUTES.GAME
+          })
+        }
+      })
+    }
+  },
+  saveLastSettings: () => {
+    return ( dispatch ) => {
+      dispatch({
+        type: SAVE_LAST_SETTINGS
+      })
     }
   }
 }

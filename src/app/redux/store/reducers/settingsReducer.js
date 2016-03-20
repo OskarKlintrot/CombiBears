@@ -2,7 +2,7 @@ import Combinatorics from 'js-combinatorics'
 import InitialState from '../initialState'
 import C from '../../../constants.js'
 import { ActionTypesSettings } from '../../actions/actionTypes'
-import { updateBear, deleteBear, randomizeMissingBear, removeBear } from '../helpers/startHelpers'
+import { updateBear, deleteBear, randomizeMissingBear, removeBear, cloneObject } from '../helpers/startHelpers'
 
 const getBearsFromObject = ( obj, seats ) => {
   const filtered = Object.keys( obj ).filter( ( key ) => obj[key].color !== C.BEAR_TO_IGNORE )
@@ -20,7 +20,9 @@ const {
   DECREASE_NUMBER_OF_BEARS,
   UPDATE_BEAR,
   DELETE_BEAR,
-  START_GAME
+  START_GAME,
+  BACK_TO_GAME,
+  SAVE_LAST_SETTINGS
 } = ActionTypesSettings
 
 const maxSeats = 4
@@ -73,6 +75,7 @@ const SettingsReducer = ( state, action ) => {
     return {
       ...state,
       bounceBears: true,
+      lastSettings: {},
       correctCombinations: Combinatorics.permutation(
         getBearsFromObject(
           state.bears,
@@ -86,6 +89,15 @@ const SettingsReducer = ( state, action ) => {
         arr.indexOf( elem ) === index             // might be a bit "quick
       )                                           // and dirty" but it's close
       .map( ( item ) => JSON.parse( item ) )      // enough for our purposes
+    }
+  case BACK_TO_GAME:
+    return {
+      ...state.lastSettings
+    }
+  case SAVE_LAST_SETTINGS:
+    return {
+      ...state,
+      lastSettings: Object.assign({}, cloneObject( state ) )
     }
   default:
     return state || new InitialState().settings

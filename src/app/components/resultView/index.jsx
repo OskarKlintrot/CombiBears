@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ResultList from './resultList'
 import Buttons from './buttons'
 import FoundPermutations from './foundPermutations'
+import Actions from '../../redux/actions/'
 
 class ResultView extends React.Component {
 
@@ -54,7 +55,10 @@ class ResultView extends React.Component {
 
     return (
       <div style={ styles.container }>
-        <Buttons>
+        <Buttons
+          saveLastSettings={ this.props.saveLastSettings }
+          foundAll={ game.savedPermutations.length === settings.correctCombinations.length }
+        >
           <ResultList
             numberOfFoundPermutations={ game.savedPermutations.length }
             numberOfCorrectPermutations={ settings.correctCombinations.length }
@@ -78,4 +82,12 @@ const mapStateToProps = ( state ) => {
   }
 }
 
-export default connect( mapStateToProps )( ResultView )
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    saveLastSettings: ( ) => {
+      dispatch( Actions.saveLastSettings( ) )
+    }
+  }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( ResultView )

@@ -18,7 +18,8 @@ const styles = {
 }
 
 const Buttons = ( props ) => {
-  const { children } = props
+  const { children, saveLastSettings, foundAll } = props
+
   return (
     <div
       className='row'
@@ -36,6 +37,7 @@ const Buttons = ( props ) => {
             alt='Icon for new sofa'
             draggable='false'
             style={ styles.button }
+            onClick={ foundAll ? '' : () => saveLastSettings() }
           />
         </Link>
       </div>
