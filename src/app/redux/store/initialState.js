@@ -38,7 +38,8 @@ const InitialState = () => {
           src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
         }
       },
-      correctCombinations: null
+      correctCombinations: null,
+      lastSettings: {}
     },
     game: {
       savedPermutations: [],

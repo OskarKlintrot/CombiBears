@@ -115,6 +115,7 @@ class Buttons extends React.Component {
               alt='Icon for new sofa'
               style={ styles.iconToStart }
               draggable='false'
+              onClick={ () => this.props.saveLastSettings() }
             />
           </Link>
           <Link
@@ -159,7 +160,8 @@ Buttons.propTypes = {
   onRestart: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   canSave: PropTypes.bool.isRequired,
-  canRestart: PropTypes.bool.isRequired
+  canRestart: PropTypes.bool.isRequired,
+  saveLastSettings: PropTypes.func.isRequired
 }
 
 export default Buttons

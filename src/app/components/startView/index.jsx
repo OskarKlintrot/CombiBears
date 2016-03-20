@@ -89,6 +89,21 @@ class StartView extends React.Component {
       },
       startView: {
         height: this.state.windowHeight + 'px'
+      },
+      backToGame: {
+        position: 'fixed',
+        height: '100px',
+        top: '20px',
+        right: '20px',
+        cursor: 'pointer',
+        '@media (max-width: 1023px)': {
+          position: 'absolute',
+          top: '8px',
+          right: '25px',
+          height: '80px',
+          display: 'block',
+          margin: '1em auto'
+        }
       }
     }
 
@@ -110,6 +125,19 @@ class StartView extends React.Component {
               ></img>
             </div>
           </div>
+        </div>
+        <div>
+          <img
+            id='BackToGame'
+            alt='BackToGame'
+            src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
+            onClick={ () => {
+              this.props.backToGame()
+            } }
+            style={ styles.backToGame }
+            draggable='false'
+            hidden={ Object.keys( this.props.lastSettings ).length === 0 }
+          ></img>
         </div>
         <div className='row'>
           <div className='small-12 medium-5 medium-offset-1 large-6 large-offset-0 columns'>
@@ -148,7 +176,7 @@ class StartView extends React.Component {
             </div>
           </div>
         </div>
-        <div style={ Object.assign({}, styles.center ) }>
+        <div style={ styles.center }>
           <img
             id='StartButton'
             alt='StartButton'
@@ -187,7 +215,9 @@ StartView.propTypes = {
   updateBear: PropTypes.func.isRequired,
   bounceBears: PropTypes.bool.isRequired,
   bounceBearsAnimation1: PropTypes.bool.isRequired,
-  bounceSofaAnimation1: PropTypes.bool.isRequired
+  bounceSofaAnimation1: PropTypes.bool.isRequired,
+  lastSettings: PropTypes.object.isRequired,
+  backToGame: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => state.settings
@@ -220,6 +250,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     initSofa: () => {
       dispatch( Actions.initSofa() )
+    },
+    backToGame: () => {
+      dispatch( Actions.backToGame() )
     }
   }
 }
