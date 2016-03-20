@@ -1,8 +1,9 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import persistStateLocalstorage from 'redux-localstorage'
+import persistStateSessionStorage from 'redux-sessionstorage'
 import storeEnhancer from 'redux-history-transitions'
 import CombinedReducers from './reducers/combinedReducers'
+import C from '../../constants'
 
 // Redux DevTools store enhancers
 import { persistState } from 'redux-devtools/lib'
@@ -21,7 +22,7 @@ export default function configureStore( initialState, history ) {
     storeEnhancer( history ),
     window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
     persistState( getDebugSessionKey() ),
-    persistStateLocalstorage( null, { key: 'CombiBearsDev' })
+    persistStateSessionStorage( null, { key: C.SESSION_STORAGE.DEV })
   )( ( createStore ) )
 
   const store = finaleCreateStore( CombinedReducers, initialState )

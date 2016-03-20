@@ -135,21 +135,16 @@ body {
 
 /* Animations START */
 
-.animated.bounceIn {
-  -webkit-animation-duration: .25s;
-  animation-duration: .25s;
-}
-
-@keyframes startViewBounce{
+@keyframes startViewBounce1{
   0% {
     transform: scale3d(1.120, 1.120, 1.120);
   }
 
-  2.5% {
+  7.5% {
     transform: scale3d(0.90, 0.90, 0.90);
   }
 
-  5% {
+  12% {
     transform: scale3d(1, 1, 1);
   }
 
@@ -158,22 +153,63 @@ body {
   }
 }
 
-@-webkit-keyframes startViewBounce{
+@-webkit-keyframes startViewBounce1{
   0% {
     -webkit-transform: scale3d(1.120, 1.120, 1.120);
   }
 
-  2.5% {
+  7.5% {
     -webkit-transform: scale3d(0.90, 0.90, 0.90);
   }
 
-  5% {
+  12% {
     -webkit-transform: scale3d(1, 1, 1);
   }
 
   100% {
     -webkit-transform: scale3d(1, 1, 1);
   }
+}
+
+@keyframes startViewBounce2{
+  0% {
+    transform: scale3d(1.120, 1.120, 1.120);
+  }
+
+  7.5% {
+    transform: scale3d(0.90, 0.90, 0.90);
+  }
+
+  12% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes startViewBounce2{
+  0% {
+    -webkit-transform: scale3d(1.120, 1.120, 1.120);
+  }
+
+  7.5% {
+    -webkit-transform: scale3d(0.90, 0.90, 0.90);
+  }
+
+  12% {
+    -webkit-transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+  }
+}
+
+.animated.bounceIn {
+  -webkit-animation-duration: .25s;
+  animation-duration: .25s;
 }
 
 @-webkit-keyframes bounceIn {

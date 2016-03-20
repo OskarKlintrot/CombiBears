@@ -17,6 +17,9 @@ const InitialState = () => {
     settings: {
       numberOfSeats: 2,
       numberOfBears: 2,
+      bounceBears: true,
+      bounceBearsAnimation1: true,
+      bounceSofaAnimation1: true,
       bears: {
         0: {
           color: C.COLORS_ENUM[firstBear],
@@ -35,7 +38,8 @@ const InitialState = () => {
           src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
         }
       },
-      correctCombinations: null
+      correctCombinations: null,
+      lastSettings: {}
     },
     game: {
       savedPermutations: [],

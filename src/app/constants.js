@@ -98,4 +98,9 @@ CONSTANTS.BEAR_TO_IGNORE = CONSTANTS.COLORS.PLACEHOLDER
 
 CONSTANTS.BG_FILTER = 'blur(1px) grayscale(0.2) brightness(0.9)'
 
+CONSTANTS.SESSION_STORAGE = {
+  DEV: 'CombiBearsDev',
+  PROD: 'CombiBears'
+}
+
 export default Object.freeze( CONSTANTS )

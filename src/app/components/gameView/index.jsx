@@ -48,7 +48,7 @@ class GameView extends React.Component {
       const alreadySaved = document.getElementById( 'alreadySaved' )
       const topPos = alreadySaved.offsetTop
       document.getElementById( 'sofaList' ).scrollTop = topPos
-      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; border-radius:10px; padding-top:15px' )
+      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; padding: 5% 5% 0 5%;' )
     }
   }
 
@@ -312,6 +312,7 @@ class GameView extends React.Component {
             onSave={ savePermutation }
             canRestart={ this.canRestart() }
             canSave={ this.canSave() }
+            saveLastSettings={ this.props.saveLastSettings }
           />
 
           <Sofa
@@ -358,7 +359,8 @@ GameView.propTypes = {
   removeBearFromStart: PropTypes.func.isRequired,
   resetPermutation: PropTypes.func.isRequired,
   savePermutation: PropTypes.func.isRequired,
-  redirectToResultView: PropTypes.func.isRequired
+  redirectToResultView: PropTypes.func.isRequired,
+  saveLastSettings: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ( state ) => {
@@ -393,6 +395,9 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     redirectToStartView: ( ) => {
       dispatch( Actions.redirectToStartView( ) )
+    },
+    saveLastSettings: ( ) => {
+      dispatch( Actions.saveLastSettings( ) )
     }
   }
 }

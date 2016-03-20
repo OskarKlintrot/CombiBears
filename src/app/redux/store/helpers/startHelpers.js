@@ -82,3 +82,18 @@ export const removeBear = ( bears, removeBearId ) => {
 
   return bears
 }
+
+export const cloneObject = ( obj ) => {
+  if ( obj === null || typeof obj != "object" )
+    return obj
+  const copy = obj.constructor()
+  for ( const attr in obj ) {
+    if ( obj.hasOwnProperty( attr ) ) {
+      if ( typeof obj[attr] === "object" )
+        copy[attr] = cloneObject( obj[attr] )
+      else
+        copy[attr] = obj[attr]
+    }
+  }
+  return copy
+}
