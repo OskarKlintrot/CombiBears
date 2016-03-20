@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var path = require('path')
-var buildPath = path.resolve(__dirname, 'ios-build/www')
+var buildPath = path.resolve(__dirname, 'build')
 var sourcePath = path.resolve(__dirname, 'src')
 var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 var TransferWebpackPlugin = require('transfer-webpack-plugin')
