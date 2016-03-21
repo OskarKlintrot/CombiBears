@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress --colors --production && node tools/createAppcacheManifest.js && cp -rf build cordova/www",
+    "build": "webpack --progress --colors --production && node tools/createAppcacheManifest.js && cp -Rf build/* cordova/www",
     "manifest": "node tools/createAppcacheManifest.js",
     "test": "true"
   },
