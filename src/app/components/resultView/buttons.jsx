@@ -4,9 +4,9 @@ import { Link } from 'react-router'
 
 const styles = {
   container: {
-    height: '6.53em',
+    height: '6.4em',
     paddingTop: '2%',
-    marginBottom: '0.5em'
+    marginBottom: '0.2em'
   },
   children: {
     height: '100%'

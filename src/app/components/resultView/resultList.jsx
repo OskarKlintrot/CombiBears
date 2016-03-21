@@ -4,7 +4,7 @@ import C from '../../constants'
 const styles = {
   container: {
     textAlign: 'center',
-    fontSize: '3.2em',
+    fontSize: '2.8em',
     fontFamily: '"comic sans ms",Arial,sans-serif',
     backgroundColor: 'rgba(240, 240, 230, 0.8)',
     border: '0.1em solid rgb(250, 250, 240)',
