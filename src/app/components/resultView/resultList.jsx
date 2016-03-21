@@ -4,21 +4,21 @@ import C from '../../constants'
 const styles = {
   container: {
     textAlign: 'center',
-    fontSize: '3.4em',
+    fontSize: '2.8em',
     fontFamily: '"comic sans ms",Arial,sans-serif',
     backgroundColor: 'rgba(240, 240, 230, 0.8)',
     border: '0.1em solid rgb(250, 250, 240)',
     borderRadius: '0.2em'
   },
   leftCrown: {
-    height: '1.6em',
-    marginRight: '10%',
+    height: '1.5em',
+    marginRight: '9%',
     WebkitTransform: 'rotate(355deg)',
     transform: 'rotate(355deg)'
   },
   rightCrown: {
-    height: '1.6em',
-    marginLeft: '10%',
+    height: '1.5em',
+    marginLeft: '9%',
     WebkitTransform: 'rotate(5deg)',
     transform: 'rotate(5deg)'
   },
