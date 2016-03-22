@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress --colors --production && cp -rf build build3 && echo 'Build completed!'",
+    "build": "webpack --progress --colors --production && node tools/createAppcacheManifest.js",
+    "manifest": "node tools/createAppcacheManifest.js",
     "test": "true"
   },
   "devDependencies": {
@@ -24,9 +25,11 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.13.1",
     "file-loader": "^0.8.5",
+    "fs-readdir-recursive": "^1.0.0",
     "history": "^1.17.0",
     "html-webpack-plugin": "^2.10.0",
     "js-combinatorics": "^0.5.0",
+    "ncp": "^2.0.0",
     "radium": "^0.16.6",
     "react": "^0.14.2",
     "react-dnd": "^2.1.1",
@@ -47,6 +50,8 @@
     "redux-history-transitions": "^1.0.0",
     "redux-sessionstorage": "^0.4.0",
     "redux-thunk": "^1.0.2",
+    "rimraf": "^2.5.2",
+    "rndm": "^1.2.0",
     "transfer-webpack-plugin": "^0.1.4",
     "underscore-template-loader": "^0.7.2",
     "webpack": "^1.12.9",

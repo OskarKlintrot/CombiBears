@@ -7,23 +7,17 @@ CONSTANTS.SRC_TO_IMAGES = {
     4: 'public/pics/sofas/four.svg'
   },
   SEATS: {
-    PILLOW: 'public/pics/seats/pillow.svg',
-    PILLOW_DETAILS: 'public/pics/seats/pillow-details.svg',
     STOOL: 'public/pics/seats/stool.svg'
   },
   ICONS: {
     ARROW_LEFT: 'public/pics/icons/arrow-left.svg',
     ARROW_RIGHT: 'public/pics/icons/arrow-right.svg',
-    CONTINUE: 'public/pics/icons/continue.svg',
     HELP: 'public/pics/icons/help.svg',
     NEW_SOFA: 'public/pics/icons/new-sofa.svg',
     RESTART: 'public/pics/icons/restart.svg',
-    SAVE_PERMUTATION: 'public/pics/icons/save-permutation.svg',
     SCREENSHOT: 'public/pics/icons/screenshot.svg',
     SHOW_RESULT: 'public/pics/icons/show-result.svg',
-    SHOW_SOLUTION: 'public/pics/icons/show-solution.svg',
     START: 'public/pics/icons/start.svg',
-    WRONG: 'public/pics/icons/wrong.svg',
     VIEW_SAVED_PERMUTATIONS: 'public/pics/icons/view-saved-permutations.svg'
   },
   BEARS: {
@@ -32,11 +26,11 @@ CONSTANTS.SRC_TO_IMAGES = {
     GREEN: 'public/pics/bears/green.png',
     ORANGE: 'public/pics/bears/orange.png',
     PINK: 'public/pics/bears/pink.png',
-    WHITE: 'public/pics/bears/white.png',
-    PLACEHOLDER: 'public/pics/icons/new.svg',
     PURPLE: 'public/pics/bears/purple.png',
     RED: 'public/pics/bears/red.png',
-    YELLOW: 'public/pics/bears/yellow.png'
+    WHITE: 'public/pics/bears/white.png',
+    YELLOW: 'public/pics/bears/yellow.png',
+    PLACEHOLDER: 'public/pics/icons/new.svg'
   },
   ACCESSORIES: {
     BLUE: 'public/pics/accessories/flower.svg',
