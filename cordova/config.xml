@@ -27,6 +27,10 @@
         <preference name="DisallowOverscroll" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
 
+        <preference name="FadeSplashScreen" value="false"/>
+        <splash src="res/screen/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+        <splash src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+
         <!-- iOS 9.0+ -->
         <!-- iPad Pro -->
         <icon src="res/icons/ios/icon-83.5@2x.png" width="167" height="167" />
@@ -62,4 +66,6 @@
     </platform>
     <plugin name="cordova-plugin-splashscreen" spec="~3.1.0" />
     <engine name="ios" spec="~4.1.0" />
+
+    <preference name= "target-device" value="tablet"/>
 </widget>
