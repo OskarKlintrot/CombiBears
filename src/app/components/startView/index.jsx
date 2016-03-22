@@ -72,17 +72,18 @@ class StartView extends React.Component {
         textAlign: 'center'
       },
       logotype: {
-        marginTop: '12px',
-        width: '600px',
-        '@media (max-width: 1023px)': {
-          width: '450px'
+        marginTop: '2%',
+        marginBottom: '-5%',
+        width: '35%',
+        '@media (max-width: 40em)': {
+          marginBottom: '0'
         }
       },
       startButton: {
         position: 'relative',
         bottom: '70px',
         width: '145px',
-        '@media (max-width: 1023px)': {
+        '@media (max-width: 40em)': {
           width: '120px'
         },
         cursor: 'pointer'
@@ -96,12 +97,11 @@ class StartView extends React.Component {
         top: '20px',
         right: '20px',
         cursor: 'pointer',
-        '@media (max-width: 1023px)': {
+        '@media (max-width: 40em)': {
           position: 'absolute',
           top: '8px',
           right: '25px',
           height: '80px',
-          display: 'block',
           margin: '1em auto'
         }
       }
