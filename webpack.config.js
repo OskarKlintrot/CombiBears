@@ -1,6 +1,5 @@
 var webpack = require('webpack')
 var path = require('path')
-var _ = require('lodash')
 var buildPath = path.resolve(__dirname, 'build')
 // var buildPathCordova = path.resolve(__dirname, 'cordova/www')
 var sourcePath = path.resolve(__dirname, 'src')
@@ -45,6 +44,7 @@ var config = {
     }),
     new HtmlWebpackPlugin({
       template: './src/www/index.template',
+      filename: './index.html',
       production: production,
       title: 'CombiBears',
       inject: false
@@ -100,8 +100,10 @@ if (production) {
   ].concat(config.plugins)
 }
 
+// For some strange reason only the first config is built with index.html
+
 // if (production) {
-//   configForCordova = _.assign({}, config)
+//   configForCordova = Object.assign({}, config)
 //   configForCordova.output = {
 //     path: buildPathCordova,
 //     filename: 'scripts/boundle.min.js'

@@ -18,7 +18,7 @@ try {
    if (err) {
      return console.error(err)
    }
-  //  fs.closeSync(fs.openSync(keepPath, 'w'))
+   fs.closeSync(fs.openSync(keepPath, 'w'))
    console.log('Build copied to Cordova!')
   })
 }
