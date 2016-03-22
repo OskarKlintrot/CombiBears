@@ -48,7 +48,8 @@ CONSTANTS.SRC_TO_IMAGES = {
     3: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-3.svg',
     4: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-4.svg'
   },
-  LOGOTYPE: 'public/pics/logotype.png'
+  LOGOTYPE: 'public/pics/logotype.png',
+  LOGOTYPE_SIMPLE: 'public/pics/logotype_no_bear.png'
 }
 
 CONSTANTS.COLORS = {
