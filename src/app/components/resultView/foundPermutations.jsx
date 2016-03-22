@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import BasicSofa from '../shared/basicSofa-v2'
+import BasicSofa from '../shared/basicSofa'
 
 const ShowFoundPermutations = ( props ) => {
   const correctCombos = props.settings.correctCombinations.map( ( element ) => JSON.stringify( element ) )

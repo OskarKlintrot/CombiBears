@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Modal from 'react-modal'
 import C from '../../constants'
-import BasicSofa from '../shared/basicSofa-v2'
+import BasicSofa from '../shared/basicSofa'
 
 const modalStyles = {
   content: {
