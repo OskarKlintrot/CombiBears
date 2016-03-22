@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import C from '../../constants'
-import BasicSeat from './basicSeat-v2'
+import BasicSeat from './basicSeat'
 import BasicBear from './basicBear'
 
 class BasicSofa extends React.Component {
