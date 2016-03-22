@@ -9,8 +9,10 @@ const English = {
   chooseBearsTitle: 'Choose bears',
   chooseBearsSubtitle: 'Choose how many bears to play with (two, three or four) by clicking the arrow buttons.',
   chooseBears: 'If you click on one of the bears a balloon will be shown. You can choose a different bear by clicking on one of the accessories in the balloon. It is not possible to choose a bear more than once. If a bear is already chosen its accessory is greyed out in the balloon and cannot be clicked.',
-  startGameTitle: 'Start the game',
+  startGameTitle: 'Start a new game',
   startGame: 'Click the Play button.',
+  returnToGameTitle: 'Return to an ongoing game',
+  returnToGameFromStart: 'If you click the button with an arrow pointing to the right you will return to the ongoing game. This button will only be shown if you have returned to the start menu from an ongoing game.',
   theGameMainTitle: 'The game',
   placeBearTitle: 'Place bears on the sofa',
   placeBear: 'Drag the bear from its stool to the sofa and drop it. If you want to switch the position of two bears on the sofa you can drop one of the bears on the other one. If you want to move all of the bears back to their stools at once you can click the Restart button.',
@@ -18,15 +20,12 @@ const English = {
   saveSofaSubtitle: 'Save a sofa by clicking the button with a camera on it.',
   saveSofa: 'You can only save a sofa if all the bears have been placed on the sofa or if the sofa is full. The last saved sofa is added to the top of the list on the right. It is not possible to save the same sofa twice. If you try to save a sofa that has already been saved, the already saved sofa will get a red background in the list to the right. If you want to get a better overview of the sofas that you have saved you can click the button with a magnifying glass, and a window with all your saved sofas will be shown.',
   saveSofaEnd: 'When you have found all possible sofas you will be taken to a page where your result is shown.',
-  endGameTitle: 'End the game and return to the start menu',
-  endGame: 'If you press the Home button the game will end and you will be taken to the start menu.',
+  returnToMenuTitle: 'Return to the start menu',
+  returnToMenu: 'If you press the Home button you will be taken to the start menu.',
   resultSolutionTitle: 'Result and solution',
   resultTitle: 'See result and solution',
   result: 'If you click the button with a tick you will se how many and which sofas you have found and how many and which sofas you have left to find. The sofas you have found are shown clearly while the sofas you have left to find are dimmed.',
-  returnToGameTitle: 'Return to the game',
-  returnToGame: 'If you click the arrow button you will return to the game.',
-  endGameAndReturnTitle: 'End the game and return to the start menu',
-  endGameAndReturn: 'If you press the Home button the game will end and you will be taken to the start menu.'
+  returnToGame: 'If you click the button with an arrow pointing to the left you will return to the game.'
 }
 
 export default English
