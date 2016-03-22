@@ -21,15 +21,27 @@
 <body>
   <div id="backgroundImage"></div>
   <div id="app">
-    <div id="fountainG">
-      <div id="fountainG_1" class="fountainG"></div>
-      <div id="fountainG_2" class="fountainG"></div>
-      <div id="fountainG_3" class="fountainG"></div>
-      <div id="fountainG_4" class="fountainG"></div>
-      <div id="fountainG_5" class="fountainG"></div>
-      <div id="fountainG_6" class="fountainG"></div>
-      <div id="fountainG_7" class="fountainG"></div>
-      <div id="fountainG_8" class="fountainG"></div>
+    <div class="row">
+      <div class="medium-6 medium-offset-3 columns" style="margin-top: 5rem;">
+        <img alt="Logotype" src="public/pics/logo_lowres.png" />
+      </div>
+        <div id="fountainG">
+          <div id="fountainG_1" class="fountainG"></div>
+          <div id="fountainG_2" class="fountainG"></div>
+          <div id="fountainG_3" class="fountainG"></div>
+          <div id="fountainG_4" class="fountainG"></div>
+          <div id="fountainG_5" class="fountainG"></div>
+          <div id="fountainG_6" class="fountainG"></div>
+          <div id="fountainG_7" class="fountainG"></div>
+          <div id="fountainG_8" class="fountainG"></div>
+        </div>
+      <noscript>
+        <div class="medium-6 medium-offset-4 columns">
+          <h1>
+            This page require Javascript to be enabled to work!
+          </h1>
+        </div>
+      </noscript>
     </div>
   </div>
   <script src="scripts/boundle.min.js"></script>
