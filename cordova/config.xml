@@ -27,12 +27,17 @@
         <preference name="DisallowOverscroll" value="true" />
         <preference name="StatusBarOverlaysWebView" value="true" />
 
+        <!-- iOS 9.0+ -->
+        <!-- iPad Pro -->
+        <icon src="res/icons/ios/icon-83.5@2x.png" width="167" height="167" />
+        <icon src="res/icons/ios/icon-small@3x.png" width="87" height="87" />
+        <icon src="res/icons/ios/icon-40@3x.png" width="120" height="120" />
+
         <!-- iOS 8.0+ -->
         <!-- iPhone 6 Plus  -->
         <icon src="res/icons/ios/icon-60@3x.png" width="180" height="180" />
         <!-- iOS 7.0+ -->
         <!-- iPhone / iPod Touch  -->
-        <icon src="res/icons/ios/icon-60.png" width="60" height="60" />
         <icon src="res/icons/ios/icon-60@2x.png" width="120" height="120" />
         <!-- iPad -->
         <icon src="res/icons/ios/icon-76.png" width="76" height="76" />
