@@ -120,7 +120,7 @@ class StartView extends React.Component {
                 style={ styles.logotype }
                 id='Logotyp'
                 alt='Logotyp'
-                src={ C.SRC_TO_IMAGES.LOGOTYPE }
+                src={ C.SRC_TO_IMAGES.LOGOTYPE_SIMPLE }
                 draggable='false'
               ></img>
             </div>
