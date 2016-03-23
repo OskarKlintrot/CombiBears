@@ -141,8 +141,10 @@ class SavedPermutations extends React.Component {
       sofaListElements: {
         padding: '30% 7% 6% 7%',
         height: '50%',
-        background: 'url(' + C.SRC_TO_IMAGES.PHOTO_BACKGROUND + ')',
+        backgroundImage: 'url(' + C.SRC_TO_IMAGES.PHOTO_BACKGROUND + ')',
+        backgroundColor: '#ecedef',
         backgroundSize: 'contain',
+        overflow: 'hidden',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         margin: '5%',
