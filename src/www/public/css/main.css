@@ -320,6 +320,46 @@ body {
     animation-iteration-count: infinite;
 }
 
+.animated.last-saved {
+    -webkit-animation-duration: 1.0s;
+    animation-duration: 1.0s;
+}
+
+@-webkit-keyframes last-saved {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+        transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1) translate(0, 0);
+        transform: scale3d(1, 1, 1) translate(0, 0);
+    }
+}
+
+@keyframes last-saved {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+        transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1) translate(0, 0);
+        transform: scale3d(1, 1, 1) translate(0, 0);
+    }
+}
+
+.last-saved {
+    z-index: 100;
+    -webkit-animation-name: last-saved;
+    animation-name: last-saved;
+}
+
+
 /* Animations END */
 
 #fountainG{

@@ -23,6 +23,7 @@ class GameView extends React.Component {
 
     this.state = {
       triedToSaveDuplicatePermutationIndex: -1,
+      isPermutationSavedSinceRefresh: false,
       windowHeight: window.innerHeight
     }
   }
@@ -38,18 +39,6 @@ class GameView extends React.Component {
     // When orientation is changed between landscape and portrait mode.
     window.addEventListener( 'orientationchange', this.boundHandleOrientationChange, false )
     window.addEventListener( 'resize', this.boundHandleOrientationChange, false )
-  }
-
-  componentDidUpdate() {
-
-    // TODO: Could this be handled locally in savedPermutations instead?
-    // Scrolls to game view 'already saved' element and sets styles on in.
-    if ( document.getElementById( 'alreadySaved' ) !== null ) {
-      const alreadySaved = document.getElementById( 'alreadySaved' )
-      const topPos = alreadySaved.offsetTop
-      document.getElementById( 'sofaList' ).scrollTop = topPos
-      alreadySaved.setAttribute( 'style', 'background-color: #b93e3e; padding: 5% 5% 0 5%;' )
-    }
   }
 
   componentWillUnmount() {
@@ -269,6 +258,10 @@ class GameView extends React.Component {
         this.props.savePermutation( bearsToSave )
         this.props.resetPermutation()
 
+        this.setState({
+          isPermutationSavedSinceRefresh: true
+        })
+
         // Redirect to results view if we got all correct answers
         this.redirectIfGotAllCorrectAnswers( C.ROUTES.RESULTS )
       }
@@ -301,7 +294,7 @@ class GameView extends React.Component {
       <div
         // Prevent iOS rubber banding / over scroll
         onTouchMove={ ( event ) => {
-          if ( !event.target.classList.contains( 'allowTouchMove' ) ) event.preventDefault()
+          if ( !event.target.classList.contains( C.ALLOW_TOUCH_MOVE_CLASS ) ) event.preventDefault()
         } }
       >
         <GameScene
@@ -333,6 +326,7 @@ class GameView extends React.Component {
         </GameScene>
 
         <SavedPermutations
+          isPermutationSavedSinceRefresh={ this.state.isPermutationSavedSinceRefresh }
           height={ this.state.windowHeight }
           savedPermutations={ this.props.game.savedPermutations }
           settings={ this.props.settings }

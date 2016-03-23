@@ -1,5 +1,4 @@
 import React from 'react'
-import C from '../../constants'
 import { connect } from 'react-redux'
 import ResultList from './resultList'
 import Buttons from './buttons'

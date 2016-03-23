@@ -9,21 +9,6 @@ class BasicSofa extends React.Component {
 
   }
 
-  componentDidMount = () => {
-    if ( document.getElementById( 'lastSaved' ) !== null ) {
-      const lastSaved = document.getElementById( 'lastSaved' )
-      const timeoutTime = 2000
-      const timeoutFunction = () => {
-        lastSaved.removeAttribute( 'style' )
-        lastSaved.setAttribute( 'style', 'padding: 4% 5% 0 5%;' )
-      }
-      lastSaved.setAttribute( 'style', 'background-color: #59b585; padding: 4% 5% 0 5%;' )
-      const topPos = lastSaved.offsetTop
-      document.getElementById( 'sofaList' ).scrollTop = topPos
-      setTimeout( timeoutFunction, timeoutTime )
-    }
-  };
-
   render() {
     const getSofaStyles = () => {
 
@@ -96,7 +81,7 @@ class BasicSofa extends React.Component {
 
     return (
       <div
-        className={ C.COMPONENT_NAMES.SOFA + ' allowTouchMove' }
+        className={ C.COMPONENT_NAMES.SOFA + ' ' + C.ALLOW_TOUCH_MOVE_CLASS }
         style={ mergedStyles }
       >
         <div

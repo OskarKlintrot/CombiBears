@@ -54,7 +54,8 @@ CONSTANTS.SRC_TO_IMAGES = {
     4: 'public/pics/icons/colorpicker-bkgr-outlined-talk-bubble-4.svg'
   },
   LOGOTYPE: 'public/pics/logotype.png',
-  LOGOTYPE_SIMPLE: 'public/pics/logotype_no_bear.png'
+  LOGOTYPE_SIMPLE: 'public/pics/logotype_no_bear.png',
+  PHOTO_BACKGROUND: 'public/pics/photo_background.jpg'
 }
 
 CONSTANTS.COLORS = {
@@ -97,6 +98,8 @@ CONSTANTS.COLORS_ENUM = {
 CONSTANTS.BEAR_TO_IGNORE = CONSTANTS.COLORS.PLACEHOLDER
 
 CONSTANTS.BG_FILTER = 'blur(1px) grayscale(0.2) brightness(0.9)'
+
+CONSTANTS.ALLOW_TOUCH_MOVE_CLASS = 'allowTouchMove'
 
 CONSTANTS.SESSION_STORAGE = {
   DEV: 'CombiBearsDev',
