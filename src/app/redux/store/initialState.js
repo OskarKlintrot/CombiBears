@@ -31,11 +31,11 @@ const InitialState = () => {
         },
         2: {
           color: C.COLORS.PLACEHOLDER,
-          src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
+          src: null
         },
         3: {
           color: C.COLORS.PLACEHOLDER,
-          src: C.SRC_TO_IMAGES.BEARS.PLACEHOLDER
+          src: null
         }
       },
       correctCombinations: null,
