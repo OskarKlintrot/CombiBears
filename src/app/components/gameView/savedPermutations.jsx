@@ -134,8 +134,7 @@ class SavedPermutations extends React.Component {
       sofaListElementSaved: {
         backgroundColor: '#b93e3e',
         border: '10px solid #b93e3e',
-        borderRadius: '5%',
-        marginTop: '2%'
+        borderRadius: '5%'
       },
 
       sofaListElements: {
