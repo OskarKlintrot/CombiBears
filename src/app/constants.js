@@ -33,9 +33,7 @@ CONSTANTS.SRC_TO_IMAGES = {
     PINK: 'public/pics/bears/pink.png',
     PURPLE: 'public/pics/bears/purple.png',
     RED: 'public/pics/bears/red.png',
-    WHITE: 'public/pics/bears/white.png',
-    YELLOW: 'public/pics/bears/yellow.png',
-    PLACEHOLDER: 'public/pics/icons/new.svg'
+    YELLOW: 'public/pics/bears/yellow.png'
   },
   ACCESSORIES: {
     BLUE: 'public/pics/accessories/flower.svg',

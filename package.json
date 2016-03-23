@@ -10,6 +10,7 @@
     "start": "webpack-dev-server",
     "build": "webpack --progress --colors --production && node tools/createAppcacheManifest.js",
     "manifest": "node tools/createAppcacheManifest.js",
+    "analyse": "webpack --profile --json > stats.json",
     "test": "true"
   },
   "devDependencies": {

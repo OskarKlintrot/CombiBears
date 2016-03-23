@@ -60,7 +60,7 @@ npm run build
 ```
 Note that the build is ignored in the `.gitignore` this because Travis CI will build and deploy to gh-pages from the master repo.
 
-To copy the build to the Cordova path run:
+To build `stats.json` to use at http://webpack.github.io/analyse/ run:
 ```
-node tools/copyBuildToCordova.js
+npm run analyse
 ```
