@@ -29,15 +29,15 @@ class BasicSofa extends React.Component {
 
       const sofaStyles = {
         twoSeats: {
-          background: 'url(' + C.SRC_TO_IMAGES.SOFAS['2'] + ') no-repeat',
+          backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS_SMALL['2'] + ')',
           padding: '5% 14% 23%'
         },
         threeSeats: {
-          background: 'url(' + C.SRC_TO_IMAGES.SOFAS['3'] + ') no-repeat',
+          backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS_SMALL['3'] + ')',
           padding: '8% 14% 23%'
         },
         fourSeats: {
-          background: 'url(' + C.SRC_TO_IMAGES.SOFAS['4'] + ') no-repeat',
+          backgroundImage: 'url(' + C.SRC_TO_IMAGES.SOFAS_SMALL['4'] + ')',
           padding: '10% 14% 23%'
         }
       }
@@ -52,7 +52,8 @@ class BasicSofa extends React.Component {
 
     const genericStyles = {
       sofa: {
-        backgroundSize: '100% auto cover',
+        backgroundSize: 'contain',
+
         backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat',
         textAlign: 'center',

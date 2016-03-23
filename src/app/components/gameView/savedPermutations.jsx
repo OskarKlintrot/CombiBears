@@ -47,7 +47,8 @@ class SavedPermutations extends React.Component {
         width: '7%',
         cursor: 'pointer',
         position: 'fixed',
-        top: '45%'
+        top: '45%',
+        zIndex: '10'
       },
 
       sofaList: {
@@ -56,11 +57,12 @@ class SavedPermutations extends React.Component {
         minHeight: '100%',
         overflow: 'auto',
         float: 'right',
-        background: 'rgba(240, 240, 230, 0.8)',
+        background: 'rgba(240, 240, 230, 1)',
         border: 'solid',
         borderWidth: '0px',
         borderLeftWidth: '0.5em',
-        borderColor: 'rgb(250, 250, 240)'
+        borderColor: 'rgb(250, 250, 240)',
+        WebkitOverflowScrolling: 'touch'
       },
 
       ulSofas: {

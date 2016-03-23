@@ -12,7 +12,7 @@ class ResultView extends React.Component {
     super( props )
 
     // Apply background filters
-    document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: ' + C.BG_FILTER )
+    // document.getElementById( 'backgroundImage' ).setAttribute( 'style', '-webkit-filter: ' + C.BG_FILTER )
 
     this.state = {
       windowHeight: window.innerHeight
