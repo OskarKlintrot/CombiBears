@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import BasicSofa from '../shared/basicSofa-v2'
+import BasicSofa from '../shared/basicSofa'
 
 const ShowFoundPermutations = ( props ) => {
   const correctCombos = props.settings.correctCombinations.map( ( element ) => JSON.stringify( element ) )
@@ -10,13 +10,14 @@ const ShowFoundPermutations = ( props ) => {
   const styles = {
     savedPermutations: {
       overflow: 'auto',
-      backgroundColor: 'rgba(240, 240, 230, 0.8)',
+      backgroundColor: 'rgba(240, 240, 230, 1)',
       border: '0.5em solid rgb(250, 250, 240)',
       borderRadius: '0.5em',
       marginTop: '2em',
       paddingTop: '1em',
       marginBottom: '1em',
-      height: props.height + 'px'
+      height: props.height + 'px',
+      WebkitOverflowScrolling: 'touch'
     },
     ulSofas: {
       margin: 0

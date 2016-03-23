@@ -43,6 +43,13 @@ const Placeholder = ( props ) => {
         style={ styles.icon }
         draggable='false'
       />
+      <h3>{ translation.returnToGameTitle }</h3>
+      <p>{ translation.returnToGameFromStart }</p>
+      <img
+        src={ C.SRC_TO_IMAGES.ICONS.ARROW_RIGHT }
+        style={ styles.icon }
+        draggable='false'
+      />
       <h2>{ translation.theGameMainTitle }</h2>
       <h3>{ translation.placeBearTitle }</h3>
       <p>{ translation.placeBear }</p>
@@ -65,8 +72,8 @@ const Placeholder = ( props ) => {
         draggable='false'
       />
       <p>{ translation.saveSofaEnd }</p>
-      <h3>{ translation.endGameTitle }</h3>
-      <p>{ translation.endGame }</p>
+      <h3>{ translation.returnToMenuTitle }</h3>
+      <p>{ translation.returnToMenu }</p>
       <img
         src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
         style={ styles.icon }
@@ -87,8 +94,8 @@ const Placeholder = ( props ) => {
         style={ styles.icon }
         draggable='false'
       />
-      <h3>{ translation.endGameAndReturnTitle }</h3>
-      <p>{ translation.endGameAndReturn }</p>
+      <h3>{ translation.returnToMenuTitle }</h3>
+      <p>{ translation.returnToMenu }</p>
       <img
         src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
         style={ styles.icon }

@@ -4,3 +4,4 @@ src/app/scripts/upup
 src/app/scripts/redirectToHTTPS.js
 webpack.config.js
 build/
+tools/

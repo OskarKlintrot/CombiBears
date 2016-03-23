@@ -59,3 +59,8 @@ To build a static version of the project run:
 npm run build
 ```
 Note that the build is ignored in the `.gitignore` this because Travis CI will build and deploy to gh-pages from the master repo.
+
+To build `stats.json` to use at http://webpack.github.io/analyse/ run:
+```
+npm run analyse
+```

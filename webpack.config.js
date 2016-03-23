@@ -1,8 +1,7 @@
 var webpack = require('webpack')
 var path = require('path')
-var _ = require('lodash')
 var buildPath = path.resolve(__dirname, 'build')
-// var buildPathCordova = path.resolve(__dirname, 'cordova/www')
+var buildPathCordova = path.resolve(__dirname, 'cordova/www')
 var sourcePath = path.resolve(__dirname, 'src')
 var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 var TransferWebpackPlugin = require('transfer-webpack-plugin')
@@ -44,7 +43,8 @@ var config = {
         PRODUCTION: production
     }),
     new HtmlWebpackPlugin({
-      template: './src/www/index.template',
+      template: './src/www/index.html.ejs',
+      filename: './index.html',
       production: production,
       title: 'CombiBears',
       inject: false
@@ -100,13 +100,13 @@ if (production) {
   ].concat(config.plugins)
 }
 
-// if (production) {
-//   configForCordova = _.assign({}, config)
-//   configForCordova.output = {
-//     path: buildPathCordova,
-//     filename: 'scripts/boundle.min.js'
-//   }
-//   module.exports = [config, configForCordova]
-// } else {
+if (production) {
+  configForCordova = Object.assign({}, config)
+  configForCordova.output = {
+    path: buildPathCordova,
+    filename: 'scripts/boundle.min.js'
+  }
+  module.exports = [config, configForCordova]
+} else {
   module.exports = config
-// }
+}

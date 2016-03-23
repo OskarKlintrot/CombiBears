@@ -101,6 +101,10 @@ class Buttons extends React.Component {
       }
     }
 
+    const getCameraButtonAnimation = () => {
+      return this.props.canSave && this.props.noSavedPermutations ? 'pulse animated' : ''
+    }
+
     return (
 
       <div>
@@ -110,7 +114,7 @@ class Buttons extends React.Component {
             to={ C.ROUTES.START }
           >
             <img
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
               src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
               alt='Icon for new sofa'
               style={ styles.iconToStart }
@@ -122,7 +126,7 @@ class Buttons extends React.Component {
             to={ C.ROUTES.RESULTS }
           >
             <img
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
               src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
               alt='Icon for showing result'
               style={ styles.iconToShowResults }
@@ -134,7 +138,7 @@ class Buttons extends React.Component {
 
         <div style={ styles.bottomIconsArea }>
           <img
-            className='allowTouchMove'
+            className={ C.ALLOW_TOUCH_MOVE_CLASS }
             src={ C.SRC_TO_IMAGES.ICONS.RESTART }
             alt='Icon for putting bears back in startingArea'
             style={ styles.resetIcon }
@@ -142,7 +146,7 @@ class Buttons extends React.Component {
             draggable='false'
           />
           <img
-            className='allowTouchMove'
+            className={ C.ALLOW_TOUCH_MOVE_CLASS + ' ' + getCameraButtonAnimation() }
             src={ C.SRC_TO_IMAGES.ICONS.SCREENSHOT }
             alt='Icon for saving permutation'
             style={ styles.saveIcon }
@@ -161,6 +165,7 @@ Buttons.propTypes = {
   onSave: PropTypes.func.isRequired,
   canSave: PropTypes.bool.isRequired,
   canRestart: PropTypes.bool.isRequired,
+  noSavedPermutations: PropTypes.bool.isRequired,
   saveLastSettings: PropTypes.func.isRequired
 }
 

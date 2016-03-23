@@ -1,6 +1,12 @@
 import React, { PropTypes } from 'react'
-import BasicSofa from '../shared/basicSofa-v2'
+import BasicSofa from '../shared/basicSofa'
 import SavedPermutationsFlash from './savedPermutationsFlash'
+import C from '../../constants'
+
+const ALREADY_SAVED_ID = 'alreadySaved'
+const LAST_SAVED_ID = 'lastSaved'
+const LAST_SAVED_ANIMATION_CLASS = 'last-saved animated'
+const SOFALIST_ID = 'sofaList'
 
 class SavedPermutations extends React.Component {
 
@@ -8,8 +14,42 @@ class SavedPermutations extends React.Component {
     super( props )
     this.onCloseModal = this.onCloseModal.bind( this )
     this.onModalCloseRequest = this.onModalCloseRequest.bind( this )
+
+    this.previousSavedPermutationsLength = 0
+
     this.state = {
       modalIsOpen: false
+    }
+  }
+
+  componentDidUpdate() {
+
+    this.scrollUpOnNewPermutation()
+
+    this.scrollUpOnAlreadySaved()
+
+    // Update previous length value
+    this.previousSavedPermutationsLength = this.props.savedPermutations.length
+  }
+
+  scrollUpOnNewPermutation() {
+
+    // After view has updated, and a permutations was added.
+    if (
+      this.props.savedPermutations.length > this.previousSavedPermutationsLength &&
+      this.props.isPermutationSavedSinceRefresh
+    )
+    // Scroll to top in sofa list.
+      document.getElementById( SOFALIST_ID ).scrollTop = 0
+  }
+
+  scrollUpOnAlreadySaved() {
+
+    // Scrolls to game view 'already saved' element and sets styles on in.
+    if ( document.getElementById( ALREADY_SAVED_ID ) !== null ) {
+      const alreadySaved = document.getElementById( ALREADY_SAVED_ID )
+      const topPos = alreadySaved.offsetTop
+      document.getElementById( SOFALIST_ID ).scrollTop = topPos
     }
   }
 
@@ -23,6 +63,19 @@ class SavedPermutations extends React.Component {
 
   onModalCloseRequest() {
     this.setState({ modalIsOpen: false })
+  }
+
+  initDisableLastSavedAnimation() {
+
+    const timeoutTime = 1100
+    const timeoutFunction = () => {
+
+      const lastSaved = document.getElementById( LAST_SAVED_ID )
+
+      lastSaved.setAttribute( 'class', C.ALLOW_TOUCH_MOVE_CLASS )
+    }
+
+    setTimeout( timeoutFunction, timeoutTime )
   }
 
   render() {
@@ -47,7 +100,8 @@ class SavedPermutations extends React.Component {
         width: '7%',
         cursor: 'pointer',
         position: 'fixed',
-        top: '45%'
+        top: '45%',
+        zIndex: '10'
       },
 
       sofaList: {
@@ -56,49 +110,79 @@ class SavedPermutations extends React.Component {
         minHeight: '100%',
         overflow: 'auto',
         float: 'right',
-        background: 'rgba(240, 240, 230, 0.8)',
+        background: '#E0D8C7',
         border: 'solid',
         borderWidth: '0px',
         borderLeftWidth: '0.5em',
-        borderColor: 'rgb(250, 250, 240)'
+        borderColor: 'rgb(250, 250, 240)',
+        WebkitOverflowScrolling: 'touch',
+        WebkitTransform: 'scale3d(1, 1, 1)',
+        transform: 'scale3d(1, 1, 1)'
       },
 
       ulSofas: {
         listStyleType: 'none',
-        margin: 'auto'
+        margin: 'auto',
+        WebkitTransform: 'scale3d(1, 1, 1)',
+        transform: 'scale3d(1, 1, 1)'
       },
 
       sofaListElementLast: {
-        backgroundColor: '#59b585',
-        padding: '4% 5% 0 5%'
+        backgroundColor: '#59b585'
       },
 
       sofaListElementSaved: {
         backgroundColor: '#b93e3e',
-        padding: '4% 5% 0 5%',
-        marginTop: '2%'
+        border: '10px solid #b93e3e',
+        borderRadius: '5%'
       },
 
       sofaListElements: {
-        padding: '4% 5% 0 5%'
+        padding: '30% 7% 6% 7%',
+        height: '50%',
+        backgroundImage: 'url(' + C.SRC_TO_IMAGES.PHOTO_BACKGROUND + ')',
+        backgroundColor: '#ecedef',
+        backgroundSize: 'contain',
+        overflow: 'hidden',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        margin: '5%',
+        WebkitBoxShadow: '1px 1px 2px 0px rgba(161,161,161,1)',
+        boxShadow: '1px 1px 2px 0px rgba(161,161,161,1)',
+
+        WebkitTransform: 'scale3d(1, 1, 1)',
+        transform: 'scale3d(1, 1, 1)'
       }
     }
 
     if ( this.props.savedPermutations.length > 0 ) {
+
       const renderSofa = ( bearsOnSofa, index ) => {
         let sofaListElementStyle = styles.sofaListElements
         let sofaLiId = ''
+        let animationClassName = ''
+
         if ( index === 0 && this.props.triedToSaveDuplicatePermutationIndex < 0 ) {
-          sofaListElementStyle = styles.sofaListElementLast
-          sofaLiId = 'lastSaved'
+
+          // Make sure if a new permutation has been added in game view
+          if ( this.props.savedPermutations.length > this.previousSavedPermutationsLength && this.props.isPermutationSavedSinceRefresh ) {
+
+            // Set values required for animation
+            sofaLiId = LAST_SAVED_ID
+            animationClassName = LAST_SAVED_ANIMATION_CLASS
+
+            // Disable last saved animation after its done.
+            this.initDisableLastSavedAnimation()
+          }
         }
+
         if ( index === this.props.triedToSaveDuplicatePermutationIndex ) {
-          sofaListElementStyle = styles.sofaListElementSaved
-          sofaLiId = 'alreadySaved'
+          sofaListElementStyle = Object.assign({}, styles.sofaListElements, styles.sofaListElementSaved )
+          sofaLiId = ALREADY_SAVED_ID
         }
         return (
           <li
-            className='allowTouchMove'
+            className={ C.ALLOW_TOUCH_MOVE_CLASS + ' ' + animationClassName }
             key={ index }
             style={ sofaListElementStyle }
             id={ sofaLiId }
@@ -125,12 +209,12 @@ class SavedPermutations extends React.Component {
             />
           </div>
           <div
-            id={ 'sofaList' }
+            id={ SOFALIST_ID }
             style={ styles.sofaList }
           >
             <ul
               style={ styles.ulSofas }
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
             >
               {
                 this.props.savedPermutations.map( ( bearsOnSofa, index ) =>
@@ -152,6 +236,7 @@ class SavedPermutations extends React.Component {
 }
 
 SavedPermutations.propTypes = {
+  isPermutationSavedSinceRefresh: PropTypes.bool.isRequired,
   savedPermutations: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired,
   triedToSaveDuplicatePermutationIndex: PropTypes.number.isRequired,

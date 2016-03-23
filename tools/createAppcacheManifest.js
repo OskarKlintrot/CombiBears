@@ -8,7 +8,12 @@ var newLine = '\n'
 
 // Don't include hidden files
 var filter = function (x) {
-  return x[0] !== '.'
+  return !(
+    x[0] === '.' ||             // Don't include hidden files
+    x.includes('.js.map') ||    // Don't include .js.map
+    x.includes('.template') ||  // Don't include templates
+    x.includes('.appcache')     // Don't include .appcache
+  )
 }
 
 String.prototype.replaceAll = function(search, replacement) {

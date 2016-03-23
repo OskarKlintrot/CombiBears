@@ -9,8 +9,10 @@ const Swedish = {
   chooseBearsTitle: 'Välja björnar',
   chooseBearsSubtitle: 'Välj antal björnar att spela med (två, tre eller fyra) genom att bläddra med pilarna.',
   chooseBears: 'Om du klickar på en björn kommer en pratbubbla upp. Du kan välja en annan björn genom att klicka på en accessoar i pratbubblan. Det går inte att välja en björn mer än en gång. Om en björn redan är vald är dess accessoar grå i pratbubblan och går inte att klicka på.',
-  startGameTitle: 'Starta spelet',
+  startGameTitle: 'Starta en ny spelomgång',
   startGame: 'Klicka på Spela-knappen.',
+  returnToGameTitle: 'Gå tillbaka till en pågående spelomgång',
+  returnToGameFromStart: 'Om du klickar på knappen med en pil som pekar åt höger så kommer du tillbaka till den pågående spelomgången. Denna knapp syns endast om du har återvänt till startmenyn från en pågående spelomgång.',
   theGameMainTitle: 'Spelplanen',
   placeBearTitle: 'Placera björnar i soffan',
   placeBear: 'Dra björnen från sin pall till soffan och släpp den. Om du vill byta plats på två nallar i soffan kan du släppa den ena nallen på den andra. Om du vill flytta ner alla björnar till sina pallar på en gång kan du trycka på Börja om-knappen.',
@@ -18,15 +20,12 @@ const Swedish = {
   saveSofaSubtitle: 'Spara en soffa genom att trycka på knappen med en kamera.',
   saveSofa: 'Det går bara att spara en soffa om alla nallar har placerats ut eller om soffan är full. Den senast sparade soffan läggs till högst upp i listan till höger. Det går inte att spara samma soffa två gånger. Om du försöker spara en soffa som redan har sparats så markeras den redan sparade soffan i listan till höger med en röd bakgrund. Om du vill få en bättre överblick över de soffor du sparat kan du trycka på knappen med ett förstoringsglas, så kommer ett fönster upp med alla sparade soffor.',
   saveSofaEnd: 'När du har hittat alla möjliga soffor så tas du till en sida där ditt resultat visas.',
-  endGameTitle: 'Avsluta spelomgången och återvända till startmenyn',
-  endGame: 'Om du trycker på Hem-knappen så avslutas spelomgången och du kommer tillbaka till startmenyn.',
+  returnToMenuTitle: 'Återvända till startmenyn',
+  returnToMenu: 'Om du trycker på Hem-knappen så kommer du tillbaka till startmenyn.',
   resultSolutionTitle: 'Resultat och lösning',
   resultTitle: 'Se resultat och lösning',
   result: 'Om du trycker på knappen med en bock så ser du hur många och vilka soffor du har hittat och hur många och vilka soffor du har kvar att hitta. De soffor du har hittat visas tydligt medan de som du har kvar att hitta är dimmade.',
-  returnToGameTitle: 'Gå tillbaka till spelomgången',
-  returnToGame: 'Om du klickar på knappen med en pil till vänster så kommer du tillbaka till spelomgången.',
-  endGameAndReturnTitle: 'Avsluta spelomgången och återvända till startmenyn',
-  endGameAndReturn: 'Om du trycker på Hem-knappen så avslutas spelomgången och du kommer tillbaka till startmenyn.'
+  returnToGame: 'Om du klickar på knappen med en pil som pekar åt vänster så kommer du tillbaka till spelomgången.'
 }
 
 export default Swedish

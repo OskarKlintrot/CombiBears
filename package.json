@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress --colors --production && node tools/createAppcacheManifest.js && cp -rf build cordova/www",
+    "build": "webpack --progress --colors --production && node tools/createAppcacheManifest.js",
+    "manifest": "node tools/createAppcacheManifest.js",
+    "analyse": "webpack --profile --json > stats.json",
     "test": "true"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "history": "^1.17.0",
     "html-webpack-plugin": "^2.10.0",
     "js-combinatorics": "^0.5.0",
+    "ncp": "^2.0.0",
     "radium": "^0.16.6",
     "react": "^0.14.2",
     "react-dnd": "^2.1.1",
@@ -48,6 +51,7 @@
     "redux-history-transitions": "^1.0.0",
     "redux-sessionstorage": "^0.4.0",
     "redux-thunk": "^1.0.2",
+    "rimraf": "^2.5.2",
     "rndm": "^1.2.0",
     "transfer-webpack-plugin": "^0.1.4",
     "underscore-template-loader": "^0.7.2",
