@@ -72,7 +72,7 @@ class SavedPermutations extends React.Component {
 
       const lastSaved = document.getElementById( LAST_SAVED_ID )
 
-      lastSaved.setAttribute( 'class', 'allowTouchMove' )
+      lastSaved.setAttribute( 'class', C.ALLOW_TOUCH_MOVE_CLASS )
     }
 
     setTimeout( timeoutFunction, timeoutTime )
@@ -213,7 +213,7 @@ class SavedPermutations extends React.Component {
           >
             <ul
               style={ styles.ulSofas }
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
             >
               {
                 this.props.savedPermutations.map( ( bearsOnSofa, index ) =>
