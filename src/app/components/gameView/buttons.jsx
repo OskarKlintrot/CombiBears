@@ -102,7 +102,7 @@ class Buttons extends React.Component {
     }
 
     const getCameraButtonAnimation = () => {
-      return this.props.canSave ? 'pulse animated' : ''
+      return this.props.canSave && this.props.noSavedPermutations ? 'pulse animated' : ''
     }
 
     return (
@@ -165,6 +165,7 @@ Buttons.propTypes = {
   onSave: PropTypes.func.isRequired,
   canSave: PropTypes.bool.isRequired,
   canRestart: PropTypes.bool.isRequired,
+  noSavedPermutations: PropTypes.bool.isRequired,
   saveLastSettings: PropTypes.func.isRequired
 }
 

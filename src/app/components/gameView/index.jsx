@@ -305,6 +305,7 @@ class GameView extends React.Component {
             onSave={ savePermutation }
             canRestart={ this.canRestart() }
             canSave={ this.canSave() }
+            noSavedPermutations={ this.props.game.savedPermutations.length === 0 }
             saveLastSettings={ this.props.saveLastSettings }
           />
 

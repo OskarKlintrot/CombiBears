@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
   <meta name="apple-mobile-web-app-title" content="CombiBears">
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" sizes="57x57" href="public/pics/favicons/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="public/pics/favicons/apple-touch-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="public/pics/favicons/apple-touch-icon-72x72.png">

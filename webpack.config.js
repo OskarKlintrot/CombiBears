@@ -9,6 +9,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const production = process.argv.find((element) => element === '--production') ? true : false
 
+if (production) {
+  console.log('Building for production!')
+} else {
+  console.log('Building for development!')
+}
+
 const jsBaseEntry = [
   'babel-polyfill',
   './src/app/app.jsx'
