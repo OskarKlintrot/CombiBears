@@ -225,7 +225,6 @@ body {
   }
 
   20% {
-    opacity: 1;
     -webkit-transform: scale3d(.95, .95, .95);
     transform: scale3d(.95, .95, .95);
   }
@@ -255,7 +254,6 @@ body {
   }
 
   20% {
-    opacity: 1;
     -webkit-transform: scale3d(.95, .95, .95);
     transform: scale3d(.95, .95, .95);
   }
@@ -275,6 +273,51 @@ body {
 .bounceIn {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn;
+}
+
+.animated.pulse {
+    -webkit-animation-duration: 1.2s;
+    animation-duration: 1.2s;
+}
+
+@-webkit-keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.07, 1.07, 1.07);
+        transform: scale3d(1.07, 1.07, 1.07);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.07, 1.07, 1.07);
+        transform: scale3d(1.07, 1.07, 1.07);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
 }
 
 /* Animations END */
