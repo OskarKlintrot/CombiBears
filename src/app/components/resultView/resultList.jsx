@@ -6,7 +6,8 @@ const styles = {
     textAlign: 'center',
     fontSize: '2.8em',
     fontFamily: '"comic sans ms",Arial,sans-serif',
-    backgroundColor: 'rgba(240, 240, 230, 0.8)',
+    backgroundColor: 'rgba(240, 240, 230, 1)',
+
     border: '0.1em solid rgb(250, 250, 240)',
     borderRadius: '0.2em'
   },

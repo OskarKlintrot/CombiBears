@@ -101,6 +101,10 @@ class Buttons extends React.Component {
       }
     }
 
+    const getCameraButtonAnimation = () => {
+      return this.props.canSave ? 'pulse animated' : ''
+    }
+
     return (
 
       <div>
@@ -142,7 +146,7 @@ class Buttons extends React.Component {
             draggable='false'
           />
           <img
-            className='allowTouchMove'
+            className={ C.ALLOW_TOUCH_MOVE_CLASS + ' ' + getCameraButtonAnimation() }
             src={ C.SRC_TO_IMAGES.ICONS.SCREENSHOT }
             alt='Icon for saving permutation'
             style={ styles.saveIcon }

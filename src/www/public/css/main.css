@@ -225,7 +225,6 @@ body {
   }
 
   20% {
-    opacity: 1;
     -webkit-transform: scale3d(.95, .95, .95);
     transform: scale3d(.95, .95, .95);
   }
@@ -255,7 +254,6 @@ body {
   }
 
   20% {
-    opacity: 1;
     -webkit-transform: scale3d(.95, .95, .95);
     transform: scale3d(.95, .95, .95);
   }
@@ -276,6 +274,91 @@ body {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn;
 }
+
+.animated.pulse {
+    -webkit-animation-duration: 1.2s;
+    animation-duration: 1.2s;
+}
+
+@-webkit-keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.07, 1.07, 1.07);
+        transform: scale3d(1.07, 1.07, 1.07);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.07, 1.07, 1.07);
+        transform: scale3d(1.07, 1.07, 1.07);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+}
+
+.animated.last-saved {
+    -webkit-animation-duration: 1.0s;
+    animation-duration: 1.0s;
+}
+
+@-webkit-keyframes last-saved {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+        transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1) translate(0, 0);
+        transform: scale3d(1, 1, 1) translate(0, 0);
+    }
+}
+
+@keyframes last-saved {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+        transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1) translate(0, 0);
+        transform: scale3d(1, 1, 1) translate(0, 0);
+    }
+}
+
+.last-saved {
+    z-index: 100;
+    -webkit-animation-name: last-saved;
+    animation-name: last-saved;
+}
+
 
 /* Animations END */
 
