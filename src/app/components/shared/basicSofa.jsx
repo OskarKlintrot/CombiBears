@@ -99,7 +99,10 @@ class BasicSofa extends React.Component {
         className={ C.COMPONENT_NAMES.SOFA + ' allowTouchMove' }
         style={ mergedStyles }
       >
-        <div style={ genericStyles.seatContainer }>
+        <div
+          className='allowTouchMove'
+          style={ genericStyles.seatContainer }
+        >
 
           {
             this.props.bearsOnSofa.map( ( bearKey, index ) =>
