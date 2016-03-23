@@ -114,7 +114,7 @@ class Buttons extends React.Component {
             to={ C.ROUTES.START }
           >
             <img
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
               src={ C.SRC_TO_IMAGES.ICONS.NEW_SOFA }
               alt='Icon for new sofa'
               style={ styles.iconToStart }
@@ -126,7 +126,7 @@ class Buttons extends React.Component {
             to={ C.ROUTES.RESULTS }
           >
             <img
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
               src={ C.SRC_TO_IMAGES.ICONS.SHOW_RESULT }
               alt='Icon for showing result'
               style={ styles.iconToShowResults }
@@ -138,7 +138,7 @@ class Buttons extends React.Component {
 
         <div style={ styles.bottomIconsArea }>
           <img
-            className='allowTouchMove'
+            className={ C.ALLOW_TOUCH_MOVE_CLASS }
             src={ C.SRC_TO_IMAGES.ICONS.RESTART }
             alt='Icon for putting bears back in startingArea'
             style={ styles.resetIcon }

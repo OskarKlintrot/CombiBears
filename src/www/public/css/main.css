@@ -317,7 +317,6 @@ body {
 .pulse {
     -webkit-animation-name: pulse;
     animation-name: pulse;
-    animation-iteration-count: infinite;
 }
 .animated.last-saved {
     -webkit-animation-duration: 1.0s;
@@ -326,13 +325,26 @@ body {
 
 @-webkit-keyframes last-saved {
     from {
+        margin: 0;
         opacity: 0;
+        max-height: 0;
+        padding: 0 7% 0 7%;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+        transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+    }
+
+    50% {
+        opacity: 0;
+        padding: 30% 7% 6% 7%;
+        max-height: 1000px;
         -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
         transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
     }
 
     to {
+        margin: 5%;
         opacity: 1;
+        padding: 30% 7% 6% 7%;
         -webkit-transform: scale3d(1, 1, 1) translate(0, 0);
         transform: scale3d(1, 1, 1) translate(0, 0);
     }
@@ -341,12 +353,24 @@ body {
 @keyframes last-saved {
     from {
         opacity: 0;
+        max-height: 0;
+        padding: 0 7% 0 7%;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+        transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
+    }
+
+    50% {
+        opacity: 0;
+        padding: 30% 7% 6% 7%;
+        max-height: 1000px;
         -webkit-transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
         transform: scale3d(1.1, 1.1, 1.1) translate(0, -10em);
     }
 
     to {
+        margin: 5%;
         opacity: 1;
+        padding: 30% 7% 6% 7%;
         -webkit-transform: scale3d(1, 1, 1) translate(0, 0);
         transform: scale3d(1, 1, 1) translate(0, 0);
     }

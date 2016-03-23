@@ -72,7 +72,7 @@ class SavedPermutations extends React.Component {
 
       const lastSaved = document.getElementById( LAST_SAVED_ID )
 
-      lastSaved.setAttribute( 'class', 'allowTouchMove' )
+      lastSaved.setAttribute( 'class', C.ALLOW_TOUCH_MOVE_CLASS )
     }
 
     setTimeout( timeoutFunction, timeoutTime )
@@ -141,8 +141,10 @@ class SavedPermutations extends React.Component {
       sofaListElements: {
         padding: '30% 7% 6% 7%',
         height: '50%',
-        background: 'url(' + C.SRC_TO_IMAGES.PHOTO_BACKGROUND + ')',
+        backgroundImage: 'url(' + C.SRC_TO_IMAGES.PHOTO_BACKGROUND + ')',
+        backgroundColor: '#ecedef',
         backgroundSize: 'contain',
+        overflow: 'hidden',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         margin: '5%',
@@ -213,7 +215,7 @@ class SavedPermutations extends React.Component {
           >
             <ul
               style={ styles.ulSofas }
-              className='allowTouchMove'
+              className={ C.ALLOW_TOUCH_MOVE_CLASS }
             >
               {
                 this.props.savedPermutations.map( ( bearsOnSofa, index ) =>

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import C from '../../constants'
 
 const originalStyle = {
   // TODO: Do we need any common css?
@@ -15,7 +16,7 @@ const BasicBear = ( props ) => {
       style={ mergedStyle }
     >
       <img
-        className='allowTouchMove'
+        className={ C.ALLOW_TOUCH_MOVE_CLASS }
         src={ bear.src }
         alt='Image of a bear'
         draggable='false'
