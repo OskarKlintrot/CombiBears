@@ -319,8 +319,8 @@ body {
     animation-name: pulse;
 }
 .animated.last-saved {
-    -webkit-animation-duration: 1.0s;
-    animation-duration: 1.0s;
+    -webkit-animation-duration: 2.0s;
+    animation-duration: 2.0s;
 }
 
 @-webkit-keyframes last-saved {
