@@ -20,12 +20,15 @@ Note that all source code is located under `src/`.
 +---app
 |   +---components
 |   |   +---gameView
+|   |   +---resultview
 |   |   +---root
-|   |   +---savedCombinationsView
 |   |   +---shared
 |   |   \---startView
+|   |       +---languages
+|   |       \---shared
 |   +---redux
 |   |   +---actions
+|   |   |   \---helpers
 |   |   \---store
 |   |       +---helpers
 |   |       \---reducers
@@ -34,8 +37,11 @@ Note that all source code is located under `src/`.
     \---public
         +---css
         \---pics
+            +---accessories
             +---bears
+            +---favicons
             +---icons
+            +---seats
             \---sofas
 ```
 
