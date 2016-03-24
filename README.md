@@ -58,7 +58,7 @@ To build a static version of the project run:
 ```
 npm run build
 ```
-Note that the build is ignored in the `.gitignore` this because Travis CI will build and deploy to gh-pages from the master repo.
+Note that the build is ignored in the `.gitignore` this because Travis CI will build and deploy to gh-pages from the master repo. And don't forget to empty you previous `build` and `cordova/www` directories before building a new version.
 
 To build `stats.json` to use at http://webpack.github.io/analyse/ run:
 ```

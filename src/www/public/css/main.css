@@ -317,6 +317,7 @@ body {
 .pulse {
     -webkit-animation-name: pulse;
     animation-name: pulse;
+    animation-iteration-count: infinite;
 }
 .animated.last-saved {
     -webkit-animation-duration: 2.0s;
