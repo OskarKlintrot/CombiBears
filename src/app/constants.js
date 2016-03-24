@@ -23,7 +23,8 @@ CONSTANTS.SRC_TO_IMAGES = {
     SCREENSHOT: 'public/pics/icons/screenshot.svg',
     SHOW_RESULT: 'public/pics/icons/show-result.svg',
     START: 'public/pics/icons/start.svg',
-    VIEW_SAVED_PERMUTATIONS: 'public/pics/icons/view-saved-permutations.svg'
+    VIEW_SAVED_PERMUTATIONS: 'public/pics/icons/view-saved-permutations.svg',
+    GAME_WON: 'public/pics/icons/game_won.svg'
   },
   BEARS: {
     BLUE: 'public/pics/bears/blue.png',
