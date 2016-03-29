@@ -36,7 +36,7 @@ const ResultList = ( props ) => {
     <div style={ styles.container }>
 
       <img
-        src={ C.SRC_TO_IMAGES.ACCESSORIES.YELLOW }
+        src={ C.SRC_TO_IMAGES.ICONS.GAME_WON }
         draggable='false'
         style={ foundAll ? styles.leftCrown : styles.hidden }
       />
@@ -46,7 +46,7 @@ const ResultList = ( props ) => {
         numberOfCorrectPermutations
       }
       <img
-        src={ C.SRC_TO_IMAGES.ACCESSORIES.YELLOW }
+        src={ C.SRC_TO_IMAGES.ICONS.GAME_WON }
         draggable='false'
         style={ foundAll ? styles.rightCrown : styles.hidden }
       />
